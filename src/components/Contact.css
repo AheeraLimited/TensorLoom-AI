@@ -257,9 +257,21 @@
 @media (max-width: 900px) {
   .contact-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 32px;
   }
   .form-row-2 {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .contact-section {
+    padding: 40px 0;
+  }
+  .contact-left {
+    gap: 16px;
+  }
+  .contact-card-glass {
+    padding: 20px 16px;
   }
 }

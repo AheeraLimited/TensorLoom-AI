@@ -227,6 +227,13 @@
 }
 
 @media (max-width: 640px) {
+  .spotlight-section {
+    padding: 40px 0;
+  }
+  .spotlight-header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
   .sandbox-top-controls {
     flex-direction: column;
     align-items: stretch;

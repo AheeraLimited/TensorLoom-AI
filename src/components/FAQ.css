@@ -164,6 +164,13 @@
    Responsive Breakpoints
    =================================================================== */
 @media (max-width: 640px) {
+  .faq-section {
+    padding: 40px 0;
+  }
+  .faq-header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
   .faq-question-btn {
     padding: 15px 16px;
     gap: 10px;

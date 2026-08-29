@@ -160,6 +160,19 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   text-align: center;
 }
 
+.tl-section {
+  position: relative;
+  padding: clamp(70px, 8vw, 100px) 0;
+  z-index: 2;
+}
+
+.tl-weft {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.12) 50%, transparent 100%);
+  margin: 0 auto;
+  width: 100%;
+}
+
 @media (max-width: 640px) {
   :root {
     --edge: 16px;
@@ -171,7 +184,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     gap: 6px;
   }
   .tl-section {
-    padding: clamp(56px, 10vw, 80px) 0;
+    padding: 40px 0;
   }
 }
 
@@ -181,12 +194,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   padding-left: var(--edge);
   padding-right: var(--edge);
   position: relative;
-  z-index: 2;
-}
-
-.tl-section {
-  position: relative;
-  padding: clamp(72px, 10vw, 120px) 0;
   z-index: 2;
 }
 

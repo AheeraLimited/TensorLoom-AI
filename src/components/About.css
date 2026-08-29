@@ -143,3 +143,22 @@
     padding: 24px 20px;
   }
 }
+
+@media (max-width: 640px) {
+  .about-section {
+    padding: 40px 0;
+  }
+  .about-header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
+  .about-title {
+    font-size: clamp(24px, 7vw, 32px);
+  }
+  .about-subtitle {
+    font-size: 13.5px;
+  }
+  .about-pillar-card {
+    padding: 20px 18px;
+  }
+}

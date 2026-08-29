@@ -213,6 +213,13 @@
 }
 
 @media (max-width: 640px) {
+  .pricing-section {
+    padding: 40px 0;
+  }
+  .pricing-header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
   .pricing-card-v2 {
     padding: 24px 18px;
   }

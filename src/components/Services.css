@@ -471,3 +471,17 @@
     grid-column: span 1;
   }
 }
+
+@media (max-width: 640px) {
+  .services-section {
+    padding: 40px 0;
+  }
+  .services-header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
+  .bento-card {
+    padding: 20px 18px;
+    gap: 14px;
+  }
+}

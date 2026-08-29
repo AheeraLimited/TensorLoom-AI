@@ -170,6 +170,13 @@
 }
 
 @media (max-width: 640px) {
+  .process-section {
+    padding: 40px 0;
+  }
+  .process-header {
+    margin-bottom: 24px;
+    gap: 10px;
+  }
   .process-timeline-rail {
     grid-template-columns: 1fr;
     gap: 14px;
