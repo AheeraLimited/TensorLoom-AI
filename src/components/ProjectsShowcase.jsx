@@ -307,9 +307,8 @@ export default function ProjectsShowcase() {
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.22 }}
                 >
-                  {/* Top Row: Big Step Number & Glowing Glass Icon Badge */}
+                  {/* Top Row: Icon Badge + Category & Active Status */}
                   <div className="proj-card-top">
-                    <span className="proj-step-num">0{idx + 1}</span>
                     <div 
                       className="proj-icon-badge" 
                       style={{ 
@@ -320,12 +319,9 @@ export default function ProjectsShowcase() {
                     >
                       <IconComp size={20} />
                     </div>
-                  </div>
 
-                  {/* Middle Body: Category Pill, Bold Project Title, Tagline */}
-                  <div className="proj-card-middle">
                     <div className="proj-phase-row">
-                      <span className="proj-phase-pill" style={{ color: proj.color }}>
+                      <span className="proj-phase-pill" style={{ color: isSelected ? proj.color : 'rgba(255, 255, 255, 0.6)' }}>
                         {proj.category}
                       </span>
                       {isSelected && (
@@ -335,6 +331,10 @@ export default function ProjectsShowcase() {
                         </span>
                       )}
                     </div>
+                  </div>
+
+                  {/* Middle Body: Bold Project Title & Tagline */}
+                  <div className="proj-card-middle">
                     <h4 className="proj-title">{proj.name}</h4>
                     <p className="proj-summary">{proj.tagline}</p>
                   </div>
