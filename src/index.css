@@ -123,6 +123,12 @@ body {
   -webkit-backface-visibility: hidden;
 }
 
+/* Zero-Jank Scrolling State: Disables background mouse interception during high-speed scroll */
+.is-lenis-scrolling iframe,
+.is-lenis-scrolling .neural-loom-canvas {
+  pointer-events: none !important;
+}
+
 /* Custom modern frosted scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
@@ -189,6 +195,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   padding: clamp(70px, 8vw, 100px) 0;
   z-index: 2;
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
 }
 
 .tl-weft {

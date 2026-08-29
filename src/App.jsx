@@ -23,15 +23,15 @@ export default function App() {
   const [modalProject, setModalProject] = useState(null)
 
   useEffect(() => {
-    // Initialize ultra-smooth kinetic Lenis scrolling (identical to n8n.io)
+    // Ultra-high frame rate 120Hz+ Lenis smooth scrolling
     const lenis = new Lenis({
-      duration: 1.15,
+      duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 0.95,
-      touchMultiplier: 1.25,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.1,
       infinite: false,
     })
 
@@ -42,6 +42,16 @@ export default function App() {
     }
     rafId = requestAnimationFrame(raf)
 
+    // Eliminate iframe compositing jank during scroll
+    let scrollTimeout
+    lenis.on('scroll', () => {
+      document.documentElement.classList.add('is-lenis-scrolling')
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        document.documentElement.classList.remove('is-lenis-scrolling')
+      }, 120)
+    })
+
     // Smooth anchor navigation
     const handleAnchorClick = (e) => {
       const anchor = e.target.closest('a[href^="#"]')
@@ -51,7 +61,7 @@ export default function App() {
           const target = document.querySelector(href)
           if (target) {
             e.preventDefault()
-            lenis.scrollTo(target, { offset: -60, duration: 1.15 })
+            lenis.scrollTo(target, { offset: -60, duration: 0.9 })
           }
         }
       }
