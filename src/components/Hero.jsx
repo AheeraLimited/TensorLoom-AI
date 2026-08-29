@@ -25,8 +25,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="hero-section hero-centered-layout">
-      {/* Background Watermark and Ambient Meshes */}
-      <div className="hero-watermark-bg" aria-hidden="true">TENSORLOOM</div>
+      {/* Ambient Meshes */}
       <div className="hero-ambient-glow hero-glow-coral" />
       <div className="hero-ambient-glow hero-glow-purple" />
 

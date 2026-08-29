@@ -12,11 +12,11 @@ const NAV_ITEMS = [
     href: '#projects',
     label: 'Projects',
     dropdown: [
-      { href: '#projects', title: 'E-Commerce', desc: 'Online shopping, dynamic carts & instant checkout', icon: ShoppingBag, color: '#ff6d42' },
-      { href: '#projects', title: 'Automobile', desc: 'Live GPS fleet tracking, rentals & auto detailing', icon: Car, color: '#38bdf8' },
-      { href: '#projects', title: 'Food Delivery', desc: 'Live kitchen orders, chime alerts & rider tracking', icon: UtensilsCrossed, color: '#fb7185' },
-      { href: '#projects', title: 'FMCG & Subscriptions', desc: 'Daily delivery routes, vacation pause & billing', icon: Milk, color: '#34d399' },
-      { href: '#projects', title: 'WhatsApp Bots & CRM', desc: '24/7 automated support, lead capture & shared inbox', icon: MessageSquare, color: '#fbbf24' }
+      { href: '#projects', projectId: 'zynara', title: 'E-Commerce', desc: 'Online shopping, dynamic carts & instant checkout', icon: ShoppingBag, color: '#ff6d42' },
+      { href: '#projects', projectId: 'shubh-safar', title: 'Automobile', desc: 'Live GPS fleet tracking, rentals & auto detailing', icon: Car, color: '#38bdf8' },
+      { href: '#projects', projectId: 'cheat-meals', title: 'Food Delivery', desc: 'Live kitchen orders, chime alerts & rider tracking', icon: UtensilsCrossed, color: '#fb7185' },
+      { href: '#projects', projectId: 'aheera-milk', title: 'FMCG & Subscriptions', desc: 'Daily delivery routes, vacation pause & billing', icon: Milk, color: '#34d399' },
+      { href: '#projects', projectId: 'whatsapp-crm', title: 'WhatsApp Bots & CRM', desc: '24/7 automated support, lead capture & shared inbox', icon: MessageSquare, color: '#fbbf24' }
     ]
   },
   {
@@ -73,7 +73,7 @@ const NAV_ITEMS = [
   }
 ]
 
-export default function Navbar() {
+export default function Navbar({ onOpenProjectModal }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
@@ -83,6 +83,15 @@ export default function Navbar() {
     window.addEventListener('scroll', onScroll)
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  const handleDropdownItemClick = (e, sub) => {
+    if (sub.projectId && onOpenProjectModal) {
+      e.preventDefault()
+      onOpenProjectModal(sub.projectId)
+    }
+    setActiveDropdown(null)
+    setOpen(false)
+  }
 
   return (
     <header className={`nav-bar ${scrolled ? 'is-scrolled' : ''}`}>
@@ -119,7 +128,7 @@ export default function Navbar() {
                             key={sub.title} 
                             href={sub.href} 
                             className="nav-dropdown-item"
-                            onClick={() => setActiveDropdown(null)}
+                            onClick={(e) => handleDropdownItemClick(e, sub)}
                           >
                             <div 
                               className="nav-drop-icon"
@@ -162,7 +171,26 @@ export default function Navbar() {
         {open && (
           <div className="nav-mobile">
             {NAV_ITEMS.map((l) => (
-              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+              <div key={l.label} className="nav-mobile-item-group">
+                <a href={l.href} onClick={() => setOpen(false)} className="nav-mobile-main-link">
+                  {l.label}
+                </a>
+                {l.dropdown && (
+                  <div className="nav-mobile-sub-list">
+                    {l.dropdown.map((sub) => (
+                      <a 
+                        key={sub.title} 
+                        href={sub.href} 
+                        className="nav-mobile-sub-link"
+                        onClick={(e) => handleDropdownItemClick(e, sub)}
+                      >
+                        <span className="nav-mobile-sub-dot" style={{ background: sub.color }} />
+                        <span>{sub.title}</span>
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <a href="#contact" className="tl-btn tl-btn-primary" onClick={() => setOpen(false)}>
               Start a Project

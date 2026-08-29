@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import NeuralLoomCanvas from './components/NeuralLoomCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
@@ -12,17 +13,38 @@ import Pricing from './components/Pricing.jsx'
 import FAQ from './components/FAQ.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import ProjectModal from './components/ProjectModal.jsx'
+import { PROJECTS } from './data/projectsData.js'
 
 export default function App() {
+  const [modalProject, setModalProject] = useState(null)
+
+  const handleOpenProjectModal = (projectIdOrIndustry) => {
+    const found = PROJECTS.find(
+      (p) => p.id === projectIdOrIndustry || 
+             p.industry?.toLowerCase() === projectIdOrIndustry.toLowerCase() ||
+             p.category?.toLowerCase() === projectIdOrIndustry.toLowerCase()
+    )
+    if (found) {
+      setModalProject(found)
+    } else {
+      setModalProject(PROJECTS[0])
+    }
+  }
+
+  const handleCloseModal = () => {
+    setModalProject(null)
+  }
+
   return (
     <>
       <NeuralLoomCanvas />
       <div className="tl-warp" aria-hidden="true" />
-      <Navbar />
+      <Navbar onOpenProjectModal={handleOpenProjectModal} />
       <main>
         <Hero />
         <IndustryMarquee />
-        <ProjectsShowcase />
+        <ProjectsShowcase onOpenProjectModal={handleOpenProjectModal} />
         <div className="tl-shell"><div className="tl-weft" /></div>
         <IndustryDemo />
         <div className="tl-shell"><div className="tl-weft" /></div>
@@ -39,6 +61,12 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+
+      {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
+      <ProjectModal 
+        project={modalProject} 
+        onClose={handleCloseModal} 
+      />
     </>
   )
 }
