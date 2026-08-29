@@ -1,10 +1,11 @@
 /* ===================================================================
-   TensorLoom — FAQ Component (World-Class UI/UX)
+   TensorLoom — FAQ (Hyper-Realistic Frosted Glass Accordions)
    =================================================================== */
 
 .faq-section {
   position: relative;
-  padding: clamp(64px, 8vw, 100px) 0;
+  padding: clamp(70px, 9vw, 110px) 0;
+  z-index: 2;
 }
 
 .faq-header {
@@ -14,21 +15,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .faq-title {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(30px, 4.2vw, 46px);
   line-height: 1.15;
-  color: var(--ink-primary);
+  color: #ffffff;
   margin: 0;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .faq-subtitle {
-  font-size: clamp(14px, 1.2vw, 16px);
-  color: var(--ink-secondary);
+  font-size: clamp(14.5px, 1.2vw, 16.5px);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.6;
   max-width: 600px;
   margin: 0;
@@ -45,29 +46,32 @@
 }
 
 .faq-cat-btn {
-  padding: 6px 16px;
+  padding: 7px 16px;
   font-family: var(--font-mono);
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--ink-secondary);
-  background: #ffffff;
-  border: 1px solid var(--line);
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
-  box-shadow: 0 1px 3px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 .faq-cat-btn:hover {
-  color: var(--coral);
-  border-color: var(--coral-border);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .faq-cat-btn.active {
   color: #ffffff;
   background: var(--coral-gradient);
-  border-color: transparent;
-  box-shadow: 0 4px 14px rgba(234, 75, 113, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(234, 75, 113, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 /* Accordion Container */
@@ -76,25 +80,29 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .faq-item-card {
   border-radius: var(--radius-md);
-  background: #ffffff;
-  border: 1.5px solid var(--line);
-  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.02);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
   overflow: hidden;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .faq-item-card:hover {
-  border-color: #cbd5e1;
+  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .faq-item-card.open {
-  border-color: #18181b;
-  box-shadow: 0 8px 24px rgba(20, 18, 30, 0.06);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 109, 66, 0.15), inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
 }
 
 .faq-question-btn {
@@ -111,9 +119,9 @@
 }
 
 .faq-q-text {
-  font-size: 15px;
+  font-size: 15.5px;
   font-weight: 700;
-  color: var(--ink-primary);
+  color: #ffffff;
   line-height: 1.4;
 }
 
@@ -121,13 +129,14 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #f8f7f4;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.75);
   flex-shrink: 0;
+  backdrop-filter: blur(8px);
   transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
@@ -136,6 +145,7 @@
   background: var(--coral);
   color: #ffffff;
   border-color: var(--coral);
+  box-shadow: 0 0 12px var(--coral);
 }
 
 .faq-answer-wrap {
@@ -144,9 +154,9 @@
 
 .faq-a-text {
   padding: 0 20px 18px;
-  font-size: 13.5px;
+  font-size: 14px;
   line-height: 1.6;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.78);
   margin: 0;
 }
 

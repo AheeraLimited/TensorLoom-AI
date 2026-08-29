@@ -1,9 +1,11 @@
 /* ===================================================================
-   TensorLoom — Contact / Intake Styles (Light n8n Theme)
+   TensorLoom — Contact / Intake (Hyper-Realistic Frosted Glass Form)
    =================================================================== */
 
 .contact-section {
   position: relative;
+  padding: clamp(70px, 9vw, 110px) 0;
+  z-index: 2;
 }
 
 .contact-grid {
@@ -20,14 +22,16 @@
 }
 
 .contact-headline {
-  font-size: clamp(34px, 4.2vw, 52px);
+  font-size: clamp(32px, 4.2vw, 48px);
   line-height: 1.15;
-  color: var(--ink-primary);
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .contact-subtext {
-  font-size: clamp(15px, 1.2vw, 17px);
-  color: var(--ink-secondary);
+  font-size: clamp(14.5px, 1.2vw, 16.5px);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.6;
 }
 
@@ -43,32 +47,36 @@
   align-items: center;
   gap: 10px;
   font-size: 13.5px;
-  color: var(--ink-primary);
-  background: #ffffff;
-  border: 1px solid var(--line);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 8px 16px;
   border-radius: 999px;
   width: fit-content;
-  box-shadow: 0 1px 4px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
 }
 
 .contact-direct-box {
-  background: #ffffff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-lg);
   padding: 22px 24px;
   margin-top: 14px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  box-shadow: 0 4px 16px rgba(20, 18, 30, 0.03);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.35);
 }
 
 .direct-label {
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  color: var(--ink-faint);
+  color: rgba(255, 255, 255, 0.55);
   letter-spacing: 0.08em;
 }
 
@@ -83,7 +91,7 @@
   font-family: var(--font-mono);
   font-size: 15px;
   font-weight: 600;
-  color: var(--ink-primary);
+  color: #ffffff;
 }
 
 .copy-btn {
@@ -93,27 +101,30 @@
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
-  color: var(--coral);
-  background: rgba(255, 109, 66, 0.08);
-  border: 1px solid rgba(255, 109, 66, 0.25);
+  color: #ff9b26;
+  background: rgba(255, 109, 66, 0.12);
+  border: 1px solid rgba(255, 109, 66, 0.35);
   padding: 6px 14px;
   border-radius: 999px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(8px);
 }
 
 .copy-btn:hover {
-  background: rgba(255, 109, 66, 0.16);
+  background: rgba(255, 109, 66, 0.25);
   border-color: var(--coral);
   transform: translateY(-1px);
 }
 
-/* Right Column: Intake Form */
+/* Right Column: Frosted Glass Form */
 .contact-form-card {
-  background: #ffffff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-xl);
   padding: clamp(28px, 4vw, 40px);
-  box-shadow: 0 20px 60px rgba(20, 18, 30, 0.06);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
 }
 
 .contact-form {
@@ -132,7 +143,7 @@
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.08em;
 }
 
@@ -146,25 +157,27 @@
   font-family: var(--font-body);
   font-size: 12.5px;
   font-weight: 500;
-  color: var(--ink-secondary);
-  background: #f8f7f4;
-  border: 1px solid var(--line);
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 7px 14px;
   border-radius: 999px;
   transition: all 0.2s ease;
+  backdrop-filter: blur(8px);
 }
 
 .pill-btn:hover {
-  border-color: #cac7be;
-  color: var(--ink-primary);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.14);
 }
 
 .pill-btn.active {
   background: var(--coral-gradient);
   color: #ffffff;
   font-weight: 600;
-  border-color: transparent;
-  box-shadow: 0 2px 10px rgba(234, 75, 113, 0.25);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 4px 16px rgba(234, 75, 113, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
 .form-row-2 {
@@ -175,21 +188,25 @@
 
 .form-input, .form-textarea {
   width: 100%;
-  background: #f8f7f4;
-  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: var(--radius-sm);
   padding: 12px 16px;
   font-family: var(--font-body);
   font-size: 14px;
-  color: var(--ink-primary);
+  color: #ffffff;
   outline: none;
   transition: all 0.2s ease;
 }
 
+.form-input::placeholder, .form-textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .form-input:focus, .form-textarea:focus {
   border-color: var(--coral);
-  background: #ffffff;
-  box-shadow: 0 0 0 3px rgba(255, 109, 66, 0.12);
+  background: rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 3px rgba(255, 109, 66, 0.25);
 }
 
 .form-textarea {
@@ -216,22 +233,23 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: rgba(255, 109, 66, 0.08);
-  border: 1px solid rgba(255, 109, 66, 0.2);
+  background: rgba(255, 109, 66, 0.15);
+  border: 1px solid rgba(255, 109, 66, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 6px;
+  backdrop-filter: blur(8px);
 }
 
 .contact-success-state h3 {
   font-size: 24px;
-  color: var(--ink-primary);
+  color: #ffffff;
 }
 
 .contact-success-state p {
   font-size: 14.5px;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   max-width: 420px;
 }

@@ -1,10 +1,11 @@
 /* ===================================================================
-   TensorLoom — Pricing & Plans (World-Class UI/UX)
+   TensorLoom — Pricing & Plans (Hyper-Realistic Frosted Glass Cards)
    =================================================================== */
 
 .pricing-section {
   position: relative;
-  padding: clamp(64px, 8vw, 100px) 0;
+  padding: clamp(70px, 9vw, 110px) 0;
+  z-index: 2;
 }
 
 .pricing-header {
@@ -14,21 +15,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .pricing-title {
-  font-size: clamp(28px, 4vw, 42px);
+  font-size: clamp(30px, 4.2vw, 46px);
   line-height: 1.15;
-  color: var(--ink-primary);
+  color: #ffffff;
   margin: 0;
   font-weight: 700;
-  letter-spacing: -0.02em;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .pricing-subtitle {
-  font-size: clamp(14px, 1.2vw, 16px);
-  color: var(--ink-secondary);
+  font-size: clamp(14.5px, 1.2vw, 16.5px);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.6;
   max-width: 600px;
   margin: 0;
@@ -47,23 +48,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: #ffffff;
-  border: 1.5px solid var(--line);
-  box-shadow: 0 4px 20px rgba(20, 18, 30, 0.03);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
   position: relative;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .pricing-card-v2:hover {
-  border-color: #cbd5e1;
+  border-color: rgba(255, 255, 255, 0.35);
   transform: translateY(-4px);
-  box-shadow: 0 16px 40px rgba(20, 18, 30, 0.07);
+  background: rgba(255, 255, 255, 0.09);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
 }
 
 .pricing-card-v2.highlight-coral {
-  border-color: var(--coral);
-  box-shadow: 0 0 0 1px var(--coral), 0 20px 50px rgba(255, 109, 66, 0.12);
-  background: #ffffff;
+  border-color: rgba(255, 109, 66, 0.5);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 35px rgba(255, 109, 66, 0.25), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .tier-top-highlight-badge {
@@ -81,7 +85,8 @@
   font-weight: 700;
   padding: 4px 14px;
   border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(234, 75, 113, 0.3);
+  box-shadow: 0 4px 14px rgba(234, 75, 113, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   white-space: nowrap;
 }
 
@@ -103,37 +108,38 @@
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  color: var(--coral);
-  background: rgba(255, 109, 66, 0.08);
-  border: 1px solid rgba(255, 109, 66, 0.2);
+  color: #ff9b26;
+  background: rgba(255, 109, 66, 0.12);
+  border: 1px solid rgba(255, 109, 66, 0.35);
   padding: 3px 8px;
   border-radius: 4px;
   letter-spacing: 0.06em;
+  backdrop-filter: blur(8px);
 }
 
 .tier-timeline {
   font-family: var(--font-mono);
   font-size: 11.5px;
   font-weight: 700;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .tier-name {
   font-size: 22px;
   font-weight: 700;
-  color: var(--ink-primary);
+  color: #ffffff;
   margin: 0;
 }
 
 .tier-desc {
   font-size: 13.5px;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
   margin: 0;
 }
 
 .tier-features-wrap {
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 18px;
   margin-bottom: 24px;
   flex-grow: 1;
@@ -143,7 +149,7 @@
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  color: var(--ink-faint);
+  color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.08em;
   display: block;
   margin-bottom: 12px;
@@ -163,7 +169,7 @@
   align-items: flex-start;
   gap: 8px;
   font-size: 13px;
-  color: var(--ink-primary);
+  color: rgba(255, 255, 255, 0.85);
   line-height: 1.45;
 }
 

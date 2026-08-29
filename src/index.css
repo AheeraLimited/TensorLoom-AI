@@ -1,52 +1,51 @@
 /* ===================================================================
-   TensorLoom — n8n-Inspired Light Canvas Design System & Tokens
-   Palette: Crisp porcelain canvas, deep charcoal ink, n8n coral-orange gradient, lavender & emerald accents
-   Type: Space Grotesk (display) / Inter (body) / JetBrains Mono (code/HUD)
+   TensorLoom — Hyper-Realistic Modern Glassmorphism Design System
+   Aesthetic: Multi-layered frosted glass slabs, specular rim lighting,
+              molded ice buttons, vibrant atmospheric mesh orbs & crisp typography.
    =================================================================== */
 
 :root {
-  --bg-canvas: #faf9f6;       /* warm porcelain canvas */
-  --bg-subtle: #f3f2ee;       /* slightly recessed panel */
-  --bg-surface: #ffffff;      /* pure white card surface */
-  --bg-elevated: #ffffff;     /* floating card surface */
-  --bg-hover: #f7f6f2;        /* interactive hover surface */
+  /* Deep Atmospheric Canvas Background */
+  --bg-canvas: #090810;
+  --bg-surface: rgba(255, 255, 255, 0.05);
+  --bg-elevated: rgba(255, 255, 255, 0.08);
+  --bg-hover: rgba(255, 255, 255, 0.12);
 
-  --ink-primary: #12101a;     /* deep pitch charcoal (high contrast) */
-  --ink-secondary: #4a4756;   /* crisp readable neutral body */
-  --ink-faint: #686576;       /* high-contrast technical captions & labels */
-  --ink-subtle: #9693a2;      /* border & divider faint */
+  /* High-Contrast Crisp White Typography */
+  --ink-primary: #ffffff;
+  --ink-secondary: rgba(255, 255, 255, 0.78);
+  --ink-faint: rgba(255, 255, 255, 0.52);
+  --ink-subtle: rgba(255, 255, 255, 0.35);
 
-  /* Aliases for backwards compatibility */
-  --thread: #ff6d42;
-  --thread-bright: #ff9b26;
-  --paper: #12101a;
-  --paper-dim: #4a4756;
-  --paper-faint: #686576;
-
-  /* n8n Signature Coral-Orange Gradient & Accents */
-  --coral: #ff6d42;           /* n8n electric coral */
-  --coral-deep: #ea4b71;      /* radiant rose pink */
-  --coral-bright: #ff9b26;    /* vibrant amber orange */
+  /* Signature Luminous Accent Colors & Gradients */
+  --coral: #ff6d42;
+  --coral-deep: #ea4b71;
+  --coral-bright: #ff9b26;
   --coral-gradient: linear-gradient(135deg, #ff6d42 0%, #ea4b71 100%);
-  --coral-subtle: rgba(255, 109, 66, 0.08);
-  --coral-border: rgba(255, 109, 66, 0.25);
-  --coral-glow: rgba(255, 109, 66, 0.25);
+  --coral-subtle: rgba(255, 109, 66, 0.12);
+  --coral-border: rgba(255, 109, 66, 0.4);
+  --coral-glow: rgba(255, 109, 66, 0.35);
 
-  /* Secondary Modern Telemetry Accents */
-  --purple: #7c3aed;          /* vibrant indigo purple */
-  --purple-subtle: rgba(124, 58, 237, 0.08);
-  --emerald: #10b981;         /* success emerald */
-  --emerald-subtle: rgba(16, 185, 129, 0.1);
-  --sky: #0284c7;             /* telemetry cyan/sky */
-  --sky-subtle: rgba(2, 132, 199, 0.08);
+  --purple: #8b5cf6;
+  --purple-subtle: rgba(139, 92, 246, 0.12);
+  --emerald: #10b981;
+  --emerald-subtle: rgba(16, 185, 129, 0.12);
+  --sky: #0ea5e9;
+  --sky-subtle: rgba(14, 165, 233, 0.12);
 
-  /* Light Borders & Glass Shadows */
-  --line: #e7e5e0;            /* standard structural border */
-  --line-strong: #d3d0c8;     /* prominent border */
-  --glass-card: rgba(255, 255, 255, 0.92);
-  --glass-border: rgba(0, 0, 0, 0.07);
-  --glass-shadow: 0 10px 30px rgba(20, 18, 30, 0.04), 0 1px 3px rgba(20, 18, 30, 0.02);
-  --glass-shadow-hover: 0 18px 45px rgba(20, 18, 30, 0.08), 0 0 25px rgba(255, 109, 66, 0.08);
+  /* Hyper-Realistic Glassmorphism Tokens */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-nested: rgba(255, 255, 255, 0.08);
+  --glass-blur: blur(28px) saturate(190%);
+  --glass-blur-sm: blur(14px) saturate(180%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.16);
+  --glass-border-hover: 1px solid rgba(255, 255, 255, 0.35);
+  --glass-rim: inset 0 1px 1px 0 rgba(255, 255, 255, 0.45), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.04);
+  --glass-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  --glass-shadow-hover: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 30px rgba(255, 109, 66, 0.15);
+
+  --line: rgba(255, 255, 255, 0.12);
+  --line-strong: rgba(255, 255, 255, 0.24);
 
   --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -54,10 +53,10 @@
 
   --container: 1220px;
   --edge: clamp(20px, 5vw, 48px);
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 26px;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 22px;
+  --radius-xl: 28px;
 }
 
 * {
@@ -66,7 +65,7 @@
 
 html {
   scroll-behavior: smooth;
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -82,12 +81,15 @@ html {
 body {
   margin: 0;
   background-color: var(--bg-canvas);
-  /* n8n-style workflow canvas dot matrix */
+  /* Atmospheric multi-color glowing mesh underneath the glass */
   background-image: 
-    radial-gradient(#e2e0d8 1.15px, transparent 1.15px),
-    radial-gradient(circle at 10% 10%, rgba(255, 109, 66, 0.04) 0%, transparent 50%),
-    radial-gradient(circle at 90% 40%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
-  background-size: 24px 24px, 100% 100%, 100% 100%;
+    radial-gradient(circle at 15% 15%, rgba(255, 109, 66, 0.14) 0%, transparent 45%),
+    radial-gradient(circle at 85% 25%, rgba(139, 92, 246, 0.16) 0%, transparent 50%),
+    radial-gradient(circle at 50% 65%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
+    radial-gradient(circle at 80% 85%, rgba(14, 165, 233, 0.12) 0%, transparent 50%),
+    radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 32px 32px;
+  background-attachment: fixed;
   color: var(--ink-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
@@ -96,7 +98,7 @@ body {
   line-height: 1.55;
 }
 
-/* Custom modern light scrollbar */
+/* Custom modern frosted scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -104,12 +106,12 @@ body {
   background: var(--bg-canvas);
 }
 ::-webkit-scrollbar-thumb {
-  background: #d8d6ce;
+  background: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
   border: 2px solid var(--bg-canvas);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b8b6ae;
+  background: rgba(255, 255, 255, 0.28);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -125,17 +127,17 @@ a { color: inherit; text-decoration: none; }
 button { font-family: inherit; cursor: pointer; border: none; background: none; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
 
-/* Brand AI typography (100% identical Space Grotesk font with bold definition and signature coral color) */
+/* Brand AI typography with glowing coral stroke */
 .brand-ai {
   font-family: inherit;
   font-weight: 700;
   color: var(--coral);
   letter-spacing: inherit;
-  -webkit-text-stroke: 0.35px var(--coral);
   margin-left: 1px;
+  text-shadow: 0 0 16px rgba(255, 109, 66, 0.5);
 }
 
-/* Eyebrow badge (n8n Pill Style) */
+/* Eyebrow badge (Frosted Glass Pill) */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -145,15 +147,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--coral);
-  background: rgba(255, 109, 66, 0.08);
-  border: 1px solid rgba(255, 109, 66, 0.22);
-  padding: 6px 14px;
+  color: #ff9b26;
+  background: rgba(255, 109, 66, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 109, 66, 0.3);
+  padding: 6px 16px;
   border-radius: 999px;
-  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 20px rgba(255, 109, 66, 0.15), inset 0 1px 1px rgba(255, 255, 255, 0.3);
   width: fit-content;
   max-width: 100%;
-  box-shadow: 0 2px 8px rgba(255, 109, 66, 0.06);
   text-align: center;
 }
 
@@ -166,7 +169,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     letter-spacing: 0.08em;
     padding: 5px 12px;
     gap: 6px;
-    line-height: 1.35;
   }
   .tl-section {
     padding: clamp(56px, 10vw, 80px) 0;
@@ -188,22 +190,25 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   z-index: 2;
 }
 
-/* Light Glass / Elevated Card Utility */
+/* Hyper-Realistic Glassmorphic Container (.tl-glass) */
 .tl-glass {
-  background: var(--bg-surface);
-  border: 1px solid var(--line);
-  box-shadow: var(--glass-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   border-radius: var(--radius-lg);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
 }
 
 .tl-glass:hover {
-  border-color: #d8d5cd;
-  box-shadow: var(--glass-shadow-hover);
+  border-color: rgba(255, 255, 255, 0.28);
+  box-shadow: var(--glass-shadow-hover), var(--glass-rim);
   transform: translateY(-2px);
 }
 
-/* Premium n8n Buttons */
+/* Molded Ice & Glass Buttons */
 .tl-btn {
   display: inline-flex;
   align-items: center;
@@ -214,11 +219,11 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font-size: 14.5px;
   padding: 12px 24px;
   border-radius: 999px;
-  border: 1px solid transparent;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .tl-btn:focus-visible {
@@ -226,78 +231,54 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   outline-offset: 3px;
 }
 
-/* Primary Coral Gradient Button (n8n signature) */
+/* Primary Molded Ice Button (Radiant Coral Gradient) */
 .tl-btn-primary, .tl-btn-thread {
-  background: var(--coral-gradient);
+  background: linear-gradient(135deg, rgba(255, 109, 66, 0.9) 0%, rgba(234, 75, 113, 0.9) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   color: #ffffff;
   font-weight: 700;
-  box-shadow: 0 4px 20px rgba(234, 75, 113, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: 0 10px 30px rgba(234, 75, 113, 0.4), inset 0 1px 1.5px rgba(255, 255, 255, 0.8);
 }
+
 .tl-btn-primary:hover, .tl-btn-thread:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(234, 75, 113, 0.45);
-  filter: brightness(1.04);
+  background: linear-gradient(135deg, #ff6d42 0%, #ea4b71 100%);
+  box-shadow: 0 16px 40px rgba(234, 75, 113, 0.55), inset 0 1px 2px rgba(255, 255, 255, 0.9);
 }
 
-/* Secondary Crisp White / Dark Text Ghost Button */
-.tl-btn-ghost {
-  background: #ffffff;
-  color: var(--ink-primary);
-  border-color: var(--line);
-  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.04);
+/* Secondary Polished Ice Ghost Button */
+.tl-btn-ghost, .tl-btn-secondary {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
 }
-.tl-btn-ghost:hover {
-  background: #f8f7f4;
-  border-color: #cac7be;
-  color: var(--coral);
+
+.tl-btn-ghost:hover, .tl-btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.7);
 }
 
-/* Weft & Warp divider lines */
-.tl-warp {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--line) 15%, var(--line) 85%, transparent);
-  pointer-events: none;
-  z-index: 1;
-}
-@media (max-width: 960px) {
-  .tl-warp { display: none; }
-}
-
-.tl-weft {
-  position: relative;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
-  margin: 0 auto;
-}
-.tl-weft::before {
-  content: "";
-  position: absolute;
-  top: -1px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 64px;
-  height: 3px;
-  background: var(--coral-gradient);
-  border-radius: 2px;
-  box-shadow: 0 0 10px rgba(255, 109, 66, 0.4);
-}
-
-/* n8n Rainbow text gradient utility */
+/* Text Gradients */
 .text-gradient-gold, .text-gradient-n8n {
-  background: linear-gradient(135deg, #14121e 20%, #ff6d42 65%, #ea4b71 100%);
+  background: linear-gradient(135deg, #ffffff 15%, #ff9b26 60%, #ea4b71 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 .text-gradient-purple {
-  background: linear-gradient(135deg, #14121e 20%, #7c3aed 70%, #ff6d42 100%);
+  background: linear-gradient(135deg, #ffffff 15%, #c084fc 65%, #ff6d42 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
 
 /* Ambient glow accents */
@@ -306,7 +287,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   pointer-events: none;
   border-radius: 50%;
   filter: blur(90px);
-  opacity: 0.08;
+  opacity: 0.18;
   z-index: 1;
 }
 
@@ -318,14 +299,17 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   display: inline-block;
   position: relative;
 }
+
 .pulse-dot.dot-emerald {
   background: var(--emerald);
-  box-shadow: 0 0 8px var(--emerald);
+  box-shadow: 0 0 10px var(--emerald);
 }
+
 .pulse-dot.dot-gold, .pulse-dot.dot-coral {
   background: var(--coral);
-  box-shadow: 0 0 8px var(--coral);
+  box-shadow: 0 0 10px var(--coral);
 }
+
 .pulse-dot::after {
   content: "";
   position: absolute;
@@ -341,6 +325,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 ::selection {
-  background: rgba(255, 109, 66, 0.2);
-  color: #14121e;
+  background: rgba(255, 109, 66, 0.35);
+  color: #ffffff;
 }

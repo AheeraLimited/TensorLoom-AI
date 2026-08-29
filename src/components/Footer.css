@@ -1,25 +1,13 @@
 /* ===================================================================
-   TensorLoom — Premium Architectural Footer (Light Canvas Theme)
+   TensorLoom — Premium Architectural Footer (Hyper-Realistic Glass)
    =================================================================== */
 
 .footer {
   position: relative;
-  background: #f8f7f4;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
   padding: 80px 0 40px;
   overflow: hidden;
   z-index: 2;
-}
-
-/* Subtle background dot pattern */
-.footer::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#e2e0d8 1.1px, transparent 1.1px);
-  background-size: 20px 20px;
-  opacity: 0.6;
-  pointer-events: none;
 }
 
 .footer-inner {
@@ -34,15 +22,17 @@
    Pre-Footer Floating CTA Card
    =================================================================== */
 .footer-cta-card {
-  background: #ffffff;
-  border: 1.5px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(28px) saturate(190%);
+  -webkit-backdrop-filter: blur(28px) saturate(190%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius-xl);
   padding: 44px 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 36px;
-  box-shadow: 0 12px 40px rgba(20, 18, 30, 0.04), 0 1px 3px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
   position: relative;
   overflow: hidden;
 }
@@ -54,7 +44,7 @@
   right: 0;
   width: 320px;
   height: 100%;
-  background: radial-gradient(circle at 100% 50%, rgba(255, 109, 66, 0.06), transparent 70%);
+  background: radial-gradient(circle at 100% 50%, rgba(255, 109, 66, 0.14), transparent 70%);
   pointer-events: none;
 }
 
@@ -72,14 +62,15 @@
 .footer-cta-title {
   font-size: clamp(24px, 3vw, 34px);
   line-height: 1.2;
-  color: var(--ink-primary);
+  color: #ffffff;
   margin: 0;
   font-weight: 700;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .footer-cta-sub {
   font-size: clamp(14px, 1.1vw, 15.5px);
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.6;
   margin: 0;
 }
@@ -99,7 +90,7 @@
   grid-template-columns: 1.4fr 1fr 1fr 1.1fr;
   gap: 40px;
   padding-bottom: 48px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-brand-col {
@@ -121,12 +112,12 @@
   font-size: 19px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--ink-primary);
+  color: #ffffff;
 }
 
 .footer-brand-desc {
   font-size: 13.5px;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.6;
   max-width: 320px;
   margin: 0;
@@ -140,11 +131,12 @@
   font-size: 10.5px;
   font-weight: 700;
   color: var(--emerald);
-  background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.22);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
   padding: 5px 12px;
   border-radius: 999px;
   width: fit-content;
+  backdrop-filter: blur(8px);
 }
 
 /* Column Styles */
@@ -160,7 +152,7 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--ink-primary);
+  color: #ffffff;
   margin: 0;
 }
 
@@ -178,15 +170,16 @@
   align-items: center;
   gap: 6px;
   font-size: 13.5px;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.75);
   text-decoration: none;
   transition: all 0.2s ease;
   width: fit-content;
 }
 
 .footer-link-item:hover {
-  color: var(--coral);
+  color: #ffffff;
   transform: translateX(3px);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 .ext-icon {
@@ -212,20 +205,21 @@
   font-family: var(--font-mono);
   font-size: 13px;
   font-weight: 600;
-  color: var(--ink-primary);
-  background: #ffffff;
-  border: 1px solid var(--line);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 7px 14px;
   border-radius: var(--radius-sm);
   text-decoration: none;
   transition: all 0.2s ease;
   width: fit-content;
-  box-shadow: 0 1px 3px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .footer-email-link:hover {
-  border-color: var(--coral-border);
-  color: var(--coral);
+  border-color: var(--coral);
+  color: #ff9b26;
 }
 
 .footer-security-pill {
@@ -236,11 +230,12 @@
   font-size: 10.5px;
   font-weight: 700;
   color: var(--emerald);
-  background: #ffffff;
-  border: 1px solid rgba(16, 185, 129, 0.25);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
   padding: 6px 12px;
   border-radius: 6px;
   width: fit-content;
+  backdrop-filter: blur(8px);
 }
 
 /* Social Buttons */
@@ -255,22 +250,24 @@
   width: 36px;
   height: 36px;
   border-radius: 10px;
-  background: #ffffff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--ink-secondary);
+  color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 1px 3px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .footer-social-btn:hover {
-  border-color: var(--coral-border);
-  color: var(--coral);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(255, 109, 66, 0.12);
+  background: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 /* ===================================================================
@@ -282,7 +279,7 @@
   justify-content: space-between;
   gap: 20px;
   font-size: 12.5px;
-  color: var(--ink-faint);
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .footer-bottom-left {
@@ -293,7 +290,7 @@
 }
 
 .footer-bullet {
-  color: var(--line-strong);
+  color: rgba(255, 255, 255, 0.25);
 }
 
 .footer-sub-tag {
@@ -315,11 +312,12 @@
   font-family: var(--font-mono);
   font-size: 10.5px;
   font-weight: 700;
-  color: var(--sky);
-  background: rgba(2, 132, 199, 0.06);
-  border: 1px solid rgba(2, 132, 199, 0.18);
+  color: #38bdf8;
+  background: rgba(2, 132, 199, 0.12);
+  border: 1px solid rgba(2, 132, 199, 0.25);
   padding: 4px 10px;
   border-radius: 999px;
+  backdrop-filter: blur(8px);
 }
 
 .footer-back-to-top {
@@ -329,17 +327,18 @@
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
-  color: var(--ink-primary);
-  background: #ffffff;
-  border: 1px solid var(--line);
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 5px 12px;
   border-radius: 999px;
   transition: all 0.2s ease;
 }
 
 .footer-back-to-top:hover {
-  border-color: var(--coral-border);
-  color: var(--coral);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.16);
   transform: translateY(-2px);
 }
 

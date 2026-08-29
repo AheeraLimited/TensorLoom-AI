@@ -74,6 +74,7 @@ export default function Hero() {
 
   return (
     <section id="top" className="hero-section">
+      <div className="hero-watermark-bg" aria-hidden="true">TENSORLOOM</div>
       <div className="hero-ambient-glow hero-glow-coral" />
       <div className="hero-ambient-glow hero-glow-purple" />
 
