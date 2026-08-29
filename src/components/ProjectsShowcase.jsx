@@ -294,9 +294,9 @@ export default function ProjectsShowcase() {
 
         {/* Dual-Panel Showcase Cockpit */}
         <div className="projects-showcase-split">
-          {/* Left Column: Project Selector Cards */}
+          {/* Left Column: Project Selector Cards (Styled like Process Cards) */}
           <div className="projects-selector-list">
-            {filteredProjects.map((proj) => {
+            {filteredProjects.map((proj, idx) => {
               const isSelected = proj.id === activeProject.id
               const IconComp = proj.icon
               return (
@@ -304,54 +304,53 @@ export default function ProjectsShowcase() {
                   key={proj.id}
                   className={`proj-card-item ${isSelected ? 'selected' : ''}`}
                   onClick={() => setSelectedId(proj.id)}
-                  whileHover={{ y: -2 }}
-                  transition={{ duration: 0.2 }}
+                  whileHover={{ y: -3 }}
+                  transition={{ duration: 0.22 }}
                 >
-                  {/* Top Row: Icon + Name & Category + Status */}
-                  <div className="proj-card-header-row">
+                  {/* Top Row: Big Step Number & Glowing Glass Icon Badge */}
+                  <div className="proj-card-top">
+                    <span className="proj-step-num">0{idx + 1}</span>
                     <div 
-                      className="proj-icon-box" 
+                      className="proj-icon-badge" 
                       style={{ 
-                        background: `${proj.color}15`, 
-                        borderColor: `${proj.color}35`,
-                        color: proj.color 
+                        color: proj.color,
+                        background: `${proj.color}15`,
+                        borderColor: `${proj.color}35`
                       }}
                     >
-                      <IconComp size={18} />
-                    </div>
-
-                    <div className="proj-title-stack">
-                      <div className="proj-name-cat-line">
-                        <span className="proj-name">{proj.name}</span>
-                        <span className="proj-category-pill" style={{ color: isSelected ? proj.color : 'inherit' }}>
-                          {proj.category}
-                        </span>
-                      </div>
-                    </div>
-
-                    <div className="proj-status-box">
-                      {isSelected ? (
-                        <div className="proj-active-pill" style={{ background: `${proj.color}15`, color: proj.color, borderColor: `${proj.color}30` }}>
-                          <span className="pulse-dot" style={{ background: proj.color }} />
-                          <span>Active</span>
-                        </div>
-                      ) : (
-                        <ChevronRight size={15} className="proj-chevron-dim" />
-                      )}
+                      <IconComp size={20} />
                     </div>
                   </div>
 
-                  {/* Middle: Clear 1-Line Value Tagline */}
-                  <p className="proj-tagline-text">{proj.tagline}</p>
-
-                  {/* Bottom Row: 2 Performance Metric Chips */}
-                  <div className="proj-card-footer-tags">
-                    {proj.metrics.slice(0, 2).map((m) => (
-                      <span key={m.label} className="proj-metric-chip">
-                        <strong style={{ color: isSelected ? proj.color : 'var(--ink-primary)' }}>{m.val}</strong>
-                        <span>{m.label}</span>
+                  {/* Middle Body: Category Pill, Bold Project Title, Tagline */}
+                  <div className="proj-card-middle">
+                    <div className="proj-phase-row">
+                      <span className="proj-phase-pill" style={{ color: proj.color }}>
+                        {proj.category}
                       </span>
-                    ))}
+                      {isSelected && (
+                        <span className="proj-active-status" style={{ color: proj.color }}>
+                          <span className="pulse-dot" style={{ background: proj.color }} />
+                          ACTIVE
+                        </span>
+                      )}
+                    </div>
+                    <h4 className="proj-title">{proj.name}</h4>
+                    <p className="proj-summary">{proj.tagline}</p>
+                  </div>
+
+                  {/* Bottom Deliverables/Metrics Strip */}
+                  <div className="proj-deliverables-list">
+                    <span className="proj-deliv-header">KEY CAPABILITIES:</span>
+                    <div className="proj-chips-row">
+                      {proj.metrics.slice(0, 2).map((m) => (
+                        <div key={m.label} className="proj-deliv-item">
+                          <span className="proj-deliv-dot" style={{ background: isSelected ? proj.color : 'rgba(255,255,255,0.4)' }} />
+                          <strong style={{ color: isSelected ? proj.color : '#ffffff' }}>{m.val}</strong>
+                          <span>{m.label}</span>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </motion.div>
               )
@@ -508,38 +507,26 @@ export default function ProjectsShowcase() {
                   ))}
                 </div>
 
-                {/* Interactive Workflow Architecture Grid (Styled like How We Work Cards) */}
+                {/* Interactive Workflow Node Graph */}
                 <div className="viewer-architecture-box">
                   <div className="v-arch-header">
                     <div className="v-arch-title">
-                      <Workflow size={16} color="var(--coral)" />
+                      <Workflow size={14} color="var(--coral)" />
                       <span>HOW THIS SYSTEM WORKS</span>
                     </div>
-                    <span className="v-arch-sub">4-Stage Automated Architecture</span>
+                    <span className="v-arch-sub">4-Step Workflow</span>
                   </div>
 
                   <div className="v-arch-nodes-track">
-                    {activeProject.nodes.map((node, idx) => {
-                      const StepIcon = STEP_ICONS[idx % STEP_ICONS.length]
-                      return (
-                        <div key={node.name} className={`v-arch-node-card ${idx === 0 ? 'active' : ''}`}>
-                          <div className="arch-node-top">
-                            <span className="arch-node-num">{node.step}</span>
-                            <div className="arch-node-icon-badge" style={{ color: activeProject.color }}>
-                              <StepIcon size={18} />
-                            </div>
-                          </div>
-
-                          <div className="arch-node-middle">
-                            <span className="arch-node-phase-pill" style={{ color: activeProject.color }}>
-                              STEP {node.step}
-                            </span>
-                            <h5 className="arch-node-title">{node.name}</h5>
-                            <p className="arch-node-desc">{node.desc}</p>
-                          </div>
+                    {activeProject.nodes.map((node) => (
+                      <div key={node.name} className="v-arch-node-item">
+                        <div className="v-arch-node-top">
+                          <span className="v-arch-node-num">{node.step}</span>
                         </div>
-                      )
-                    })}
+                        <h5 className="v-arch-node-name">{node.name}</h5>
+                        <p className="v-arch-node-desc">{node.desc}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
 
