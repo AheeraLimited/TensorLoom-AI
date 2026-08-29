@@ -1,5 +1,5 @@
 /* ===================================================================
-   TensorLoom — Navbar (Hyper-Realistic Frosted Glass Dock)
+   TensorLoom — Navbar (Symmetrical Hyper-Realistic Frosted Glass Dock)
    =================================================================== */
 
 .nav-bar {
@@ -16,22 +16,33 @@
   padding: 10px 0;
 }
 
+.nav-shell {
+  position: relative;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+}
+
 .nav-inner {
   display: flex;
   align-items: center;
-  gap: 28px;
+  justify-content: space-between;
+  gap: 20px;
   background: rgba(255, 255, 255, 0.07);
   backdrop-filter: blur(24px) saturate(190%);
   -webkit-backdrop-filter: blur(24px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 999px;
-  padding: 7px 10px 7px 20px;
+  padding: 6px 8px 6px 18px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.5), inset 0 -1px 1px rgba(255, 255, 255, 0.05);
   transition: all 0.3s ease;
+  height: 52px;
+  box-sizing: border-box;
 }
 
 .nav-bar.is-scrolled .nav-inner {
-  background: rgba(20, 18, 30, 0.75);
+  background: rgba(20, 18, 30, 0.85);
   border-color: rgba(255, 255, 255, 0.25);
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 25px rgba(255, 109, 66, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
@@ -39,20 +50,21 @@
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 17px;
+  font-size: 16px;
   letter-spacing: -0.02em;
-  margin-right: auto;
   color: #ffffff;
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: 18px;
 }
 
 .nav-links a {
@@ -71,38 +83,48 @@
   text-shadow: 0 0 12px rgba(255, 255, 255, 0.5);
 }
 
-.nav-cta {
-  font-size: 13px;
-  padding: 8px 18px;
+a.nav-cta {
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  padding: 0 16px !important;
+  height: 36px !important;
+  line-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-left: auto;
 }
 
 .nav-toggle {
   display: none;
   flex-direction: column;
   justify-content: center;
-  gap: 5px;
-  width: 36px;
-  height: 36px;
+  align-items: center;
+  gap: 4.5px;
+  width: 34px;
+  height: 34px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 50%;
   padding: 0;
-  align-items: center;
   backdrop-filter: blur(8px);
+  flex-shrink: 0;
 }
 
 .nav-toggle span {
   display: block;
-  width: 16px;
+  width: 14px;
   height: 1.5px;
   background: #ffffff;
   border-radius: 1px;
 }
 
-.nav-shell {
-  position: relative;
-}
-
+/* ===================================================================
+   Mobile & Tablet Responsiveness
+   =================================================================== */
 @media (max-width: 860px) {
   .nav-bar {
     padding: 10px 0;
@@ -114,38 +136,53 @@
     display: flex; 
   }
   .nav-inner {
+    height: 44px;
+    padding: 3px 5px 3px 12px;
     border-radius: 999px;
-    padding: 5px 6px 5px 14px;
     gap: 8px;
   }
   .nav-brand {
-    font-size: 14px;
+    font-size: 13.5px;
     gap: 6px;
   }
-  .nav-cta {
-    padding: 5px 12px;
-    font-size: 11px;
-    font-weight: 600;
-    white-space: nowrap;
-    border-radius: 999px;
+  a.nav-cta {
+    padding: 0 11px !important;
+    font-size: 10.5px !important;
+    font-weight: 700 !important;
+    height: 28px !important;
+    line-height: 28px !important;
+    border-radius: 999px !important;
+    box-shadow: 0 4px 12px rgba(234, 75, 113, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.6) !important;
+    letter-spacing: 0.01em;
+  }
+  .nav-toggle {
+    width: 28px;
+    height: 28px;
   }
 }
 
 @media (max-width: 440px) {
   .nav-inner {
-    padding: 4px 5px 4px 10px;
+    height: 42px;
+    padding: 3px 4px 3px 10px;
     gap: 6px;
   }
   .nav-brand span {
-    font-size: 13px;
+    font-size: 12.5px;
   }
-  .nav-cta {
-    padding: 4.5px 9px;
-    font-size: 10px;
+  a.nav-cta {
+    padding: 0 9px !important;
+    font-size: 10px !important;
+    height: 26px !important;
+    line-height: 26px !important;
   }
   .nav-toggle {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
+    gap: 3.5px;
+  }
+  .nav-toggle span {
+    width: 12px;
   }
 }
 
@@ -157,7 +194,7 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  padding: 18px;
+  padding: 16px;
   background: rgba(14, 12, 24, 0.95);
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
@@ -167,12 +204,14 @@
 }
 
 .nav-mobile a {
-  padding: 10px 8px;
-  font-size: 14px;
+  padding: 9px 8px;
+  font-size: 13.5px;
   color: #ffffff;
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .nav-mobile .tl-btn {
-  margin-top: 10px;
+  margin-top: 8px;
+  padding: 10px;
+  font-size: 12.5px;
 }
