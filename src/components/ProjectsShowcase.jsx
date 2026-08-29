@@ -359,8 +359,8 @@ export default function ProjectsShowcase() {
                       rel="noopener noreferrer"
                       className="viewer-visit-btn tl-btn"
                     >
-                      <span>Visit Live Website</span>
-                      <ArrowUpRight size={14} />
+                      <span>Visit Site</span>
+                      <ArrowUpRight size={13} />
                     </a>
                   </div>
                 </div>
