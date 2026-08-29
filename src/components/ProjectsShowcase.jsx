@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ShoppingBag, Car, UtensilsCrossed, Droplets, Milk, Sparkles, MessageSquare, 
   ArrowRight, CheckCircle2, ExternalLink, ArrowUpRight, Workflow, Lock, Store, Layers, ChevronRight,
