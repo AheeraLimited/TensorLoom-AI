@@ -24,41 +24,43 @@ export default function Navbar() {
 
   return (
     <header className={`nav-bar ${scrolled ? 'is-scrolled' : ''}`}>
-      <div className="tl-shell nav-inner">
-        <a href="#top" className="nav-brand" onClick={() => setOpen(false)}>
-          <LoomMark size={26} />
-          <span>TensorLoom <strong className="brand-ai">AI</strong></span>
-        </a>
-
-        <nav className="nav-links" aria-label="Primary">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href}>{l.label}</a>
-          ))}
-        </nav>
-
-        <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a Project</a>
-
-        <button
-          className="nav-toggle"
-          aria-label="Toggle menu"
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-        >
-          <span />
-          <span />
-        </button>
-      </div>
-
-      {open && (
-        <div className="nav-mobile">
-          {LINKS.map((l) => (
-            <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
-          ))}
-          <a href="#contact" className="tl-btn tl-btn-primary" onClick={() => setOpen(false)}>
-            Start a Project
+      <div className="tl-shell nav-shell">
+        <div className="nav-inner">
+          <a href="#top" className="nav-brand" onClick={() => setOpen(false)}>
+            <LoomMark size={24} />
+            <span>TensorLoom <strong className="brand-ai">AI</strong></span>
           </a>
+
+          <nav className="nav-links" aria-label="Primary">
+            {LINKS.map((l) => (
+              <a key={l.href} href={l.href}>{l.label}</a>
+            ))}
+          </nav>
+
+          <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a Project</a>
+
+          <button
+            className="nav-toggle"
+            aria-label="Toggle menu"
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+          >
+            <span />
+            <span />
+          </button>
         </div>
-      )}
+
+        {open && (
+          <div className="nav-mobile">
+            {LINKS.map((l) => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
+            ))}
+            <a href="#contact" className="tl-btn tl-btn-primary" onClick={() => setOpen(false)}>
+              Start a Project
+            </a>
+          </div>
+        )}
+      </div>
     </header>
   )
 }

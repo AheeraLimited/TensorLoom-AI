@@ -4,7 +4,7 @@
 
 .marquee-section {
   position: relative;
-  padding: 40px 0 60px;
+  padding: 12px 0 50px;
   overflow: hidden;
   z-index: 2;
 }
@@ -165,12 +165,12 @@
 
 @media (max-width: 540px) {
   .marquee-section {
-    padding: 24px 0 40px;
+    padding: 8px 0 36px;
   }
   .marquee-stats-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
   .stat-card {
     padding: 12px 14px;
