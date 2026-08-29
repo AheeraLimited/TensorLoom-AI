@@ -1,26 +1,28 @@
 /* ===================================================================
-   TensorLoom — Hero Styles (Hyper-Realistic Glassmorphism Theme)
+   TensorLoom — Hero Styles (Centered Hyper-Realistic Glassmorphism)
    =================================================================== */
 
 .hero-section {
   position: relative;
-  min-height: 90vh;
+  min-height: 85vh;
   display: flex;
   align-items: center;
-  padding: clamp(100px, 13vh, 150px) 0 60px;
+  justify-content: center;
+  padding: clamp(120px, 16vh, 180px) 0 clamp(60px, 8vh, 90px);
   overflow: hidden;
+  text-align: center;
 }
 
 /* Semi-transparent Background Watermark Title */
 .hero-watermark-bg {
   position: absolute;
-  top: 50%;
+  top: 48%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-family: var(--font-display);
-  font-size: clamp(80px, 16vw, 220px);
+  font-size: clamp(80px, 17vw, 240px);
   font-weight: 900;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.03);
   text-transform: uppercase;
   user-select: none;
@@ -35,41 +37,43 @@
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(120px);
+  filter: blur(130px);
   z-index: 1;
 }
 
 .hero-glow-coral {
-  top: 12%;
-  left: 8%;
-  width: 45vw;
-  height: 45vw;
+  top: 15%;
+  left: 15%;
+  width: 42vw;
+  height: 42vw;
   background: radial-gradient(circle, rgba(255, 109, 66, 0.18) 0%, transparent 65%);
 }
 
 .hero-glow-purple {
-  top: 30%;
-  right: 5%;
-  width: 45vw;
-  height: 45vw;
+  top: 25%;
+  right: 15%;
+  width: 42vw;
+  height: 42vw;
   background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, transparent 65%);
 }
 
-.hero-container {
-  display: grid;
-  grid-template-columns: 1.1fr 1.05fr;
-  gap: clamp(36px, 5vw, 64px);
-  align-items: center;
-  width: 100%;
+.hero-shell-centered {
   position: relative;
   z-index: 2;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-/* Left Hero Copy */
-.hero-left {
+/* Center Content Container */
+.hero-content-center {
   display: flex;
   flex-direction: column;
-  gap: 22px;
+  align-items: center;
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto;
+  gap: 24px;
 }
 
 .hero-badge-wrap {
@@ -77,12 +81,13 @@
 }
 
 .hero-headline {
-  font-size: clamp(34px, 4.8vw, 64px);
+  font-size: clamp(38px, 5.2vw, 68px);
   line-height: 1.12;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: -0.035em;
   color: #ffffff;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+  margin: 0;
   word-break: break-word;
 }
 
@@ -98,27 +103,35 @@
 }
 
 .hero-tagline {
-  font-size: clamp(15px, 1.2vw, 17.5px);
+  font-size: clamp(16px, 1.35vw, 19px);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
-  max-width: 520px;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 640px;
+  margin: 0 auto;
 }
 
+/* CTA Action Buttons Group */
 .hero-cta-group {
   display: flex;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
+  gap: 16px;
   flex-wrap: wrap;
-  padding-top: 6px;
+  padding-top: 8px;
 }
 
+/* Trust Metric Badges Strip */
 .hero-stats-row {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
   flex-wrap: wrap;
-  padding-top: 18px;
+  padding-top: 24px;
+  margin-top: 6px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  max-width: 680px;
 }
 
 .hero-stat-pill {
@@ -126,14 +139,21 @@
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 6px 14px;
+  padding: 8px 16px;
   border-radius: 999px;
-  font-size: 12px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  font-size: 13px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.4);
   color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-stat-pill:hover {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-1px);
 }
 
 .hero-stat-val {
@@ -143,543 +163,93 @@
 }
 
 .hero-stat-desc {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* ===================================================================
-   Right Column: Hyper-Realistic Frosted Glass Cockpit
-   =================================================================== */
-.hero-right {
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.hero-cockpit {
-  position: relative;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(28px) saturate(190%);
-  -webkit-backdrop-filter: blur(28px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: var(--radius-xl);
-  overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.45);
-}
-
-/* Cockpit Top Bar */
-.cockpit-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 18px;
-  background: rgba(255, 255, 255, 0.05);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.cockpit-dots {
-  display: flex;
-  gap: 6px;
-}
-
-.c-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-}
-.c-dot.red { background: #ef4444; }
-.c-dot.yellow { background: #f59e0b; }
-.c-dot.green { background: #10b981; }
-
-.cockpit-title {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 11px;
   color: rgba(255, 255, 255, 0.75);
-  letter-spacing: 0.04em;
-}
-
-.cockpit-sim-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #ff9b26;
-  background: rgba(255, 109, 66, 0.12);
-  border: 1px solid rgba(255, 109, 66, 0.35);
-  padding: 4px 10px;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(8px);
-}
-.cockpit-sim-toggle:hover {
-  background: rgba(255, 109, 66, 0.22);
-}
-
-.spin-slow {
-  animation: spin 6s linear infinite;
-}
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* Workflow Canvas Nodes */
-.hero-workflow-canvas {
-  background: rgba(0, 0, 0, 0.2);
-  padding: 16px 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.workflow-nodes-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  position: relative;
-}
-
-.workflow-node-card {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-md);
-  padding: 12px 10px;
-  cursor: pointer;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.25);
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.workflow-node-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.12);
-}
-
-.workflow-node-card.active {
-  border-color: var(--coral);
-  box-shadow: 0 0 0 1px var(--coral), 0 8px 25px rgba(255, 109, 66, 0.3), inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
-  background: rgba(255, 255, 255, 0.14);
-}
-
-.workflow-node-card.done {
-  border-color: rgba(16, 185, 129, 0.4);
-}
-
-.node-handle-in {
-  position: absolute;
-  top: 50%;
-  left: -4px;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1.5px solid var(--bg-canvas);
-}
-
-.node-handle-out {
-  position: absolute;
-  top: 50%;
-  right: -4px;
-  transform: translateY(-50%);
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--coral);
-  border: 1.5px solid var(--bg-canvas);
-  box-shadow: 0 0 6px var(--coral);
-}
-
-.node-icon-header {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  width: 100%;
-}
-
-.node-icon-pill {
-  width: 22px;
-  height: 22px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  flex-shrink: 0;
-}
-
-.node-type-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.node-live-pulse-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--coral);
-  box-shadow: 0 0 8px var(--coral);
-  margin-left: auto;
-  flex-shrink: 0;
-  animation: pulseGlow 1.5s infinite;
-}
-
-@keyframes pulseGlow {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-
-.node-name {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.3;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 /* ===================================================================
-   Cockpit Body (Inspector & Execution Output)
+   Responsive Media Queries
    =================================================================== */
-.cockpit-body {
-  padding: 18px 20px;
-  background: rgba(0, 0, 0, 0.25);
-  min-height: 180px;
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 80vh;
+    padding: 110px 0 50px;
+  }
+
+  .hero-content-center {
+    gap: 20px;
+  }
+
+  .hero-headline {
+    font-size: clamp(30px, 7.5vw, 44px);
+  }
+
+  .hero-tagline {
+    font-size: 15px;
+  }
+
+  .hero-stats-row {
+    padding-top: 18px;
+    gap: 8px;
+  }
+
+  .hero-stat-pill {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
 }
 
-.cockpit-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.cockpit-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 2px;
-}
-
-.cockpit-stage-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.cockpit-status-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--emerald);
-  background: rgba(16, 185, 129, 0.12);
-  padding: 3px 8px;
-  border-radius: 999px;
-  border: 1px solid rgba(16, 185, 129, 0.3);
-}
-
-.cockpit-step-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  line-height: 1.3;
-}
-
-.cockpit-step-meta {
-  font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.75);
-  line-height: 1.45;
-  margin: 0;
-}
-
-.cockpit-code-block {
-  background: rgba(0, 0, 0, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  padding: 10px 12px;
-  margin-top: 6px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.code-block-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  padding-bottom: 5px;
-}
-
-.code-tab {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.code-status {
-  font-family: var(--font-mono);
-  font-size: 9.5px;
-  font-weight: 700;
-  color: var(--emerald);
-  letter-spacing: 0.06em;
-}
-
-.cockpit-code-block code {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: #38bdf8;
-  line-height: 1.4;
-  word-break: break-word;
-}
-
-/* ===================================================================
-   Cockpit Footer (3 Monospace Telemetry Items)
-   =================================================================== */
-.cockpit-footer {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  padding: 12px 18px;
-  background: rgba(0, 0, 0, 0.35);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.cockpit-telemetry-item {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.telemetry-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: rgba(255, 255, 255, 0.5);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.telemetry-value {
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #ffffff;
-}
-
-/* ===================================================================
-   Satellite Telemetry Badges Beneath Cockpit
-   =================================================================== */
-.hero-satellite-bar {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 4px;
-}
-
-.hero-satellite-pill {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: var(--radius-md);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
-}
-
-.fp-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.fp-copy {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.fp-copy strong {
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #ffffff;
-  line-height: 1.25;
-}
-
-.fp-copy span {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.65);
-  line-height: 1.3;
-}
-
-/* ===================================================================
-   Comprehensive Responsive & Device-Agnostic Media Queries
-   =================================================================== */
-@media (max-width: 960px) {
+@media (max-width: 480px) {
   .hero-section {
     padding: 100px 0 40px;
   }
-  .hero-container {
-    grid-template-columns: 1fr;
-    gap: 36px;
-  }
-  .hero-headline {
-    font-size: clamp(30px, 6.5vw, 48px);
-  }
-}
 
-@media (max-width: 640px) {
   .hero-watermark-bg {
     display: none;
   }
+
   .hero-headline {
-    font-size: clamp(25px, 7.5vw, 36px);
+    font-size: clamp(26px, 8vw, 36px);
   }
+
   .hero-tagline {
     font-size: 14px;
   }
+
   .hero-cta-group {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     width: 100%;
   }
+
   .hero-cta-group .tl-btn {
-    padding: 10px 10px;
+    padding: 11px 12px;
     font-size: 12px;
     justify-content: center;
     width: 100%;
-    text-align: center;
   }
+
   .hero-stats-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 8px;
     width: 100%;
   }
+
   .hero-stat-pill {
-    padding: 6px 8px;
-    font-size: 10.5px;
     justify-content: center;
+    padding: 7px 10px;
+    font-size: 11px;
     width: 100%;
     box-sizing: border-box;
   }
+
   .hero-stat-pill:last-child {
     grid-column: span 2;
   }
-  .workflow-nodes-row {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-  }
-  .workflow-node-card {
-    padding: 8px 6px;
-    border-radius: 10px;
-    gap: 4px;
-  }
-  .node-handle-in,
-  .node-handle-out {
-    display: none;
-  }
-  .node-icon-pill {
-    width: 18px;
-    height: 18px;
-    border-radius: 5px;
-  }
-  .node-icon-pill svg {
-    width: 11px;
-    height: 11px;
-  }
-  .node-type-label {
-    font-size: 7.5px;
-  }
-  .node-name {
-    font-size: 10px;
-  }
-  .cockpit-bar {
-    padding: 10px 12px;
-  }
-  .cockpit-title {
-    font-size: 9.5px;
-    max-width: 110px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .cockpit-sim-toggle {
-    padding: 3px 8px;
-    font-size: 9px;
-  }
-  .cockpit-body {
-    padding: 12px 14px;
-    min-height: 150px;
-  }
-  .cockpit-step-title {
-    font-size: 14px;
-  }
-  .cockpit-step-meta {
-    font-size: 11px;
-    margin-bottom: 6px;
-  }
-  .cockpit-code-block {
-    padding: 8px 10px;
-  }
-  .cockpit-code-block code {
-    font-size: 10px;
-  }
-  .cockpit-footer {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    padding: 10px 12px;
-  }
-  .telemetry-label {
-    font-size: 7.5px;
-  }
-  .telemetry-value {
-    font-size: 11px;
-  }
-  .hero-satellite-bar {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  .hero-satellite-pill {
-    padding: 10px 12px;
-  }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 360px) {
   .hero-cta-group {
     grid-template-columns: 1fr;
   }
