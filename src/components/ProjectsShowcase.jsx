@@ -338,20 +338,6 @@ export default function ProjectsShowcase() {
                     <h4 className="proj-title">{proj.name}</h4>
                     <p className="proj-summary">{proj.tagline}</p>
                   </div>
-
-                  {/* Bottom Deliverables/Metrics Strip */}
-                  <div className="proj-deliverables-list">
-                    <span className="proj-deliv-header">KEY CAPABILITIES:</span>
-                    <div className="proj-chips-row">
-                      {proj.metrics.slice(0, 2).map((m) => (
-                        <div key={m.label} className="proj-deliv-item">
-                          <span className="proj-deliv-dot" style={{ background: isSelected ? proj.color : 'rgba(255,255,255,0.4)' }} />
-                          <strong style={{ color: isSelected ? proj.color : '#ffffff' }}>{m.val}</strong>
-                          <span>{m.label}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
                 </motion.div>
               )
             })}
