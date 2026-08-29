@@ -77,12 +77,13 @@
 }
 
 .hero-headline {
-  font-size: clamp(38px, 4.8vw, 64px);
-  line-height: 1.1;
+  font-size: clamp(34px, 4.8vw, 64px);
+  line-height: 1.12;
   font-weight: 700;
   letter-spacing: -0.035em;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  word-break: break-word;
 }
 
 .hero-kinetic-holder {
@@ -97,7 +98,7 @@
 }
 
 .hero-tagline {
-  font-size: clamp(15.5px, 1.2vw, 18px);
+  font-size: clamp(15px, 1.2vw, 17.5px);
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.78);
   max-width: 520px;
@@ -114,14 +115,14 @@
 .hero-stats-row {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   flex-wrap: wrap;
   padding-top: 18px;
   border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .hero-stat-pill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 8px;
   background: rgba(255, 255, 255, 0.08);
@@ -130,7 +131,7 @@
   border: 1px solid rgba(255, 255, 255, 0.18);
   padding: 6px 14px;
   border-radius: 999px;
-  font-size: 12.5px;
+  font-size: 12px;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.35);
   color: #ffffff;
 }
@@ -303,7 +304,8 @@
 .node-icon-header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
+  width: 100%;
 }
 
 .node-icon-pill {
@@ -319,7 +321,7 @@
 
 .node-type-label {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.7);
   white-space: nowrap;
@@ -327,12 +329,31 @@
   text-overflow: ellipsis;
 }
 
+.node-live-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--coral);
+  box-shadow: 0 0 8px var(--coral);
+  margin-left: auto;
+  flex-shrink: 0;
+  animation: pulseGlow 1.5s infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.85); }
+}
+
 .node-name {
-  font-size: 12px;
+  font-size: 11.5px;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
   line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* ===================================================================
@@ -524,26 +545,148 @@
   line-height: 1.3;
 }
 
+/* ===================================================================
+   Comprehensive Responsive & Device-Agnostic Media Queries
+   =================================================================== */
 @media (max-width: 960px) {
+  .hero-section {
+    padding: 100px 0 40px;
+  }
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
   .hero-headline {
-    font-size: clamp(32px, 6vw, 48px);
+    font-size: clamp(30px, 6.5vw, 48px);
   }
 }
 
 @media (max-width: 640px) {
-  .workflow-nodes-row {
-    grid-template-columns: 1fr;
+  .hero-watermark-bg {
+    display: none;
+  }
+  .hero-headline {
+    font-size: clamp(25px, 7.5vw, 36px);
+  }
+  .hero-tagline {
+    font-size: 14px;
+  }
+  .hero-cta-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 8px;
+    width: 100%;
+  }
+  .hero-cta-group .tl-btn {
+    padding: 10px 10px;
+    font-size: 12px;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+  }
+  .hero-stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    width: 100%;
+  }
+  .hero-stat-pill {
+    padding: 6px 8px;
+    font-size: 10.5px;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-stat-pill:last-child {
+    grid-column: span 2;
+  }
+  .workflow-nodes-row {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .workflow-node-card {
+    padding: 8px 6px;
+    border-radius: 10px;
+    gap: 4px;
+  }
+  .node-handle-in,
+  .node-handle-out {
+    display: none;
+  }
+  .node-icon-pill {
+    width: 18px;
+    height: 18px;
+    border-radius: 5px;
+  }
+  .node-icon-pill svg {
+    width: 11px;
+    height: 11px;
+  }
+  .node-type-label {
+    font-size: 7.5px;
+  }
+  .node-name {
+    font-size: 10px;
+  }
+  .cockpit-bar {
+    padding: 10px 12px;
+  }
+  .cockpit-title {
+    font-size: 9.5px;
+    max-width: 110px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .cockpit-sim-toggle {
+    padding: 3px 8px;
+    font-size: 9px;
+  }
+  .cockpit-body {
+    padding: 12px 14px;
+    min-height: 150px;
+  }
+  .cockpit-step-title {
+    font-size: 14px;
+  }
+  .cockpit-step-meta {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+  .cockpit-code-block {
+    padding: 8px 10px;
+  }
+  .cockpit-code-block code {
+    font-size: 10px;
   }
   .cockpit-footer {
-    grid-template-columns: 1fr;
-    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 10px 12px;
+  }
+  .telemetry-label {
+    font-size: 7.5px;
+  }
+  .telemetry-value {
+    font-size: 11px;
   }
   .hero-satellite-bar {
     grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .hero-satellite-pill {
+    padding: 10px 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-cta-group {
+    grid-template-columns: 1fr;
+  }
+  .hero-stats-row {
+    grid-template-columns: 1fr;
+  }
+  .hero-stat-pill:last-child {
+    grid-column: span 1;
   }
 }

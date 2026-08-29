@@ -216,7 +216,7 @@ export default function Hero() {
                           <IconComp size={13} />
                         </div>
                         <span className="node-type-label">{step.nodeType}</span>
-                        {isActive && <span className="pulse-dot dot-coral" />}
+                        {isActive && <span className="node-live-pulse-dot" />}
                       </div>
                       <h4 className="node-name">{step.badge}</h4>
                       <div className="node-handle-out" />
