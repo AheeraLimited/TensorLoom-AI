@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, ArrowRight, CheckCircle2, Mail, Clock, ShieldCheck, Terminal, Copy } from 'lucide-react'
+import { Sparkles, ArrowRight, CheckCircle2, Mail, Clock, ShieldCheck, Terminal, Copy, Send } from 'lucide-react'
 import Reveal from './Reveal.jsx'
 import './Contact.css'
 

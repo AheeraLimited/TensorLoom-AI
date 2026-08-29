@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ShoppingBag, Car, UtensilsCrossed, Droplets, Sparkles, MessageSquare, 
   ArrowRight, CheckCircle2, Cpu, ExternalLink, Activity, Shield, Zap, Layers,
-  ChevronRight, ArrowUpRight, Workflow, Lock, Play, Eye, Compass, Store, RefreshCw
+  ChevronRight, ArrowUpRight, Workflow, Lock, Store
 } from 'lucide-react'
 import './ProjectsShowcase.css'
 
@@ -27,18 +27,18 @@ const PROJECTS = [
     color: '#ff6d42',
     demoDomain: 'https://zynara.netlify.app',
     targetUrl: 'https://zynara.netlify.app',
-    tagline: 'Modern luxury fashion store with instant checkout and dynamic product lookbooks.',
+    tagline: 'Modern luxury fashion store with instant checkout, dynamic product variations, and interactive lookbooks.',
     metrics: [
       { label: 'Page Speed', val: '< 1.2s' },
       { label: 'Product Options', val: '100% Dynamic' },
       { label: 'Sales Increase', val: '+42%' }
     ],
-    tech: ['Fast Next.js', 'Smooth Animations', 'Live Cart Drawer', 'Instant Checkout', 'Mobile First'],
+    tech: ['Next.js 14', 'Smooth Animations', 'Live Cart Drawer', 'Instant Checkout', 'Mobile First Design'],
     nodes: [
-      { name: '1. Storefront', type: 'Browse', desc: 'Curated Lookbooks' },
-      { name: '2. Select Item', type: 'Cart', desc: 'Live Stock Check' },
-      { name: '3. Fast Pay', type: 'Checkout', desc: 'Secure UPI & Card' },
-      { name: '4. Instant Order', type: 'Dispatch', desc: 'WhatsApp Confirmation' }
+      { step: '01', name: 'Browse Store', desc: 'Curated seasonal lookbooks & zoom' },
+      { step: '02', name: 'Select Options', desc: 'Real-time stock & price update' },
+      { step: '03', name: 'Instant Pay', desc: 'One-click secure UPI & cards' },
+      { step: '04', name: 'Order Dispatch', desc: 'Instant WhatsApp confirmation' }
     ],
     highlights: [
       'Smooth floating shopping bag with instant coupon discount calculations',
@@ -64,10 +64,10 @@ const PROJECTS = [
     ],
     tech: ['Interactive Road Maps', 'Live GPS Routes', 'Online ID Verification', 'Driver Login PIN', 'Automatic PDF Invoices'],
     nodes: [
-      { name: '1. Browse Cars', type: 'Selection', desc: 'Live Availability' },
-      { name: '2. Verify ID', type: 'Security', desc: 'Instant Driving License' },
-      { name: '3. GPS Route', type: 'Live Map', desc: 'Road ETA & Distance' },
-      { name: '4. Return OTP', type: 'Completion', desc: 'Instant PDF Bill' }
+      { step: '01', name: 'Browse Cars', desc: 'Filter by sedan, SUV & availability' },
+      { step: '02', name: 'Verify ID', desc: 'Instant Aadhaar & license check' },
+      { step: '03', name: 'GPS Route Map', desc: 'Real-time road ETA & distance' },
+      { step: '04', name: 'Return OTP', desc: 'Trip complete & automatic bill' }
     ],
     highlights: [
       'Live road route maps with accurate arrival times across city landmarks',
@@ -93,10 +93,10 @@ const PROJECTS = [
     ],
     tech: ['Instant Cloud Sync', 'Live Kitchen Screen', 'Sound Chime Alerts', 'Live Delivery Tracker', 'Delivery Rider App'],
     nodes: [
-      { name: '1. Customer Cart', type: 'Order', desc: 'Custom Add-ons & Notes' },
-      { name: '2. Kitchen Ring', type: 'Kitchen', desc: 'Sound Alert on Screen' },
-      { name: '3. Live Map', type: 'Delivery', desc: 'Rider Heading to You' },
-      { name: '4. Doorstep OTP', type: 'Handoff', desc: 'Delivered & Confirmed' }
+      { step: '01', name: 'Customer Cart', desc: 'Custom meal add-ons & instructions' },
+      { step: '02', name: 'Kitchen Screen', desc: 'Sound chime rings in the kitchen' },
+      { step: '03', name: 'Live Rider Map', desc: 'Rider picks up & heads to address' },
+      { step: '04', name: 'Doorstep OTP', desc: 'Secure handoff & order complete' }
     ],
     highlights: [
       'Instant order stream with sound chime alerts for kitchen staff',
@@ -120,12 +120,12 @@ const PROJECTS = [
       { label: 'Slot Booking', val: 'Instant' },
       { label: 'Customer Rating', val: '5.0 ★ Stars' }
     ],
-    tech: ['Car Model Pricing', 'Calendar Time Slots', 'Doorstep Technician Dispatch', 'Online & Cash Payments'],
+    tech: ['Car Model Pricing Matrix', 'Calendar Time Slots', 'Doorstep Field Dispatch', 'Online & Cash Payments'],
     nodes: [
-      { name: '1. Pick Vehicle', type: 'Model', desc: 'Hatchback, Sedan, SUV' },
-      { name: '2. Choose Package', type: 'Service', desc: 'Wash, Deep Clean, Polish' },
-      { name: '3. Select Time', type: 'Calendar', desc: 'Choose Date & Hour' },
-      { name: '4. Technician Arrival', type: 'Doorstep', desc: 'Live Status Tracker' }
+      { step: '01', name: 'Select Vehicle', desc: 'Hatchback, sedan, SUV or luxury' },
+      { step: '02', name: 'Choose Service', desc: 'Deep foam wash, polish, ceramic' },
+      { step: '03', name: 'Book Time Slot', desc: 'Pick preferred date and hour' },
+      { step: '04', name: 'Technician Visit', desc: 'Doorstep arrival & digital report' }
     ],
     highlights: [
       'Clear, transparent pricing based on vehicle type (Hatchback, Sedan, SUV, Luxury)',
@@ -151,10 +151,10 @@ const PROJECTS = [
     ],
     tech: ['Mobile Web App (PWA)', 'Calendar Subscriptions', 'Delivery Route Organizer', 'WhatsApp Billing Bot', 'UPI QR Codes'],
     nodes: [
-      { name: '1. Daily Plan', type: 'Schedule', desc: 'Set Quantity & Days' },
-      { name: '2. Route Sheet', type: 'Delivery', desc: 'Optimized Route' },
-      { name: '3. Bottle Count', type: 'Ledger', desc: 'Track Deliveries & Returns' },
-      { name: '4. WhatsApp Bill', type: 'Payment', desc: 'Instant UPI Payment Link' }
+      { step: '01', name: 'Daily Plan', desc: 'Set milk quantity & delivery days' },
+      { step: '02', name: 'Route Sheet', desc: 'Driver gets morning map sheet' },
+      { step: '03', name: 'Bottle Tally', desc: 'Log deliveries & empty bottle return' },
+      { step: '04', name: 'WhatsApp Bill', desc: 'Monthly bill with one-tap UPI link' }
     ],
     highlights: [
       'Flexible daily or alternate-day milk schedule with one-tap vacation pause',
@@ -180,10 +180,10 @@ const PROJECTS = [
     ],
     tech: ['Store Dashboard', 'Customer Balance Ledger', 'WhatsApp Business Bot', 'UPI QR Generator', 'Route Allocation'],
     nodes: [
-      { name: '1. Customer List', type: 'Balances', desc: 'Live Account Ledger' },
-      { name: '2. Assign Routes', type: 'Logistics', desc: 'Driver Route Sheets' },
-      { name: '3. Send Bills', type: 'WhatsApp', desc: 'Auto PDF & UPI Link' },
-      { name: '4. Match Payments', type: 'Clearance', desc: 'Instant Balance Update' }
+      { step: '01', name: 'Customer List', desc: 'Live account balances & history' },
+      { step: '02', name: 'Assign Routes', desc: 'Driver allocation & bottle crates' },
+      { step: '03', name: 'Send Invoices', desc: 'Auto WhatsApp PDF & UPI payment' },
+      { step: '04', name: 'Reconcile', desc: 'Instant balance ledger updates' }
     ],
     highlights: [
       'One-click automated WhatsApp billing with embedded instant UPI payment links',
@@ -209,10 +209,10 @@ const PROJECTS = [
     ],
     tech: ['Official WhatsApp API', '24/7 Auto Replies', 'Shared Team Inbox', 'Lead Management', 'Customer Tags'],
     nodes: [
-      { name: '1. Message Received', type: 'Intake', desc: 'Instant Notification' },
-      { name: '2. Smart Reply', type: 'AI Bot', desc: 'Answers Inquiries 24/7' },
-      { name: '3. Team Inbox', type: 'Staff', desc: 'Human Staff Handoff' },
-      { name: '4. Auto Follow-up', type: 'Updates', desc: 'Offers & Reminders' }
+      { step: '01', name: 'New Message', desc: 'Customer reaches out on WhatsApp' },
+      { step: '02', name: 'Smart Reply', desc: 'AI answers catalog, price & hours' },
+      { step: '03', name: 'Staff Handoff', desc: 'Alerts team for complex inquiries' },
+      { step: '04', name: 'Auto Updates', desc: 'Order alerts & follow-up messages' }
     ],
     highlights: [
       '24/7 automatic answers for common customer questions, pricing, and orders',
@@ -337,7 +337,7 @@ export default function ProjectsShowcase() {
                 <div className="viewer-header-bar">
                   <div className="viewer-brand-badge">
                     <div className="viewer-icon-pill" style={{ background: `${activeProject.color}15`, color: activeProject.color }}>
-                      <ActiveIcon size={18} />
+                      <ActiveIcon size={20} />
                     </div>
                     <div>
                       <span className="viewer-badge-text" style={{ color: activeProject.color }}>
@@ -443,54 +443,47 @@ export default function ProjectsShowcase() {
                 <div className="viewer-architecture-box">
                   <div className="v-arch-header">
                     <div className="v-arch-title">
-                      <Workflow size={13} color="var(--coral)" />
+                      <Workflow size={14} color="var(--coral)" />
                       <span>HOW THIS SYSTEM WORKS</span>
                     </div>
-                    <span className="v-arch-sub">4-Step Flow</span>
+                    <span className="v-arch-sub">4-Step Workflow</span>
                   </div>
 
                   <div className="v-arch-nodes-track">
-                    {activeProject.nodes.map((node, i) => (
+                    {activeProject.nodes.map((node) => (
                       <div key={node.name} className="v-arch-node-item">
-                        <div className="v-arch-node-circle" style={{ borderColor: i === 0 ? activeProject.color : 'var(--line)' }}>
-                          <span className="v-arch-node-num">0{i + 1}</span>
+                        <div className="v-arch-node-top">
+                          <span className="v-arch-node-num">{node.step}</span>
                         </div>
-                        <div className="v-arch-node-text">
-                          <span className="v-arch-node-name">{node.name}</span>
-                          <span className="v-arch-node-desc">{node.desc}</span>
-                        </div>
-                        {i < activeProject.nodes.length - 1 && (
-                          <div className="v-arch-connector-arrow">
-                            <ChevronRight size={14} color="var(--ink-faint)" />
-                          </div>
-                        )}
+                        <h5 className="v-arch-node-name">{node.name}</h5>
+                        <p className="v-arch-node-desc">{node.desc}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Highlights & Stack Grid */}
+                {/* Highlights & Stack Split Grid */}
                 <div className="viewer-details-grid">
-                  {/* Highlights Card */}
+                  {/* Left Box: Key Features & Benefits */}
                   <div className="viewer-detail-card">
                     <h4 className="v-detail-heading">
-                      <Sparkles size={14} color="var(--coral)" />
+                      <Sparkles size={15} color="var(--coral)" />
                       <span>Key Features & Benefits</span>
                     </h4>
                     <ul className="v-detail-checklist">
                       {activeProject.highlights.map((h, i) => (
                         <li key={i} className="v-checklist-item">
-                          <CheckCircle2 size={14} color="var(--emerald)" className="check-icon" />
+                          <CheckCircle2 size={16} color="var(--emerald)" className="check-icon" />
                           <span>{h}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
 
-                  {/* Tech Stack Card */}
+                  {/* Right Box: Tech Stack & Launch Callout */}
                   <div className="viewer-detail-card">
                     <h4 className="v-detail-heading">
-                      <Layers size={14} color="var(--sky)" />
+                      <Layers size={15} color="var(--sky)" />
                       <span>Technologies Used</span>
                     </h4>
                     <div className="v-tech-pills-wrap">
@@ -502,10 +495,10 @@ export default function ProjectsShowcase() {
                     </div>
 
                     <div className="v-launch-callout">
-                      <span className="launch-callout-title">Want a similar platform for your business?</span>
+                      <h5 className="launch-callout-title">Want a similar platform for your business?</h5>
                       <p className="launch-callout-text">We can customize and launch this tailored to your brand in 2-3 weeks.</p>
                       <a href="#contact" className="tl-btn tl-btn-primary launch-cta-btn">
-                        <span>Get Started</span>
+                        <span>Start a Project</span>
                         <ArrowRight size={14} />
                       </a>
                     </div>
