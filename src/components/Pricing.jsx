@@ -1,54 +1,53 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Sparkles, Check, ArrowRight, ShieldCheck, Zap, Layers } from 'lucide-react'
-import Reveal from './Reveal.jsx'
 import './Pricing.css'
 
 const TIERS = [
   {
     id: 'sprint',
-    name: 'Tactical Sprint',
+    name: 'Project Sprint',
     timeline: '2 — 4 Weeks',
-    tag: 'FIXED SCOPE',
-    desc: 'Rapid build to validate a high-impact agent or ship a mission-critical feature without fluff.',
+    tag: 'FAST LAUNCH',
+    desc: 'Best for launching a specific website, mobile app, or automated AI bot with a fixed timeline and clear budget.',
     features: [
-      'Single product surface (Web, Mobile, or AI Agent)',
-      'Deterministic eval benchmarks included',
-      'Weekly live code deployments',
-      'Complete architecture docs & code handover'
+      'Complete custom website, app, or online store',
+      'Mobile-friendly, responsive & fast-loading',
+      'Weekly live testing demos and feedback',
+      'Full source code ownership & handover'
     ],
     highlight: false,
-    cta: 'Book a Sprint'
+    cta: 'Start a Project'
   },
   {
     id: 'partner',
-    name: 'Dedicated Pod',
-    timeline: 'Quarterly Retainer',
+    name: 'Growth Partnership',
+    timeline: 'Monthly Plan',
     tag: 'MOST POPULAR',
-    desc: 'An embedded senior engineering pod that continuously scopes, builds, and maintains your AI & platform stack.',
+    desc: 'A dedicated development team to continuously build new features, maintain your software, and add smart automations.',
     features: [
-      'Fullstack + AI Engineers dedicated to your roadmap',
-      'Direct Slack/Discord async access (no ticketing lag)',
-      'Autonomous system monitoring & latency tuning',
-      'Weekly architectural reviews & capacity planning'
+      'Dedicated developers for your business roadmap',
+      'Direct WhatsApp & Slack communication',
+      'Continuous updates, bug fixes & improvements',
+      'Fast priority support and monitoring'
     ],
     highlight: true,
-    cta: 'Embed a Pod'
+    cta: 'Partner With Us'
   },
   {
     id: 'enterprise',
-    name: 'Enterprise Loom',
-    timeline: 'Custom Multi-Team',
-    tag: 'ENTERPRISE',
-    desc: 'For organizations with multi-system integrations, strict HIPAA/SOC-2 compliance, or on-prem airgapped requirements.',
+    name: 'Custom Enterprise',
+    timeline: 'Tailored Scope',
+    tag: 'CUSTOM SCALE',
+    desc: 'For multi-location companies, large product ecosystems, or complex custom requirements.',
     features: [
-      'Private cloud, VPC, or on-prem deployment',
-      'Custom security & compliance signoffs',
-      'Multi-squad parallel workstreams',
-      'Dedicated 24/7 incident response SLA'
+      'Multi-branch and high-volume operations',
+      'Custom database, CRM & payment integrations',
+      'Custom staff permissions and driver hubs',
+      'Dedicated account manager & 24/7 support'
     ],
     highlight: false,
-    cta: 'Contact Solutions'
+    cta: 'Contact Us'
   },
 ]
 
@@ -59,14 +58,14 @@ export default function Pricing() {
         <div className="pricing-header">
           <div className="eyebrow">
             <Sparkles size={12} />
-            <span>ENGAGEMENT STRUCTURES //</span>
+            <span>TRANSPARENT PLANS</span>
           </div>
           <h2 className="pricing-title">
-            Pick the shape of the work, <br />
-            <span className="text-gradient-n8n">sized to your mission</span>
+            Simple, transparent plans <br />
+            <span className="text-gradient-n8n">for projects of any size.</span>
           </h2>
           <p className="pricing-subtitle">
-            We scope every project transparently before writing code. No locked-in black box contracts.
+            No hidden fees or locked contracts. Choose the plan that fits your business needs.
           </p>
         </div>
 
@@ -84,7 +83,7 @@ export default function Pricing() {
               {tier.highlight && (
                 <div className="tier-top-highlight-badge">
                   <Sparkles size={12} />
-                  <span>RECOMMENDED FOR HIGH VELOCITY</span>
+                  <span>RECOMMENDED FOR GROWING BUSINESSES</span>
                 </div>
               )}
 
@@ -98,24 +97,28 @@ export default function Pricing() {
               </div>
 
               <div className="tier-features-wrap">
-                <span className="features-label">WHAT'S INCLUDED:</span>
+                <span className="features-subhead">WHAT'S INCLUDED:</span>
                 <ul className="tier-features-list">
                   {tier.features.map((feat) => (
-                    <li key={feat} className="tier-feature-item">
-                      <span className="feature-check"><Check size={13} color="var(--coral)" /></span>
+                    <li key={feat} className="tier-feat-item">
+                      <span className="tier-check-icon">
+                        <Check size={13} color="var(--emerald)" />
+                      </span>
                       <span>{feat}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <a 
-                href="#contact" 
-                className={`tl-btn ${tier.highlight ? 'tl-btn-primary' : 'tl-btn-ghost'} tier-action-btn`}
-              >
-                <span>{tier.cta}</span>
-                <ArrowRight size={15} />
-              </a>
+              <div className="tier-cta-box">
+                <a 
+                  href="#contact" 
+                  className={`tl-btn ${tier.highlight ? 'tl-btn-primary' : 'tl-btn-secondary'} tier-btn`}
+                >
+                  <span>{tier.cta}</span>
+                  <ArrowRight size={14} />
+                </a>
+              </div>
             </motion.div>
           ))}
         </div>

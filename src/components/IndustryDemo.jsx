@@ -139,14 +139,14 @@ export default function IndustryDemo() {
         <div className="demo-header-center">
           <div className="eyebrow">
             <Sparkles size={12} />
-            <span>COMMAND CENTER // LIVE RUNTIME</span>
+            <span>INTERACTIVE DEMO</span>
           </div>
           <h2 className="demo-main-title">
-            Watch the Loom <span className="text-gradient-gold">execute in real time</span>
+            See how our smart automations <br />
+            <span className="text-gradient-gold">work in real time.</span>
           </h2>
           <p className="demo-main-sub">
-            The same unified agent architecture configured for mission-critical industry workflows.
-            Select a sector or inspect each stage of autonomous execution.
+            Click any industry below to watch how incoming customer inquiries, orders, and bookings are automatically verified, processed, and confirmed without manual effort.
           </p>
         </div>
 

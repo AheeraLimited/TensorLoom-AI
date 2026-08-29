@@ -1,22 +1,21 @@
 import { motion } from 'framer-motion'
-import { Stethoscope, Landmark, Truck, Factory, Building2, ShoppingBag, ShieldCheck, Scale, Cpu } from 'lucide-react'
+import { ShoppingBag, Car, UtensilsCrossed, Droplets, Sparkles, MessageSquare, ShieldCheck, Zap, Cpu, CheckCircle2 } from 'lucide-react'
 import './IndustryMarquee.css'
 
 const STATS = [
-  { value: '$48M+', label: 'Autonomous Ops Handled', icon: <Cpu size={16} /> },
-  { value: '99.98%', label: 'Deterministic Guardrail Safety', icon: <ShieldCheck size={16} /> },
-  { value: '14ms', label: 'Median Model Latency', icon: <Landmark size={16} /> },
-  { value: '12+', label: 'Enterprise Verticals Deployed', icon: <Factory size={16} /> },
+  { value: '100+', label: 'Projects & Workflows Shipped', icon: <CheckCircle2 size={16} /> },
+  { value: '99.99%', label: 'Uptime & System Reliability', icon: <ShieldCheck size={16} /> },
+  { value: '< 1.2s', label: 'Average Page Load Speed', icon: <Zap size={16} /> },
+  { value: '24/7', label: 'Continuous Automation Active', icon: <Cpu size={16} /> },
 ]
 
 const INDUSTRIES = [
-  { name: 'Clinical Healthcare', icon: <Stethoscope size={14} />, tag: 'FHIR Compliant' },
-  { name: 'Fintech & Risk', icon: <Landmark size={14} />, tag: 'Sub-second Audit' },
-  { name: 'Autonomous Logistics', icon: <Truck size={14} />, tag: 'Route Optimization' },
-  { name: 'Industrial IoT', icon: <Factory size={14} />, tag: 'Predictive Edge' },
-  { name: 'Commercial Real Estate', icon: <Building2 size={14} />, tag: 'Automated Underwriting' },
-  { name: 'Omnichannel Commerce', icon: <ShoppingBag size={14} />, tag: 'Dynamic Fulfillment' },
-  { name: 'Legal & Compliance', icon: <Scale size={14} />, tag: 'Contract Synthesis' },
+  { name: 'Online Stores & Retail', icon: <ShoppingBag size={14} />, tag: 'Fast Checkout' },
+  { name: 'Car Rental & Mobility', icon: <Car size={14} />, tag: 'Live GPS Maps' },
+  { name: 'Food & Restaurants', icon: <UtensilsCrossed size={14} />, tag: 'Kitchen Screen' },
+  { name: 'Dairy & Farm Subscriptions', icon: <Droplets size={14} />, tag: 'Morning Route' },
+  { name: 'Auto Detailing & Services', icon: <Sparkles size={14} />, tag: 'Slot Booking' },
+  { name: 'WhatsApp Business Bots', icon: <MessageSquare size={14} />, tag: '24/7 Auto-Reply' },
 ]
 
 export default function IndustryMarquee() {

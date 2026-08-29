@@ -8,43 +8,43 @@ import LoomMark from './LoomMark.jsx'
 import './Hero.css'
 
 const KINETIC_WORDS = [
-  'Autonomous Ops',
-  'Clinical Workflows',
-  'Global Logistics',
-  'Realtime Fintech'
+  'Online Stores',
+  'Smart Delivery',
+  'Fleet Logistics',
+  'Business Automation'
 ]
 
 const PIPELINE_STEPS = [
   {
     id: 'trigger',
-    stage: 'NODE 01 / TRIGGER',
-    nodeType: 'Webhook Intake',
-    title: 'Event Signal Ingested',
-    meta: 'Unstructured referral parsed • 14ms latency',
-    code: '{ "event": "referral_received", "priority": "high", "routing": "auto" }',
-    badge: 'Webhook Trigger',
+    stage: 'STEP 01 / ORDER INTAKE',
+    nodeType: 'Customer Order',
+    title: 'New Customer Order Received',
+    meta: 'Instant order captured via website or WhatsApp',
+    code: '{ "order": "#TL-809", "customer": "Verified", "status": "instant_capture" }',
+    badge: 'Customer Intake',
     color: '#0284c7',
     iconComponent: Zap
   },
   {
     id: 'reason',
-    stage: 'NODE 02 / AI AGENT',
-    nodeType: 'Neural Reasoner',
-    title: 'Multi-Agent Policy Match',
-    meta: 'Vector embeddings verified against 140k guidelines',
-    code: 'confidence: 0.994 // zero-hallucination guardrail active',
-    badge: 'Neural Reasoner',
+    stage: 'STEP 02 / SMART AUTOMATION',
+    nodeType: 'AI Processing',
+    title: 'Automatic Verification & Routing',
+    meta: 'Checks product stock, routes to nearest hub & verifies payment',
+    code: 'status: "verified" // automatic stock & price confirmation',
+    badge: 'AI Smart Check',
     color: '#ff6d42',
     iconComponent: Bot
   },
   {
     id: 'action',
-    stage: 'NODE 03 / ACTION',
-    nodeType: 'Governed Dispatch',
-    title: 'Executed with Full Audit Trail',
-    meta: 'API write committed • Human checkpoint cleared',
-    code: 'HTTP 200 OK • Dispatched to Epic EHR & Slack channel',
-    badge: 'API Dispatch',
+    stage: 'STEP 03 / DISPATCH & NOTIFY',
+    nodeType: 'Instant Notification',
+    title: 'Dispatched & Customer Notified',
+    meta: 'Sends WhatsApp alert to customer & assigns delivery team',
+    code: 'SUCCESS • Customer notified via WhatsApp & Rider assigned',
+    badge: 'Instant Dispatch',
     color: '#10b981',
     iconComponent: CheckCircle2
   }
@@ -88,7 +88,7 @@ export default function Hero() {
           >
             <div className="eyebrow">
               <span className="pulse-dot dot-coral" />
-              <span>AI WORKFLOW AUTOMATION // TENSORLOOM AI</span>
+              <span>CUSTOM WEB APPS & AI AUTOMATION</span>
             </div>
           </motion.div>
 
@@ -98,7 +98,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            Weave intelligence into <br />
+            We build smart software for <br />
             <span className="hero-kinetic-holder">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -121,7 +121,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            TensorLoom AI builds autonomous agents, visual node pipelines, and enterprise infrastructure to connect any model to any tool.
+            TensorLoom AI creates custom web applications, online stores, and smart automated systems that save you time, delight your customers, and grow your revenue.
           </motion.p>
 
           <motion.div 
@@ -130,12 +130,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            <a href="#demo" className="tl-btn tl-btn-primary">
-              <span>Try Interactive Workflow</span>
+            <a href="#projects" className="tl-btn tl-btn-primary">
+              <span>See Our Live Work</span>
               <ArrowRight size={16} />
             </a>
             <a href="#capabilities" className="tl-btn tl-btn-ghost">
-              <span>Explore Node Ecosystem</span>
+              <span>What We Build</span>
             </a>
           </motion.div>
 
@@ -148,18 +148,18 @@ export default function Hero() {
           >
             <div className="hero-stat-pill">
               <span className="pulse-dot dot-emerald" />
-              <span className="hero-stat-val">14ms</span>
-              <span className="hero-stat-desc">Latency</span>
+              <span className="hero-stat-val">&lt; 1.2s</span>
+              <span className="hero-stat-desc">Fast Loading</span>
             </div>
             <div className="hero-stat-pill">
               <Shield size={13} color="var(--coral)" />
               <span className="hero-stat-val">100%</span>
-              <span className="hero-stat-desc">Guardrails</span>
+              <span className="hero-stat-desc">Reliable & Secure</span>
             </div>
             <div className="hero-stat-pill">
               <Zap size={13} color="#7c3aed" />
-              <span className="hero-stat-val">99.98%</span>
-              <span className="hero-stat-desc">Deterministic</span>
+              <span className="hero-stat-val">24/7</span>
+              <span className="hero-stat-desc">Smart Automation</span>
             </div>
           </motion.div>
         </div>

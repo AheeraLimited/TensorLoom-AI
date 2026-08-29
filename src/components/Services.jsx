@@ -36,15 +36,14 @@ export default function Services() {
         <div className="services-header">
           <div className="eyebrow">
             <Sparkles size={12} />
-            <span>FULLSTACK ENGINEERING & AI ARCHITECTURE //</span>
+            <span>WHAT WE BUILD & DELIVER</span>
           </div>
           <h2 className="services-title">
-            Warp holds the structure. <br />
-            <span className="text-gradient-n8n">Weft weaves the intelligence.</span>
+            Everything you need to run & grow <br />
+            <span className="text-gradient-n8n">your business digitally.</span>
           </h2>
           <p className="services-subtitle">
-            We don't ship standalone bots into a void. We build both layers: the resilient enterprise platforms
-            that anchor your business, and the intelligent node pipelines that run through them.
+            We build modern web applications, mobile apps, and automated workflows that save you time, serve customers faster, and increase your revenue.
           </p>
         </div>
 
@@ -58,11 +57,11 @@ export default function Services() {
                   <Bot size={18} color="var(--coral)" />
                 </span>
                 <div>
-                  <h3>Autonomous AI Agents</h3>
-                  <p className="bento-sub">Scoped to mission-critical jobs with audit trails</p>
+                  <h3>Smart AI & Automation</h3>
+                  <p className="bento-sub">Automate customer inquiries, order handling & status updates</p>
                 </div>
               </div>
-              <span className="bento-tag">AI // NODE ENGINE</span>
+              <span className="bento-tag">AUTOMATION</span>
             </div>
 
             {/* Interactive Terminal Widget */}
@@ -71,7 +70,7 @@ export default function Services() {
                 <span className="t-dot red" />
                 <span className="t-dot yellow" />
                 <span className="t-dot green" />
-                <span className="t-title">agent_executor.ts</span>
+                <span className="t-title">automation_bot.js</span>
               </div>
               <div className="terminal-stream">
                 <span className="prompt-sign">$</span>
@@ -79,9 +78,9 @@ export default function Services() {
                 <span className="typing-cursor" />
               </div>
               <div className="terminal-pills-row">
-                <span className="t-pill"><Check size={11} color="var(--emerald)" /> Tool Binding Active</span>
-                <span className="t-pill"><Zap size={11} color="var(--coral)" /> Sub-second Eval</span>
-                <span className="t-pill"><ShieldCheck size={11} color="#0284c7" /> Hallucination-free</span>
+                <span className="t-pill"><Check size={11} color="var(--emerald)" /> Auto-Reply Active</span>
+                <span className="t-pill"><Zap size={11} color="var(--coral)" /> Instant Fast Response</span>
+                <span className="t-pill"><ShieldCheck size={11} color="#0284c7" /> 100% Accurate</span>
               </div>
             </div>
           </div>
@@ -94,17 +93,17 @@ export default function Services() {
                   <Layout size={18} color="#0284c7" />
                 </span>
                 <div>
-                  <h3>Fullstack Platforms</h3>
-                  <p className="bento-sub">High-velocity web apps & control panels</p>
+                  <h3>Custom Web Platforms</h3>
+                  <p className="bento-sub">Fast, beautiful websites & easy admin dashboards</p>
                 </div>
               </div>
-              <span className="bento-tag">PLATFORM</span>
+              <span className="bento-tag">WEBSITES</span>
             </div>
 
             {/* Mini Interactive UI Mockup */}
             <div className="bento-ui-mockup">
               <div className="mockup-row">
-                <span className="mockup-label">Realtime Streaming</span>
+                <span className="mockup-label">Live Data Sync</span>
                 <button 
                   className={`mockup-toggle ${toggleState ? 'on' : 'off'}`}
                   onClick={() => setToggleState(!toggleState)}
@@ -120,7 +119,7 @@ export default function Services() {
                 <div className="m-bar" style={{ height: '60%' }} />
                 <div className="m-bar" style={{ height: '85%' }} />
               </div>
-              <span className="mockup-caption">Sub-50ms React + Node data layer</span>
+              <span className="mockup-caption">Loads in under 1 second on all devices</span>
             </div>
           </div>
 
@@ -132,29 +131,29 @@ export default function Services() {
                   <Server size={18} color="var(--emerald)" />
                 </span>
                 <div>
-                  <h3>Cloud & IT Infra</h3>
-                  <p className="bento-sub">High availability & automated CI/CD</p>
+                  <h3>Fast & Secure Hosting</h3>
+                  <p className="bento-sub">Always online with 99.99% guaranteed uptime</p>
                 </div>
               </div>
-              <span className="bento-tag">CLOUD</span>
+              <span className="bento-tag">HOSTING</span>
             </div>
 
             {/* Visual Node Cluster Ping */}
             <div className="bento-infra-widget">
               <div className="infra-node-row">
-                <span className="infra-region">US-EAST (N. Virginia)</span>
+                <span className="infra-region">Fast Global CDN Servers</span>
                 <span className="infra-status"><span className="pulse-dot dot-emerald" /> 11ms</span>
               </div>
               <div className="infra-node-row">
-                <span className="infra-region">EU-CENTRAL (Frankfurt)</span>
-                <span className="infra-status"><span className="pulse-dot dot-emerald" /> 18ms</span>
+                <span className="infra-region">SSL Encryption & Security</span>
+                <span className="infra-status"><span className="pulse-dot dot-emerald" /> Active</span>
               </div>
               <div className="infra-node-row">
-                <span className="infra-region">AP-SOUTH (Tokyo)</span>
-                <span className="infra-status"><span className="pulse-dot dot-emerald" /> 24ms</span>
+                <span className="infra-region">Automatic Daily Backups</span>
+                <span className="infra-status"><span className="pulse-dot dot-emerald" /> Secured</span>
               </div>
               <div className="infra-uptime-badge">
-                <strong>99.99%</strong> SLA Uptime Guaranteed
+                <strong>99.99%</strong> Reliable Uptime Guaranteed
               </div>
             </div>
           </div>
@@ -167,25 +166,25 @@ export default function Services() {
                   <Database size={18} color="#7c3aed" />
                 </span>
                 <div>
-                  <h3>Data & Vectors</h3>
-                  <p className="bento-sub">ETL, embeddings & clean telemetry</p>
+                  <h3>Live Data & Syncing</h3>
+                  <p className="bento-sub">Instant inventory, orders & payment records</p>
                 </div>
               </div>
-              <span className="bento-tag">PIPELINE</span>
+              <span className="bento-tag">DATABASE</span>
             </div>
 
             {/* Visual Flow diagram */}
             <div className="bento-data-widget">
               <div className="flow-step">
-                <span className="flow-badge">Ingest</span>
+                <span className="flow-badge">Customer Order</span>
                 <span className="flow-arrow">→</span>
-                <span className="flow-badge">Embed</span>
+                <span className="flow-badge">Auto Verify</span>
                 <span className="flow-arrow">→</span>
-                <span className="flow-badge highlight">Index</span>
+                <span className="flow-badge highlight">Dispatch</span>
               </div>
               <div className="data-meta-line">
-                <span>Vector Dimension: 1536</span>
-                <span>Latency: &lt;5ms</span>
+                <span>Instant Cloud Sync</span>
+                <span>Zero Data Loss</span>
               </div>
             </div>
           </div>
@@ -198,11 +197,11 @@ export default function Services() {
                   <Smartphone size={18} color="#f59e0b" />
                 </span>
                 <div>
-                  <h3>Native Android</h3>
-                  <p className="bento-sub">Kotlin & on-device edge intelligence</p>
+                  <h3>Mobile Applications</h3>
+                  <p className="bento-sub">Clean Android & iOS apps for customers and team</p>
                 </div>
               </div>
-              <span className="bento-tag">EDGE</span>
+              <span className="bento-tag">MOBILE APPS</span>
             </div>
 
             {/* Visual Phone Silhouette */}
@@ -212,7 +211,7 @@ export default function Services() {
                 <div className="phone-app-content">
                   <div className="phone-card-skeleton" />
                   <div className="phone-action-btn">
-                    <span>On-Device Inference</span>
+                    <span>One-Click Action</span>
                   </div>
                 </div>
               </div>
@@ -227,17 +226,17 @@ export default function Services() {
                   <ShieldCheck size={18} color="var(--emerald)" />
                 </span>
                 <div>
-                  <h3>Governance & HITL</h3>
-                  <p className="bento-sub">Strict checkpoints & safety guardrails</p>
+                  <h3>Safety & Human Control</h3>
+                  <p className="bento-sub">Built-in safeguards so you always stay in control</p>
                 </div>
               </div>
-              <span className="bento-tag">GOVERNANCE</span>
+              <span className="bento-tag">SECURITY</span>
             </div>
 
             {/* Interactive Threshold Slider */}
             <div className="bento-gov-widget">
               <div className="gov-slider-header">
-                <span>Certainty Threshold</span>
+                <span>Confidence Check</span>
                 <span className="gov-val">{threshold}%</span>
               </div>
               <input 
@@ -249,7 +248,7 @@ export default function Services() {
                 className="gov-range-slider"
                 aria-label="Certainty threshold slider"
               />
-              <p className="gov-note">Any prediction below {threshold}% automatically pauses for human review.</p>
+              <p className="gov-note">Any high-value action pauses for your team's direct approval.</p>
             </div>
           </div>
         </div>

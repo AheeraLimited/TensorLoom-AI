@@ -44,23 +44,23 @@ export default function Footer() {
           <div className="cta-card-content">
             <div className="eyebrow footer-eyebrow">
               <Sparkles size={12} />
-              <span>START AN ENGAGEMENT</span>
+              <span>START A PROJECT WITH US</span>
             </div>
             <h3 className="footer-cta-title">
-              Ready to weave autonomous AI into your <br />
-              <span className="text-gradient-n8n">production operations?</span>
+              Ready to build a smart web app or AI system <br />
+              <span className="text-gradient-n8n">for your business?</span>
             </h3>
             <p className="footer-cta-sub">
-              From dynamic retail engines to live fleet GIS and multi-agent workflow pipelines—let's build your next system.
+              Whether you need an online store, a delivery app, GPS fleet tracking, or smart automation—we're here to help you build and launch fast.
             </p>
           </div>
           <div className="footer-cta-actions">
             <a href="#contact" className="tl-btn tl-btn-primary">
-              <span>Start a Project</span>
+              <span>Start Your Project</span>
               <Sparkles size={14} />
             </a>
             <a href="#projects" className="tl-btn tl-btn-secondary">
-              <span>Explore Systems</span>
+              <span>See Live Projects</span>
               <ExternalLink size={14} />
             </a>
           </div>
@@ -77,17 +77,17 @@ export default function Footer() {
               </span>
             </a>
             <p className="footer-brand-desc">
-              Autonomous agentic architectures and bespoke enterprise software systems engineered for high-stakes industries.
+              We design and build fast, reliable websites, mobile apps, and automated AI systems for growing businesses.
             </p>
             <div className="footer-status-badge">
               <span className="pulse-dot dot-emerald" />
-              <span className="status-badge-text">GLOBAL OPS: ALL NODES ACTIVE</span>
+              <span className="status-badge-text">ALL SYSTEMS OPERATIONAL</span>
             </div>
           </div>
 
           {/* Col 2: Shipped Deployments */}
           <div className="footer-col">
-            <h4 className="footer-col-heading">Shipped Systems</h4>
+            <h4 className="footer-col-heading">Our Live Projects</h4>
             <ul className="footer-links-list">
               <li>
                 <a href="https://zynara.netlify.app" target="_blank" rel="noopener noreferrer" className="footer-link-item">
@@ -103,19 +103,19 @@ export default function Footer() {
               </li>
               <li>
                 <a href="https://cheatmeals.netlify.app" target="_blank" rel="noopener noreferrer" className="footer-link-item">
-                  <span>Cheat Meals Food Tech</span>
+                  <span>Cheat Meals Food Delivery</span>
                   <ExternalLink size={12} className="ext-icon" />
                 </a>
               </li>
               <li>
                 <a href="https://autoshinewash.netlify.app" target="_blank" rel="noopener noreferrer" className="footer-link-item">
-                  <span>AutoShine Detailing</span>
+                  <span>AutoShine Detailing App</span>
                   <ExternalLink size={12} className="ext-icon" />
                 </a>
               </li>
               <li>
                 <a href="https://aheeramilk.netlify.app/" target="_blank" rel="noopener noreferrer" className="footer-link-item">
-                  <span>Aheera Milk Agritech</span>
+                  <span>Aheera Milk App</span>
                   <ExternalLink size={12} className="ext-icon" />
                 </a>
               </li>
@@ -130,28 +130,28 @@ export default function Footer() {
 
           {/* Col 3: Capabilities & Studio */}
           <div className="footer-col">
-            <h4 className="footer-col-heading">Platform & Studio</h4>
+            <h4 className="footer-col-heading">Explore Website</h4>
             <ul className="footer-links-list">
-              <li><a href="#about" className="footer-link-item">Studio Philosophy</a></li>
-              <li><a href="#capabilities" className="footer-link-item">Agentic Capabilities</a></li>
-              <li><a href="#demo" className="footer-link-item">Industry Command Center</a></li>
-              <li><a href="#process" className="footer-link-item">4-Stage Deployment</a></li>
-              <li><a href="#pricing" className="footer-link-item">Engagement Tiers</a></li>
-              <li><a href="#faq" className="footer-link-item">Technical FAQ</a></li>
+              <li><a href="#about" className="footer-link-item">About Our Studio</a></li>
+              <li><a href="#capabilities" className="footer-link-item">What We Build</a></li>
+              <li><a href="#demo" className="footer-link-item">Interactive Demo</a></li>
+              <li><a href="#process" className="footer-link-item">How We Work (4 Steps)</a></li>
+              <li><a href="#pricing" className="footer-link-item">Plans & Pricing</a></li>
+              <li><a href="#faq" className="footer-link-item">Frequently Asked Questions</a></li>
             </ul>
           </div>
 
           {/* Col 4: Contact & Social */}
           <div className="footer-col">
-            <h4 className="footer-col-heading">Connect & Security</h4>
+            <h4 className="footer-col-heading">Contact & Support</h4>
             <div className="footer-contact-info">
-              <a href="mailto:hello@tensorloom.ai" className="footer-email-link">
+              <a href="mailto:tensoorloom@gmail.com" className="footer-email-link">
                 <Mail size={14} color="var(--coral)" />
-                <span>hello@tensorloom.ai</span>
+                <span>tensoorloom@gmail.com</span>
               </a>
               <div className="footer-security-pill">
                 <ShieldCheck size={14} color="var(--emerald)" />
-                <span>SOC-2 & GDPR COMPLIANT</span>
+                <span>100% SECURE & RELIABLE</span>
               </div>
             </div>
 
@@ -184,9 +184,9 @@ export default function Footer() {
                 <TwitterIcon size={16} />
               </a>
               <a 
-                href="mailto:hello@tensorloom.ai" 
+                href="mailto:tensoorloom@gmail.com" 
                 className="footer-social-btn"
-                title="Email Studio"
+                title="Email Us"
               >
                 <Mail size={16} />
               </a>
@@ -197,15 +197,15 @@ export default function Footer() {
         {/* Bottom Bar with Telemetry & Back to Top */}
         <div className="footer-bottom-bar">
           <div className="footer-bottom-left">
-            <span>© {year} TensorLoom AI Inc. All rights reserved.</span>
+            <span>© {year} TensorLoom AI. All rights reserved.</span>
             <span className="footer-bullet">•</span>
-            <span className="footer-sub-tag">Woven with precision on light neural canvas</span>
+            <span className="footer-sub-tag">Fast, modern web apps and AI systems</span>
           </div>
 
           <div className="footer-bottom-right">
             <div className="footer-telemetry-chip">
               <Globe size={12} color="var(--sky)" />
-              <span>EDGE LATENCY: 14MS</span>
+              <span>SERVER SPEED: FAST & RELIABLE</span>
             </div>
 
             <button onClick={scrollToTop} className="footer-back-to-top" title="Back to top">

@@ -3,12 +3,12 @@ import LoomMark from './LoomMark.jsx'
 import './Navbar.css'
 
 const LINKS = [
-  { href: '#projects', label: 'Systems' },
-  { href: '#about', label: 'Studio' },
+  { href: '#projects', label: 'Projects' },
+  { href: '#about', label: 'About Us' },
   { href: '#demo', label: 'Demo' },
-  { href: '#capabilities', label: 'Capabilities' },
-  { href: '#process', label: 'Process' },
-  { href: '#pricing', label: 'Engagements' },
+  { href: '#capabilities', label: 'Services' },
+  { href: '#process', label: 'How It Works' },
+  { href: '#pricing', label: 'Pricing' },
   { href: '#faq', label: 'FAQ' },
 ]
 
@@ -36,7 +36,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a project</a>
+        <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a Project</a>
 
         <button
           className="nav-toggle"
@@ -54,8 +54,8 @@ export default function Navbar() {
           {LINKS.map((l) => (
             <a key={l.href} href={l.href} onClick={() => setOpen(false)}>{l.label}</a>
           ))}
-          <a href="#contact" className="tl-btn tl-btn-thread" onClick={() => setOpen(false)}>
-            Start a project
+          <a href="#contact" className="tl-btn tl-btn-primary" onClick={() => setOpen(false)}>
+            Start a Project
           </a>
         </div>
       )}

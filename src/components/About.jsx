@@ -1,35 +1,34 @@
 import { motion } from 'framer-motion'
-import { Database, Cpu, Layers, Sparkles, ArrowUpRight, ShieldCheck, Terminal, Workflow } from 'lucide-react'
-import Reveal from './Reveal.jsx'
+import { Zap, Smartphone, Sparkles, Workflow, Bot, ShieldCheck } from 'lucide-react'
 import './About.css'
 
 const PILLARS = [
   {
     num: '01',
-    title: 'Raw Data Ingestion',
-    subtitle: 'THE INPUT',
-    icon: <Database size={22} color="#0284c7" />,
+    title: 'Fast & Modern Technology',
+    subtitle: 'CLEAN ARCHITECTURE',
+    icon: <Zap size={22} color="#0284c7" />,
     color: '#0284c7',
-    desc: 'Normalize scattered logs, EHR feeds, and event streams with zero data leaks.',
-    visual: ['JSON Streams', 'Vector Embeddings', 'FHIR / EDI Feeds', 'Event Buses']
+    desc: 'We build high-speed websites and applications that load in under a second and work smoothly on any phone, tablet, or desktop.',
+    visual: ['Lightning Fast Load', 'Mobile First Design', 'Secure Payments', 'Clean Reliable Code']
   },
   {
     num: '02',
-    title: 'The Loom Engine',
-    subtitle: 'THE PLATFORM',
+    title: 'Tailored to Your Business',
+    subtitle: 'CUSTOM BUILT',
     icon: <Workflow size={22} color="var(--coral)" />,
     color: 'var(--coral)',
-    desc: 'High-velocity cloud orchestration, sub-second databases, and native UIs.',
-    visual: ['Multi-Cloud Mesh', 'Deterministic APIs', 'Native Kotlin / Web', '99.99% Uptime']
+    desc: 'Every business is unique. We craft custom platforms and tools designed specifically around how your business operates.',
+    visual: ['Online Stores', 'Booking & Dispatch', 'Live GPS Tracking', 'Custom Admin Hubs']
   },
   {
     num: '03',
-    title: 'Woven Intelligence',
-    subtitle: 'THE RUNTIME',
-    icon: <Cpu size={22} color="#7c3aed" />,
+    title: 'Smart Automation & AI',
+    subtitle: 'EFFORTLESS OPERATIONS',
+    icon: <Bot size={22} color="#7c3aed" />,
     color: '#7c3aed',
-    desc: 'Deterministic agents with rigid policy guardrails and verifiable execution logs.',
-    visual: ['Deterministic Evals', 'Human Checkpoints', 'Tool Invocation', 'Auditable Log']
+    desc: 'Automate repetitive daily tasks like customer replies, order notifications, route planning, and WhatsApp UPI billing.',
+    visual: ['24/7 Auto Replies', 'Instant WhatsApp Bills', 'Live Order Tracking', 'Less Manual Work']
   }
 ]
 
@@ -40,14 +39,14 @@ export default function About() {
         <div className="about-header">
           <div className="eyebrow">
             <Sparkles size={12} />
-            <span>THE TENSORLOOM AI PHILOSOPHY //</span>
+            <span>ABOUT TENSORLOOM AI</span>
           </div>
           <h2 className="about-title">
-            From raw data threads <br />
-            <span className="text-gradient-n8n">to autonomous, woven reality.</span>
+            We build software that actually solves <br />
+            <span className="text-gradient-n8n">real business problems.</span>
           </h2>
           <p className="about-subtitle">
-            We engineer the infrastructure that anchors your enterprise, and the intelligent agents that run through it.
+            No confusing tech jargon. We design, develop, and launch high-quality web applications and smart automated systems that help your business grow.
           </p>
         </div>
 

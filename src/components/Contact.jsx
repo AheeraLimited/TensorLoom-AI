@@ -34,7 +34,7 @@ export default function Contact() {
   }
 
   function handleCopyEmail() {
-    navigator.clipboard.writeText('hello@tensorloom.ai')
+    navigator.clipboard.writeText('tensoorloom@gmail.com')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -52,35 +52,34 @@ export default function Contact() {
           <div className="contact-left">
             <div className="eyebrow">
               <Sparkles size={12} />
-              <span>START A CONVERSATION //</span>
+              <span>GET IN TOUCH</span>
             </div>
 
             <h2 className="contact-headline">
-              Tell us what <br />
-              <span className="text-gradient-n8n">needs weaving.</span>
+              Let's build your next <br />
+              <span className="text-gradient-n8n">great project.</span>
             </h2>
 
             <p className="contact-subtext">
-              Reach out with a rough concept or an urgent production bottleneck.
-              You will speak directly with a principal engineer within 24 hours.
+              Share your idea, website requirements, or business goals. We'll reply within 24 hours with a clear plan, timeline, and pricing.
             </p>
 
             <div className="contact-quick-pills">
               <div className="quick-pill">
                 <Clock size={14} color="var(--coral)" />
-                <span>Response SLA: &lt; 24 business hours</span>
+                <span>Fast Reply: Within 24 hours</span>
               </div>
               <div className="quick-pill">
                 <ShieldCheck size={14} color="var(--emerald)" />
-                <span>Mutual NDA on request</span>
+                <span>100% Confidential & Secure</span>
               </div>
             </div>
 
             {/* Email Copy Card */}
             <div className="contact-direct-box tl-glass">
-              <span className="direct-label">DIRECT INQUIRIES</span>
+              <span className="direct-label">DIRECT EMAIL</span>
               <div className="direct-email-row">
-                <span className="direct-email">hello@tensorloom.ai</span>
+                <span className="direct-email">tensoorloom@gmail.com</span>
                 <button 
                   className="copy-btn" 
                   onClick={handleCopyEmail} 
@@ -105,24 +104,24 @@ export default function Contact() {
                   <div className="success-icon-badge">
                     <CheckCircle2 size={36} color="var(--coral)" />
                   </div>
-                  <h3>Signal Dispatched</h3>
+                  <h3>Message Sent Successfully!</h3>
                   <p>
-                    Thank you, {form.name || 'there'}. We have received your scope for{' '}
-                    <strong>{form.projectType}</strong>. A principal engineer will review and respond shortly.
+                    Thank you, {form.name || 'there'}. We have received your project details for{' '}
+                    <strong>{form.projectType}</strong>. Our team will review everything and get back to you shortly.
                   </p>
                   <button 
                     className="tl-btn tl-btn-ghost" 
                     onClick={() => setSent(false)}
                     style={{ marginTop: 20 }}
                   >
-                    Submit Another Inquiry
+                    Send Another Message
                   </button>
                 </motion.div>
               ) : (
                 <form className="contact-form" onSubmit={handleSubmit}>
                   {/* Project Type Selector Pills */}
                   <div className="form-group">
-                    <label className="form-label">PROJECT SCOPE</label>
+                    <label className="form-label">WHAT ARE YOU LOOKING TO BUILD?</label>
                     <div className="form-pill-selector">
                       {PROJECT_TYPES.map((pt) => (
                         <button
@@ -146,19 +145,19 @@ export default function Contact() {
                         name="name" 
                         value={form.name} 
                         onChange={handleChange}
-                        placeholder="Elena Vance"
+                        placeholder="Alex Morgan"
                         required
                         className="form-input"
                       />
                     </div>
                     <div className="form-group">
-                      <label className="form-label">WORK EMAIL</label>
+                      <label className="form-label">EMAIL ADDRESS</label>
                       <input 
                         type="email" 
                         name="email" 
                         value={form.email} 
                         onChange={handleChange}
-                        placeholder="elena@enterprise.com"
+                        placeholder="alex@company.com"
                         required
                         className="form-input"
                       />
@@ -167,7 +166,7 @@ export default function Contact() {
 
                   {/* Timeline Selector */}
                   <div className="form-group">
-                    <label className="form-label">TARGET TIMELINE</label>
+                    <label className="form-label">DESIRED TIMELINE</label>
                     <div className="form-pill-selector">
                       {TIMELINES.map((tl) => (
                         <button
@@ -184,20 +183,22 @@ export default function Contact() {
 
                   {/* Message Input */}
                   <div className="form-group">
-                    <label className="form-label">WORKFLOW DETAILS OR BOTTLENECK</label>
+                    <label className="form-label">PROJECT DETAILS & REQUIREMENTS</label>
                     <textarea 
                       name="message" 
                       value={form.message} 
                       onChange={handleChange}
-                      placeholder="Tell us what you want to automate, build, or modernize..."
+                      placeholder="Tell us what you want to build (e.g. an online shopping store, a delivery app, GPS tracking system, or WhatsApp bot)..."
+                      required
                       rows={4}
                       className="form-textarea"
                     />
                   </div>
 
+                  {/* Submit Button */}
                   <button type="submit" className="tl-btn tl-btn-primary form-submit-btn">
-                    <span>Dispatch Project Scope</span>
-                    <ArrowRight size={16} />
+                    <span>Send Project Inquiry</span>
+                    <Send size={15} />
                   </button>
                 </form>
               )}

@@ -1,36 +1,35 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Sparkles, ChevronDown, HelpCircle } from 'lucide-react'
-import Reveal from './Reveal.jsx'
 import './FAQ.css'
 
-const CATEGORIES = ['All', 'AI Agents', 'Architecture', 'Engagements']
+const CATEGORIES = ['All', 'Projects & Timelines', 'Ownership & Security', 'Features & Support']
 
 const FAQS = [
   {
-    cat: 'AI Agents',
-    q: 'What prevents your AI agents from hallucinating in production?',
-    a: 'We enforce deterministic state machines and strict policy thresholds. If confidence falls below 98%, execution pauses for human confirmation instead of guessing.',
+    cat: 'Projects & Timelines',
+    q: 'How quickly can you build and launch my website or app?',
+    a: 'Most custom web platforms, online stores, and apps launch within 2 to 4 weeks. You will receive live testing links from Week 1 so you can test everything in real time.',
   },
   {
-    cat: 'Architecture',
-    q: 'Can you integrate with existing databases, EHRs, or ERPs?',
-    a: 'Yes. We connect directly with your existing infrastructure via secure APIs, webhooks, or database links across AWS, Azure, GCP, or on-prem clusters.',
+    cat: 'Ownership & Security',
+    q: 'Who owns the website, code, and design after launch?',
+    a: 'You own 100% of everything we build. All source code, design assets, database access, and domain configs are completely handed over to you.',
   },
   {
-    cat: 'Engagements',
-    q: 'How quickly do we see working software?',
-    a: 'For our Tactical Sprint, you test working interactive builds within the first 10 days with continuous live staging environments.',
+    cat: 'Features & Support',
+    q: 'Can you connect my existing payment methods and WhatsApp?',
+    a: 'Yes, absolutely. We easily connect with UPI, Stripe, Razorpay, WhatsApp Business API, SMS alerts, Google Maps GIS, and your existing business software.',
   },
   {
-    cat: 'AI Agents',
-    q: 'Do you train models from scratch or fine-tune existing foundation models?',
-    a: 'We combine state-of-the-art foundation models (Claude, OpenAI, Llama 3) with targeted fine-tuning and deterministic tool-calling.',
+    cat: 'Projects & Timelines',
+    q: 'Will my website work fast and look great on all mobile phones?',
+    a: 'Yes, 100%. We design with a mobile-first approach, ensuring fast loading speeds under 1.2 seconds, crisp typography, and touch-friendly controls on all iPhones, Androids, tablets, and desktops.',
   },
   {
-    cat: 'Architecture',
-    q: 'Who owns the intellectual property and code produced?',
-    a: 'You own 100% of all custom code, prompts, fine-tuned weights, and pipeline configurations upon delivery.',
+    cat: 'Features & Support',
+    q: 'Do you provide ongoing support and updates after we launch?',
+    a: 'Yes! We provide complete post-launch support, reliable cloud hosting maintenance, security monitoring, and continuous new feature development as your business grows.',
   },
 ]
 
@@ -48,13 +47,14 @@ export default function FAQ() {
         <div className="faq-header">
           <div className="eyebrow">
             <Sparkles size={12} />
-            <span>CLARITY & ASSURANCE //</span>
+            <span>FREQUENTLY ASKED QUESTIONS</span>
           </div>
           <h2 className="faq-title">
-            Answers for <span className="text-gradient-n8n">technical leaders</span>
+            Simple answers to <br />
+            <span className="text-gradient-n8n">common questions.</span>
           </h2>
           <p className="faq-subtitle">
-            Everything you need to know about engineering standards, IP ownership, and delivery guarantees.
+            Everything you need to know about our project timelines, pricing, and full code ownership.
           </p>
         </div>
 
@@ -101,10 +101,10 @@ export default function FAQ() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                      className="faq-answer-collapse"
+                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                      className="faq-answer-wrap"
                     >
-                      <p className="faq-answer-text">{faq.a}</p>
+                      <p className="faq-a-text">{faq.a}</p>
                     </motion.div>
                   )}
                 </AnimatePresence>

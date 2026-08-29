@@ -8,13 +8,13 @@ import {
 import './ProjectsShowcase.css'
 
 const CATEGORIES = [
-  'All Systems',
+  'All Projects',
   'E-Commerce',
-  'Mobility & Logistics',
-  'Food Tech',
-  'Agritech & Delivery',
-  'Automotive Services',
-  'Conversational AI'
+  'Car Rental & GPS',
+  'Food Delivery',
+  'Dairy & Subscription',
+  'Auto Services',
+  'WhatsApp Bots'
 ]
 
 const PROJECTS = [
@@ -22,223 +22,222 @@ const PROJECTS = [
     id: 'zynara',
     name: 'Zynara',
     category: 'E-Commerce',
-    badge: 'LUXURY E-COMMERCE & RETAIL',
+    badge: 'LUXURY ONLINE SHOPPING',
     icon: ShoppingBag,
     color: '#ff6d42',
     demoDomain: 'https://zynara.netlify.app',
     targetUrl: 'https://zynara.netlify.app',
-    tagline: 'High-end contemporary e-commerce storefront & retail intelligence platform.',
+    tagline: 'Modern luxury fashion store with instant checkout and dynamic product lookbooks.',
     metrics: [
-      { label: 'Checkout Speed', val: '< 1.2s' },
-      { label: 'Variant Matrix', val: '100% Dynamic' },
-      { label: 'Conversion Lift', val: '+42%' }
+      { label: 'Page Speed', val: '< 1.2s' },
+      { label: 'Product Options', val: '100% Dynamic' },
+      { label: 'Sales Increase', val: '+42%' }
     ],
-    tech: ['Next.js 14', 'Framer Motion', 'Dynamic Variant Engine', 'Express Checkout', 'Tailwind'],
+    tech: ['Fast Next.js', 'Smooth Animations', 'Live Cart Drawer', 'Instant Checkout', 'Mobile First'],
     nodes: [
-      { name: 'Storefront Client', type: 'UI / UX', desc: 'Curated Lookbooks' },
-      { name: 'Variant Matrix', type: 'Logic Engine', desc: 'Realtime Stock' },
-      { name: 'Stripe / UPI', type: 'Payment Gate', desc: 'Sub-second Auth' },
-      { name: 'Order Dispatch', type: 'Fulfillment', desc: 'Instant Confirmation' }
+      { name: '1. Storefront', type: 'Browse', desc: 'Curated Lookbooks' },
+      { name: '2. Select Item', type: 'Cart', desc: 'Live Stock Check' },
+      { name: '3. Fast Pay', type: 'Checkout', desc: 'Secure UPI & Card' },
+      { name: '4. Instant Order', type: 'Dispatch', desc: 'WhatsApp Confirmation' }
     ],
     highlights: [
-      'Frictionless floating cart drawer with real-time promo coupon calculations',
-      'High-resolution multi-angle product gallery with smooth responsive zoom',
-      'Curated seasonal lookbooks with instant one-click add-to-bag',
-      'Sub-second page transitions and mobile-first luxury typography'
+      'Smooth floating shopping bag with instant coupon discount calculations',
+      'High-resolution multi-photo product galleries with pinch-to-zoom on mobile',
+      'Curated seasonal collections with quick one-click add to cart',
+      'Fast page loading under 1.2 seconds designed specifically for mobile shoppers'
     ]
   },
   {
     id: 'shubh-safar',
     name: 'Shubh Safar',
-    category: 'Mobility & Logistics',
-    badge: 'MOBILITY & FLEET LOGISTICS',
+    category: 'Car Rental & GPS',
+    badge: 'CAR RENTAL & LIVE GPS FLEET',
     icon: Car,
     color: '#0284c7',
     demoDomain: 'https://shubhsafar.netlify.app/#browse',
     targetUrl: 'https://shubhsafar.netlify.app/#browse',
-    tagline: 'Self-drive car rental ecosystem with live OSRM GPS road tracking & multi-role operations.',
+    tagline: 'Self-drive car booking platform with live GPS road route tracking and driver dashboards.',
     metrics: [
-      { label: 'Routing Engine', val: 'OSRM GIS' },
-      { label: 'KYC Verification', val: '100% Automated' },
-      { label: 'Dispatch Latency', val: 'Real-time' }
+      { label: 'GPS Tracking', val: 'Live Maps' },
+      { label: 'ID Verification', val: 'Instant KYC' },
+      { label: 'Booking Time', val: '< 2 Mins' }
     ],
-    tech: ['Leaflet GIS', 'OSRM Driving Engine', 'Aadhaar / DL KYC', 'Multi-Role PIN Hub', 'PDF Invoice Engine'],
+    tech: ['Interactive Road Maps', 'Live GPS Routes', 'Online ID Verification', 'Driver Login PIN', 'Automatic PDF Invoices'],
     nodes: [
-      { name: 'Fleet Browser', type: 'Booking UI', desc: 'Live Availability' },
-      { name: 'KYC Gate', type: 'Verification', desc: 'Aadhaar & License' },
-      { name: 'OSRM Routing', type: 'GIS Engine', desc: 'ETA Radar Polylines' },
-      { name: 'Driver Hub', type: 'Operations', desc: 'Return OTP & Invoicing' }
+      { name: '1. Browse Cars', type: 'Selection', desc: 'Live Availability' },
+      { name: '2. Verify ID', type: 'Security', desc: 'Instant Driving License' },
+      { name: '3. GPS Route', type: 'Live Map', desc: 'Road ETA & Distance' },
+      { name: '4. Return OTP', type: 'Completion', desc: 'Instant PDF Bill' }
     ],
     highlights: [
-      'Live road geometry routing with floating ETA radar across city landmarks',
-      'Automated KYC verification gate for Aadhaar and Driving Licenses',
-      'Dedicated PIN-authenticated operations portal for drivers, owners & admins',
-      'Trip completion return OTP verification with instant PDF rental invoices'
+      'Live road route maps with accurate arrival times across city landmarks',
+      'Instant online ID verification for Aadhaar and Driving Licenses',
+      'Easy PIN-login portals for drivers, car owners, and store managers',
+      'Secure return OTP verification with instant PDF rental bills'
     ]
   },
   {
     id: 'cheat-meals',
     name: 'Cheat Meals',
-    category: 'Food Tech',
-    badge: 'HYPERLOCAL FOOD & LOGISTICS',
+    category: 'Food Delivery',
+    badge: 'FOOD DELIVERY & KITCHEN ORDERS',
     icon: UtensilsCrossed,
     color: '#ea4b71',
     demoDomain: 'https://cheatmeals.netlify.app',
     targetUrl: 'https://cheatmeals.netlify.app',
-    tagline: 'Live kitchen queue synchronization, real-time food delivery tracker & fleet ecosystem.',
+    tagline: 'Live restaurant order system with kitchen screen alerts and real-time delivery tracking.',
     metrics: [
-      { label: 'Live Sync', val: '0ms Firestore' },
-      { label: 'Kitchen KDS', val: 'Automated' },
-      { label: 'OTP Handoff', val: '100% Secure' }
+      { label: 'Order Sync', val: 'Real-Time' },
+      { label: 'Kitchen Screen', val: 'Auto Chimes' },
+      { label: 'Delivery OTP', val: '100% Secure' }
     ],
-    tech: ['Next.js 14 App Router', 'Firebase Firestore', 'Web Push Alerts', 'Audio Chimes', 'Rider Portal'],
+    tech: ['Instant Cloud Sync', 'Live Kitchen Screen', 'Sound Chime Alerts', 'Live Delivery Tracker', 'Delivery Rider App'],
     nodes: [
-      { name: 'Storefront Intake', type: 'Customer Cart', desc: 'Custom Add-ons' },
-      { name: 'Firestore Feed', type: 'Live Stream', desc: 'Realtime Sync' },
-      { name: 'Kitchen KDS', type: 'Prep Queue', desc: 'Audio Chime Alerts' },
-      { name: 'Rider Dispatch', type: 'Handoff', desc: 'Secure OTP Handover' }
+      { name: '1. Customer Cart', type: 'Order', desc: 'Custom Add-ons & Notes' },
+      { name: '2. Kitchen Ring', type: 'Kitchen', desc: 'Sound Alert on Screen' },
+      { name: '3. Live Map', type: 'Delivery', desc: 'Rider Heading to You' },
+      { name: '4. Doorstep OTP', type: 'Handoff', desc: 'Delivered & Confirmed' }
     ],
     highlights: [
-      'Real-time Firestore order stream with audio sound chime alerts',
-      'Animated delivery lifecycle tracker with live simulated rider coordinates',
-      'Multi-branch kitchen management with instant OTP delivery verification',
-      'Rich flash broadcast ribbons and browser push notifications'
+      'Instant order stream with sound chime alerts for kitchen staff',
+      'Live delivery progress screen showing your delivery rider in motion',
+      'Multi-branch restaurant support with secret OTP verification upon delivery',
+      'Special food customization options and instant discounts'
     ]
   },
   {
     id: 'autoshine',
     name: 'AutoShine',
-    category: 'Automotive Services',
-    badge: 'ON-DEMAND VEHICLE CARE',
+    category: 'Auto Services',
+    badge: 'DOORSTEP VEHICLE DETAILING',
     icon: Sparkles,
     color: '#7c3aed',
     demoDomain: 'https://autoshinewash.netlify.app',
     targetUrl: 'https://autoshinewash.netlify.app',
-    tagline: 'Doorstep vehicle detailing, ceramic coating & on-demand service dispatch engine.',
+    tagline: 'Doorstep car wash and ceramic coating booking with instant time-slot scheduling.',
     metrics: [
-      { label: 'Segment Pricing', val: 'Dynamic Matrix' },
-      { label: 'Slot Booking', val: 'Real-time' },
-      { label: 'Service Quality', val: '5.0 ★ Rated' }
+      { label: 'Car Pricing', val: 'Clear Rates' },
+      { label: 'Slot Booking', val: 'Instant' },
+      { label: 'Customer Rating', val: '5.0 ★ Stars' }
     ],
-    tech: ['Vehicle Segment Matrix', 'Time-Slot Scheduler', 'Doorstep Field Dispatch', 'Payment Gateway'],
+    tech: ['Car Model Pricing', 'Calendar Time Slots', 'Doorstep Technician Dispatch', 'Online & Cash Payments'],
     nodes: [
-      { name: 'Vehicle Match', type: 'Segment Selector', desc: 'Sedan / SUV / Luxury' },
-      { name: 'Package Config', type: 'Add-on Engine', desc: 'Ceramic & Deep Clean' },
-      { name: 'Slot Scheduler', type: 'Calendar', desc: 'Realtime Availability' },
-      { name: 'Field Dispatch', type: 'Technician Hub', desc: 'Live Status Tracker' }
+      { name: '1. Pick Vehicle', type: 'Model', desc: 'Hatchback, Sedan, SUV' },
+      { name: '2. Choose Package', type: 'Service', desc: 'Wash, Deep Clean, Polish' },
+      { name: '3. Select Time', type: 'Calendar', desc: 'Choose Date & Hour' },
+      { name: '4. Technician Arrival', type: 'Doorstep', desc: 'Live Status Tracker' }
     ],
     highlights: [
-      'Interactive vehicle segment pricing matrix (Hatchback, Sedan, SUV, Luxury)',
-      'Comprehensive detailing package builder (Ceramic, Interior Sanitization, Paint Correction)',
-      'Real-time scheduling with doorstep technician assignment',
-      'Transparent digital inspection reports and service milestone tracking'
+      'Clear, transparent pricing based on vehicle type (Hatchback, Sedan, SUV, Luxury)',
+      'Custom service package builder (Foam Wash, Interior Sanitization, Ceramic Coating)',
+      'Real-time date and time-slot booking with doorstep technician assignment',
+      'Digital inspection report and clear progress updates'
     ]
   },
   {
     id: 'aheera-milk',
     name: 'Aheera Milk',
-    category: 'Agritech & Delivery',
-    badge: 'AGRITECH & BILLING LOGISTICS',
+    category: 'Dairy & Subscription',
+    badge: 'DAILY DAIRY SUBSCRIPTION',
     icon: Droplets,
     color: '#10b981',
     demoDomain: 'https://aheeramilk.netlify.app',
     targetUrl: 'https://aheeramilk.netlify.app/',
-    tagline: 'Farm-fresh dairy subscription PWA with route optimizer & automated WhatsApp billing.',
+    tagline: 'Daily farm-fresh milk subscription app with morning delivery route sheets and WhatsApp bills.',
     metrics: [
-      { label: 'Route Efficiency', val: '+38%' },
-      { label: 'Billing Engine', val: 'WhatsApp API' },
-      { label: 'PWA Uptime', val: '99.99%' }
+      { label: 'Delivery Speed', val: 'Morning 6 AM' },
+      { label: 'Auto Billing', val: 'WhatsApp UPI' },
+      { label: 'App Reliability', val: '99.99%' }
     ],
-    tech: ['Progressive Web App (PWA)', 'Calendar Subscription', 'Route Optimization', 'WhatsApp Business API', 'UPI Links'],
+    tech: ['Mobile Web App (PWA)', 'Calendar Subscriptions', 'Delivery Route Organizer', 'WhatsApp Billing Bot', 'UPI QR Codes'],
     nodes: [
-      { name: 'Subscription PWA', type: 'Schedule UI', desc: 'Vacation Pause' },
-      { name: 'Route Optimizer', type: 'Delivery Math', desc: 'Morning Route Sheet' },
-      { name: 'Delivery Log', type: 'Bottle Ledger', desc: 'Volume Tallying' },
-      { name: 'WhatsApp Invoicing', type: 'Billing Bot', desc: 'Direct UPI Links' }
+      { name: '1. Daily Plan', type: 'Schedule', desc: 'Set Quantity & Days' },
+      { name: '2. Route Sheet', type: 'Delivery', desc: 'Optimized Route' },
+      { name: '3. Bottle Count', type: 'Ledger', desc: 'Track Deliveries & Returns' },
+      { name: '4. WhatsApp Bill', type: 'Payment', desc: 'Instant UPI Payment Link' }
     ],
     highlights: [
-      'Flexible daily and alternate-day milk subscription manager with vacation pause',
-      'Automated morning delivery route sheets optimized per delivery agent',
-      'Instant automated WhatsApp bill generation with embedded UPI payment links',
-      'Customer bottle return ledger and monthly volume tallying'
+      'Flexible daily or alternate-day milk schedule with one-tap vacation pause',
+      'Automated morning delivery route sheets organized per delivery agent',
+      'Automatic monthly WhatsApp bill generation with one-click UPI payment links',
+      'Bottle return tracking and complete delivery history'
     ]
   },
   {
     id: 'aheera-store',
     name: 'Aheera Store',
-    category: 'Agritech & Delivery',
-    badge: 'STORE ADMIN & BILLING HUB',
+    category: 'Dairy & Subscription',
+    badge: 'STORE MANAGER & INVOICING',
     icon: Store,
     color: '#059669',
     demoDomain: 'https://aheerastore.netlify.app',
     targetUrl: 'https://aheerastore.netlify.app/',
-    tagline: 'Centralized dairy store operations, customer balance ledgers & WhatsApp UPI invoicing.',
+    tagline: 'Centralized dairy store management, customer balance ledgers, and WhatsApp billing.',
     metrics: [
-      { label: 'Billing Engine', val: 'Automated WA' },
-      { label: 'Ledger Audit', val: 'Zero-Leak' },
-      { label: 'Sync Speed', val: 'Realtime' }
+      { label: 'Billing Bot', val: 'Auto WhatsApp' },
+      { label: 'Balance Audit', val: '100% Accurate' },
+      { label: 'Sync Speed', val: 'Instant' }
     ],
-    tech: ['Storefront Console', 'Customer Balance Ledger', 'WhatsApp Cloud API', 'UPI QR Generator', 'Route Sheets'],
+    tech: ['Store Dashboard', 'Customer Balance Ledger', 'WhatsApp Business Bot', 'UPI QR Generator', 'Route Allocation'],
     nodes: [
-      { name: 'Customer Registry', type: 'Ledger UI', desc: 'Wallet Balances' },
-      { name: 'Route Sheet Engine', type: 'Logistics', desc: 'Agent Allocations' },
-      { name: 'WhatsApp Gateway', type: 'API Bot', desc: 'Automated PDF/UPI' },
-      { name: 'Payment Reconcile', type: 'Audit Feed', desc: 'Instant Clearance' }
+      { name: '1. Customer List', type: 'Balances', desc: 'Live Account Ledger' },
+      { name: '2. Assign Routes', type: 'Logistics', desc: 'Driver Route Sheets' },
+      { name: '3. Send Bills', type: 'WhatsApp', desc: 'Auto PDF & UPI Link' },
+      { name: '4. Match Payments', type: 'Clearance', desc: 'Instant Balance Update' }
     ],
     highlights: [
-      'Automated WhatsApp bill generation with embedded UPI instant payment links',
+      'One-click automated WhatsApp billing with embedded instant UPI payment links',
       'Early morning route allocation matrix and driver bottle tally logs',
       'Multi-customer balance ledger with historical transaction audit',
-      'Instant cloud synchronization between customer PWA and store admin hub'
+      'Instant cloud synchronization between customer app and store admin hub'
     ]
   },
   {
     id: 'whatsapp-crm',
     name: 'WhatsApp CRM Bot',
-    category: 'Conversational AI',
-    badge: 'CONVERSATIONAL COMMERCE',
+    category: 'WhatsApp Bots',
+    badge: 'AUTOMATED WHATSAPP BOT',
     icon: MessageSquare,
     color: '#f59e0b',
     demoDomain: 'https://crm.tensorloom.ai/inbox',
     targetUrl: '#contact',
-    tagline: 'Enterprise WhatsApp business automation, decision tree chatbot & team CRM inbox.',
+    tagline: 'Automated WhatsApp assistant that answers customer questions, captures leads, and shares bills 24/7.',
     metrics: [
-      { label: 'Response Time', val: '< 500ms' },
+      { label: 'Reply Speed', val: '< 1 Second' },
       { label: 'Lead Capture', val: '24/7 Auto' },
-      { label: 'Broadcast Scale', val: '10k+ / day' }
+      { label: 'Daily Capacity', val: '10k+ Chats' }
     ],
-    tech: ['WhatsApp Business API', 'Node.js Microservices', 'Decision Tree Engine', 'Shared Team Inbox', 'Tagging'],
+    tech: ['Official WhatsApp API', '24/7 Auto Replies', 'Shared Team Inbox', 'Lead Management', 'Customer Tags'],
     nodes: [
-      { name: 'Incoming Webhook', type: 'API Ingestion', desc: 'WhatsApp Cloud API' },
-      { name: 'Intent Matcher', type: 'AI Router', desc: 'Decision Tree Logic' },
-      { name: 'Team CRM Inbox', type: 'Multi-Agent', desc: 'Live Chat Handoff' },
-      { name: 'Broadcast Engine', type: 'Campaigns', desc: 'Automated Outreach' }
+      { name: '1. Message Received', type: 'Intake', desc: 'Instant Notification' },
+      { name: '2. Smart Reply', type: 'AI Bot', desc: 'Answers Inquiries 24/7' },
+      { name: '3. Team Inbox', type: 'Staff', desc: 'Human Staff Handoff' },
+      { name: '4. Auto Follow-up', type: 'Updates', desc: 'Offers & Reminders' }
     ],
     highlights: [
-      'Automated multi-step customer qualification flows and instant auto-replies',
-      'Unified shared team inbox with conversation handoff and agent assignment',
-      'Customer segmentation with custom tags and targeted broadcast campaigns',
-      'Webhook-driven live CRM event syncing and audit logging'
+      '24/7 automatic answers for common customer questions, pricing, and orders',
+      'Unified shared team inbox so your whole staff can reply from one number',
+      'Automatic customer contact saving and organized tag segmentation',
+      'Instant order status updates and automated payment reminder messages'
     ]
   }
 ]
 
 export default function ProjectsShowcase() {
-  const [activeCategory, setActiveCategory] = useState('All Systems')
-  const [selectedId, setSelectedId] = useState('zynara')
+  const [activeCategory, setActiveCategory] = useState('All Projects')
+  const [selectedId, setSelectedId] = useState(PROJECTS[0].id)
   const [zynaraRefreshCount, setZynaraRefreshCount] = useState(0)
 
-  // 3.8-second auto-reload loop for Zynara
+  // 3.8s background auto-reload timer for Zynara
   useEffect(() => {
-    if (selectedId === 'zynara') {
-      const interval = setInterval(() => {
-        setZynaraRefreshCount((count) => count + 1)
-      }, 3800)
-      return () => clearInterval(interval)
-    }
+    if (selectedId !== 'zynara') return
+    const timer = setInterval(() => {
+      setZynaraRefreshCount((prev) => prev + 1)
+    }, 3800)
+    return () => clearInterval(timer)
   }, [selectedId])
 
-  const filteredProjects = activeCategory === 'All Systems'
+  const filteredProjects = activeCategory === 'All Projects'
     ? PROJECTS
     : PROJECTS.filter((p) => p.category === activeCategory)
 
@@ -252,14 +251,14 @@ export default function ProjectsShowcase() {
         <div className="projects-header">
           <div className="eyebrow">
             <Sparkles size={12} />
-            <span>PROVEN SYSTEMS // LIVE PLATFORMS</span>
+            <span>OUR LIVE PROJECTS</span>
           </div>
           <h2 className="projects-title">
-            Engineering real-world platforms <br />
-            <span className="text-gradient-n8n">across high-stakes industries.</span>
+            Real apps and websites <br />
+            <span className="text-gradient-n8n">we've built and launched.</span>
           </h2>
           <p className="projects-subtitle">
-            Interact with live deployed web apps and systems directly inside the browser simulator below.
+            Click any project below to explore the live website directly inside the browser window or open it in a new tab.
           </p>
 
           {/* Category Filter Pills */}
@@ -270,7 +269,7 @@ export default function ProjectsShowcase() {
                 className={`proj-cat-pill ${activeCategory === cat ? 'active' : ''}`}
                 onClick={() => {
                   setActiveCategory(cat)
-                  const matches = cat === 'All Systems' ? PROJECTS : PROJECTS.filter((p) => p.category === cat)
+                  const matches = cat === 'All Projects' ? PROJECTS : PROJECTS.filter((p) => p.category === cat)
                   if (matches.length > 0 && !matches.find((m) => m.id === selectedId)) {
                     setSelectedId(matches[0].id)
                   }
@@ -298,14 +297,7 @@ export default function ProjectsShowcase() {
                   transition={{ duration: 0.2 }}
                 >
                   <div className="proj-card-top">
-                    <div 
-                      className="proj-icon-box"
-                      style={{ 
-                        background: isSelected ? `${proj.color}15` : '#f4f3ee',
-                        color: isSelected ? proj.color : 'var(--ink-secondary)',
-                        borderColor: isSelected ? `${proj.color}40` : 'var(--line)'
-                      }}
-                    >
+                    <div className="proj-icon-box" style={{ background: `${proj.color}12`, color: proj.color }}>
                       <IconComp size={18} />
                     </div>
                     <span className="proj-category-tag">{proj.category}</span>
@@ -358,16 +350,16 @@ export default function ProjectsShowcase() {
                   <div className="viewer-actions-row">
                     <div className="viewer-status-pill">
                       <span className="pulse-dot dot-emerald" />
-                      <span>PRODUCTION LIVE</span>
+                      <span>LIVE SYSTEM ACTIVE</span>
                     </div>
+
                     <a 
-                      href={activeProject.targetUrl}
+                      href={activeProject.targetUrl} 
                       target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
-                      className="viewer-launch-btn tl-btn-primary"
-                      title={`Launch ${activeProject.name} in full window`}
+                      className="viewer-visit-btn tl-btn"
                     >
-                      <span>Visit Full Website</span>
+                      <span>Visit Live Website</span>
                       <ArrowUpRight size={14} />
                     </a>
                   </div>
@@ -429,9 +421,9 @@ export default function ProjectsShowcase() {
                     ) : (
                       <div className="preview-fallback-box">
                         <MessageSquare size={32} color="var(--coral)" />
-                        <h4>Enterprise WhatsApp CRM Platform</h4>
-                        <p>Available on private airgapped deployment.</p>
-                        <a href="#contact" className="tl-btn tl-btn-primary">Request Access</a>
+                        <h4>WhatsApp CRM & AI Bot</h4>
+                        <p>Automate customer conversations, inquiries & bills 24/7.</p>
+                        <a href="#contact" className="tl-btn tl-btn-primary">Talk to Us</a>
                       </div>
                     )}
                   </div>
@@ -452,43 +444,71 @@ export default function ProjectsShowcase() {
                   <div className="v-arch-header">
                     <div className="v-arch-title">
                       <Workflow size={13} color="var(--coral)" />
-                      <span>DEPLOYED ARCHITECTURE TOPOLOGY</span>
+                      <span>HOW THIS SYSTEM WORKS</span>
                     </div>
-                    <span className="v-arch-sub">4-Node Pipeline</span>
+                    <span className="v-arch-sub">4-Step Flow</span>
                   </div>
 
                   <div className="v-arch-nodes-track">
                     {activeProject.nodes.map((node, i) => (
-                      <div key={node.name} className="v-arch-node">
-                        <div className="v-node-step-tag">0{i + 1}</div>
-                        <h4 className="v-node-name">{node.name}</h4>
-                        <span className="v-node-type">{node.type}</span>
-                        <p className="v-node-desc">{node.desc}</p>
+                      <div key={node.name} className="v-arch-node-item">
+                        <div className="v-arch-node-circle" style={{ borderColor: i === 0 ? activeProject.color : 'var(--line)' }}>
+                          <span className="v-arch-node-num">0{i + 1}</span>
+                        </div>
+                        <div className="v-arch-node-text">
+                          <span className="v-arch-node-name">{node.name}</span>
+                          <span className="v-arch-node-desc">{node.desc}</span>
+                        </div>
+                        {i < activeProject.nodes.length - 1 && (
+                          <div className="v-arch-connector-arrow">
+                            <ChevronRight size={14} color="var(--ink-faint)" />
+                          </div>
+                        )}
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Verified Capabilities Checklist */}
-                <div className="viewer-highlights-wrap">
-                  <h4 className="viewer-highlights-title">Core System Capabilities</h4>
-                  <div className="viewer-highlights-grid">
-                    {activeProject.highlights.map((hl) => (
-                      <div key={hl} className="viewer-hl-item">
-                        <CheckCircle2 size={15} color="var(--emerald)" className="hl-check-icon" />
-                        <span>{hl}</span>
-                      </div>
-                    ))}
+                {/* Highlights & Stack Grid */}
+                <div className="viewer-details-grid">
+                  {/* Highlights Card */}
+                  <div className="viewer-detail-card">
+                    <h4 className="v-detail-heading">
+                      <Sparkles size={14} color="var(--coral)" />
+                      <span>Key Features & Benefits</span>
+                    </h4>
+                    <ul className="v-detail-checklist">
+                      {activeProject.highlights.map((h, i) => (
+                        <li key={i} className="v-checklist-item">
+                          <CheckCircle2 size={14} color="var(--emerald)" className="check-icon" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
 
-                {/* Tech Stack Pills */}
-                <div className="viewer-tech-footer">
-                  <span className="tech-footer-label">Engineering Stack:</span>
-                  <div className="tech-pills-row">
-                    {activeProject.tech.map((t) => (
-                      <span key={t} className="tech-badge-pill">{t}</span>
-                    ))}
+                  {/* Tech Stack Card */}
+                  <div className="viewer-detail-card">
+                    <h4 className="v-detail-heading">
+                      <Layers size={14} color="var(--sky)" />
+                      <span>Technologies Used</span>
+                    </h4>
+                    <div className="v-tech-pills-wrap">
+                      {activeProject.tech.map((t) => (
+                        <span key={t} className="v-tech-pill">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="v-launch-callout">
+                      <span className="launch-callout-title">Want a similar platform for your business?</span>
+                      <p className="launch-callout-text">We can customize and launch this tailored to your brand in 2-3 weeks.</p>
+                      <a href="#contact" className="tl-btn tl-btn-primary launch-cta-btn">
+                        <span>Get Started</span>
+                        <ArrowRight size={14} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </motion.div>
