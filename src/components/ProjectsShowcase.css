@@ -1,5 +1,5 @@
 /* ===================================================================
-   TensorLoom — Shipped Systems & Deployments (World-Class UI/UX)
+   TensorLoom — Shipped Systems & Deployments (Minimal Glassmorphic Theme)
    =================================================================== */
 
 .projects-section {
@@ -54,7 +54,9 @@
   font-weight: 700;
   letter-spacing: 0.04em;
   color: var(--ink-secondary);
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--line);
   padding: 6px 14px;
   border-radius: 999px;
@@ -86,13 +88,13 @@
 }
 
 /* ===================================================================
-   Left Column: Project Selector Cards
+   Left Column: Project Selector Cards (Frosted Glass)
    =================================================================== */
 .projects-selector-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 820px;
+  max-height: 840px;
   overflow-y: auto;
   padding: 4px 6px 16px 2px;
 }
@@ -107,14 +109,16 @@
 
 .proj-card-item {
   padding: 16px 18px;
-  background: #ffffff;
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1.5px solid rgba(228, 226, 220, 0.85);
+  border-radius: 14px;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: 0 2px 6px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.02), inset 0 1px 0 rgba(255, 255, 255, 0.8);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   flex-shrink: 0;
@@ -123,7 +127,8 @@
 .proj-card-item:hover {
   border-color: #cbd5e1;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(20, 18, 30, 0.05);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(20, 18, 30, 0.05);
 }
 
 .proj-card-item.selected {
@@ -141,7 +146,7 @@
   bottom: 0;
   width: 4px;
   background: var(--coral-gradient);
-  border-radius: 12px 0 0 12px;
+  border-radius: 14px 0 0 14px;
 }
 
 /* Top Header Row */
@@ -261,7 +266,7 @@
 }
 
 /* ===================================================================
-   Right Column: Live System Cockpit & Viewport
+   Right Column: Live System Cockpit (Minimal Glassmorphism)
    =================================================================== */
 .projects-cockpit-viewer {
   position: sticky;
@@ -269,25 +274,43 @@
 }
 
 .cockpit-viewer-card {
-  background: #ffffff;
-  border: 1.5px solid var(--line);
-  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 20px;
   padding: 28px 30px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  box-shadow: 0 16px 48px rgba(20, 18, 30, 0.06), 0 1px 3px rgba(20, 18, 30, 0.02);
+  box-shadow: 0 20px 50px rgba(20, 18, 30, 0.05), 0 1px 3px rgba(20, 18, 30, 0.02), inset 0 1px 1px rgba(255, 255, 255, 1);
+}
+
+/* Ambient Radial Glow */
+.cockpit-glow-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 260px;
+  pointer-events: none;
+  opacity: 0.9;
+  transition: background 0.4s ease;
 }
 
 /* Cockpit Top Bar */
 .viewer-header-bar {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 14px;
   padding-bottom: 16px;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid rgba(228, 226, 220, 0.7);
 }
 
 .viewer-brand-badge {
@@ -297,14 +320,17 @@
 }
 
 .viewer-icon-pill {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  border: 1px solid var(--line);
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  border: 1px solid;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(20, 18, 30, 0.03);
 }
 
 .viewer-badge-text {
@@ -340,9 +366,12 @@
   font-weight: 700;
   color: var(--emerald);
   background: rgba(16, 185, 129, 0.08);
-  border: 1px solid rgba(16, 185, 129, 0.22);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(16, 185, 129, 0.25);
   padding: 5px 12px;
   border-radius: 999px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.08);
 }
 
 .viewer-visit-btn {
@@ -352,22 +381,28 @@
   font-size: 12.5px;
   font-weight: 700;
   color: var(--ink-primary);
-  background: #ffffff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(203, 213, 225, 0.85);
   padding: 6px 14px;
   border-radius: 999px;
   text-decoration: none;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(20, 18, 30, 0.03);
+  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.03);
 }
 
 .viewer-visit-btn:hover {
+  background: #ffffff;
   border-color: var(--coral-border);
   color: var(--coral);
   transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(255, 109, 66, 0.12);
 }
 
 .viewer-tagline {
+  position: relative;
+  z-index: 1;
   font-size: 14.5px;
   color: var(--ink-secondary);
   line-height: 1.5;
@@ -375,19 +410,23 @@
 }
 
 /* ===================================================================
-   Live Interactive iFrame Browser Simulator
+   Live Interactive iFrame Browser Simulator (Glassmorphic Window)
    =================================================================== */
 .live-preview-window {
+  position: relative;
+  z-index: 1;
   background: #ffffff;
-  border: 1.5px solid var(--line);
-  border-radius: 12px;
+  border: 1.5px solid rgba(228, 226, 220, 0.85);
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 8px 28px rgba(20, 18, 30, 0.04);
+  box-shadow: 0 12px 36px rgba(20, 18, 30, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.9);
 }
 
 .preview-window-bar {
-  background: #f8f7f4;
-  border-bottom: 1px solid var(--line);
+  background: rgba(248, 247, 244, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(228, 226, 220, 0.8);
   padding: 9px 14px;
   display: flex;
   align-items: center;
@@ -413,7 +452,9 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--line);
   border-radius: 6px;
   padding: 4px 10px;
@@ -522,27 +563,32 @@
 }
 
 /* ===================================================================
-   Key Metrics Bar
+   Key Metrics Glassmorphic Bar
    =================================================================== */
 .viewer-metrics-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 12px;
 }
 
 .viewer-metric-item {
-  background: #faf9f6;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  padding: 12px 14px;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 2px;
+  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.02), inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 .v-metric-val {
   font-family: var(--font-mono);
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 800;
 }
 
@@ -552,18 +598,22 @@
   color: var(--ink-faint);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
 }
 
 /* ===================================================================
-   4-Step Workflow Pipeline
+   4-Step Workflow Pipeline (Glassmorphic)
    =================================================================== */
 .viewer-architecture-box {
-  background: #faf9f6;
+  position: relative;
+  z-index: 1;
+  background: rgba(250, 249, 246, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   background-image: radial-gradient(#e2e0d8 1.1px, transparent 1.1px);
   background-size: 16px 16px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  border: 1px solid rgba(228, 226, 220, 0.85);
+  border-radius: 14px;
   padding: 18px 20px;
 }
 
@@ -599,14 +649,16 @@
 }
 
 .v-arch-node-item {
-  background: #ffffff;
-  border: 1.5px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid rgba(228, 226, 220, 0.7);
   border-radius: 8px;
   padding: 12px;
   display: flex;
   flex-direction: column;
   gap: 3px;
-  box-shadow: 0 2px 6px rgba(20, 18, 30, 0.03);
+  box-shadow: 0 2px 6px rgba(20, 18, 30, 0.02);
 }
 
 .v-arch-node-top {
@@ -645,15 +697,19 @@
    Highlights & Tech Stack Split Grid
    =================================================================== */
 .viewer-details-grid {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1.15fr 1fr;
   gap: 16px;
 }
 
 .viewer-detail-card {
-  background: #faf9f6;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
+  background: rgba(250, 249, 246, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(228, 226, 220, 0.85);
+  border-radius: 14px;
   padding: 18px 20px;
   display: flex;
   flex-direction: column;
@@ -707,15 +763,15 @@
   font-size: 11px;
   font-weight: 600;
   color: var(--ink-secondary);
-  background: #ffffff;
-  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(228, 226, 220, 0.85);
   padding: 4px 10px;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(20, 18, 30, 0.02);
 }
 
 .v-launch-callout {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(255, 109, 66, 0.25);
   border-left: 3.5px solid var(--coral);
   border-radius: 8px;
@@ -724,6 +780,7 @@
   flex-direction: column;
   gap: 4px;
   margin-top: auto;
+  box-shadow: 0 4px 14px rgba(255, 109, 66, 0.05);
 }
 
 .launch-callout-title {
@@ -851,7 +908,7 @@
   }
 
   .preview-live-badge {
-    display: none; /* Save space on mobile */
+    display: none;
   }
 
   .preview-direct-launch-link {

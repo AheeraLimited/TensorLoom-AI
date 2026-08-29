@@ -2,8 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ShoppingBag, Car, UtensilsCrossed, Droplets, Sparkles, MessageSquare, 
-  ArrowRight, CheckCircle2, Cpu, ExternalLink, Activity, Shield, Zap, Layers,
-  ChevronRight, ArrowUpRight, Workflow, Lock, Store
+  ArrowRight, CheckCircle2, ExternalLink, ArrowUpRight, Workflow, Lock, Store, Layers, ChevronRight
 } from 'lucide-react'
 import './ProjectsShowcase.css'
 
@@ -347,7 +346,7 @@ export default function ProjectsShowcase() {
             })}
           </div>
 
-          {/* Right Column: Live Interactive System Cockpit with Live App Window */}
+          {/* Right Column: Live Interactive System Cockpit with Minimal Glassmorphism */}
           <div className="projects-cockpit-viewer">
             <AnimatePresence mode="wait">
               <motion.div
@@ -356,12 +355,25 @@ export default function ProjectsShowcase() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
                 transition={{ duration: 0.3 }}
-                className="cockpit-viewer-card tl-glass"
+                className="cockpit-viewer-card"
               >
+                {/* Dynamic Ambient Background Glow */}
+                <div 
+                  className="cockpit-glow-backdrop" 
+                  style={{ background: `radial-gradient(ellipse at 50% 0%, ${activeProject.color}14 0%, transparent 68%)` }} 
+                />
+
                 {/* Cockpit Top Bar */}
                 <div className="viewer-header-bar">
                   <div className="viewer-brand-badge">
-                    <div className="viewer-icon-pill" style={{ background: `${activeProject.color}15`, color: activeProject.color }}>
+                    <div 
+                      className="viewer-icon-pill" 
+                      style={{ 
+                        background: `${activeProject.color}14`, 
+                        borderColor: `${activeProject.color}30`,
+                        color: activeProject.color 
+                      }}
+                    >
                       <ActiveIcon size={20} />
                     </div>
                     <div>
@@ -382,7 +394,7 @@ export default function ProjectsShowcase() {
                       href={activeProject.targetUrl} 
                       target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
-                      className="viewer-visit-btn tl-btn"
+                      className="viewer-visit-btn"
                     >
                       <span>Visit Site</span>
                       <ArrowUpRight size={13} />
@@ -393,7 +405,7 @@ export default function ProjectsShowcase() {
                 {/* Tagline */}
                 <p className="viewer-tagline">{activeProject.tagline}</p>
 
-                {/* Live App / Website iFrame Window */}
+                {/* Live App / Website iFrame Window (Frosted Glass Chrome Bar) */}
                 <div className="live-preview-window">
                   {/* Browser Window Chrome Bar */}
                   <div className="preview-window-bar">
@@ -454,7 +466,7 @@ export default function ProjectsShowcase() {
                   </div>
                 </div>
 
-                {/* Key Verified Metrics Strip */}
+                {/* Minimal Glassmorphic Metrics Strip */}
                 <div className="viewer-metrics-grid">
                   {activeProject.metrics.map((m) => (
                     <div key={m.label} className="viewer-metric-item">
