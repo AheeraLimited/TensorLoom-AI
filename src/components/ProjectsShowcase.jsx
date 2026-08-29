@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ShoppingBag, Car, UtensilsCrossed, Droplets, Milk, Sparkles, MessageSquare, 
-  ArrowRight, CheckCircle2, ExternalLink, ArrowUpRight, Workflow, Lock, Store, Layers, ChevronRight
+  ArrowRight, CheckCircle2, ExternalLink, ArrowUpRight, Workflow, Lock, Store, Layers, ChevronRight,
+  Smartphone, Monitor
 } from 'lucide-react'
 import './ProjectsShowcase.css'
 
@@ -24,9 +23,10 @@ const PROJECTS = [
     badge: 'LUXURY ONLINE SHOPPING',
     icon: ShoppingBag,
     color: '#ff6d42',
+    defaultView: 'desktop',
     demoDomain: 'https://zynara.netlify.app',
-    targetUrl: 'https://zynara.netlify.app',
-    tagline: 'Modern luxury fashion store with instant checkout, dynamic product variations, and interactive lookbooks.',
+    targetUrl: 'https://zynara.netlify.app/',
+    tagline: 'Modern luxury fashion store with instant checkout, dynamic product variations, and interactive shopping cart.',
     metrics: [
       { label: 'Page Speed', val: '< 1.2s' },
       { label: 'Product Options', val: '100% Dynamic' },
@@ -53,6 +53,7 @@ const PROJECTS = [
     badge: 'CAR RENTAL & LIVE GPS FLEET',
     icon: Car,
     color: '#38bdf8',
+    defaultView: 'mobile',
     demoDomain: 'https://shubhsafar.netlify.app/#browse',
     targetUrl: 'https://shubhsafar.netlify.app/#browse',
     tagline: 'Self-drive car booking platform with live GPS road route tracking and driver dashboards.',
@@ -82,6 +83,7 @@ const PROJECTS = [
     badge: 'FOOD DELIVERY & KITCHEN ORDERS',
     icon: UtensilsCrossed,
     color: '#fb7185',
+    defaultView: 'mobile',
     demoDomain: 'https://cheatmeals.netlify.app',
     targetUrl: 'https://cheatmeals.netlify.app',
     tagline: 'Live restaurant order system with kitchen screen alerts and real-time delivery tracking.',
@@ -111,6 +113,7 @@ const PROJECTS = [
     badge: 'DOORSTEP VEHICLE DETAILING',
     icon: Sparkles,
     color: '#c084fc',
+    defaultView: 'mobile',
     demoDomain: 'https://autoshinewash.netlify.app',
     targetUrl: 'https://autoshinewash.netlify.app',
     tagline: 'Doorstep car wash and ceramic coating booking with instant time-slot scheduling.',
@@ -140,6 +143,7 @@ const PROJECTS = [
     badge: 'DAILY DAIRY SUBSCRIPTION',
     icon: Milk,
     color: '#38bdf8',
+    defaultView: 'mobile',
     demoDomain: 'https://aheeramilk.netlify.app',
     targetUrl: 'https://aheeramilk.netlify.app',
     tagline: 'Daily farm fresh milk delivery app with calendar schedules, vacation pause, and WhatsApp billing.',
@@ -169,6 +173,7 @@ const PROJECTS = [
     badge: 'STORE MANAGER & INVOICING',
     icon: Store,
     color: '#34d399',
+    defaultView: 'desktop',
     demoDomain: 'https://aheerastore.netlify.app',
     targetUrl: 'https://aheerastore.netlify.app/',
     tagline: 'Centralized dairy store management, customer balance ledgers, and WhatsApp billing.',
@@ -198,6 +203,7 @@ const PROJECTS = [
     badge: 'AUTOMATED WHATSAPP BOT',
     icon: MessageSquare,
     color: '#fbbf24',
+    defaultView: 'mobile',
     demoDomain: 'https://crm.tensorloom.ai/inbox',
     targetUrl: '#contact',
     tagline: 'Automated WhatsApp assistant that answers customer questions, captures leads, and shares bills 24/7.',
@@ -225,6 +231,7 @@ const PROJECTS = [
 export default function ProjectsShowcase() {
   const [activeCategory, setActiveCategory] = useState('All Projects')
   const [selectedId, setSelectedId] = useState(PROJECTS[0].id)
+  const [userDeviceMode, setUserDeviceMode] = useState(null)
   const [zynaraRefreshCount, setZynaraRefreshCount] = useState(0)
 
   // 3.8s background auto-reload timer for Zynara
@@ -241,6 +248,7 @@ export default function ProjectsShowcase() {
     : PROJECTS.filter((p) => p.category === activeCategory)
 
   const activeProject = PROJECTS.find((p) => p.id === selectedId) || PROJECTS[0]
+  const activeView = userDeviceMode || activeProject.defaultView || 'desktop'
   const ActiveIcon = activeProject.icon
 
   return (
@@ -414,6 +422,28 @@ export default function ProjectsShowcase() {
                       <span className="preview-url-text">{activeProject.demoDomain}</span>
                     </a>
 
+                    {/* Responsive Device View Switcher */}
+                    <div className="preview-device-switch">
+                      <button 
+                        className={`device-btn ${activeView === 'desktop' ? 'active' : ''}`}
+                        onClick={() => setUserDeviceMode('desktop')}
+                        title="Desktop View"
+                        aria-label="Desktop View"
+                      >
+                        <Monitor size={12} />
+                        <span>Desktop</span>
+                      </button>
+                      <button 
+                        className={`device-btn ${activeView === 'mobile' ? 'active' : ''}`}
+                        onClick={() => setUserDeviceMode('mobile')}
+                        title="Mobile App View"
+                        aria-label="Mobile View"
+                      >
+                        <Smartphone size={12} />
+                        <span>Mobile</span>
+                      </button>
+                    </div>
+
                     <a 
                       href={activeProject.targetUrl} 
                       target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
@@ -426,17 +456,33 @@ export default function ProjectsShowcase() {
                     </a>
                   </div>
 
-                  {/* Live Interactive iFrame Feed Container */}
-                  <div className="preview-iframe-container">
+                  {/* Live Interactive iFrame Feed Stage */}
+                  <div className={`preview-iframe-stage ${activeView === 'mobile' ? 'mode-mobile-stage' : 'mode-desktop-stage'}`}>
                     {activeProject.targetUrl.startsWith('http') ? (
-                      <iframe
-                        key={activeProject.id === 'zynara' ? `zynara-feed-${zynaraRefreshCount}` : activeProject.targetUrl}
-                        src={activeProject.targetUrl}
-                        title={`${activeProject.name} Live Web Feed`}
-                        className="live-app-iframe"
-                        loading="lazy"
-                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                      />
+                      activeView === 'mobile' ? (
+                        <div className="mobile-device-chassis">
+                          <div className="phone-island-notch" />
+                          <iframe
+                            key={activeProject.id === 'zynara' ? `zynara-feed-${zynaraRefreshCount}` : activeProject.targetUrl}
+                            src={activeProject.targetUrl}
+                            title={`${activeProject.name} Live Web Feed`}
+                            className="live-mobile-iframe"
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                          />
+                        </div>
+                      ) : (
+                        <div className="desktop-device-chassis">
+                          <iframe
+                            key={activeProject.id === 'zynara' ? `zynara-feed-${zynaraRefreshCount}` : activeProject.targetUrl}
+                            src={activeProject.targetUrl}
+                            title={`${activeProject.name} Live Web Feed`}
+                            className="live-desktop-iframe"
+                            loading="lazy"
+                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                          />
+                        </div>
+                      )
                     ) : (
                       <div className="preview-fallback-box">
                         <MessageSquare size={32} color="var(--coral)" />

@@ -481,20 +481,114 @@
   transform: translateY(-1px);
 }
 
-.preview-iframe-container {
-  width: 100%;
-  height: 400px;
-  background: #ffffff;
-  position: relative;
-  overflow: hidden;
-  -webkit-overflow-scrolling: touch;
+/* Responsive Device Switcher Pill */
+.preview-device-switch {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  padding: 2px;
+  backdrop-filter: blur(8px);
 }
 
-.live-app-iframe {
+.device-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.65);
+  border-radius: 999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.device-btn:hover {
+  color: #ffffff;
+}
+
+.device-btn.active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+/* Stage Container */
+.preview-iframe-stage {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.preview-iframe-stage.mode-desktop-stage {
+  width: 100%;
+  height: 440px;
+  background: #ffffff;
+}
+
+.desktop-device-chassis {
+  width: 100%;
+  height: 100%;
+}
+
+.live-desktop-iframe {
   width: 100%;
   height: 100%;
   border: none;
   background: #ffffff;
+  display: block;
+}
+
+/* Luxury Mobile Phone Chassis with Ambient Background */
+.preview-iframe-stage.mode-mobile-stage {
+  width: 100%;
+  min-height: 560px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  background: radial-gradient(circle at 50% 30%, rgba(255, 109, 66, 0.08) 0%, rgba(10, 8, 18, 0.95) 100%);
+}
+
+.mobile-device-chassis {
+  width: 100%;
+  max-width: 375px;
+  height: 520px;
+  border-radius: 36px;
+  border: 3.5px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 1.5px rgba(255, 255, 255, 0.6), 0 0 35px rgba(255, 109, 66, 0.15);
+  background: #000000;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.phone-island-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 18px;
+  background: #000000;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.live-mobile-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: #000000;
   display: block;
 }
 
