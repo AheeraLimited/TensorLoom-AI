@@ -291,29 +291,52 @@ export default function ProjectsShowcase() {
               return (
                 <motion.div
                   key={proj.id}
-                  className={`proj-card-item tl-glass ${isSelected ? 'selected' : ''}`}
+                  className={`proj-card-item ${isSelected ? 'selected' : ''}`}
                   onClick={() => setSelectedId(proj.id)}
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="proj-card-top">
-                    <div className="proj-icon-box" style={{ background: `${proj.color}12`, color: proj.color }}>
+                  {/* Top Row: Icon + Title & Category Stack + Status Indicator */}
+                  <div className="proj-card-main-row">
+                    <div 
+                      className="proj-icon-box" 
+                      style={{ 
+                        background: `${proj.color}15`, 
+                        borderColor: `${proj.color}35`,
+                        color: proj.color 
+                      }}
+                    >
                       <IconComp size={18} />
                     </div>
-                    <span className="proj-category-tag">{proj.category}</span>
-                    <ChevronRight 
-                      size={15} 
-                      className={`proj-arrow-indicator ${isSelected ? 'visible' : ''}`} 
-                    />
+
+                    <div className="proj-title-group">
+                      <div className="proj-name-badge-row">
+                        <h4 className="proj-name">{proj.name}</h4>
+                        <span className="proj-category-pill" style={{ color: isSelected ? proj.color : 'inherit' }}>
+                          {proj.category}
+                        </span>
+                      </div>
+                      <p className="proj-tagline-text">{proj.tagline}</p>
+                    </div>
+
+                    <div className="proj-status-right">
+                      {isSelected ? (
+                        <div className="proj-active-indicator" style={{ background: `${proj.color}15`, color: proj.color }}>
+                          <span className="pulse-dot" style={{ background: proj.color }} />
+                          <span>Active</span>
+                        </div>
+                      ) : (
+                        <ChevronRight size={16} className="proj-chevron-dim" />
+                      )}
+                    </div>
                   </div>
 
-                  <h3 className="proj-name">{proj.name}</h3>
-                  <p className="proj-desc">{proj.tagline}</p>
-
-                  <div className="proj-metric-preview">
+                  {/* Bottom Row: 2 Micro Performance Tags */}
+                  <div className="proj-card-footer-tags">
                     {proj.metrics.slice(0, 2).map((m) => (
-                      <span key={m.label} className="proj-micro-badge">
-                        <strong>{m.val}</strong> {m.label}
+                      <span key={m.label} className="proj-metric-chip">
+                        <strong style={{ color: isSelected ? proj.color : 'var(--ink-primary)' }}>{m.val}</strong>
+                        <span>{m.label}</span>
                       </span>
                     ))}
                   </div>
