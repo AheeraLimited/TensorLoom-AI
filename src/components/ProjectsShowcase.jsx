@@ -384,21 +384,9 @@ export default function ProjectsShowcase() {
                     </div>
                   </div>
 
-                  <div className="viewer-actions-row">
-                    <div className="viewer-status-pill">
-                      <span className="pulse-dot dot-emerald" />
-                      <span>LIVE SYSTEM ACTIVE</span>
-                    </div>
-
-                    <a 
-                      href={activeProject.targetUrl} 
-                      target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
-                      rel="noopener noreferrer"
-                      className="viewer-visit-btn"
-                    >
-                      <span>Visit Site</span>
-                      <ArrowUpRight size={13} />
-                    </a>
+                  <div className="viewer-status-pill">
+                    <span className="pulse-dot dot-emerald" />
+                    <span>ALL SYSTEMS OPERATIONAL</span>
                   </div>
                 </div>
 
@@ -420,28 +408,22 @@ export default function ProjectsShowcase() {
                       target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
                       rel="noopener noreferrer"
                       className="preview-url-box"
-                      title="Click to visit live URL in new tab"
+                      title="Click to open live URL in a new tab"
                     >
                       <Lock size={11} color="#10b981" />
                       <span className="preview-url-text">{activeProject.demoDomain}</span>
                     </a>
 
-                    <div className="preview-bar-actions">
-                      <span className="preview-live-badge">
-                        <span className="pulse-dot dot-emerald" />
-                        <span>LIVE FEED</span>
-                      </span>
-                      <a 
-                        href={activeProject.targetUrl} 
-                        target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
-                        rel="noopener noreferrer"
-                        className="preview-direct-launch-link"
-                        title="Open Live Website in New Tab"
-                      >
-                        <span>Open Live Site</span>
-                        <ExternalLink size={12} />
-                      </a>
-                    </div>
+                    <a 
+                      href={activeProject.targetUrl} 
+                      target={activeProject.targetUrl.startsWith('http') ? '_blank' : '_self'}
+                      rel="noopener noreferrer"
+                      className="preview-direct-launch-link"
+                      title="Open Live Website in New Tab"
+                    >
+                      <span>Open Live Site</span>
+                      <ExternalLink size={12} />
+                    </a>
                   </div>
 
                   {/* Live Interactive iFrame Feed Container */}
