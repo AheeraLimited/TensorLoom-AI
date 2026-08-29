@@ -12,11 +12,11 @@ const NAV_ITEMS = [
     href: '#projects',
     label: 'Projects',
     dropdown: [
-      { href: '#projects', title: 'Luxury E-Commerce', desc: 'Zynara instant checkout & dynamic cart', icon: ShoppingBag, color: '#ff6d42' },
-      { href: '#projects', title: 'Car Rental & Live GPS', desc: 'Shubh Safar route maps & online KYC', icon: Car, color: '#38bdf8' },
-      { href: '#projects', title: 'Food & Kitchen Stream', desc: 'Cheat Meals orders & kitchen chime alerts', icon: UtensilsCrossed, color: '#fb7185' },
-      { href: '#projects', title: 'Dairy Subscriptions', desc: 'Aheera Milk routes & WhatsApp bills', icon: Milk, color: '#34d399' },
-      { href: '#projects', title: 'Automated WhatsApp Bots', desc: '24/7 AI lead capture & instant replies', icon: MessageSquare, color: '#fbbf24' }
+      { href: '#projects', title: 'E-Commerce', desc: 'Online shopping, dynamic carts & instant checkout', icon: ShoppingBag, color: '#ff6d42' },
+      { href: '#projects', title: 'Automobile', desc: 'Live GPS fleet tracking, rentals & auto detailing', icon: Car, color: '#38bdf8' },
+      { href: '#projects', title: 'Food Delivery', desc: 'Live kitchen orders, chime alerts & rider tracking', icon: UtensilsCrossed, color: '#fb7185' },
+      { href: '#projects', title: 'FMCG & Subscriptions', desc: 'Daily delivery routes, vacation pause & billing', icon: Milk, color: '#34d399' },
+      { href: '#projects', title: 'WhatsApp Bots & CRM', desc: '24/7 automated support, lead capture & shared inbox', icon: MessageSquare, color: '#fbbf24' }
     ]
   },
   {
