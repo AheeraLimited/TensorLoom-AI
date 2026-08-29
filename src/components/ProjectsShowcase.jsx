@@ -296,8 +296,8 @@ export default function ProjectsShowcase() {
                   whileHover={{ y: -2 }}
                   transition={{ duration: 0.2 }}
                 >
-                  {/* Top Row: Icon + Title & Category Stack + Status Indicator */}
-                  <div className="proj-card-main-row">
+                  {/* Top Row: Icon + Name & Category + Status */}
+                  <div className="proj-card-header-row">
                     <div 
                       className="proj-icon-box" 
                       style={{ 
@@ -309,29 +309,31 @@ export default function ProjectsShowcase() {
                       <IconComp size={18} />
                     </div>
 
-                    <div className="proj-title-group">
-                      <div className="proj-name-badge-row">
-                        <h4 className="proj-name">{proj.name}</h4>
+                    <div className="proj-title-stack">
+                      <div className="proj-name-cat-line">
+                        <span className="proj-name">{proj.name}</span>
                         <span className="proj-category-pill" style={{ color: isSelected ? proj.color : 'inherit' }}>
                           {proj.category}
                         </span>
                       </div>
-                      <p className="proj-tagline-text">{proj.tagline}</p>
                     </div>
 
-                    <div className="proj-status-right">
+                    <div className="proj-status-box">
                       {isSelected ? (
-                        <div className="proj-active-indicator" style={{ background: `${proj.color}15`, color: proj.color }}>
+                        <div className="proj-active-pill" style={{ background: `${proj.color}15`, color: proj.color, borderColor: `${proj.color}30` }}>
                           <span className="pulse-dot" style={{ background: proj.color }} />
                           <span>Active</span>
                         </div>
                       ) : (
-                        <ChevronRight size={16} className="proj-chevron-dim" />
+                        <ChevronRight size={15} className="proj-chevron-dim" />
                       )}
                     </div>
                   </div>
 
-                  {/* Bottom Row: 2 Micro Performance Tags */}
+                  {/* Middle: Clear 1-Line Value Tagline */}
+                  <p className="proj-tagline-text">{proj.tagline}</p>
+
+                  {/* Bottom Row: 2 Performance Metric Chips */}
                   <div className="proj-card-footer-tags">
                     {proj.metrics.slice(0, 2).map((m) => (
                       <span key={m.label} className="proj-metric-chip">
