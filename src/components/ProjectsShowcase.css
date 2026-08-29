@@ -95,17 +95,9 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  max-height: 840px;
-  overflow-y: auto;
+  max-height: none;
+  overflow: visible;
   padding: 4px 6px 16px 2px;
-}
-
-.projects-selector-list::-webkit-scrollbar {
-  width: 5px;
-}
-.projects-selector-list::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 4px;
 }
 
 .proj-card-item {
@@ -662,93 +654,138 @@
 }
 
 /* ===================================================================
-   4-Step Workflow Pipeline (Glassmorphic Slabs)
+   4-Step Workflow Pipeline (Process-Inspired Luxury Glass Cards)
    =================================================================== */
 .viewer-architecture-box {
   position: relative;
   z-index: 1;
   background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 14px;
-  padding: 18px 20px;
+  border-radius: 16px;
+  padding: 22px 24px;
 }
 
 .v-arch-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .v-arch-title {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 700;
   color: #ffffff;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 
 .v-arch-sub {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .v-arch-nodes-track {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 14px;
 }
 
-.v-arch-node-item {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 8px;
-  padding: 12px;
+.v-arch-node-card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 14px;
+  padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  cursor: default;
 }
 
-.v-arch-node-top {
+.v-arch-node-card:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+}
+
+.v-arch-node-card.active {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1px var(--coral), 0 16px 40px rgba(255, 109, 66, 0.25), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.arch-node-top {
   display: flex;
   align-items: center;
-  margin-bottom: 2px;
+  justify-content: space-between;
 }
 
-.v-arch-node-num {
+.arch-node-num {
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 24px;
   font-weight: 800;
-  color: #ff9b26;
-  background: rgba(255, 109, 66, 0.14);
-  border: 1px solid rgba(255, 109, 66, 0.35);
-  padding: 1px 6px;
-  border-radius: 4px;
+  color: rgba(255, 255, 255, 0.3);
 }
 
-.v-arch-node-name {
-  font-size: 12.5px;
+.v-arch-node-card.active .arch-node-num {
+  color: #ff9b26;
+  text-shadow: 0 0 14px rgba(255, 109, 66, 0.5);
+}
+
+.arch-node-icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.arch-node-middle {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.arch-node-phase-pill {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arch-node-title {
+  font-size: 15px;
   font-weight: 700;
   color: #ffffff;
-  margin: 0;
+  margin: 2px 0 0;
   line-height: 1.3;
 }
 
-.v-arch-node-desc {
-  font-size: 11px;
-  color: rgba(255, 255, 255, 0.7);
-  line-height: 1.35;
-  margin: 0;
+.arch-node-desc {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+  line-height: 1.45;
+  margin: 2px 0 0;
 }
 
 /* ===================================================================
@@ -1156,18 +1193,29 @@
   /* 4-Step Track */
   .v-arch-nodes-track {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .v-arch-node-card {
+    padding: 16px 14px;
     gap: 8px;
   }
 
-  .v-arch-node-item {
-    padding: 10px 12px;
+  .arch-node-num {
+    font-size: 20px;
   }
 
-  .v-arch-node-name {
-    font-size: 13px;
+  .arch-node-icon-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
   }
 
-  .v-arch-node-desc {
+  .arch-node-title {
+    font-size: 14px;
+  }
+
+  .arch-node-desc {
     font-size: 11.5px;
   }
 

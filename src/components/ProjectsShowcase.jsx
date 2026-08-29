@@ -3,9 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ShoppingBag, Car, UtensilsCrossed, Droplets, Milk, Sparkles, MessageSquare, 
   ArrowRight, CheckCircle2, ExternalLink, ArrowUpRight, Workflow, Lock, Store, Layers, ChevronRight,
-  Smartphone, Monitor
+  Smartphone, Monitor, Compass, Layout, Code2, Rocket
 } from 'lucide-react'
 import './ProjectsShowcase.css'
+
+const STEP_ICONS = [Compass, Layout, Code2, Rocket]
 
 const CATEGORIES = [
   'All Projects',
@@ -55,7 +57,7 @@ const PROJECTS = [
     badge: 'CAR RENTAL & LIVE GPS FLEET',
     icon: Car,
     color: '#38bdf8',
-    defaultView: 'mobile',
+    defaultView: 'desktop',
     demoDomain: 'https://shubhsafar.netlify.app/#browse',
     targetUrl: 'https://shubhsafar.netlify.app/#browse',
     tagline: 'Self-drive car booking platform with live GPS road route tracking and driver dashboards.',
@@ -85,7 +87,7 @@ const PROJECTS = [
     badge: 'FOOD DELIVERY & KITCHEN ORDERS',
     icon: UtensilsCrossed,
     color: '#fb7185',
-    defaultView: 'mobile',
+    defaultView: 'desktop',
     demoDomain: 'https://cheatmeals.netlify.app',
     targetUrl: 'https://cheatmeals.netlify.app',
     tagline: 'Live restaurant order system with kitchen screen alerts and real-time delivery tracking.',
@@ -115,7 +117,7 @@ const PROJECTS = [
     badge: 'DOORSTEP VEHICLE DETAILING',
     icon: Sparkles,
     color: '#c084fc',
-    defaultView: 'mobile',
+    defaultView: 'desktop',
     demoDomain: 'https://autoshinewash.netlify.app',
     targetUrl: 'https://autoshinewash.netlify.app',
     tagline: 'Doorstep car wash and ceramic coating booking with instant time-slot scheduling.',
@@ -145,7 +147,7 @@ const PROJECTS = [
     badge: 'DAILY DAIRY SUBSCRIPTION',
     icon: Milk,
     color: '#38bdf8',
-    defaultView: 'mobile',
+    defaultView: 'desktop',
     demoDomain: 'https://aheeramilk.netlify.app',
     targetUrl: 'https://aheeramilk.netlify.app',
     tagline: 'Daily farm fresh milk delivery app with calendar schedules, vacation pause, and WhatsApp billing.',
@@ -205,7 +207,7 @@ const PROJECTS = [
     badge: 'AUTOMATED WHATSAPP BOT',
     icon: MessageSquare,
     color: '#fbbf24',
-    defaultView: 'mobile',
+    defaultView: 'desktop',
     demoDomain: 'https://crm.tensorloom.ai/inbox',
     targetUrl: '#contact',
     tagline: 'Automated WhatsApp assistant that answers customer questions, captures leads, and shares bills 24/7.',
@@ -250,7 +252,7 @@ export default function ProjectsShowcase() {
     : PROJECTS.filter((p) => p.category === activeCategory)
 
   const activeProject = PROJECTS.find((p) => p.id === selectedId) || PROJECTS[0]
-  const activeView = userDeviceMode || activeProject.defaultView || 'desktop'
+  const activeView = userDeviceMode || 'desktop'
   const ActiveIcon = activeProject.icon
 
   return (
@@ -506,26 +508,38 @@ export default function ProjectsShowcase() {
                   ))}
                 </div>
 
-                {/* Interactive Workflow Node Graph */}
+                {/* Interactive Workflow Architecture Grid (Styled like How We Work Cards) */}
                 <div className="viewer-architecture-box">
                   <div className="v-arch-header">
                     <div className="v-arch-title">
-                      <Workflow size={14} color="var(--coral)" />
+                      <Workflow size={16} color="var(--coral)" />
                       <span>HOW THIS SYSTEM WORKS</span>
                     </div>
-                    <span className="v-arch-sub">4-Step Workflow</span>
+                    <span className="v-arch-sub">4-Stage Automated Architecture</span>
                   </div>
 
                   <div className="v-arch-nodes-track">
-                    {activeProject.nodes.map((node) => (
-                      <div key={node.name} className="v-arch-node-item">
-                        <div className="v-arch-node-top">
-                          <span className="v-arch-node-num">{node.step}</span>
+                    {activeProject.nodes.map((node, idx) => {
+                      const StepIcon = STEP_ICONS[idx % STEP_ICONS.length]
+                      return (
+                        <div key={node.name} className={`v-arch-node-card ${idx === 0 ? 'active' : ''}`}>
+                          <div className="arch-node-top">
+                            <span className="arch-node-num">{node.step}</span>
+                            <div className="arch-node-icon-badge" style={{ color: activeProject.color }}>
+                              <StepIcon size={18} />
+                            </div>
+                          </div>
+
+                          <div className="arch-node-middle">
+                            <span className="arch-node-phase-pill" style={{ color: activeProject.color }}>
+                              STEP {node.step}
+                            </span>
+                            <h5 className="arch-node-title">{node.name}</h5>
+                            <p className="arch-node-desc">{node.desc}</p>
+                          </div>
                         </div>
-                        <h5 className="v-arch-node-name">{node.name}</h5>
-                        <p className="v-arch-node-desc">{node.desc}</p>
-                      </div>
-                    ))}
+                      )
+                    })}
                   </div>
                 </div>
 
