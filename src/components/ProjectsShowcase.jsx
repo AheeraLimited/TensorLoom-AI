@@ -15,16 +15,6 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
   const [activeCategory, setActiveCategory] = useState('All Projects')
   const [selectedId, setSelectedId] = useState(PROJECTS[0].id)
   const [userDeviceMode, setUserDeviceMode] = useState(null)
-  const [zynaraRefreshCount, setZynaraRefreshCount] = useState(0)
-
-  // 3.8s background auto-reload timer for Zynara
-  useEffect(() => {
-    if (selectedId !== 'zynara') return
-    const timer = setInterval(() => {
-      setZynaraRefreshCount((prev) => prev + 1)
-    }, 3800)
-    return () => clearInterval(timer)
-  }, [selectedId])
 
   const filteredProjects = activeCategory === 'All Projects'
     ? PROJECTS
@@ -231,7 +221,7 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
                         <div className="mobile-device-chassis">
                           <div className="phone-island-notch" />
                           <iframe
-                            key={activeProject.id === 'zynara' ? `zynara-feed-${zynaraRefreshCount}` : activeProject.targetUrl}
+                            key={`${activeProject.id}-mobile`}
                             src={activeProject.targetUrl}
                             title={`${activeProject.name} Live Web Feed`}
                             className="live-mobile-iframe"
@@ -242,7 +232,7 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
                       ) : (
                         <div className="desktop-device-chassis">
                           <iframe
-                            key={activeProject.id === 'zynara' ? `zynara-feed-${zynaraRefreshCount}` : activeProject.targetUrl}
+                            key={`${activeProject.id}-desktop`}
                             src={activeProject.targetUrl}
                             title={`${activeProject.name} Live Web Feed`}
                             className="live-desktop-iframe"

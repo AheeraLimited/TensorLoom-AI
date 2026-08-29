@@ -64,8 +64,15 @@
 }
 
 html {
-  scroll-behavior: smooth;
   color-scheme: dark;
+}
+
+html.lenis, html.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+html.lenis body, html.lenis-smooth body {
+  scroll-behavior: auto !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -94,8 +101,26 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
   overflow-x: hidden;
   line-height: 1.55;
+}
+
+/* GPU Compositing Optimization for Frosted Glass Layers (Eliminates Scroll Jank) */
+.tl-glass,
+.stat-card,
+.proj-card-item,
+.bento-card,
+.about-pillar-card,
+.process-step-card,
+.pricing-card-v2,
+.faq-item-card,
+.contact-card-glass,
+.nav-inner {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Custom modern frosted scrollbar */

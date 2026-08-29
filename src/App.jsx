@@ -1,4 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Lenis from 'lenis'
+import 'lenis/dist/lenis.css'
+
 import NeuralLoomCanvas from './components/NeuralLoomCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
@@ -18,6 +21,50 @@ import { PROJECTS } from './data/projectsData.js'
 
 export default function App() {
   const [modalProject, setModalProject] = useState(null)
+
+  useEffect(() => {
+    // Initialize ultra-smooth kinetic Lenis scrolling (identical to n8n.io)
+    const lenis = new Lenis({
+      duration: 1.15,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      wheelMultiplier: 0.95,
+      touchMultiplier: 1.25,
+      infinite: false,
+    })
+
+    let rafId
+    function raf(time) {
+      lenis.raf(time)
+      rafId = requestAnimationFrame(raf)
+    }
+    rafId = requestAnimationFrame(raf)
+
+    // Smooth anchor navigation
+    const handleAnchorClick = (e) => {
+      const anchor = e.target.closest('a[href^="#"]')
+      if (anchor) {
+        const href = anchor.getAttribute('href')
+        if (href && href.startsWith('#') && href.length > 1) {
+          const target = document.querySelector(href)
+          if (target) {
+            e.preventDefault()
+            lenis.scrollTo(target, { offset: -60, duration: 1.15 })
+          }
+        }
+      }
+    }
+
+    document.addEventListener('click', handleAnchorClick)
+
+    return () => {
+      cancelAnimationFrame(rafId)
+      document.removeEventListener('click', handleAnchorClick)
+      lenis.destroy()
+    }
+  }, [])
 
   const handleOpenProjectModal = (projectIdOrIndustry) => {
     const found = PROJECTS.find(
