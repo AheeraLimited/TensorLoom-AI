@@ -395,17 +395,20 @@
   position: relative;
   z-index: 1;
   background: #0e0d16;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  border-radius: 14px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  border-radius: 16px;
   overflow: hidden;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
   box-shadow: 0 16px 45px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.35);
 }
 
 .preview-window-bar {
-  background: rgba(20, 18, 30, 0.9);
+  background: rgba(20, 18, 30, 0.95);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 16px 16px 0 0;
   padding: 9px 14px;
   display: flex;
   align-items: center;
