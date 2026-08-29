@@ -1,0 +1,175 @@
+/* ===================================================================
+   TensorLoom — Pricing & Engagements (Light n8n Theme)
+   =================================================================== */
+
+.pricing-section {
+  position: relative;
+}
+
+.pricing-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.pricing-title {
+  font-size: clamp(34px, 4.2vw, 50px);
+  line-height: 1.15;
+  color: var(--ink-primary);
+}
+
+.pricing-subtitle {
+  font-size: clamp(15px, 1.2vw, 17.5px);
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+.pricing-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.pricing-card-v2 {
+  padding: 34px 28px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 20px rgba(20, 18, 30, 0.03);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pricing-card-v2:hover {
+  border-color: var(--coral-border);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(255, 109, 66, 0.08);
+}
+
+.pricing-card-v2.highlight-coral {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1px var(--coral), 0 20px 50px rgba(255, 109, 66, 0.12);
+  background: #ffffff;
+}
+
+.tier-top-highlight-badge {
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--coral-gradient);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 4px 14px;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(234, 75, 113, 0.3);
+  white-space: nowrap;
+}
+
+.tier-head {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.tier-badge-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.tier-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--coral);
+  background: rgba(255, 109, 66, 0.08);
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.06em;
+}
+
+.tier-timeline {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+.tier-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.tier-desc {
+  font-size: 14px;
+  color: var(--ink-secondary);
+  line-height: 1.55;
+}
+
+.tier-features-wrap {
+  border-top: 1px solid var(--line);
+  padding-top: 20px;
+  margin-bottom: 28px;
+  flex-grow: 1;
+}
+
+.features-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.tier-features-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.tier-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13.5px;
+  color: var(--ink-primary);
+  line-height: 1.45;
+}
+
+.feature-check {
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.tier-action-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 960px) {
+  .pricing-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

@@ -1,0 +1,560 @@
+/* ===================================================================
+   TensorLoom — Hero Styles (n8n-Inspired Light Canvas)
+   =================================================================== */
+
+.hero-section {
+  position: relative;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(90px, 12vh, 140px) 0 50px;
+  overflow: hidden;
+}
+
+/* Ambient glow spheres (subtle coral & purple) */
+.hero-ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+  z-index: 1;
+}
+
+.hero-glow-coral {
+  top: 10%;
+  left: 5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(255, 109, 66, 0.08) 0%, transparent 70%);
+}
+
+.hero-glow-purple {
+  top: 35%;
+  right: 5%;
+  width: 40vw;
+  height: 40vw;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+}
+
+.hero-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1.05fr;
+  gap: clamp(36px, 5vw, 64px);
+  align-items: center;
+  width: 100%;
+}
+
+/* Left Hero Copy */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.hero-badge-wrap {
+  margin-bottom: 2px;
+}
+
+.hero-headline {
+  font-size: clamp(38px, 4.8vw, 64px);
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: var(--ink-primary);
+}
+
+.hero-kinetic-holder {
+  display: inline-block;
+  min-height: 1.15em;
+  position: relative;
+}
+
+.hero-kinetic-text {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.hero-tagline {
+  font-size: clamp(15.5px, 1.2vw, 18px);
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  max-width: 520px;
+}
+
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  padding-top: 6px;
+}
+
+.hero-stats-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.hero-stat-pill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  box-shadow: 0 1px 4px rgba(20, 18, 30, 0.03);
+}
+
+.hero-stat-val {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.hero-stat-desc {
+  color: var(--ink-secondary);
+}
+
+/* Right Column: n8n-Style Workflow Studio */
+.hero-right {
+  position: relative;
+  width: 100%;
+}
+
+.hero-cockpit {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(20, 18, 30, 0.08), 0 1px 3px rgba(20, 18, 30, 0.04);
+}
+
+/* Cockpit Top Bar */
+.cockpit-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 20px;
+  background: #f8f7f4;
+  border-bottom: 1px solid var(--line);
+}
+
+.cockpit-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.c-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.c-dot.red { background: #ef4444; }
+.c-dot.yellow { background: #f59e0b; }
+.c-dot.green { background: #10b981; }
+
+.cockpit-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-secondary);
+  letter-spacing: 0.04em;
+}
+
+.cockpit-sim-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--coral);
+  background: rgba(255, 109, 66, 0.08);
+  border: 1px solid rgba(255, 109, 66, 0.25);
+  padding: 4px 10px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+.cockpit-sim-toggle:hover {
+  background: rgba(255, 109, 66, 0.16);
+}
+
+.spin-slow {
+  animation: spin 6s linear infinite;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* n8n-Style Workflow Canvas Node Row */
+.hero-workflow-canvas {
+  background: #faf9f6;
+  background-image: radial-gradient(#e2e0d8 1.1px, transparent 1.1px);
+  background-size: 18px 18px;
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.workflow-nodes-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  position: relative;
+}
+
+.workflow-node-card {
+  background: #ffffff;
+  border: 1.5px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 12px 14px;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.workflow-node-card:hover {
+  border-color: var(--coral-border);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(255, 109, 66, 0.08);
+}
+
+.workflow-node-card.active {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 1px var(--coral), 0 8px 25px rgba(255, 109, 66, 0.15);
+  background: #ffffff;
+}
+
+.workflow-node-card.done {
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* Node Circular Connection Handles (n8n signature) */
+.node-handle-in {
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--ink-subtle);
+}
+
+.node-handle-out {
+  position: absolute;
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid var(--coral);
+}
+
+.node-icon-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.node-icon-pill {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.node-type-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  letter-spacing: 0.03em;
+  margin-right: auto;
+}
+
+.node-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-top: 2px;
+}
+
+.workflow-node-card.active .node-name {
+  color: var(--coral);
+}
+
+/* Cockpit Main Body */
+.cockpit-body {
+  padding: 22px;
+  background: #ffffff;
+}
+
+.cockpit-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.cockpit-stage-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.cockpit-status-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--emerald);
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.cockpit-step-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 4px;
+}
+
+.cockpit-step-meta {
+  font-size: 13px;
+  color: var(--ink-secondary);
+  margin-bottom: 16px;
+}
+
+/* Code block in clean Light Mode */
+.cockpit-code-block {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+
+.code-tab {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+}
+
+.code-status {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: 0.06em;
+}
+
+.cockpit-code-block code {
+  color: #1e1b2e;
+  line-height: 1.5;
+  display: block;
+  word-break: break-all;
+}
+
+/* Cockpit Telemetry Footer */
+.cockpit-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 14px 20px;
+  background: #faf9f6;
+  border-top: 1px solid var(--line);
+  gap: 12px;
+}
+
+.cockpit-telemetry-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.telemetry-label {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+}
+
+.telemetry-value {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  font-family: var(--font-mono);
+}
+
+.text-emerald {
+  color: var(--emerald);
+}
+
+/* Satellite Telemetry Badges */
+.hero-satellite-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 14px;
+  width: 100%;
+}
+
+.hero-satellite-pill {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  box-shadow: 0 4px 16px rgba(20, 18, 30, 0.04);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-satellite-pill:hover {
+  border-color: var(--coral-border);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 109, 66, 0.1);
+}
+
+.fp-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255, 109, 66, 0.08);
+  border: 1px solid rgba(255, 109, 66, 0.15);
+  flex-shrink: 0;
+}
+
+.fp-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fp-copy strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  line-height: 1.3;
+}
+
+.fp-copy span {
+  display: block;
+  font-size: 11px;
+  color: var(--ink-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .hero-container {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .hero-tagline {
+    max-width: 100%;
+  }
+  .hero-right {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 84px 0 36px;
+    min-height: auto;
+  }
+  .hero-headline {
+    font-size: clamp(30px, 8.5vw, 42px);
+  }
+  .hero-tagline {
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .hero-cta-group .tl-btn {
+    width: 100%;
+  }
+  .hero-stats-row {
+    gap: 8px;
+    padding-top: 14px;
+  }
+  .hero-stat-pill {
+    font-size: 11.5px;
+    padding: 5px 10px;
+  }
+  .cockpit-bar {
+    padding: 10px 14px;
+  }
+  .cockpit-title {
+    font-size: 10px;
+  }
+  .workflow-nodes-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .cockpit-body {
+    padding: 16px 14px;
+  }
+  .cockpit-step-title {
+    font-size: 16px;
+  }
+  .cockpit-step-meta {
+    font-size: 12px;
+    margin-bottom: 12px;
+  }
+  .cockpit-code-block {
+    padding: 10px 12px;
+    font-size: 11px;
+  }
+  .cockpit-footer {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 12px 14px;
+  }
+  .hero-satellite-bar {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .hero-satellite-pill {
+    padding: 10px 14px;
+  }
+}

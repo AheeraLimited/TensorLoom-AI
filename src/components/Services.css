@@ -1,0 +1,459 @@
+/* ===================================================================
+   TensorLoom — Services (Light Bento Grid)
+   =================================================================== */
+
+.services-section {
+  position: relative;
+}
+
+.services-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.services-title {
+  font-size: clamp(32px, 4.2vw, 50px);
+  line-height: 1.15;
+  color: var(--ink-primary);
+}
+
+.services-subtitle {
+  font-size: clamp(15px, 1.2vw, 17.5px);
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+/* Bento Grid */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.bento-span-2 {
+  grid-column: span 2;
+}
+
+.bento-card {
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 20px rgba(20, 18, 30, 0.03);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+  border-color: var(--coral-border);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(255, 109, 66, 0.08);
+}
+
+.bento-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.bento-icon-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bento-badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+}
+
+.bento-icon-title h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin-bottom: 2px;
+}
+
+.bento-sub {
+  font-size: 12.5px;
+  color: var(--ink-secondary);
+}
+
+.bento-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--ink-secondary);
+  background: #f4f3ee;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  letter-spacing: 0.06em;
+}
+
+/* Card 1: Interactive Terminal Widget */
+.bento-terminal-widget {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  margin-top: 10px;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.t-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+.t-dot.red { background: #ef4444; }
+.t-dot.yellow { background: #f59e0b; }
+.t-dot.green { background: #10b981; }
+
+.t-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-left: 8px;
+}
+
+.terminal-stream {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  color: var(--ink-primary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.prompt-sign {
+  color: var(--coral);
+  font-weight: 700;
+}
+
+.typing-cursor {
+  width: 7px;
+  height: 15px;
+  background: var(--coral);
+  display: inline-block;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.terminal-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.t-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-primary);
+  background: #ffffff;
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Card 2: UI Mockup */
+.bento-ui-mockup {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mockup-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mockup-label {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.mockup-toggle {
+  width: 36px;
+  height: 20px;
+  background: #e2e0d8;
+  border-radius: 999px;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.mockup-toggle.on {
+  background: var(--coral);
+}
+
+.toggle-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  transition: transform 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.mockup-toggle.on .toggle-thumb {
+  transform: translateX(16px);
+}
+
+.mockup-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 48px;
+  padding: 6px 0;
+}
+
+.m-bar {
+  flex: 1;
+  background: #e2e0d8;
+  border-radius: 4px;
+  transition: height 0.3s ease;
+}
+
+.mockup-caption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+/* Card 3: Cloud & Infra */
+.bento-infra-widget {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.infra-node-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+}
+
+.infra-region {
+  color: var(--ink-primary);
+  font-weight: 600;
+}
+
+.infra-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--emerald);
+  font-weight: 600;
+}
+
+.infra-uptime-badge {
+  margin-top: 6px;
+  padding-top: 8px;
+  border-top: 1px solid var(--line);
+  font-size: 11.5px;
+  color: var(--ink-secondary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.infra-uptime-badge strong {
+  color: var(--emerald);
+}
+
+/* Card 4: Vector Data */
+.bento-data-widget {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flow-step {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flow-badge {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 10px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  color: var(--ink-secondary);
+}
+
+.flow-badge.highlight {
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.3);
+  color: #7c3aed;
+}
+
+.flow-arrow {
+  color: var(--ink-subtle);
+  font-size: 14px;
+}
+
+.data-meta-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-faint);
+}
+
+/* Card 5: Phone */
+.bento-phone-widget {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.mini-phone-screen {
+  width: 120px;
+  height: 90px;
+  background: #ffffff;
+  border: 2px solid #e2e0d8;
+  border-radius: 12px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.phone-notch {
+  width: 32px;
+  height: 4px;
+  background: #e2e0d8;
+  border-radius: 2px;
+}
+
+.phone-app-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.phone-card-skeleton {
+  width: 100%;
+  height: 24px;
+  background: #f4f3ef;
+  border-radius: 4px;
+}
+
+.phone-action-btn {
+  background: var(--coral-gradient);
+  color: #ffffff;
+  font-size: 8px;
+  font-weight: 700;
+  text-align: center;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+/* Card 6: Governance Slider */
+.bento-gov-widget {
+  background: #f8f7f4;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.gov-slider-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-secondary);
+}
+
+.gov-val {
+  font-weight: 700;
+  color: var(--emerald);
+}
+
+.gov-range-slider {
+  width: 100%;
+  accent-color: var(--coral);
+  cursor: pointer;
+}
+
+.gov-note {
+  font-size: 11.5px;
+  color: var(--ink-faint);
+  line-height: 1.4;
+}
+
+@media (max-width: 960px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-span-2 {
+    grid-column: span 1;
+  }
+}

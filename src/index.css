@@ -1,0 +1,346 @@
+/* ===================================================================
+   TensorLoom — n8n-Inspired Light Canvas Design System & Tokens
+   Palette: Crisp porcelain canvas, deep charcoal ink, n8n coral-orange gradient, lavender & emerald accents
+   Type: Space Grotesk (display) / Inter (body) / JetBrains Mono (code/HUD)
+   =================================================================== */
+
+:root {
+  --bg-canvas: #faf9f6;       /* warm porcelain canvas */
+  --bg-subtle: #f3f2ee;       /* slightly recessed panel */
+  --bg-surface: #ffffff;      /* pure white card surface */
+  --bg-elevated: #ffffff;     /* floating card surface */
+  --bg-hover: #f7f6f2;        /* interactive hover surface */
+
+  --ink-primary: #12101a;     /* deep pitch charcoal (high contrast) */
+  --ink-secondary: #4a4756;   /* crisp readable neutral body */
+  --ink-faint: #686576;       /* high-contrast technical captions & labels */
+  --ink-subtle: #9693a2;      /* border & divider faint */
+
+  /* Aliases for backwards compatibility */
+  --thread: #ff6d42;
+  --thread-bright: #ff9b26;
+  --paper: #12101a;
+  --paper-dim: #4a4756;
+  --paper-faint: #686576;
+
+  /* n8n Signature Coral-Orange Gradient & Accents */
+  --coral: #ff6d42;           /* n8n electric coral */
+  --coral-deep: #ea4b71;      /* radiant rose pink */
+  --coral-bright: #ff9b26;    /* vibrant amber orange */
+  --coral-gradient: linear-gradient(135deg, #ff6d42 0%, #ea4b71 100%);
+  --coral-subtle: rgba(255, 109, 66, 0.08);
+  --coral-border: rgba(255, 109, 66, 0.25);
+  --coral-glow: rgba(255, 109, 66, 0.25);
+
+  /* Secondary Modern Telemetry Accents */
+  --purple: #7c3aed;          /* vibrant indigo purple */
+  --purple-subtle: rgba(124, 58, 237, 0.08);
+  --emerald: #10b981;         /* success emerald */
+  --emerald-subtle: rgba(16, 185, 129, 0.1);
+  --sky: #0284c7;             /* telemetry cyan/sky */
+  --sky-subtle: rgba(2, 132, 199, 0.08);
+
+  /* Light Borders & Glass Shadows */
+  --line: #e7e5e0;            /* standard structural border */
+  --line-strong: #d3d0c8;     /* prominent border */
+  --glass-card: rgba(255, 255, 255, 0.92);
+  --glass-border: rgba(0, 0, 0, 0.07);
+  --glass-shadow: 0 10px 30px rgba(20, 18, 30, 0.04), 0 1px 3px rgba(20, 18, 30, 0.02);
+  --glass-shadow-hover: 0 18px 45px rgba(20, 18, 30, 0.08), 0 0 25px rgba(255, 109, 66, 0.08);
+
+  --font-display: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --container: 1220px;
+  --edge: clamp(20px, 5vw, 48px);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 26px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-canvas);
+  /* n8n-style workflow canvas dot matrix */
+  background-image: 
+    radial-gradient(#e2e0d8 1.15px, transparent 1.15px),
+    radial-gradient(circle at 10% 10%, rgba(255, 109, 66, 0.04) 0%, transparent 50%),
+    radial-gradient(circle at 90% 40%, rgba(124, 58, 237, 0.03) 0%, transparent 50%);
+  background-size: 24px 24px, 100% 100%, 100% 100%;
+  color: var(--ink-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  line-height: 1.55;
+}
+
+/* Custom modern light scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb {
+  background: #d8d6ce;
+  border-radius: 4px;
+  border: 2px solid var(--bg-canvas);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b8b6ae;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  margin: 0;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+/* Brand AI typography (100% identical Space Grotesk font with bold definition and signature coral color) */
+.brand-ai {
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--coral);
+  letter-spacing: inherit;
+  -webkit-text-stroke: 0.35px var(--coral);
+  margin-left: 1px;
+}
+
+/* Eyebrow badge (n8n Pill Style) */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--coral);
+  background: rgba(255, 109, 66, 0.08);
+  border: 1px solid rgba(255, 109, 66, 0.22);
+  padding: 6px 14px;
+  border-radius: 999px;
+  backdrop-filter: blur(8px);
+  width: fit-content;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(255, 109, 66, 0.06);
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --edge: 16px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    padding: 5px 12px;
+    gap: 6px;
+    line-height: 1.35;
+  }
+  .tl-section {
+    padding: clamp(56px, 10vw, 80px) 0;
+  }
+}
+
+.tl-shell {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-left: var(--edge);
+  padding-right: var(--edge);
+  position: relative;
+  z-index: 2;
+}
+
+.tl-section {
+  position: relative;
+  padding: clamp(72px, 10vw, 120px) 0;
+  z-index: 2;
+}
+
+/* Light Glass / Elevated Card Utility */
+.tl-glass {
+  background: var(--bg-surface);
+  border: 1px solid var(--line);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.tl-glass:hover {
+  border-color: #d8d5cd;
+  box-shadow: var(--glass-shadow-hover);
+  transform: translateY(-2px);
+}
+
+/* Premium n8n Buttons */
+.tl-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.tl-btn:focus-visible {
+  outline: 2px solid var(--coral);
+  outline-offset: 3px;
+}
+
+/* Primary Coral Gradient Button (n8n signature) */
+.tl-btn-primary, .tl-btn-thread {
+  background: var(--coral-gradient);
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: 0 4px 20px rgba(234, 75, 113, 0.3);
+}
+.tl-btn-primary:hover, .tl-btn-thread:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(234, 75, 113, 0.45);
+  filter: brightness(1.04);
+}
+
+/* Secondary Crisp White / Dark Text Ghost Button */
+.tl-btn-ghost {
+  background: #ffffff;
+  color: var(--ink-primary);
+  border-color: var(--line);
+  box-shadow: 0 2px 8px rgba(20, 18, 30, 0.04);
+}
+.tl-btn-ghost:hover {
+  background: #f8f7f4;
+  border-color: #cac7be;
+  color: var(--coral);
+  transform: translateY(-2px);
+}
+
+/* Weft & Warp divider lines */
+.tl-warp {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, var(--line) 15%, var(--line) 85%, transparent);
+  pointer-events: none;
+  z-index: 1;
+}
+@media (max-width: 960px) {
+  .tl-warp { display: none; }
+}
+
+.tl-weft {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line) 20%, var(--line) 80%, transparent);
+  margin: 0 auto;
+}
+.tl-weft::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 64px;
+  height: 3px;
+  background: var(--coral-gradient);
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 109, 66, 0.4);
+}
+
+/* n8n Rainbow text gradient utility */
+.text-gradient-gold, .text-gradient-n8n {
+  background: linear-gradient(135deg, #14121e 20%, #ff6d42 65%, #ea4b71 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #14121e 20%, #7c3aed 70%, #ff6d42 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Ambient glow accents */
+.tl-glow {
+  position: absolute;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.08;
+  z-index: 1;
+}
+
+/* Status dots */
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+.pulse-dot.dot-emerald {
+  background: var(--emerald);
+  box-shadow: 0 0 8px var(--emerald);
+}
+.pulse-dot.dot-gold, .pulse-dot.dot-coral {
+  background: var(--coral);
+  box-shadow: 0 0 8px var(--coral);
+}
+.pulse-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid currentColor;
+  animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.9; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+::selection {
+  background: rgba(255, 109, 66, 0.2);
+  color: #14121e;
+}
