@@ -514,8 +514,13 @@ export default function ProjectsShowcase() {
                     </div>
 
                     <div className="v-launch-callout">
-                      <h5 className="launch-callout-title">Want a similar platform for your business?</h5>
-                      <p className="launch-callout-text">We can customize and launch this tailored to your brand in 2-3 weeks.</p>
+                      <div className="launch-callout-header">
+                        <Sparkles size={14} color="var(--coral)" />
+                        <h5 className="launch-callout-title">Want a similar platform for your business?</h5>
+                      </div>
+                      <p className="launch-callout-text">
+                        We can customize and launch this tailored to your brand in 2-3 weeks.
+                      </p>
                       <a href="#contact" className="tl-btn tl-btn-primary launch-cta-btn">
                         <span>Start a Project</span>
                         <ArrowRight size={14} />
