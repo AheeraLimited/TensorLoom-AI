@@ -100,9 +100,9 @@ export default function Pricing() {
                 <span className="features-subhead">WHAT'S INCLUDED:</span>
                 <ul className="tier-features-list">
                   {tier.features.map((feat) => (
-                    <li key={feat} className="tier-feat-item">
+                    <li key={feat} className="tier-feature-item">
                       <span className="tier-check-icon">
-                        <Check size={13} color="var(--emerald)" />
+                        <Check size={14} color="var(--emerald)" />
                       </span>
                       <span>{feat}</span>
                     </li>
@@ -113,7 +113,7 @@ export default function Pricing() {
               <div className="tier-cta-box">
                 <a 
                   href="#contact" 
-                  className={`tl-btn ${tier.highlight ? 'tl-btn-primary' : 'tl-btn-secondary'} tier-btn`}
+                  className={`tl-btn ${tier.highlight ? 'tl-btn-primary' : 'tl-btn-secondary'} tier-action-btn`}
                 >
                   <span>{tier.cta}</span>
                   <ArrowRight size={14} />
