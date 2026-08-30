@@ -39,6 +39,7 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
   position: relative;
+  align-items: stretch;
 }
 
 .process-step-card {
@@ -46,7 +47,8 @@
   border-radius: var(--radius-xl);
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  justify-content: space-between;
+  gap: 16px;
   cursor: pointer;
   position: relative;
   background: var(--glass-bg);
@@ -55,6 +57,7 @@
   border: var(--glass-border);
   box-shadow: var(--glass-shadow), var(--glass-rim);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  min-height: 400px;
 }
 
 .process-step-card:hover {
@@ -66,7 +69,7 @@
 
 .process-step-card.active {
   border-color: var(--coral);
-  box-shadow: 0 0 0 1px var(--coral), 0 20px 55px rgba(255, 109, 66, 0.2), var(--glass-rim);
+  box-shadow: 0 0 0 1.5px var(--coral), 0 20px 55px rgba(255, 109, 66, 0.2), var(--glass-rim);
   background: var(--bg-elevated);
 }
 
@@ -74,13 +77,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 2px;
 }
 
 .step-number {
   font-family: var(--font-mono);
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 800;
   color: var(--ink-faint);
+  letter-spacing: -0.02em;
 }
 
 .process-step-card.active .step-number {
@@ -99,59 +104,63 @@
   backdrop-filter: blur(8px);
 }
 
-.step-content {
+.step-card-middle {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
 }
 
-.step-phase-label {
+.step-phase-pill {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.12em;
+  color: var(--coral);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  margin-bottom: 2px;
 }
 
 .step-title {
-  font-size: 18px;
+  font-size: 19px;
   font-weight: 700;
   color: var(--ink-primary);
   margin: 0;
   line-height: 1.25;
 }
 
-.step-desc {
-  font-size: 13px;
+.step-summary {
+  font-size: 13.5px;
   color: var(--ink-secondary);
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0;
 }
 
-.step-deliverables-strip {
+.step-deliverables-list {
   margin-top: auto;
-  padding-top: 14px;
+  padding-top: 16px;
   border-top: 1px solid var(--line);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 7px;
 }
 
 .deliv-header {
   font-family: var(--font-mono);
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 700;
   color: var(--ink-faint);
   letter-spacing: 0.1em;
-  margin-bottom: 2px;
+  margin-bottom: 3px;
 }
 
 .deliv-item {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--ink-secondary);
+  line-height: 1.4;
 }
 
 .deliv-dot {
@@ -159,6 +168,7 @@
   height: 5px;
   border-radius: 50%;
   background: var(--coral);
+  flex-shrink: 0;
 }
 
 @media (max-width: 1024px) {
@@ -181,6 +191,7 @@
   }
   .process-step-card {
     padding: 20px 18px;
+    min-height: auto;
   }
 }
 
@@ -211,7 +222,7 @@
 [data-theme="light"] .process-step-card.active {
   background: #ffffff;
   border-color: var(--coral);
-  box-shadow: 0 0 0 1px var(--coral), 0 16px 40px rgba(255, 109, 66, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 1.5px var(--coral), 0 16px 40px rgba(255, 109, 66, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .step-number {
@@ -227,7 +238,7 @@
   color: var(--ink-primary);
 }
 
-[data-theme="light"] .step-desc {
+[data-theme="light"] .step-summary {
   color: var(--ink-secondary);
 }
 
