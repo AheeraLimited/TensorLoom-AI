@@ -4,8 +4,7 @@
 
 .demo-section {
   position: relative;
-  padding: 0px 0 clamp(50px, 6vw, 80px) !important;
-  margin-top: 0px !important;
+  padding: clamp(70px, 8vw, 100px) 0;
   overflow: hidden;
   z-index: 2;
 }
