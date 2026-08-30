@@ -180,17 +180,6 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
             </button>
 
-            {/* Schedule Call Icon Button */}
-            <button 
-              type="button"
-              className="nav-calendar-toggle"
-              onClick={onOpenDiscoveryModal}
-              aria-label="Schedule a 30-min technical discovery call on Calendly"
-              title="Schedule a 30-min discovery call on Calendly"
-            >
-              <Calendar size={15} color="var(--coral)" />
-            </button>
-
             <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a Project</a>
 
             <button
