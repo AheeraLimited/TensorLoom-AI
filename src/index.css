@@ -244,8 +244,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   position: relative;
   padding: clamp(70px, 8vw, 100px) 0;
   z-index: 2;
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 700px;
 }
 
 .tl-section.projects-section {
