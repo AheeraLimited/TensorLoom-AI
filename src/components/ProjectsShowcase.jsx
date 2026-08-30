@@ -230,7 +230,6 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
                     {activeProject.targetUrl.startsWith('http') ? (
                       activeView === 'mobile' ? (
                         <div className="mobile-device-chassis">
-                          <div className="phone-island-notch" />
                           <div className="mobile-iframe-scaler">
                             <iframe
                               key={`${activeProject.id}-mobile`}

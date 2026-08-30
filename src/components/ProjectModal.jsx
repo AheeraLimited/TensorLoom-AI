@@ -130,7 +130,6 @@ export default function ProjectModal({ project, onClose }) {
               {project.targetUrl !== '#contact' ? (
                 deviceMode === 'mobile' ? (
                   <div className="modal-mobile-chassis">
-                    <div className="phone-island-notch" />
                     <div className="modal-mobile-iframe-scaler">
                       <iframe
                         src={project.targetUrl}
