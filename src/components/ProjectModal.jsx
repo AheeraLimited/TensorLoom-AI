@@ -129,13 +129,15 @@ export default function ProjectModal({ project, onClose }) {
                 deviceMode === 'mobile' ? (
                   <div className="modal-mobile-chassis">
                     <div className="phone-island-notch" />
-                    <iframe
-                      src={project.targetUrl}
-                      title={`${project.name} live mobile feed`}
-                      className="modal-mobile-iframe"
-                      loading="lazy"
-                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
-                    />
+                    <div className="modal-mobile-iframe-scaler">
+                      <iframe
+                        src={project.targetUrl}
+                        title={`${project.name} live mobile feed`}
+                        className="modal-mobile-iframe"
+                        loading="lazy"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-modals"
+                      />
+                    </div>
                   </div>
                 ) : (
                   <iframe

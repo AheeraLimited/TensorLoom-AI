@@ -230,14 +230,16 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
                       activeView === 'mobile' ? (
                         <div className="mobile-device-chassis">
                           <div className="phone-island-notch" />
-                          <iframe
-                            key={activeProject.id === 'zynara' ? `zynara-mobile-${zynaraRefreshCount}` : `${activeProject.id}-mobile`}
-                            src={activeProject.targetUrl}
-                            title={`${activeProject.name} Live Web Feed`}
-                            className="live-mobile-iframe"
-                            loading="lazy"
-                            sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
-                          />
+                          <div className="mobile-iframe-scaler">
+                            <iframe
+                              key={activeProject.id === 'zynara' ? `zynara-mobile-${zynaraRefreshCount}` : `${activeProject.id}-mobile`}
+                              src={activeProject.targetUrl}
+                              title={`${activeProject.name} Live Web Feed`}
+                              className="live-mobile-iframe"
+                              loading="lazy"
+                              sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                            />
+                          </div>
                         </div>
                       ) : (
                         <div className="desktop-device-chassis">
