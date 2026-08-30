@@ -113,26 +113,24 @@
 }
 
 /* ===================================================================
-   Hyper-Realistic Liquid Frosted Glass Dropdown Menu (Reference Match)
+   Exact Top Header Frosted Glass Dropdown Menu
    =================================================================== */
 .nav-dropdown-menu {
   position: absolute;
   top: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 320px;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 100%);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.40);
-  border-radius: 24px;
-  padding: 10px;
-  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35), 
-              inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.7), 
-              inset 0 0 20px rgba(255, 255, 255, 0.05);
+  min-width: 300px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
+  border-radius: 18px;
+  padding: 8px;
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 3px;
   z-index: 1000;
   pointer-events: auto;
 }
@@ -152,32 +150,28 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 10px 12px;
-  border-radius: 16px;
+  padding: 8px 10px;
+  border-radius: 10px;
   text-decoration: none;
-  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  transition: background 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  background: transparent;
 }
 
 .nav-dropdown-item:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.45);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.6);
-  transform: translateY(-1px);
+  background: var(--bg-hover);
 }
 
 .nav-drop-icon {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.30);
-  backdrop-filter: blur(8px);
+  background: var(--glass-bg-nested);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(6px);
 }
 
 .nav-drop-info {
@@ -190,13 +184,13 @@
 .nav-drop-title {
   font-size: 13.5px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--ink-primary);
   line-height: 1.25;
 }
 
 .nav-drop-desc {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink-secondary);
   line-height: 1.35;
   white-space: nowrap;
 }
@@ -377,16 +371,16 @@ a.nav-cta {
   right: var(--edge);
   display: flex;
   flex-direction: column;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 100%);
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.40);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
   border-radius: var(--radius-xl);
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.7);
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   max-height: calc(85vh - 70px);
   overflow: hidden;
   z-index: 150;
-  padding: 10px;
+  padding: 8px;
 }
 
 .nav-mobile-scroll {
