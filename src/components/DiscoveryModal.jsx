@@ -16,9 +16,10 @@ export default function DiscoveryModal({ isOpen, onClose }) {
 
   return (
     <AnimatePresence>
-      <div className="dm-overlay" onClick={onClose}>
+      <div className="dm-overlay" data-lenis-prevent onClick={onClose}>
         <motion.div 
           className="dm-container dm-calendly-mode tl-glass"
+          data-lenis-prevent
           initial={{ opacity: 0, scale: 0.94, y: 15 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.94, y: 15 }}

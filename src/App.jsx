@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { Toaster, toast } from 'sonner'
@@ -40,6 +40,8 @@ export default function App() {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }
 
+  const lenisRef = useRef(null)
+
   useEffect(() => {
     // Ultra-high frame rate 120Hz+ Lenis smooth scrolling
     const lenis = new Lenis({
@@ -52,6 +54,7 @@ export default function App() {
       touchMultiplier: 1.1,
       infinite: false,
     })
+    lenisRef.current = lenis
 
     let rafId
     function raf(time) {
@@ -91,8 +94,22 @@ export default function App() {
       cancelAnimationFrame(rafId)
       document.removeEventListener('click', handleAnchorClick)
       lenis.destroy()
+      lenisRef.current = null
     }
   }, [])
+
+  // Freeze Lenis background scroll while any modal is open
+  useEffect(() => {
+    const isAnyModalOpen = Boolean(modalProject || isDiscoveryOpen || legalTab)
+    if (lenisRef.current) {
+      if (isAnyModalOpen) {
+        lenisRef.current.stop()
+      } else {
+        lenisRef.current.start()
+      }
+    }
+    document.body.style.overflow = isAnyModalOpen ? 'hidden' : 'unset'
+  }, [modalProject, isDiscoveryOpen, legalTab])
 
   useEffect(() => {
     const handleMouseMove = (e) => {

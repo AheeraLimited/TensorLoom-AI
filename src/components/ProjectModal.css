@@ -13,12 +13,14 @@
   align-items: center;
   justify-content: center;
   padding: clamp(14px, 2.5vw, 32px);
-  overflow-y: auto;
+  overflow: hidden;
+  overscroll-behavior: contain;
 }
 
 .proj-modal-container {
   width: 100%;
   max-width: 1040px;
+  height: 92vh;
   max-height: 92vh;
   background: var(--glass-bg);
   backdrop-filter: blur(34px) saturate(210%);
@@ -31,6 +33,7 @@
   overflow: hidden;
   position: relative;
   box-sizing: border-box;
+  overscroll-behavior: contain;
 }
 
 /* Modal Chrome Bar */
@@ -209,10 +212,13 @@
 .proj-modal-body {
   padding: 18px 20px 22px;
   overflow-y: auto;
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 14px;
   box-sizing: border-box;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Iframe Live Stage */

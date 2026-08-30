@@ -16,9 +16,10 @@ export default function LegalModal({ isOpen, onClose, initialTab = 'privacy' }) 
 
   return (
     <AnimatePresence>
-      <div className="legal-overlay" onClick={onClose}>
+      <div className="legal-overlay" data-lenis-prevent onClick={onClose}>
         <motion.div 
           className="legal-container tl-glass"
+          data-lenis-prevent
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
