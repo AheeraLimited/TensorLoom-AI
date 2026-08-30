@@ -55,22 +55,6 @@ export default function Contact() {
     setTimeout(() => setCopied(false), 2000)
   }
 
-  function handleDirectMailto() {
-    const subject = encodeURIComponent(`Project Inquiry: ${form.name || 'New Client'} - ${form.projectType} [${leadRefCode || 'TL-2026'}]`)
-    const body = encodeURIComponent(
-      `Hi TensorLoom AI Team,\n\nHere are my project details:\n` +
-      `• Name: ${form.name}\n` +
-      `• Email: ${form.email}\n` +
-      `• Phone: ${form.phone || 'N/A'}\n` +
-      `• Looking to Build: ${form.projectType}\n` +
-      `• Target Budget: ${form.budget}\n` +
-      `• Desired Timeline: ${form.timeline}\n\n` +
-      `Project Scope:\n${form.message}\n\n` +
-      `Looking forward to hearing from you!`
-    )
-    window.location.href = `mailto:tensoorloom@gmail.com?subject=${subject}&body=${body}`
-  }
-
   async function handleSubmit(e) {
     e.preventDefault()
     // Anti-bot honeypot check
@@ -211,17 +195,9 @@ export default function Contact() {
                     </div>
                   </div>
 
-                  <div className="success-actions" style={{ display: 'flex', gap: 10, flexWrap: 'wrap', justifyContent: 'center', marginTop: 14 }}>
+                  <div className="success-actions" style={{ display: 'flex', justifyContent: 'center', marginTop: 16 }}>
                     <button 
                       className="tl-btn tl-btn-primary" 
-                      onClick={handleDirectMailto}
-                      style={{ fontSize: 13 }}
-                    >
-                      <Mail size={14} />
-                      <span>Open in Email Client / Gmail</span>
-                    </button>
-                    <button 
-                      className="tl-btn tl-btn-ghost" 
                       onClick={() => {
                         setSent(false)
                         setForm({
@@ -235,7 +211,7 @@ export default function Contact() {
                           _gotcha: ''
                         })
                       }}
-                      style={{ fontSize: 13 }}
+                      style={{ fontSize: 13, padding: '10px 24px' }}
                     >
                       Submit Another Brief
                     </button>
