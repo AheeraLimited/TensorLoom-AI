@@ -900,10 +900,22 @@
   .projects-showcase-split {
     grid-template-columns: 1fr;
     gap: 20px;
+    width: 100%;
+    max-width: 100%;
   }
 
   .projects-cockpit-viewer {
     position: static;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .cockpit-viewer-card {
+    padding: 20px 16px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 
   .projects-selector-list {
@@ -913,6 +925,9 @@
     max-height: none;
     padding: 4px 6px 14px;
     gap: 12px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -922,8 +937,9 @@
   }
 
   .proj-card-item {
-    flex: 0 0 clamp(240px, 78vw, 310px);
+    flex: 0 0 clamp(240px, 78vw, 300px);
     scroll-snap-align: start;
+    box-sizing: border-box;
   }
 
   .v-arch-nodes-track {
@@ -944,6 +960,8 @@
     padding: 4px 6px 12px;
     gap: 8px;
     width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
@@ -958,11 +976,106 @@
     padding: 6px 14px;
     font-size: 11px;
   }
+
+  .preview-window-bar {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 10px;
+  }
+
+  .preview-url-box {
+    max-width: 100%;
+    flex: 1 1 100%;
+    order: 3;
+    font-size: 10px;
+    box-sizing: border-box;
+  }
+
+  .preview-window-dots {
+    order: 1;
+  }
+
+  .preview-device-switch {
+    order: 2;
+  }
+
+  .preview-direct-launch-link {
+    order: 2;
+    padding: 4px 10px;
+    font-size: 10px;
+  }
+
+  .preview-iframe-stage.mode-desktop-stage {
+    height: 300px;
+  }
+
+  .viewer-metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    width: 100%;
+  }
+
+  .viewer-metrics-grid .viewer-metric-item:last-child {
+    grid-column: span 2;
+  }
+
+  .v-arch-nodes-track {
+    grid-template-columns: 1fr;
+  }
+
+  .v-launch-callout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .launch-cta-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
 }
 
 @media (max-width: 480px) {
   .projects-section {
     padding: 36px 0;
+  }
+
+  .cockpit-viewer-card {
+    padding: 16px 12px;
+    border-radius: 16px;
+  }
+
+  .viewer-header-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .viewer-status-pill {
+    margin-left: 0;
+    font-size: 9.5px;
+    padding: 3px 10px;
+  }
+
+  .viewer-project-title {
+    font-size: 18px;
+  }
+
+  .viewer-tagline {
+    font-size: 13px;
+  }
+
+  .preview-iframe-stage.mode-desktop-stage {
+    height: 250px;
+  }
+
+  .viewer-metric-item {
+    padding: 10px 12px;
+  }
+
+  .v-metric-val {
+    font-size: 16px;
   }
 }
 

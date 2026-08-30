@@ -308,7 +308,7 @@ a.nav-cta {
   }
   .nav-inner {
     height: 48px;
-    padding: 4px 6px 4px 14px;
+    padding: 4px 8px 4px 14px;
     border-radius: 999px;
     gap: 8px;
   }
@@ -337,28 +337,34 @@ a.nav-cta {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 600px) {
+  .nav-shell {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
   .nav-inner {
     height: 46px;
-    padding: 4px 5px 4px 12px;
+    padding: 4px 6px 4px 12px;
     gap: 6px;
   }
-  .nav-brand span {
-    font-size: 13px;
+  .nav-brand {
+    font-size: 13.5px;
+    gap: 6px;
   }
-  .nav-theme-toggle {
-    width: 28px;
-    height: 28px;
+  .nav-right-group {
+    gap: 5px;
+  }
+  .nav-theme-toggle,
+  .nav-calendar-toggle {
+    width: 30px;
+    height: 30px;
   }
   a.nav-cta {
-    padding: 0 10px !important;
-    font-size: 10.5px !important;
-    height: 30px !important;
-    line-height: 30px !important;
+    display: none !important;
   }
   .nav-toggle {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     gap: 3.5px;
   }
   .nav-toggle span {
