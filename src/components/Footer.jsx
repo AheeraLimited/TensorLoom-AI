@@ -194,12 +194,34 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar with Telemetry & Back to Top */}
+        {/* Bottom Bar with Telemetry, Legal & Back to Top */}
         <div className="footer-bottom-bar">
           <div className="footer-bottom-left">
             <span>© {year} TensorLoom AI. All rights reserved.</span>
             <span className="footer-bullet">•</span>
-            <span className="footer-sub-tag">Fast, modern web apps and AI systems</span>
+            <button 
+              type="button" 
+              className="footer-legal-link"
+              onClick={() => onOpenLegalModal && onOpenLegalModal('privacy')}
+            >
+              Privacy Policy
+            </button>
+            <span className="footer-bullet">•</span>
+            <button 
+              type="button" 
+              className="footer-legal-link"
+              onClick={() => onOpenLegalModal && onOpenLegalModal('terms')}
+            >
+              Terms of Service
+            </button>
+            <span className="footer-bullet">•</span>
+            <button 
+              type="button" 
+              className="footer-legal-link"
+              onClick={() => onOpenLegalModal && onOpenLegalModal('nda')}
+            >
+              100% NDA & IP Security
+            </button>
           </div>
 
           <div className="footer-bottom-right">

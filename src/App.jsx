@@ -18,12 +18,14 @@ import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import ProjectModal from './components/ProjectModal.jsx'
 import DiscoveryModal from './components/DiscoveryModal.jsx'
+import LegalModal from './components/LegalModal.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
 import { PROJECTS } from './data/projectsData.js'
 
 export default function App() {
   const [modalProject, setModalProject] = useState(null)
   const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(false)
+  const [legalTab, setLegalTab] = useState(null) // 'privacy' | 'terms' | 'nda' | null
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('tensorloom-theme') || 'light'
   })
@@ -116,6 +118,14 @@ export default function App() {
     setIsDiscoveryOpen(false)
   }
 
+  const handleOpenLegal = (tab = 'privacy') => {
+    setLegalTab(tab)
+  }
+
+  const handleCloseLegal = () => {
+    setLegalTab(null)
+  }
+
   return (
     <>
       <NeuralLoomCanvas theme={theme} />
@@ -145,7 +155,10 @@ export default function App() {
         <FAQ />
         <Contact />
       </main>
-      <Footer onOpenDiscoveryModal={handleOpenDiscovery} />
+      <Footer 
+        onOpenDiscoveryModal={handleOpenDiscovery} 
+        onOpenLegalModal={handleOpenLegal}
+      />
 
       {/* Floating Direct WhatsApp Hotline */}
       <WhatsAppButton />
@@ -154,6 +167,13 @@ export default function App() {
       <DiscoveryModal 
         isOpen={isDiscoveryOpen} 
         onClose={handleCloseDiscovery} 
+      />
+
+      {/* Legal & Compliance Trust Modal */}
+      <LegalModal 
+        isOpen={Boolean(legalTab)} 
+        initialTab={legalTab || 'privacy'} 
+        onClose={handleCloseLegal} 
       />
 
       {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
