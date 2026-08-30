@@ -137,13 +137,15 @@
   transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
 }
 
-.faq-chevron-box.open {
+.faq-chevron-box.open,
+.faq-chevron-box.rotated {
   transform: rotate(180deg);
   background: var(--coral);
   color: #ffffff;
   border-color: var(--coral);
 }
 
+.faq-answer-wrap,
 .faq-answer-inner {
   padding: 0 22px 20px;
 }

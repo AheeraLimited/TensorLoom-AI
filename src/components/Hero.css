@@ -127,16 +127,20 @@
   border-color: var(--coral);
 }
 
+.hero-stat-val,
 .stat-pill-val {
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--ink-primary);
+  letter-spacing: -0.01em;
 }
 
+.hero-stat-desc,
 .stat-pill-lbl {
+  font-family: var(--font-body);
   font-size: 12px;
-  color: var(--ink-faint);
+  color: var(--ink-secondary);
   font-weight: 500;
 }
 
