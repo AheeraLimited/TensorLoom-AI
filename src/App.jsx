@@ -17,10 +17,13 @@ import FAQ from './components/FAQ.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
 import ProjectModal from './components/ProjectModal.jsx'
+import DiscoveryModal from './components/DiscoveryModal.jsx'
+import WhatsAppButton from './components/WhatsAppButton.jsx'
 import { PROJECTS } from './data/projectsData.js'
 
 export default function App() {
   const [modalProject, setModalProject] = useState(null)
+  const [isDiscoveryOpen, setIsDiscoveryOpen] = useState(false)
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('tensorloom-theme') || 'light'
   })
@@ -105,17 +108,26 @@ export default function App() {
     setModalProject(null)
   }
 
+  const handleOpenDiscovery = () => {
+    setIsDiscoveryOpen(true)
+  }
+
+  const handleCloseDiscovery = () => {
+    setIsDiscoveryOpen(false)
+  }
+
   return (
     <>
       <NeuralLoomCanvas theme={theme} />
       <div className="tl-warp" aria-hidden="true" />
       <Navbar 
         onOpenProjectModal={handleOpenProjectModal} 
+        onOpenDiscoveryModal={handleOpenDiscovery}
         theme={theme} 
         onToggleTheme={toggleTheme} 
       />
       <main>
-        <Hero />
+        <Hero onOpenDiscoveryModal={handleOpenDiscovery} />
         <IndustryMarquee />
         <ProjectsShowcase onOpenProjectModal={handleOpenProjectModal} />
         <div className="tl-shell"><div className="tl-weft" /></div>
@@ -128,12 +140,21 @@ export default function App() {
         <AgentShowcase />
         <div className="tl-shell"><div className="tl-weft" /></div>
         <Process />
-        <Pricing />
+        <Pricing onOpenDiscoveryModal={handleOpenDiscovery} />
         <div className="tl-shell"><div className="tl-weft" /></div>
         <FAQ />
         <Contact />
       </main>
-      <Footer />
+      <Footer onOpenDiscoveryModal={handleOpenDiscovery} />
+
+      {/* Floating Direct WhatsApp Hotline */}
+      <WhatsAppButton />
+
+      {/* 1-Click Discovery Call Scheduler Modal */}
+      <DiscoveryModal 
+        isOpen={isDiscoveryOpen} 
+        onClose={handleCloseDiscovery} 
+      />
 
       {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
       <ProjectModal 
