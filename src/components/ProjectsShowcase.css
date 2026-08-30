@@ -999,8 +999,8 @@
 }
 
 [data-theme="light"] .proj-card-item {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
@@ -1013,7 +1013,7 @@
 [data-theme="light"] .proj-card-item.selected {
   background: #ffffff;
   border-color: var(--coral);
-  box-shadow: 0 0 0 1px var(--coral), 0 16px 40px rgba(255, 109, 66, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 1.5px var(--coral), 0 16px 40px rgba(255, 109, 66, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .proj-title {
@@ -1024,55 +1024,125 @@
   color: var(--ink-secondary);
 }
 
+[data-theme="light"] .proj-deliv-header {
+  color: var(--ink-faint);
+}
+
 [data-theme="light"] .proj-deliv-item {
   color: var(--ink-secondary);
 }
 
-[data-theme="light"] .live-cockpit-wrapper {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
+[data-theme="light"] .cockpit-viewer-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
-[data-theme="light"] .cockpit-title {
+[data-theme="light"] .viewer-header-bar {
+  border-bottom-color: rgba(226, 232, 240, 0.9);
+}
+
+[data-theme="light"] .viewer-project-title {
   color: var(--ink-primary);
 }
 
-[data-theme="light"] .cockpit-desc {
+[data-theme="light"] .viewer-tagline {
   color: var(--ink-secondary);
 }
 
-[data-theme="light"] .cockpit-browser-bar {
-  background: rgba(241, 245, 249, 0.9);
+[data-theme="light"] .preview-window-bar {
+  background: rgba(241, 245, 249, 0.95);
+  border-bottom-color: rgba(226, 232, 240, 0.95);
+}
+
+[data-theme="light"] .preview-url-box {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .preview-device-switch {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+}
+
+[data-theme="light"] .device-btn {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .device-btn.active {
+  background: var(--coral);
+  color: #ffffff;
+}
+
+[data-theme="light"] .viewer-metric-item {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .v-metric-label {
+  color: var(--ink-faint);
+}
+
+[data-theme="light"] .viewer-architecture-box {
+  background: rgba(241, 245, 249, 0.85);
   border-color: rgba(226, 232, 240, 0.95);
 }
 
-[data-theme="light"] .browser-url-pill {
-  background: #ffffff;
-  border-color: rgba(226, 232, 240, 0.9);
+[data-theme="light"] .v-arch-title {
   color: var(--ink-primary);
 }
 
-[data-theme="light"] .browser-url-text {
-  color: var(--ink-secondary);
+[data-theme="light"] .v-arch-sub {
+  color: var(--ink-faint);
 }
 
-[data-theme="light"] .device-view-btn {
+[data-theme="light"] .v-arch-node-item {
   background: #ffffff;
-  border-color: rgba(226, 232, 240, 0.9);
-  color: var(--ink-secondary);
+  border-color: rgba(226, 232, 240, 0.95);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
 }
 
-[data-theme="light"] .device-view-btn.active {
-  background: var(--coral);
-  color: #ffffff;
-  border-color: var(--coral);
-}
-
-[data-theme="light"] .cockpit-action-btn.secondary-action {
-  background: #ffffff;
-  border-color: rgba(226, 232, 240, 0.9);
+[data-theme="light"] .v-arch-node-name {
   color: var(--ink-primary);
+}
+
+[data-theme="light"] .v-arch-node-desc {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .viewer-detail-card {
+  background: rgba(241, 245, 249, 0.85);
+  border-color: rgba(226, 232, 240, 0.95);
+}
+
+[data-theme="light"] .v-detail-heading {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .v-checklist-item {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .v-tech-pill {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.95);
+  color: var(--ink-primary);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .v-launch-callout {
+  background: rgba(241, 245, 249, 0.95);
+  border-color: rgba(226, 232, 240, 0.95);
+}
+
+[data-theme="light"] .launch-callout-title {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .launch-callout-text {
+  color: var(--ink-secondary);
 }
 
 @media (max-width: 640px) {

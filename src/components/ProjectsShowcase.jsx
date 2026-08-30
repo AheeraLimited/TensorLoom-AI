@@ -100,7 +100,7 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
                     </div>
 
                     <div className="proj-phase-row">
-                      <span className="proj-phase-pill" style={{ color: isSelected ? proj.color : 'rgba(255, 255, 255, 0.6)' }}>
+                      <span className="proj-phase-pill" style={{ color: isSelected ? proj.color : 'var(--ink-faint)' }}>
                         {proj.category}
                       </span>
                       {isSelected && (
