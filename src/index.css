@@ -248,6 +248,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   contain-intrinsic-size: 1px 700px;
 }
 
+.tl-section.projects-section {
+  padding-bottom: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.tl-section.demo-section {
+  padding-top: 0px !important;
+  margin-top: 0px !important;
+}
+
 .tl-weft {
   height: 1px;
   background: linear-gradient(90deg, transparent 0%, var(--line-strong) 50%, transparent 100%);
