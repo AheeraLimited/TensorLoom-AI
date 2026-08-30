@@ -1,4 +1,4 @@
-import { Mail, Phone, Sparkles, ExternalLink, ShieldCheck, Activity, ChevronUp, Globe } from 'lucide-react'
+import { Mail, Phone, Sparkles, ExternalLink, ShieldCheck, Activity, ChevronUp, Globe, Calendar } from 'lucide-react'
 import LoomMark from './LoomMark.jsx'
 import './Footer.css'
 
@@ -24,12 +24,13 @@ function LinkedinIcon({ size = 16 }) {
 function TwitterIcon({ size = 16 }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z" />
+      <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+      <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
     </svg>
   )
 }
 
-export default function Footer() {
+export default function Footer({ onOpenDiscoveryModal, onOpenLegalModal }) {
   const year = new Date().getFullYear()
 
   const scrollToTop = () => {
@@ -59,7 +60,16 @@ export default function Footer() {
               <span>Start Your Project</span>
               <Sparkles size={14} />
             </a>
-            <a href="#projects" className="tl-btn tl-btn-secondary">
+            <button 
+              type="button" 
+              onClick={onOpenDiscoveryModal} 
+              className="tl-btn tl-btn-secondary"
+              title="Schedule a 30-min discovery session on Calendly"
+            >
+              <Calendar size={14} color="var(--coral)" />
+              <span>Book 30-Min Call</span>
+            </button>
+            <a href="#projects" className="tl-btn tl-btn-ghost">
               <span>See Live Projects</span>
               <ExternalLink size={14} />
             </a>

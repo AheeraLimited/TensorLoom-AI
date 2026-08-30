@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
-  ArrowRight, Shield, Zap, CheckCircle2, Sparkles, Cpu, Activity, Star
+  ArrowRight, Shield, Zap, CheckCircle2, Sparkles, Cpu, Activity, Star, Calendar
 } from 'lucide-react'
 import './Hero.css'
 
@@ -12,7 +12,7 @@ const KINETIC_WORDS = [
   'Business Automation'
 ]
 
-export default function Hero() {
+export default function Hero({ onOpenDiscoveryModal }) {
   const [wordIdx, setWordIdx] = useState(0)
 
   // Cycle kinetic words
@@ -88,6 +88,17 @@ export default function Hero() {
               <span>See Our Live Work</span>
               <ArrowRight size={16} />
             </a>
+
+            <button 
+              type="button" 
+              onClick={onOpenDiscoveryModal} 
+              className="tl-btn tl-btn-secondary hero-book-call-btn"
+              title="Schedule a 30-min discovery session on Calendly"
+            >
+              <Calendar size={15} color="var(--coral)" />
+              <span>Book 30-Min Call</span>
+            </button>
+
             <a href="#capabilities" className="tl-btn tl-btn-ghost">
               <span>What We Build</span>
             </a>

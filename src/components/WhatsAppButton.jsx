@@ -5,6 +5,11 @@ import './WhatsAppButton.css'
 
 const PRESET_TOPICS = [
   {
+    icon: '📅',
+    label: 'Book 30-Min Discovery Call',
+    msg: 'Hi TensorLoom AI! I would like to schedule a 30-minute technical discovery call regarding our project requirements.'
+  },
+  {
     icon: '🛒',
     label: 'E-Commerce / Online Store',
     msg: 'Hi TensorLoom AI team! I am interested in building a high-performance E-Commerce platform with payment gateways and order management. Can we discuss pricing and timeline?'
@@ -18,11 +23,6 @@ const PRESET_TOPICS = [
     icon: '🤖',
     label: 'WhatsApp AI Bot & CRM',
     msg: 'Hello TensorLoom! I want to automate our customer inquiries and lead capture using an automated WhatsApp AI bot. How does this work?'
-  },
-  {
-    icon: '🚀',
-    label: 'General Inquiry / Urgent Sprint',
-    msg: 'Hi TensorLoom AI! I have an upcoming project requirement and would like to review your availability and estimates.'
   }
 ]
 

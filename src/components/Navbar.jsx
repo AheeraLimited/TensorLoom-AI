@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { 
   ChevronDown, ShoppingBag, Car, UtensilsCrossed, Milk, MessageSquare, 
   Layers, Cpu, Zap, Activity, Compass, Layout, Code2, Rocket, Shield, HelpCircle, 
-  Sparkles, DollarSign, CheckCircle2, ArrowRight, Sun, Moon
+  Sparkles, DollarSign, CheckCircle2, ArrowRight, Sun, Moon, Calendar
 } from 'lucide-react'
 import LoomMark from './LoomMark.jsx'
 import './Navbar.css'
@@ -73,7 +73,7 @@ const NAV_ITEMS = [
   }
 ]
 
-export default function Navbar({ onOpenProjectModal, theme = 'dark', onToggleTheme }) {
+export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme = 'dark', onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
@@ -98,62 +98,62 @@ export default function Navbar({ onOpenProjectModal, theme = 'dark', onToggleThe
     <header className={`nav-bar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="tl-shell nav-shell">
         <div className="nav-inner">
-          {/* Left: Brand Logo */}
-          <a href="#top" className="nav-brand" onClick={() => setOpen(false)}>
-            <LoomMark size={24} />
-            <span>TensorLoom <strong className="brand-ai">AI</strong></span>
+          <a href="#top" className="nav-brand" aria-label="TensorLoom AI Home">
+            <LoomMark size={28} />
+            <span className="nav-brand-text">
+              TensorLoom <strong className="brand-accent">AI</strong>
+            </span>
           </a>
 
-          {/* Right Group: Nav Links with Rich Dropdowns + Theme Switcher + CTA */}
-          <div className="nav-right-group">
-            <nav className="nav-links" aria-label="Primary">
-              {NAV_ITEMS.map((item) => (
-                <div 
-                  key={item.label} 
-                  className="nav-item-wrap"
-                  onMouseEnter={() => setActiveDropdown(item.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <a href={item.href} className="nav-link-btn">
-                    <span>{item.label}</span>
-                    <ChevronDown size={12} className="nav-chevron" />
-                  </a>
+          {/* Desktop Navigation Links */}
+          <nav className="nav-links">
+            {NAV_ITEMS.map((item) => (
+              <div 
+                key={item.label} 
+                className="nav-item-wrap"
+                onMouseEnter={() => setActiveDropdown(item.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <a href={item.href} className="nav-link">
+                  <span>{item.label}</span>
+                  {item.dropdown && <ChevronDown size={12} className="nav-chevron" />}
+                </a>
 
-                  {/* Frosted Glass Dropdown Menu */}
-                  {item.dropdown && (
-                    <div className="nav-dropdown-menu">
-                      {item.dropdown.map((sub) => {
-                        const SubIcon = sub.icon
-                        return (
-                          <a 
-                            key={sub.title} 
-                            href={sub.href} 
-                            className="nav-dropdown-item"
-                            onClick={(e) => handleDropdownItemClick(e, sub)}
+                {item.dropdown && activeDropdown === item.label && (
+                  <div className="nav-dropdown-menu">
+                    {item.dropdown.map((sub) => {
+                      const SubIcon = sub.icon
+                      return (
+                        <a 
+                          key={sub.title} 
+                          href={sub.href} 
+                          className="nav-dropdown-item"
+                          onClick={(e) => handleDropdownItemClick(e, sub)}
+                        >
+                          <div 
+                            className="nav-drop-icon"
+                            style={{ 
+                              background: `${sub.color}15`, 
+                              borderColor: `${sub.color}35`,
+                              color: sub.color 
+                            }}
                           >
-                            <div 
-                              className="nav-drop-icon"
-                              style={{ 
-                                background: `${sub.color}15`, 
-                                borderColor: `${sub.color}35`,
-                                color: sub.color 
-                              }}
-                            >
-                              <SubIcon size={16} />
-                            </div>
-                            <div className="nav-drop-info">
-                              <span className="nav-drop-title">{sub.title}</span>
-                              <span className="nav-drop-desc">{sub.desc}</span>
-                            </div>
-                          </a>
-                        )
-                      })}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </nav>
+                            <SubIcon size={16} />
+                          </div>
+                          <div className="nav-drop-info">
+                            <span className="nav-drop-title">{sub.title}</span>
+                            <span className="nav-drop-desc">{sub.desc}</span>
+                          </div>
+                        </a>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
 
+          <div className="nav-actions">
             {/* Theme Toggle Button */}
             <button
               className="nav-theme-toggle"
@@ -162,6 +162,17 @@ export default function Navbar({ onOpenProjectModal, theme = 'dark', onToggleThe
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >
               {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+            </button>
+
+            {/* Book a Call Button */}
+            <button 
+              type="button"
+              className="tl-btn tl-btn-secondary nav-book-call-btn"
+              onClick={onOpenDiscoveryModal}
+              title="Schedule a 30-min technical discovery call on Calendly"
+            >
+              <Calendar size={13} color="var(--coral)" />
+              <span>Book a Call</span>
             </button>
 
             <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a Project</a>
@@ -267,14 +278,28 @@ export default function Navbar({ onOpenProjectModal, theme = 'dark', onToggleThe
                   {theme === 'dark' ? <><Sun size={13} /> <span>Switch to Light</span></> : <><Moon size={13} /> <span>Switch to Dark</span></>}
                 </button>
               </div>
-              <a 
-                href="#contact" 
-                className="tl-btn tl-btn-primary nav-mobile-cta" 
-                onClick={() => setOpen(false)}
-              >
-                <span>Start a Project</span>
-                <ArrowRight size={14} />
-              </a>
+              <div className="nav-mobile-cta-stack" style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
+                <button 
+                  type="button" 
+                  className="tl-btn tl-btn-secondary nav-mobile-cta"
+                  onClick={() => {
+                    setOpen(false)
+                    if (onOpenDiscoveryModal) onOpenDiscoveryModal()
+                  }}
+                  style={{ width: '100%', justifyContent: 'center' }}
+                >
+                  <Calendar size={14} color="var(--coral)" />
+                  <span>Schedule 30-Min Discovery Call</span>
+                </button>
+                <a 
+                  href="#contact" 
+                  className="tl-btn tl-btn-primary nav-mobile-cta" 
+                  onClick={() => setOpen(false)}
+                >
+                  <span>Start a Project</span>
+                  <ArrowRight size={14} />
+                </a>
+              </div>
             </div>
           </div>
         )}

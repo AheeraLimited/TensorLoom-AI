@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, Check, ArrowRight, ShieldCheck, Zap, Layers } from 'lucide-react'
+import { Sparkles, Check, ArrowRight, ShieldCheck, Zap, Layers, Calendar } from 'lucide-react'
 import './Pricing.css'
 
 const TIERS = [
@@ -47,11 +47,12 @@ const TIERS = [
       'Dedicated account manager & 24/7 support'
     ],
     highlight: false,
-    cta: 'Contact Us'
-  },
+    cta: 'Book Discovery Call',
+    isDiscovery: true
+  }
 ]
 
-export default function Pricing() {
+export default function Pricing({ onOpenDiscoveryModal }) {
   return (
     <section id="pricing" className="tl-section pricing-section">
       <div className="tl-shell">
@@ -111,13 +112,24 @@ export default function Pricing() {
               </div>
 
               <div className="tier-cta-box">
-                <a 
-                  href="#contact" 
-                  className={`tl-btn ${tier.highlight ? 'tl-btn-primary' : 'tl-btn-secondary'} tier-action-btn`}
-                >
-                  <span>{tier.cta}</span>
-                  <ArrowRight size={14} />
-                </a>
+                {tier.isDiscovery ? (
+                  <button 
+                    type="button"
+                    onClick={onOpenDiscoveryModal} 
+                    className="tl-btn tl-btn-secondary tier-action-btn"
+                  >
+                    <Calendar size={14} color="var(--coral)" />
+                    <span>{tier.cta}</span>
+                  </button>
+                ) : (
+                  <a 
+                    href="#contact" 
+                    className={`tl-btn ${tier.highlight ? 'tl-btn-primary' : 'tl-btn-secondary'} tier-action-btn`}
+                  >
+                    <span>{tier.cta}</span>
+                    <ArrowRight size={14} />
+                  </a>
+                )}
               </div>
             </motion.div>
           ))}
