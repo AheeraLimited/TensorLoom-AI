@@ -218,8 +218,8 @@ export default function Services() {
             </div>
           </div>
 
-          {/* Card 6: Human-in-the-Loop Governance */}
-          <div className="bento-card tl-glass">
+          {/* Card 6: Human-in-the-Loop Governance (Span 3) */}
+          <div className="bento-card bento-span-3 tl-glass">
             <div className="bento-card-header">
               <div className="bento-icon-title">
                 <span className="bento-badge-icon" style={{ background: 'rgba(16, 185, 129, 0.08)' }}>
@@ -227,7 +227,7 @@ export default function Services() {
                 </span>
                 <div>
                   <h3>Safety & Human Control</h3>
-                  <p className="bento-sub">Built-in safeguards so you always stay in control</p>
+                  <p className="bento-sub">Built-in safeguards so you always stay in complete control</p>
                 </div>
               </div>
               <span className="bento-tag">SECURITY</span>
@@ -236,7 +236,7 @@ export default function Services() {
             {/* Interactive Threshold Slider */}
             <div className="bento-gov-widget">
               <div className="gov-slider-header">
-                <span>Confidence Check</span>
+                <span>Confidence Check Safeguard</span>
                 <span className="gov-val">{threshold}%</span>
               </div>
               <input 
@@ -248,7 +248,10 @@ export default function Services() {
                 className="gov-range-slider"
                 aria-label="Certainty threshold slider"
               />
-              <p className="gov-note">Any high-value action pauses for your team's direct approval.</p>
+              <div className="gov-footer-row">
+                <p className="gov-note">Any critical or high-value action pauses for your team's direct approval.</p>
+                <span className="gov-live-pill"><span className="pulse-dot dot-emerald" /> Active Guardrails</span>
+              </div>
             </div>
           </div>
         </div>
