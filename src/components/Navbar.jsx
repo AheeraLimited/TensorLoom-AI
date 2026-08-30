@@ -98,62 +98,62 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
     <header className={`nav-bar ${scrolled ? 'is-scrolled' : ''}`}>
       <div className="tl-shell nav-shell">
         <div className="nav-inner">
-          <a href="#top" className="nav-brand" aria-label="TensorLoom AI Home">
-            <LoomMark size={28} />
-            <span className="nav-brand-text">
-              TensorLoom <strong className="brand-accent">AI</strong>
-            </span>
+          {/* Left: Brand Logo */}
+          <a href="#top" className="nav-brand" onClick={() => setOpen(false)}>
+            <LoomMark size={24} />
+            <span>TensorLoom <strong className="brand-ai">AI</strong></span>
           </a>
 
-          {/* Desktop Navigation Links */}
-          <nav className="nav-links">
-            {NAV_ITEMS.map((item) => (
-              <div 
-                key={item.label} 
-                className="nav-item-wrap"
-                onMouseEnter={() => setActiveDropdown(item.label)}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <a href={item.href} className="nav-link">
-                  <span>{item.label}</span>
-                  {item.dropdown && <ChevronDown size={12} className="nav-chevron" />}
-                </a>
+          {/* Right Group: Nav Links + Theme Switcher + CTAs */}
+          <div className="nav-right-group">
+            <nav className="nav-links" aria-label="Primary">
+              {NAV_ITEMS.map((item) => (
+                <div 
+                  key={item.label} 
+                  className="nav-item-wrap"
+                  onMouseEnter={() => setActiveDropdown(item.label)}
+                  onMouseLeave={() => setActiveDropdown(null)}
+                >
+                  <a href={item.href} className="nav-link-btn">
+                    <span>{item.label}</span>
+                    {item.dropdown && <ChevronDown size={12} className="nav-chevron" />}
+                  </a>
 
-                {item.dropdown && activeDropdown === item.label && (
-                  <div className="nav-dropdown-menu">
-                    {item.dropdown.map((sub) => {
-                      const SubIcon = sub.icon
-                      return (
-                        <a 
-                          key={sub.title} 
-                          href={sub.href} 
-                          className="nav-dropdown-item"
-                          onClick={(e) => handleDropdownItemClick(e, sub)}
-                        >
-                          <div 
-                            className="nav-drop-icon"
-                            style={{ 
-                              background: `${sub.color}15`, 
-                              borderColor: `${sub.color}35`,
-                              color: sub.color 
-                            }}
+                  {/* Frosted Glass Dropdown Menu */}
+                  {item.dropdown && activeDropdown === item.label && (
+                    <div className="nav-dropdown-menu">
+                      {item.dropdown.map((sub) => {
+                        const SubIcon = sub.icon
+                        return (
+                          <a 
+                            key={sub.title} 
+                            href={sub.href} 
+                            className="nav-dropdown-item"
+                            onClick={(e) => handleDropdownItemClick(e, sub)}
                           >
-                            <SubIcon size={16} />
-                          </div>
-                          <div className="nav-drop-info">
-                            <span className="nav-drop-title">{sub.title}</span>
-                            <span className="nav-drop-desc">{sub.desc}</span>
-                          </div>
-                        </a>
-                      )
-                    })}
-                  </div>
-                )}
-              </div>
-            ))}
-          </nav>
+                            <div 
+                              className="nav-drop-icon"
+                              style={{ 
+                                background: `${sub.color}15`, 
+                                borderColor: `${sub.color}35`,
+                                color: sub.color 
+                              }}
+                            >
+                              <SubIcon size={16} />
+                            </div>
+                            <div className="nav-drop-info">
+                              <span className="nav-drop-title">{sub.title}</span>
+                              <span className="nav-drop-desc">{sub.desc}</span>
+                            </div>
+                          </a>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </nav>
 
-          <div className="nav-actions">
             {/* Theme Toggle Button */}
             <button
               className="nav-theme-toggle"
