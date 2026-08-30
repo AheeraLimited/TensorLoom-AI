@@ -10,21 +10,19 @@
   z-index: 2;
 }
 
-/* Atmospheric Specular Illumination Glow */
-.demo-ambient-glow {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(120px);
-  z-index: 1;
-}
-
+.demo-ambient-glow,
 .demo-bg-glow {
-  top: 25%;
+  position: absolute;
+  top: 10%;
   left: 50%;
   transform: translateX(-50%);
   width: 60vw;
   height: 40vw;
+  max-width: 900px;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(120px);
+  z-index: 1;
   background: radial-gradient(circle, rgba(255, 109, 66, 0.08) 0%, transparent 70%);
 }
 
