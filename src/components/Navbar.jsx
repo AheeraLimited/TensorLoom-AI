@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { 
   ChevronDown, ShoppingBag, Car, UtensilsCrossed, Milk, MessageSquare, 
   Layers, Cpu, Zap, Activity, Compass, Layout, Code2, Rocket, Shield, HelpCircle, 
-  Sparkles, DollarSign, CheckCircle2
+  Sparkles, DollarSign, CheckCircle2, ArrowRight
 } from 'lucide-react'
 import LoomMark from './LoomMark.jsx'
 import './Navbar.css'
@@ -77,6 +77,7 @@ export default function Navbar({ onOpenProjectModal }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [mobileExpanded, setMobileExpanded] = useState('Projects')
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
@@ -167,34 +168,95 @@ export default function Navbar({ onOpenProjectModal }) {
           </div>
         </div>
 
-        {/* Mobile Navigation Drawer */}
+        {/* Mobile Navigation Drawer with Accordion & Frosted Chips */}
         {open && (
           <div className="nav-mobile">
-            {NAV_ITEMS.map((l) => (
-              <div key={l.label} className="nav-mobile-item-group">
-                <a href={l.href} onClick={() => setOpen(false)} className="nav-mobile-main-link">
-                  {l.label}
-                </a>
-                {l.dropdown && (
-                  <div className="nav-mobile-sub-list">
-                    {l.dropdown.map((sub) => (
+            <div className="nav-mobile-scroll">
+              {NAV_ITEMS.map((l) => {
+                const isExpanded = mobileExpanded === l.label
+                return (
+                  <div key={l.label} className={`nav-mobile-section ${isExpanded ? 'expanded' : ''}`}>
+                    <div 
+                      className="nav-mobile-row"
+                      onClick={() => {
+                        if (l.dropdown) {
+                          setMobileExpanded(isExpanded ? null : l.label)
+                        } else {
+                          setOpen(false)
+                        }
+                      }}
+                    >
                       <a 
-                        key={sub.title} 
-                        href={sub.href} 
-                        className="nav-mobile-sub-link"
-                        onClick={(e) => handleDropdownItemClick(e, sub)}
+                        href={l.href} 
+                        onClick={(e) => {
+                          if (l.dropdown) {
+                            e.preventDefault()
+                            setMobileExpanded(isExpanded ? null : l.label)
+                          } else {
+                            setOpen(false)
+                          }
+                        }} 
+                        className="nav-mobile-title"
                       >
-                        <span className="nav-mobile-sub-dot" style={{ background: sub.color }} />
-                        <span>{sub.title}</span>
+                        {l.label}
                       </a>
-                    ))}
+                      {l.dropdown && (
+                        <button 
+                          className="nav-mobile-chevron-btn"
+                          aria-label={`Toggle ${l.label}`}
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            setMobileExpanded(isExpanded ? null : l.label)
+                          }}
+                        >
+                          <ChevronDown size={14} className={`mobile-chevron ${isExpanded ? 'open' : ''}`} />
+                        </button>
+                      )}
+                    </div>
+
+                    {/* Expandable Sub-items Grid */}
+                    {l.dropdown && isExpanded && (
+                      <div className="nav-mobile-chips-grid">
+                        {l.dropdown.map((sub) => {
+                          const SubIcon = sub.icon
+                          return (
+                            <a
+                              key={sub.title}
+                              href={sub.href}
+                              className="nav-mobile-chip-btn"
+                              onClick={(e) => handleDropdownItemClick(e, sub)}
+                            >
+                              <div 
+                                className="nav-mobile-chip-icon"
+                                style={{ 
+                                  background: `${sub.color}18`, 
+                                  borderColor: `${sub.color}40`,
+                                  color: sub.color 
+                                }}
+                              >
+                                <SubIcon size={12} />
+                              </div>
+                              <span className="nav-mobile-chip-text">{sub.title}</span>
+                            </a>
+                          )
+                        })}
+                      </div>
+                    )}
                   </div>
-                )}
-              </div>
-            ))}
-            <a href="#contact" className="tl-btn tl-btn-primary" onClick={() => setOpen(false)}>
-              Start a Project
-            </a>
+                )
+              })}
+            </div>
+
+            <div className="nav-mobile-footer">
+              <a 
+                href="#contact" 
+                className="tl-btn tl-btn-primary nav-mobile-cta" 
+                onClick={() => setOpen(false)}
+              >
+                <span>Start a Project</span>
+                <ArrowRight size={14} />
+              </a>
+            </div>
           </div>
         )}
       </div>

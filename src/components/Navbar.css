@@ -321,6 +321,9 @@ a.nav-cta {
   }
 }
 
+/* ===================================================================
+   Mobile Drawer Styling (.nav-mobile)
+   =================================================================== */
 .nav-mobile {
   position: absolute;
   top: calc(100% + 8px);
@@ -328,25 +331,137 @@ a.nav-cta {
   right: var(--edge);
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding: 16px;
-  background: rgba(14, 12, 24, 0.95);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
+  background: rgba(14, 12, 24, 0.96);
+  backdrop-filter: blur(32px) saturate(200%);
+  -webkit-backdrop-filter: blur(32px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-xl);
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75), 0 0 30px rgba(255, 109, 66, 0.15), inset 0 1px 1.5px rgba(255, 255, 255, 0.4);
+  max-height: calc(85vh - 70px);
+  overflow: hidden;
+  z-index: 150;
+  padding: 8px;
 }
 
-.nav-mobile a {
-  padding: 9px 8px;
+.nav-mobile-scroll {
+  overflow-y: auto;
+  padding: 6px 6px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.nav-mobile-section {
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.nav-mobile-section.expanded {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.nav-mobile-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  cursor: pointer;
+}
+
+.nav-mobile-title {
   font-size: 13.5px;
+  font-weight: 700;
   color: #ffffff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+  flex: 1;
 }
 
-.nav-mobile .tl-btn {
-  margin-top: 8px;
-  padding: 10px;
-  font-size: 12.5px;
+.nav-mobile-chevron-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  border: none;
+  padding: 0;
+}
+
+.mobile-chevron {
+  transition: transform 0.22s ease, color 0.2s ease;
+}
+
+.mobile-chevron.open {
+  transform: rotate(180deg);
+  color: var(--coral);
+}
+
+/* Sub-items Chips Grid */
+.nav-mobile-chips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  padding: 0 10px 10px;
+}
+
+.nav-mobile-chip-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-mobile-chip-btn:active {
+  background: rgba(255, 109, 66, 0.15);
+  border-color: var(--coral);
+}
+
+.nav-mobile-chip-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  flex-shrink: 0;
+}
+
+.nav-mobile-chip-text {
+  font-size: 11px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nav-mobile-footer {
+  padding: 8px 6px 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nav-mobile-cta {
+  width: 100%;
+  padding: 11px 20px !important;
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+  justify-content: center !important;
+  box-shadow: 0 6px 20px rgba(234, 75, 113, 0.4), inset 0 1px 1.5px rgba(255, 255, 255, 0.7) !important;
 }
