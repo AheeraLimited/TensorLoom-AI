@@ -118,7 +118,6 @@ export default function App() {
         <Hero />
         <IndustryMarquee />
         <ProjectsShowcase onOpenProjectModal={handleOpenProjectModal} />
-        <div className="tl-shell"><div className="tl-weft" /></div>
         <IndustryDemo />
         <div className="tl-shell"><div className="tl-weft" /></div>
         <About />
