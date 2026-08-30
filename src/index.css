@@ -71,39 +71,39 @@
    =================================================================== */
 [data-theme="light"] {
   --bg-canvas: #f8fafc;
-  --bg-mesh: radial-gradient(circle at 50% 8%, rgba(255, 109, 66, 0.07) 0%, transparent 55%),
-             radial-gradient(circle at 85% 25%, rgba(14, 165, 233, 0.06) 0%, transparent 60%),
-             radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.05) 0%, transparent 65%),
-             radial-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-  --bg-surface: rgba(255, 255, 255, 0.85);
-  --bg-elevated: #ffffff;
-  --bg-hover: rgba(15, 23, 42, 0.04);
+  --bg-mesh: radial-gradient(circle at 50% 8%, rgba(255, 109, 66, 0.12) 0%, transparent 55%),
+             radial-gradient(circle at 85% 25%, rgba(14, 165, 233, 0.10) 0%, transparent 60%),
+             radial-gradient(circle at 50% 80%, rgba(139, 92, 246, 0.08) 0%, transparent 65%),
+             radial-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+  --bg-surface: rgba(255, 255, 255, 0.55);
+  --bg-elevated: rgba(255, 255, 255, 0.75);
+  --bg-hover: rgba(255, 255, 255, 0.70);
 
   --ink-primary: #0f172a;
   --ink-secondary: #475569;
   --ink-faint: #64748b;
   --ink-subtle: #94a3b8;
 
-  --coral-subtle: rgba(255, 109, 66, 0.1);
-  --coral-border: rgba(255, 109, 66, 0.35);
-  --coral-glow: rgba(255, 109, 66, 0.2);
+  --coral-subtle: rgba(255, 109, 66, 0.12);
+  --coral-border: rgba(255, 109, 66, 0.4);
+  --coral-glow: rgba(255, 109, 66, 0.25);
 
-  --purple-subtle: rgba(139, 92, 246, 0.1);
-  --emerald-subtle: rgba(16, 185, 129, 0.1);
-  --sky-subtle: rgba(14, 165, 233, 0.1);
+  --purple-subtle: rgba(139, 92, 246, 0.12);
+  --emerald-subtle: rgba(16, 185, 129, 0.12);
+  --sky-subtle: rgba(14, 165, 233, 0.12);
 
-  --glass-bg: rgba(255, 255, 255, 0.82);
-  --glass-bg-nested: rgba(241, 245, 249, 0.9);
-  --glass-blur: blur(24px) saturate(180%);
-  --glass-blur-sm: blur(12px) saturate(170%);
-  --glass-border: 1px solid rgba(226, 232, 240, 0.9);
-  --glass-border-hover: 1px solid rgba(203, 213, 225, 1);
-  --glass-rim: inset 0 1px 2px 0 rgba(255, 255, 255, 1), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
-  --glass-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
-  --glass-shadow-hover: 0 24px 60px rgba(15, 23, 42, 0.1), 0 0 25px rgba(255, 109, 66, 0.1);
+  --glass-bg: rgba(255, 255, 255, 0.52);
+  --glass-bg-nested: rgba(255, 255, 255, 0.45);
+  --glass-blur: blur(28px) saturate(210%);
+  --glass-blur-sm: blur(16px) saturate(190%);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.85);
+  --glass-border-hover: 1px solid rgba(255, 109, 66, 0.45);
+  --glass-rim: inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1px 1px 0 rgba(0, 0, 0, 0.04), 0 4px 20px rgba(15, 23, 42, 0.05);
+  --glass-shadow: 0 18px 45px rgba(15, 23, 42, 0.07), 0 2px 10px rgba(15, 23, 42, 0.03);
+  --glass-shadow-hover: 0 24px 60px rgba(15, 23, 42, 0.12), 0 0 30px rgba(255, 109, 66, 0.15);
 
-  --widget-bg: rgba(241, 245, 249, 0.9);
-  --widget-border: 1px solid rgba(226, 232, 240, 0.95);
+  --widget-bg: rgba(255, 255, 255, 0.48);
+  --widget-border: 1px solid rgba(255, 255, 255, 0.85);
 
   --line: rgba(0, 0, 0, 0.08);
   --line-strong: rgba(0, 0, 0, 0.16);

@@ -991,21 +991,23 @@
 }
 
 [data-theme="light"] .proj-card-item {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05), inset 0 1px 2px rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05), inset 0 1.5px 1.5px rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .proj-card-item:hover {
-  background: #ffffff;
-  border-color: rgba(203, 213, 225, 1);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 109, 66, 0.4);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08), inset 0 1.5px 1.5px rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .proj-card-item.selected {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.82);
   border-color: var(--coral);
-  box-shadow: 0 0 0 1.5px var(--coral), 0 16px 40px rgba(255, 109, 66, 0.15), inset 0 1px 2px rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 1.5px var(--coral), 0 18px 45px rgba(255, 109, 66, 0.18), inset 0 1.5px 1.5px rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .proj-title {
@@ -1025,9 +1027,11 @@
 }
 
 [data-theme="light"] .cockpit-viewer-card {
-  background: rgba(255, 255, 255, 0.88);
-  border: 1px solid rgba(226, 232, 240, 0.95);
-  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(32px) saturate(210%);
+  -webkit-backdrop-filter: blur(32px) saturate(210%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08), inset 0 1.5px 1.5px rgba(255, 255, 255, 1);
 }
 
 [data-theme="light"] .viewer-header-bar {
