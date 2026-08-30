@@ -199,10 +199,10 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
           {open && (
             <motion.div 
               className="nav-mobile"
-              initial={{ opacity: 0, y: -16, scale: 0.97, filter: 'blur(8px)' }}
-              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, y: -14, scale: 0.97, filter: 'blur(8px)' }}
-              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: -14, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -12, scale: 0.97 }}
+              transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
             >
               <div className="nav-mobile-scroll">
                 {NAV_ITEMS.map((l) => {

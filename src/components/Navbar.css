@@ -393,16 +393,16 @@ a.nav-cta {
 .nav-mobile-section {
   display: flex;
   flex-direction: column;
-  border-radius: 12px;
-  background: var(--bg-surface);
-  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   overflow: hidden;
   transition: all 0.2s ease;
 }
 
 .nav-mobile-section.expanded {
-  background: var(--glass-bg-nested);
-  border-color: var(--line-strong);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.28);
 }
 
 .nav-mobile-row {
