@@ -195,36 +195,42 @@ export default function IndustryDemo() {
           {/* Visual Topology Pipeline */}
           <div className="command-topology">
             <div className="topology-track">
-              {/* Clean continuous rail behind all nodes */}
-              <div className="topology-rail-bg" aria-hidden="true">
-                <div 
-                  className="topology-rail-fill" 
-                  style={{ 
-                    width: `${(stepIdx / (industry.steps.length - 1)) * 100}%` 
-                  }} 
-                />
-              </div>
-
-              {industry.steps.map((s, i) => (
-                <div 
-                  key={s.stage} 
-                  className={`topology-node ${i === stepIdx ? 'node-active' : ''} ${i < stepIdx ? 'node-complete' : ''}`}
-                  onClick={() => { goToStep(i); setPlaying(false) }}
-                >
-                  <div className="node-circle-wrap">
-                    <div className="node-circle">
-                      <span className="node-icon">{STAGE_ICONS[i]}</span>
-                    </div>
-                    {i === stepIdx && (
-                      <span className="node-ring-pulse" />
+              {industry.steps.map((s, i) => {
+                const isComplete = i < stepIdx
+                const isActive = i === stepIdx
+                return (
+                  <div key={s.stage} className="topology-step-wrapper">
+                    {i > 0 && (
+                      <div className="topology-segment-rail" aria-hidden="true">
+                        <div 
+                          className="topology-segment-fill" 
+                          style={{ 
+                            width: i <= stepIdx ? '100%' : '0%' 
+                          }} 
+                        />
+                      </div>
                     )}
+
+                    <div 
+                      className={`topology-node ${isActive ? 'node-active' : ''} ${isComplete ? 'node-complete' : ''}`}
+                      onClick={() => { goToStep(i); setPlaying(false) }}
+                    >
+                      <div className="node-circle-wrap">
+                        <div className="node-circle">
+                          <span className="node-icon">{STAGE_ICONS[i]}</span>
+                        </div>
+                        {isActive && (
+                          <span className="node-ring-pulse" />
+                        )}
+                      </div>
+                      <div className="node-label-wrap">
+                        <span className="node-index">STAGE 0{i + 1}</span>
+                        <span className="node-title">{s.stage}</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="node-label-wrap">
-                    <span className="node-index">STAGE 0{i + 1}</span>
-                    <span className="node-title">{s.stage}</span>
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           </div>
 
