@@ -81,7 +81,7 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
               return (
                 <motion.div
                   key={proj.id}
-                  className={`proj-card-item ${isSelected ? 'selected' : ''}`}
+                  className={`proj-card-item tl-glass-spotlight ${isSelected ? 'selected' : ''}`}
                   onClick={() => setSelectedId(proj.id)}
                   whileHover={{ y: -3 }}
                   transition={{ duration: 0.22 }}

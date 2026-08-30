@@ -4,6 +4,7 @@ import {
   Layers, Cpu, Zap, Activity, Compass, Layout, Code2, Rocket, Shield, HelpCircle, 
   Sparkles, DollarSign, CheckCircle2, ArrowRight, Sun, Moon, Calendar
 } from 'lucide-react'
+import { toast } from 'sonner'
 import LoomMark from './LoomMark.jsx'
 import './Navbar.css'
 
@@ -157,7 +158,10 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
             {/* Theme Toggle Button */}
             <button
               className="nav-theme-toggle"
-              onClick={onToggleTheme}
+              onClick={() => {
+                onToggleTheme()
+                toast.info(theme === 'dark' ? '☀️ Switched to Light Mode' : '🌙 Switched to Dark Mode')
+              }}
               aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
             >

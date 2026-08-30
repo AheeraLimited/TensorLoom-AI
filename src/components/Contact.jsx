@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Sparkles, CheckCircle2, Copy, Send, Loader2, Clock, ShieldCheck, Mail, AlertCircle, Phone, ExternalLink } from 'lucide-react'
+import { toast } from 'sonner'
 import './Contact.css'
 
 const PROJECT_TYPES = [
@@ -53,12 +54,14 @@ export default function Contact() {
   function handleCopyEmail() {
     navigator.clipboard.writeText('tensoorloom@gmail.com')
     setCopied(true)
+    toast.success('Official email copied to clipboard! (tensoorloom@gmail.com)')
     setTimeout(() => setCopied(false), 2000)
   }
 
   function handleCopyPhone() {
     navigator.clipboard.writeText('+919096761335')
     setCopiedPhone(true)
+    toast.success('Official phone number copied! (+91 9096761335)')
     setTimeout(() => setCopiedPhone(false), 2000)
   }
 
@@ -107,13 +110,16 @@ export default function Contact() {
 
       if (data && data.success) {
         setSent(true)
+        toast.success(`Project Brief Logged! Reference: ${ref}`)
       } else {
         console.warn('Web3Forms returned status:', data)
         setSent(true)
+        toast.success(`Project Brief Received! Reference: ${ref}`)
       }
     } catch (err) {
       console.warn('Web3Forms submission exception, fallback engaged:', err)
       setSent(true)
+      toast.success(`Project Brief Received! Reference: ${ref}`)
     } finally {
       setIsSubmitting(false)
     }

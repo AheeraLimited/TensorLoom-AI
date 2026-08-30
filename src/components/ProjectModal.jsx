@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { 
   X, ExternalLink, ArrowRight, CheckCircle2, Sparkles, Layers,
-  Smartphone, Monitor, Shield, Zap
+  Smartphone, Monitor, Shield, Zap, Copy
 } from 'lucide-react'
+import { toast } from 'sonner'
 import './ProjectModal.css'
 
 export default function ProjectModal({ project, onClose }) {
@@ -172,7 +173,7 @@ export default function ProjectModal({ project, onClose }) {
 
             {/* Highlights & Tech Stack 2-Column Grid */}
             <div className="modal-details-grid">
-              <div className="modal-detail-card">
+              <div className="modal-detail-card tl-glass tl-glass-spotlight">
                 <h4 className="modal-detail-heading">
                   <Sparkles size={15} color="var(--coral)" />
                   <span>Key Features & Capabilities</span>
@@ -187,7 +188,7 @@ export default function ProjectModal({ project, onClose }) {
                 </ul>
               </div>
 
-              <div className="modal-detail-card">
+              <div className="modal-detail-card tl-glass tl-glass-spotlight">
                 <h4 className="modal-detail-heading">
                   <Layers size={15} color="var(--sky)" />
                   <span>Technologies & Architecture</span>

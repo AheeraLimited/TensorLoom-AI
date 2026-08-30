@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
+import { Toaster, toast } from 'sonner'
 
 import NeuralLoomCanvas from './components/NeuralLoomCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
@@ -93,6 +94,29 @@ export default function App() {
     }
   }, [])
 
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      const spotlights = document.querySelectorAll('.tl-glass-spotlight')
+      spotlights.forEach((el) => {
+        const rect = el.getBoundingClientRect()
+        // Only calculate if visible on screen
+        if (
+          e.clientX >= rect.left - 50 &&
+          e.clientX <= rect.right + 50 &&
+          e.clientY >= rect.top - 50 &&
+          e.clientY <= rect.bottom + 50
+        ) {
+          const x = e.clientX - rect.left
+          const y = e.clientY - rect.top
+          el.style.setProperty('--mouse-x', `${x}px`)
+          el.style.setProperty('--mouse-y', `${y}px`)
+        }
+      })
+    }
+    window.addEventListener('mousemove', handleMouseMove, { passive: true })
+    return () => window.removeEventListener('mousemove', handleMouseMove)
+  }, [])
+
   const handleOpenProjectModal = (projectIdOrIndustry) => {
     const found = PROJECTS.find(
       (p) => p.id === projectIdOrIndustry || 
@@ -180,6 +204,24 @@ export default function App() {
       <ProjectModal 
         project={modalProject} 
         onClose={handleCloseModal} 
+      />
+
+      {/* Luxury Frosted Glass Toast Notification System */}
+      <Toaster 
+        position="bottom-left" 
+        theme={theme}
+        toastOptions={{
+          style: {
+            background: theme === 'dark' ? 'rgba(18, 16, 28, 0.94)' : 'rgba(255, 255, 255, 0.94)',
+            backdropFilter: 'blur(20px)',
+            border: theme === 'dark' ? '1px solid rgba(255, 255, 255, 0.15)' : '1px solid rgba(226, 232, 240, 0.95)',
+            color: theme === 'dark' ? '#ffffff' : '#0f172a',
+            borderRadius: '14px',
+            boxShadow: '0 16px 40px rgba(0, 0, 0, 0.2)',
+            fontFamily: 'var(--font-sans)',
+            fontSize: '13px'
+          }
+        }}
       />
     </>
   )
