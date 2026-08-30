@@ -1,0 +1,27 @@
+# ===================================================================
+# TensorLoom AI — Search Engine & AI Crawler Directives
+# ===================================================================
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+# AI Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://tensorloom.ai/sitemap.xml
