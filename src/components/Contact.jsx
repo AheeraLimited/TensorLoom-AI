@@ -57,7 +57,7 @@ export default function Contact() {
   }
 
   function handleCopyPhone() {
-    navigator.clipboard.writeText('+917050541867')
+    navigator.clipboard.writeText('+919096761335')
     setCopiedPhone(true)
     setTimeout(() => setCopiedPhone(false), 2000)
   }
@@ -167,7 +167,7 @@ export default function Contact() {
               </div>
 
               <div className="direct-email-row" style={{ marginTop: 10, paddingTop: 10, borderTop: '1px solid var(--line)' }}>
-                <span className="direct-email">+91 7050541867</span>
+                <span className="direct-email">+91 9096761335</span>
                 <button 
                   className="copy-btn" 
                   onClick={handleCopyPhone} 

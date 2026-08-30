@@ -30,7 +30,7 @@ export default function WhatsAppButton() {
   const [isOpen, setIsOpen] = useState(false)
   const [customMsg, setCustomMsg] = useState('')
 
-  const WHATSAPP_NUMBER = '917050541867' // TensorLoom Official Hotline: +91 7050541867
+  const WHATSAPP_NUMBER = '919096761335' // TensorLoom Official Hotline: +91 9096761335
 
   function openWhatsAppWithText(text) {
     const encoded = encodeURIComponent(text || 'Hi TensorLoom AI! I would like to discuss a project with your team.')

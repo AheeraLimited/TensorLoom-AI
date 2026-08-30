@@ -149,9 +149,9 @@ export default function Footer() {
                 <Mail size={14} color="var(--coral)" />
                 <span>tensoorloom@gmail.com</span>
               </a>
-              <a href="tel:+917050541867" className="footer-email-link">
+              <a href="tel:+919096761335" className="footer-email-link">
                 <Phone size={14} color="var(--emerald)" />
-                <span>+91 7050541867</span>
+                <span>+91 9096761335</span>
               </a>
               <div className="footer-security-pill">
                 <ShieldCheck size={14} color="var(--emerald)" />
