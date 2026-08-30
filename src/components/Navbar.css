@@ -113,26 +113,26 @@
 }
 
 /* ===================================================================
-   Hyper-Realistic Frosted Glass Dropdown Menu (High Contrast & Legible)
+   Hyper-Realistic Liquid Frosted Glass Dropdown Menu (Reference Match)
    =================================================================== */
 .nav-dropdown-menu {
   position: absolute;
   top: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 310px;
-  background: linear-gradient(155deg, rgba(30, 25, 46, 0.94) 0%, rgba(14, 11, 22, 0.96) 100%);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.20);
-  border-radius: 20px;
-  padding: 8px;
-  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75), 
-              inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.45), 
-              inset 0 0 20px rgba(255, 255, 255, 0.03);
+  min-width: 320px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  border-radius: 24px;
+  padding: 10px;
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35), 
+              inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.7), 
+              inset 0 0 20px rgba(255, 255, 255, 0.05);
   display: flex;
   flex-direction: column;
-  gap: 3px;
+  gap: 4px;
   z-index: 1000;
   pointer-events: auto;
 }
@@ -152,30 +152,32 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 8px 10px;
-  border-radius: 12px;
+  padding: 10px 12px;
+  border-radius: 16px;
   text-decoration: none;
-  transition: background 0.18s ease, transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.18s ease;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .nav-dropdown-item:hover {
-  background: rgba(255, 255, 255, 0.10);
-  border-color: rgba(255, 255, 255, 0.18);
-  transform: translateX(3px);
+  background: rgba(255, 255, 255, 0.22);
+  border-color: rgba(255, 255, 255, 0.45);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
 }
 
 .nav-drop-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  border: 1px solid var(--line);
-  backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  backdrop-filter: blur(8px);
 }
 
 .nav-drop-info {
@@ -194,7 +196,7 @@
 
 .nav-drop-desc {
   font-size: 11px;
-  color: rgba(255, 255, 255, 0.65);
+  color: rgba(255, 255, 255, 0.75);
   line-height: 1.35;
   white-space: nowrap;
 }
@@ -375,16 +377,16 @@ a.nav-cta {
   right: var(--edge);
   display: flex;
   flex-direction: column;
-  background: linear-gradient(155deg, rgba(30, 25, 46, 0.95) 0%, rgba(14, 11, 22, 0.97) 100%);
-  backdrop-filter: blur(40px) saturate(200%);
-  -webkit-backdrop-filter: blur(40px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.08) 100%);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.40);
   border-radius: var(--radius-xl);
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.45);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.35), inset 0 1.5px 2px 0 rgba(255, 255, 255, 0.7);
   max-height: calc(85vh - 70px);
   overflow: hidden;
   z-index: 150;
-  padding: 8px;
+  padding: 10px;
 }
 
 .nav-mobile-scroll {
@@ -398,16 +400,16 @@ a.nav-cta {
 .nav-mobile-section {
   display: flex;
   flex-direction: column;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   overflow: hidden;
   transition: all 0.2s ease;
 }
 
 .nav-mobile-section.expanded {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
 }
 
 .nav-mobile-row {
