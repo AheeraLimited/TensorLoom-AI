@@ -31,6 +31,7 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [copied, setCopied] = useState(false)
+  const [copiedPhone, setCopiedPhone] = useState(false)
   const [leadRefCode, setLeadRefCode] = useState('')
 
   const [form, setForm] = useState({
@@ -53,6 +54,12 @@ export default function Contact() {
     navigator.clipboard.writeText('tensoorloom@gmail.com')
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
+  }
+
+  function handleCopyPhone() {
+    navigator.clipboard.writeText('+917050541867')
+    setCopiedPhone(true)
+    setTimeout(() => setCopiedPhone(false), 2000)
   }
 
   async function handleSubmit(e) {
@@ -143,7 +150,7 @@ export default function Contact() {
               </div>
             </div>
 
-            {/* Email Direct Card */}
+            {/* Email & Phone Direct Card */}
             <div className="contact-direct-box tl-glass">
               <span className="direct-label">DIRECT INQUIRY DESK</span>
               <div className="direct-email-row">
@@ -156,6 +163,19 @@ export default function Contact() {
                 >
                   {copied ? <CheckCircle2 size={15} color="var(--emerald)" /> : <Copy size={15} />}
                   <span>{copied ? 'COPIED' : 'COPY'}</span>
+                </button>
+              </div>
+
+              <div className="direct-email-row" style={{ marginTop: 10, paddingTop: 10, borderTop: '1px solid var(--line)' }}>
+                <span className="direct-email">+91 7050541867</span>
+                <button 
+                  className="copy-btn" 
+                  onClick={handleCopyPhone} 
+                  type="button"
+                  title="Copy phone to clipboard"
+                >
+                  {copiedPhone ? <CheckCircle2 size={15} color="var(--emerald)" /> : <Copy size={15} />}
+                  <span>{copiedPhone ? 'COPIED' : 'COPY'}</span>
                 </button>
               </div>
             </div>

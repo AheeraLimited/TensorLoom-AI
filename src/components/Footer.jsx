@@ -1,4 +1,4 @@
-import { Mail, Sparkles, ExternalLink, ShieldCheck, Activity, ChevronUp, Globe } from 'lucide-react'
+import { Mail, Phone, Sparkles, ExternalLink, ShieldCheck, Activity, ChevronUp, Globe } from 'lucide-react'
 import LoomMark from './LoomMark.jsx'
 import './Footer.css'
 
@@ -148,6 +148,10 @@ export default function Footer() {
               <a href="mailto:tensoorloom@gmail.com" className="footer-email-link">
                 <Mail size={14} color="var(--coral)" />
                 <span>tensoorloom@gmail.com</span>
+              </a>
+              <a href="tel:+917050541867" className="footer-email-link">
+                <Phone size={14} color="var(--emerald)" />
+                <span>+91 7050541867</span>
               </a>
               <div className="footer-security-pill">
                 <ShieldCheck size={14} color="var(--emerald)" />
