@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Sparkles, ChevronDown, HelpCircle } from 'lucide-react'
+import { Sparkles, ChevronDown } from 'lucide-react'
 import './FAQ.css'
 
 const CATEGORIES = ['All', 'Projects & Timelines', 'Ownership & Security', 'Features & Support']
@@ -94,20 +93,13 @@ export default function FAQ() {
                   </div>
                 </button>
 
-                <AnimatePresence initial={false}>
-                  {isOpen && (
-                    <motion.div
-                      key="content"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: 'auto', opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                      className="faq-answer-wrap"
-                    >
+                <div className="faq-answer-accordion">
+                  <div className="faq-answer-inner-overflow">
+                    <div className="faq-answer-wrap">
                       <p className="faq-a-text">{faq.a}</p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    </div>
+                  </div>
+                </div>
               </div>
             )
           })}
