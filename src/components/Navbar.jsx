@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { 
   ChevronDown, ShoppingBag, Car, UtensilsCrossed, Milk, MessageSquare, 
   Layers, Cpu, Zap, Activity, Compass, Layout, Code2, Rocket, Shield, HelpCircle, 
@@ -120,37 +121,48 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
                     {item.dropdown && <ChevronDown size={12} className="nav-chevron" />}
                   </a>
 
-                  {/* Frosted Glass Dropdown Menu */}
-                  {item.dropdown && activeDropdown === item.label && (
-                    <div className="nav-dropdown-menu">
-                      {item.dropdown.map((sub) => {
-                        const SubIcon = sub.icon
-                        return (
-                          <a 
-                            key={sub.title} 
-                            href={sub.href} 
-                            className="nav-dropdown-item"
-                            onClick={(e) => handleDropdownItemClick(e, sub)}
-                          >
-                            <div 
-                              className="nav-drop-icon"
-                              style={{ 
-                                background: `${sub.color}15`, 
-                                borderColor: `${sub.color}35`,
-                                color: sub.color 
-                              }}
+                  {/* Frosted Glass Dropdown Menu with Spring Entrance/Exit Animation */}
+                  <AnimatePresence>
+                    {item.dropdown && activeDropdown === item.label && (
+                      <motion.div 
+                        className="nav-dropdown-menu"
+                        initial={{ opacity: 0, y: 12, scale: 0.96, filter: 'blur(6px)' }}
+                        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, y: 8, scale: 0.96, filter: 'blur(6px)' }}
+                        transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        {item.dropdown.map((sub, idx) => {
+                          const SubIcon = sub.icon
+                          return (
+                            <motion.a 
+                              key={sub.title} 
+                              href={sub.href} 
+                              className="nav-dropdown-item"
+                              onClick={(e) => handleDropdownItemClick(e, sub)}
+                              initial={{ opacity: 0, x: -8 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              transition={{ duration: 0.18, delay: idx * 0.032, ease: 'easeOut' }}
                             >
-                              <SubIcon size={16} />
-                            </div>
-                            <div className="nav-drop-info">
-                              <span className="nav-drop-title">{sub.title}</span>
-                              <span className="nav-drop-desc">{sub.desc}</span>
-                            </div>
-                          </a>
-                        )
-                      })}
-                    </div>
-                  )}
+                              <div 
+                                className="nav-drop-icon"
+                                style={{ 
+                                  background: `${sub.color}15`, 
+                                  borderColor: `${sub.color}35`,
+                                  color: sub.color 
+                                }}
+                              >
+                                <SubIcon size={16} />
+                              </div>
+                              <div className="nav-drop-info">
+                                <span className="nav-drop-title">{sub.title}</span>
+                                <span className="nav-drop-desc">{sub.desc}</span>
+                              </div>
+                            </motion.a>
+                          )
+                        })}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ))}
             </nav>
@@ -194,119 +206,136 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
         </div>
 
         {/* Mobile Navigation Drawer with Accordion & Frosted Chips */}
-        {open && (
-          <div className="nav-mobile">
-            <div className="nav-mobile-scroll">
-              {NAV_ITEMS.map((l) => {
-                const isExpanded = mobileExpanded === l.label
-                return (
-                  <div key={l.label} className={`nav-mobile-section ${isExpanded ? 'expanded' : ''}`}>
-                    <div 
-                      className="nav-mobile-row"
-                      onClick={() => {
-                        if (l.dropdown) {
-                          setMobileExpanded(isExpanded ? null : l.label)
-                        } else {
-                          setOpen(false)
-                        }
-                      }}
-                    >
-                      <a 
-                        href={l.href} 
-                        onClick={(e) => {
+        <AnimatePresence>
+          {open && (
+            <motion.div 
+              className="nav-mobile"
+              initial={{ opacity: 0, y: -16, scale: 0.97, filter: 'blur(8px)' }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
+              exit={{ opacity: 0, y: -14, scale: 0.97, filter: 'blur(8px)' }}
+              transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <div className="nav-mobile-scroll">
+                {NAV_ITEMS.map((l) => {
+                  const isExpanded = mobileExpanded === l.label
+                  return (
+                    <div key={l.label} className={`nav-mobile-section ${isExpanded ? 'expanded' : ''}`}>
+                      <div 
+                        className="nav-mobile-row"
+                        onClick={() => {
                           if (l.dropdown) {
-                            e.preventDefault()
                             setMobileExpanded(isExpanded ? null : l.label)
                           } else {
                             setOpen(false)
                           }
-                        }} 
-                        className="nav-mobile-title"
+                        }}
                       >
-                        {l.label}
-                      </a>
-                      {l.dropdown && (
-                        <button 
-                          className="nav-mobile-chevron-btn"
-                          aria-label={`Toggle ${l.label}`}
+                        <a 
+                          href={l.href} 
                           onClick={(e) => {
-                            e.stopPropagation()
-                            setMobileExpanded(isExpanded ? null : l.label)
-                          }}
+                            if (l.dropdown) {
+                              e.preventDefault()
+                              setMobileExpanded(isExpanded ? null : l.label)
+                            } else {
+                              setOpen(false)
+                            }
+                          }} 
+                          className="nav-mobile-title"
                         >
-                          <ChevronDown size={14} className={`mobile-chevron ${isExpanded ? 'open' : ''}`} />
-                        </button>
-                      )}
-                    </div>
-
-                    {/* Expandable Sub-items Grid */}
-                    {l.dropdown && isExpanded && (
-                      <div className="nav-mobile-chips-grid">
-                        {l.dropdown.map((sub) => {
-                          const SubIcon = sub.icon
-                          return (
-                            <a
-                              key={sub.title}
-                              href={sub.href}
-                              className="nav-mobile-chip-btn"
-                              onClick={(e) => handleDropdownItemClick(e, sub)}
-                            >
-                              <div 
-                                className="nav-mobile-chip-icon"
-                                style={{ 
-                                  background: `${sub.color}18`, 
-                                  borderColor: `${sub.color}40`,
-                                  color: sub.color 
-                                }}
-                              >
-                                <SubIcon size={12} />
-                              </div>
-                              <span className="nav-mobile-chip-text">{sub.title}</span>
-                            </a>
-                          )
-                        })}
+                          {l.label}
+                        </a>
+                        {l.dropdown && (
+                          <button 
+                            className="nav-mobile-chevron-btn"
+                            aria-label={`Toggle ${l.label}`}
+                            onClick={(e) => {
+                              e.stopPropagation()
+                              setMobileExpanded(isExpanded ? null : l.label)
+                            }}
+                          >
+                            <ChevronDown size={14} className={`mobile-chevron ${isExpanded ? 'open' : ''}`} />
+                          </button>
+                        )}
                       </div>
-                    )}
-                  </div>
-                )
-              })}
-            </div>
 
-            <div className="nav-mobile-footer">
-              <div className="nav-mobile-footer-row">
-                <span className="nav-mobile-theme-label">Theme Appearance</span>
-                <button 
-                  className="nav-mobile-theme-pill"
-                  onClick={onToggleTheme}
-                >
-                  {theme === 'dark' ? <><Sun size={13} /> <span>Switch to Light</span></> : <><Moon size={13} /> <span>Switch to Dark</span></>}
-                </button>
+                      {/* Expandable Sub-items Grid with Smooth Height Animation */}
+                      <AnimatePresence>
+                        {l.dropdown && isExpanded && (
+                          <motion.div 
+                            className="nav-mobile-chips-grid"
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.24, ease: [0.16, 1, 0.3, 1] }}
+                            style={{ overflow: 'hidden' }}
+                          >
+                            {l.dropdown.map((sub) => {
+                              const SubIcon = sub.icon
+                              return (
+                                <a
+                                  key={sub.title}
+                                  href={sub.href}
+                                  className="nav-mobile-chip-btn"
+                                  onClick={(e) => handleDropdownItemClick(e, sub)}
+                                >
+                                  <div 
+                                    className="nav-mobile-chip-icon"
+                                    style={{ 
+                                      background: `${sub.color}18`, 
+                                      borderColor: `${sub.color}40`,
+                                      color: sub.color 
+                                    }}
+                                  >
+                                    <SubIcon size={12} />
+                                  </div>
+                                  <span className="nav-mobile-chip-text">{sub.title}</span>
+                                </a>
+                              )
+                            })}
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
+                  )
+                })}
               </div>
-              <div className="nav-mobile-cta-stack" style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
-                <button 
-                  type="button" 
-                  className="tl-btn tl-btn-secondary nav-mobile-cta"
-                  onClick={() => {
-                    setOpen(false)
-                    if (onOpenDiscoveryModal) onOpenDiscoveryModal()
-                  }}
-                  style={{ width: '100%', justifyContent: 'center' }}
-                >
-                  <Calendar size={14} color="var(--coral)" />
-                  <span>Schedule 30-Min Discovery Call</span>
-                </button>
-                <a 
-                  href="#contact" 
-                  className="tl-btn tl-btn-primary nav-mobile-cta" 
-                  onClick={() => setOpen(false)}
-                >
-                  <span>Start a Project</span>
-                  <ArrowRight size={14} />
-                </a>
+
+              <div className="nav-mobile-footer">
+                <div className="nav-mobile-footer-row">
+                  <span className="nav-mobile-theme-label">Theme Appearance</span>
+                  <button 
+                    className="nav-mobile-theme-pill"
+                    onClick={onToggleTheme}
+                  >
+                    {theme === 'dark' ? <><Sun size={13} /> <span>Switch to Light</span></> : <><Moon size={13} /> <span>Switch to Dark</span></>}
+                  </button>
+                </div>
+                <div className="nav-mobile-cta-stack" style={{ display: 'flex', flexDirection: 'column', gap: 8, width: '100%' }}>
+                  <button 
+                    type="button" 
+                    className="tl-btn tl-btn-secondary nav-mobile-cta"
+                    onClick={() => {
+                      setOpen(false)
+                      if (onOpenDiscoveryModal) onOpenDiscoveryModal()
+                    }}
+                    style={{ width: '100%', justifyContent: 'center' }}
+                  >
+                    <Calendar size={14} color="var(--coral)" />
+                    <span>Schedule 30-Min Discovery Call</span>
+                  </button>
+                  <a 
+                    href="#contact" 
+                    className="tl-btn tl-btn-primary nav-mobile-cta" 
+                    onClick={() => setOpen(false)}
+                  >
+                    <span>Start a Project</span>
+                    <ArrowRight size={14} />
+                  </a>
+                </div>
               </div>
-            </div>
-          </div>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   )
