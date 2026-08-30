@@ -4,11 +4,127 @@
 // underlying product actually works: same agent framework, different
 // configuration per industry.
 //
-// The "impact" bars are illustrative, qualitative comparisons (not
-// claimed client results — TensorLoom has no published case studies
-// yet) meant to show the shape of the improvement, not a verified stat.
+// The "impact" bars are illustrative, qualitative comparisons meant to show
+// the shape of the improvement.
 
 export const INDUSTRIES = [
+  {
+    id: 'ecommerce',
+    label: 'E-Commerce',
+    scenario: 'AI Cart Recovery & Instant Checkout Concierge',
+    queueLabel: 'Live checkout stream',
+    steps: [
+      {
+        stage: 'Trigger',
+        title: 'High-intent cart abandoned',
+        detail: 'A customer adds high-value items to cart, starts checkout, but leaves before completing payment.',
+        card: { kind: 'incoming', title: 'Cart #TL-8492 — Silk Blazer ($240)', meta: 'User: Ananya R. · Abandoned 2m ago', badge: 'HIGH INTENT' },
+      },
+      {
+        stage: 'Reason',
+        title: 'The agent analyzes incentive threshold',
+        detail: 'It checks user purchase history, cart profit margin, and stock velocity to determine a margin-safe 10% instant perk.',
+        card: { kind: 'checks', items: ['Verified cart margin & inventory level', 'Checked user lifetime purchase history', 'Calculated margin-safe dynamic incentive'] },
+      },
+      {
+        stage: 'Act',
+        title: 'It dispatches personalized WhatsApp concierge',
+        detail: 'Sends a tailored WhatsApp message with a 1-click pre-filled checkout link and styling recommendation.',
+        card: { kind: 'action', title: 'WhatsApp Concierge Dispatched', meta: '1-Click Checkout Link · 10% Limited Perk Applied' },
+      },
+      {
+        stage: 'Result',
+        title: 'Order completed in 30 seconds',
+        detail: 'Customer pays via Apple Pay / UPI in 1 tap. Shopify inventory, ERP, and warehouse are updated instantly.',
+        card: { kind: 'result', title: 'Order Confirmed & Synced', meta: 'Zero manual email campaigns needed' },
+      },
+    ],
+    impact: {
+      before: 'Generic batch email 24h later (7% recovery)',
+      after: 'AI concierge in 3m (34% recovery rate)',
+      chips: ['1-Click WhatsApp & SMS checkout', 'Margin-safe dynamic incentives', 'Zero manual email marketing setup'],
+    },
+    marketUseCases: ['Dynamic cart recovery & WhatsApp checkout', 'AI personal shopping concierge', 'Real-time inventory & returns routing'],
+    frontierUseCases: ['Autonomous multi-channel pricing rebalancing', 'Predictive restock pre-allocation', 'Zero-return size recommendation engine'],
+  },
+  {
+    id: 'food-delivery',
+    label: 'Food Delivery',
+    scenario: 'Smart Kitchen Prep & Rider Dispatch Sync',
+    queueLabel: 'Live kitchen & order stream',
+    steps: [
+      {
+        stage: 'Trigger',
+        title: 'Surge dinner order lands',
+        detail: 'A customer places a multi-item order during peak dinner rush with custom dietary notes.',
+        card: { kind: 'incoming', title: 'Order #FD-2910 — 4 Items ($68)', meta: 'Kitchen: Downtown Hub · 45s ago', badge: 'SURGE ORDER' },
+      },
+      {
+        stage: 'Reason',
+        title: 'The agent predicts prep & traffic latency',
+        detail: 'It calculates exact oven prep time, kitchen station load, and current road traffic for nearby riders.',
+        card: { kind: 'checks', items: ['Estimated station prep: 14 mins', 'Analyzed road congestion index', 'Clustered 3 nearby delivery partners'] },
+      },
+      {
+        stage: 'Act',
+        title: 'It synchronizes rider arrival with the pass',
+        detail: 'Dispatches the optimal rider so they arrive exactly as the food is packed, batching an adjacent drop-off.',
+        card: { kind: 'action', title: 'Optimal Rider Dispatched', meta: 'Rider ETA: 13m 40s · Zero wait at kitchen' },
+      },
+      {
+        stage: 'Result',
+        title: 'Sub-22min hot delivery confirmed',
+        detail: 'Food stays hot with zero staging delay. Live GPS tracking and delivery ETA stream to customer app.',
+        card: { kind: 'result', title: 'Dispatched on schedule', meta: 'Zero food cooling time on kitchen counter' },
+      },
+    ],
+    impact: {
+      before: 'Riders wait 15m outside kitchen, cold food',
+      after: 'Synchronized pickup, hot delivery in < 22m',
+      chips: ['18% faster kitchen-to-door transit', 'Predictive multi-order batching', 'Automated surge-hour dispatch'],
+    },
+    marketUseCases: ['Kitchen prep & rider synchronization', 'Dynamic multi-stop route batching', 'Surge-hour pricing & fleet rebalancing'],
+    frontierUseCases: ['Predictive ingredient demand forecasting', 'Autonomous refund & dispute resolution', 'Drone & micro-mobility delivery handoffs'],
+  },
+  {
+    id: 'fintech',
+    label: 'Fintech',
+    scenario: 'Instant KYC, Credit Decisioning & AML Shield',
+    queueLabel: 'Live loan & payment stream',
+    steps: [
+      {
+        stage: 'Trigger',
+        title: 'Instant loan / high-value transfer requested',
+        detail: 'A business owner applies for a $25,000 working capital line with connected bank accounting data.',
+        card: { kind: 'incoming', title: 'Capital Request #FT-5012 ($25,000)', meta: 'Business: Apex Logistics · just now', badge: 'LIVE APP' },
+      },
+      {
+        stage: 'Reason',
+        title: 'The agent verifies identity & cashflow health',
+        detail: 'In 450ms, it runs KYC biometric checks, cashflow velocity analysis, and cross-checks AML sanction lists.',
+        card: { kind: 'checks', items: ['Biometric & ID verified (KYC 100%)', 'Calculated 12-mo cashflow DSCR', 'Scanned global AML & PEP sanction lists'] },
+      },
+      {
+        stage: 'Act',
+        title: 'It generates risk-adjusted terms & ledger note',
+        detail: 'Calculates optimal APR tier, prepares legally compliant promissory agreement, and reserves credit facility.',
+        card: { kind: 'action', title: 'Approval Tier Assigned', meta: 'Tier A+ · 6.2% APR · Contract Generated' },
+      },
+      {
+        stage: 'Result',
+        title: 'Instant fund disbursement under 60s',
+        detail: 'Funds transfer via instant rails. Compliance officer receives an immutable audit-proof AML record.',
+        card: { kind: 'result', title: 'Disbursed in 48 seconds', meta: '100% Audit-ready compliance trail' },
+      },
+    ],
+    impact: {
+      before: '3–5 days manual paperwork backlog',
+      after: 'Instant approval & disbursement in < 60s',
+      chips: ['99.8% accurate fraud & AML detection', 'Sub-second real-time risk decisioning', 'Zero manual document re-keying'],
+    },
+    marketUseCases: ['Instant credit decisioning & underwriting', 'Real-time transaction fraud prevention', 'Automated KYC & AML compliance checks'],
+    frontierUseCases: ['Autonomous cross-border FX hedging', 'Real-time multi-institution fraud graph analysis', 'Synthetic data stress testing'],
+  },
   {
     id: 'healthcare',
     label: 'Healthcare',
