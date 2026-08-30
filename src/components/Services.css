@@ -21,15 +21,14 @@
 .services-title {
   font-size: clamp(30px, 4.2vw, 46px);
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--ink-primary);
   margin: 0;
   font-weight: 700;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .services-subtitle {
   font-size: clamp(14.5px, 1.2vw, 16.5px);
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--ink-secondary);
   line-height: 1.6;
   margin: 0;
 }
@@ -50,26 +49,26 @@
 }
 
 .bento-card {
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
   border-radius: var(--radius-lg);
   padding: 26px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .bento-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 109, 66, 0.35);
   transform: translateY(-3px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+  background: var(--bg-hover);
+  box-shadow: var(--glass-shadow-hover), var(--glass-rim);
 }
 
 /* Bento Header Alignment */
@@ -96,7 +95,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--line-strong);
   backdrop-filter: blur(8px);
   flex-shrink: 0;
   margin-top: 1px;
@@ -105,14 +104,14 @@
 .bento-icon-title h3 {
   font-size: 17px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--ink-primary);
   margin: 0 0 3px 0;
   line-height: 1.25;
 }
 
 .bento-sub {
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink-secondary);
   line-height: 1.45;
   margin: 0;
 }
@@ -121,11 +120,11 @@
   font-family: var(--font-mono);
   font-size: 9.5px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.8);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-secondary);
+  background: var(--bg-surface);
   padding: 3.5px 9px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid var(--line-strong);
   letter-spacing: 0.08em;
   backdrop-filter: blur(8px);
   white-space: nowrap;
@@ -135,8 +134,8 @@
 
 /* Card 1: Interactive Terminal Widget */
 .bento-terminal-widget {
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--widget-bg);
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   margin-top: 10px;
@@ -148,7 +147,7 @@
   gap: 6px;
   margin-bottom: 12px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid var(--line);
 }
 
 .t-dot {
@@ -164,14 +163,14 @@
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink-secondary);
   margin-left: 8px;
 }
 
 .terminal-stream {
   font-family: var(--font-mono);
   font-size: 13.5px;
-  color: #ffffff;
+  color: var(--ink-primary);
   display: flex;
   align-items: center;
   gap: 8px;
@@ -206,9 +205,9 @@
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--ink-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
   padding: 4px 10px;
   border-radius: 999px;
   display: inline-flex;
@@ -219,8 +218,8 @@
 
 /* Card 2: UI Mockup */
 .bento-ui-mockup {
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--widget-bg);
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 16px 18px;
   display: flex;
@@ -237,13 +236,13 @@
 .mockup-label {
   font-size: 12.5px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--ink-primary);
 }
 
 .mockup-toggle {
   width: 36px;
   height: 20px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--line-strong);
   border-radius: 999px;
   position: relative;
   transition: all 0.2s ease;
@@ -279,7 +278,7 @@
 
 .m-bar {
   flex: 1;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--line-strong);
   border-radius: 4px;
   transition: height 0.3s ease;
 }
@@ -288,13 +287,13 @@
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink-secondary);
 }
 
 /* Card 3: Cloud & Infra */
 .bento-infra-widget {
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--widget-bg);
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 14px 16px;
   display: flex;
@@ -311,7 +310,7 @@
 }
 
 .infra-region {
-  color: #ffffff;
+  color: var(--ink-primary);
   font-weight: 600;
 }
 
@@ -326,9 +325,9 @@
 .infra-uptime-badge {
   margin-top: 6px;
   padding-top: 8px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--line);
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink-secondary);
   display: flex;
   align-items: center;
   gap: 6px;
@@ -340,8 +339,8 @@
 
 /* Card 4: Vector Data */
 .bento-data-widget {
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--widget-bg);
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 16px;
   display: flex;
@@ -360,20 +359,20 @@
   font-size: 11px;
   font-weight: 600;
   padding: 4px 10px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
   border-radius: 6px;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--ink-primary);
 }
 
 .flow-badge.highlight {
-  background: rgba(124, 58, 237, 0.2);
+  background: rgba(124, 58, 237, 0.15);
   border-color: rgba(124, 58, 237, 0.4);
-  color: #c084fc;
+  color: #8b5cf6;
 }
 
 .flow-arrow {
-  color: rgba(255, 255, 255, 0.3);
+  color: var(--ink-faint);
   font-size: 12px;
 }
 
@@ -383,8 +382,8 @@
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: 10.5px;
-  color: rgba(255, 255, 255, 0.5);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--ink-faint);
+  border-top: 1px solid var(--line);
   padding-top: 8px;
 }
 
@@ -399,21 +398,21 @@
 .mini-phone-screen {
   width: 140px;
   height: 90px;
-  background: rgba(0, 0, 0, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: var(--widget-bg);
+  border: 2px solid var(--line-strong);
   border-radius: 12px;
   padding: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 6px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 .phone-notch {
   width: 32px;
   height: 4px;
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--line-strong);
   border-radius: 2px;
 }
 
@@ -427,7 +426,7 @@
 .phone-card-skeleton {
   width: 100%;
   height: 24px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--bg-hover);
   border-radius: 4px;
 }
 
@@ -443,8 +442,8 @@
 
 /* Card 6: Governance Slider */
 .bento-gov-widget {
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--widget-bg);
+  border: 1px solid var(--line);
   border-radius: var(--radius-md);
   padding: 16px 20px;
   display: flex;
@@ -458,7 +457,7 @@
   justify-content: space-between;
   font-family: var(--font-mono);
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--ink-secondary);
 }
 
 .gov-val {
@@ -477,13 +476,13 @@
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--line);
   padding-top: 10px;
 }
 
 .gov-note {
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--ink-secondary);
   line-height: 1.4;
   margin: 0;
 }
@@ -548,8 +547,8 @@
 }
 
 [data-theme="light"] .bento-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
@@ -600,4 +599,3 @@
 [data-theme="light"] .gov-note {
   color: var(--ink-secondary);
 }
-

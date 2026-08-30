@@ -21,15 +21,14 @@
 .about-title {
   font-size: clamp(30px, 4.2vw, 46px);
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--ink-primary);
   margin: 0;
   font-weight: 700;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .about-subtitle {
   font-size: clamp(14.5px, 1.2vw, 16.5px);
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--ink-secondary);
   line-height: 1.6;
   margin: 0;
 }
@@ -44,22 +43,22 @@
   padding: 32px 26px;
   display: flex;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(24px) saturate(190%);
-  -webkit-backdrop-filter: blur(24px) saturate(190%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-border);
   border-radius: var(--radius-lg);
-  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.4);
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .about-pillar-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 109, 66, 0.35);
   transform: translateY(-4px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5), inset 0 1px 1.5px rgba(255, 255, 255, 0.6);
+  background: var(--bg-hover);
+  box-shadow: var(--glass-shadow-hover), var(--glass-rim);
 }
 
 .pillar-top-row {
@@ -73,7 +72,7 @@
   font-family: var(--font-mono);
   font-size: 26px;
   font-weight: 800;
-  color: rgba(255, 255, 255, 0.25);
+  color: var(--ink-faint);
   letter-spacing: -0.02em;
 }
 
@@ -81,7 +80,7 @@
   width: 46px;
   height: 46px;
   border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid var(--line-strong);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -100,13 +99,13 @@
 .pillar-title {
   font-size: 20px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--ink-primary);
   margin-bottom: 10px;
 }
 
 .pillar-desc {
   font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink-secondary);
   line-height: 1.55;
   margin-bottom: 22px;
   flex-grow: 1;
@@ -118,16 +117,16 @@
   gap: 7px;
   margin-top: auto;
   padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid var(--line);
 }
 
 .pillar-chip {
   font-family: var(--font-mono);
   font-size: 11px;
-  font-weight: 500;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  font-weight: 600;
+  color: var(--ink-primary);
+  background: var(--bg-surface);
+  border: 1px solid var(--line-strong);
   padding: 4px 10px;
   border-radius: 6px;
   letter-spacing: 0.02em;
@@ -176,8 +175,8 @@
 }
 
 [data-theme="light"] .about-pillar-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.05), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
@@ -196,7 +195,7 @@
 }
 
 [data-theme="light"] .pillar-num {
-  color: rgba(15, 23, 42, 0.15);
+  color: rgba(15, 23, 42, 0.2);
 }
 
 [data-theme="light"] .pillar-chip {
@@ -205,4 +204,3 @@
   color: var(--ink-primary);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
 }
-

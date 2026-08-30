@@ -21,15 +21,14 @@
 .faq-title {
   font-size: clamp(30px, 4.2vw, 46px);
   line-height: 1.15;
-  color: #ffffff;
+  color: var(--ink-primary);
   margin: 0;
   font-weight: 700;
-  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .faq-subtitle {
   font-size: clamp(14.5px, 1.2vw, 16.5px);
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--ink-secondary);
   line-height: 1.6;
   max-width: 600px;
   margin: 0;
@@ -50,21 +49,21 @@
   font-family: var(--font-mono);
   font-size: 11.5px;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.75);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-secondary);
+  background: var(--bg-surface);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05), var(--glass-rim);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
 }
 
 .faq-cat-btn:hover {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--ink-primary);
+  background: var(--bg-hover);
+  border-color: var(--coral);
 }
 
 .faq-cat-btn.active {
@@ -85,24 +84,24 @@
 
 .faq-item-card {
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: var(--glass-border);
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   overflow: hidden;
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .faq-item-card:hover {
-  border-color: rgba(255, 255, 255, 0.3);
-  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 109, 66, 0.35);
+  background: var(--bg-hover);
 }
 
 .faq-item-card.open {
-  border-color: rgba(255, 255, 255, 0.4);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 25px rgba(255, 109, 66, 0.15), inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
+  border-color: var(--coral);
+  background: var(--bg-elevated);
+  box-shadow: 0 12px 32px rgba(255, 109, 66, 0.12), var(--glass-rim);
 }
 
 .faq-question-btn {
@@ -110,59 +109,52 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 18px 20px;
-  text-align: left;
   gap: 14px;
-  background: none;
-  border: none;
+  padding: 18px 22px;
+  text-align: left;
   cursor: pointer;
 }
 
 .faq-q-text {
   font-size: 15.5px;
   font-weight: 700;
-  color: #ffffff;
-  line-height: 1.4;
+  color: var(--ink-primary);
+  margin: 0;
+  line-height: 1.35;
 }
 
 .faq-chevron-box {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: var(--bg-hover);
+  border: 1px solid var(--line);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.75);
   flex-shrink: 0;
-  backdrop-filter: blur(8px);
-  transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  color: var(--ink-secondary);
+  transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
 }
 
-.faq-chevron-box.rotated {
+.faq-chevron-box.open {
   transform: rotate(180deg);
   background: var(--coral);
   color: #ffffff;
   border-color: var(--coral);
-  box-shadow: 0 0 12px var(--coral);
 }
 
-.faq-answer-wrap {
-  overflow: hidden;
+.faq-answer-inner {
+  padding: 0 22px 20px;
 }
 
 .faq-a-text {
-  padding: 0 20px 18px;
   font-size: 14px;
+  color: var(--ink-secondary);
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
   margin: 0;
 }
 
-/* ===================================================================
-   Responsive Breakpoints
-   =================================================================== */
 @media (max-width: 640px) {
   .faq-section {
     padding: 40px 0;
@@ -175,16 +167,13 @@
     padding: 15px 16px;
     gap: 10px;
   }
-
   .faq-q-text {
     font-size: 14px;
   }
-
   .faq-chevron-box {
     width: 26px;
     height: 26px;
   }
-
   .faq-a-text {
     padding: 0 16px 16px;
     font-size: 13px;
@@ -215,8 +204,8 @@
 }
 
 [data-theme="light"] .faq-item-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(226, 232, 240, 0.9);
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 1);
 }
 
@@ -238,4 +227,3 @@
 [data-theme="light"] .faq-a-text {
   color: var(--ink-secondary);
 }
-
