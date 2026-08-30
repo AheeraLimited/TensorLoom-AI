@@ -255,7 +255,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 @media (max-width: 640px) {
   :root {
-    --edge: 16px;
+    --edge: 14px;
   }
   .eyebrow {
     font-size: 10px;
@@ -268,13 +268,36 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   }
 }
 
+html {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+
+#root {
+  overflow-x: hidden;
+  max-width: 100%;
+  width: 100%;
+}
+
 .tl-shell {
   max-width: var(--container);
+  width: 100%;
   margin: 0 auto;
   padding-left: var(--edge);
   padding-right: var(--edge);
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 /* Hyper-Realistic Glassmorphic Container (.tl-glass) */
