@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Sparkles, CheckCircle2, Copy, Send, Loader2, Clock, ShieldCheck, Mail, AlertCircle, Phone, ExternalLink } from 'lucide-react'
+import { Sparkles, CheckCircle2, Copy, Send, Loader2, Clock, ShieldCheck, Mail, AlertCircle, Phone, ExternalLink, Globe } from 'lucide-react'
 import { toast } from 'sonner'
 import './Contact.css'
 
@@ -13,12 +13,19 @@ const PROJECT_TYPES = [
   'Cloud Infrastructure'
 ]
 
-const BUDGET_RANGES = [
-  '$1,000 – $2,500',
-  '$2,500 – $6,000',
-  '$6,000 – $15,000',
-  '$15,000+'
+const CURRENCY_OPTIONS = [
+  { code: 'USD', symbol: '$', label: 'USD ($)' },
+  { code: 'EUR', symbol: '€', label: 'EUR (€)' },
+  { code: 'GBP', symbol: '£', label: 'GBP (£)' },
+  { code: 'INR', symbol: '₹', label: 'INR (₹)' }
 ]
+
+const BUDGETS_BY_CURRENCY = {
+  USD: ['$1,000 – $2,500', '$2,500 – $6,000', '$6,000 – $15,000', '$15,000+'],
+  EUR: ['€1,000 – €2,500', '€2,500 – €6,000', '€6,000 – €15,000', '€15,000+'],
+  GBP: ['£800 – £2,000', '£2,000 – £5,000', '£5,000 – £12,000', '£12,000+'],
+  INR: ['₹75,000 – ₹2,00,000', '₹2,00,000 – ₹5,00,000', '₹5,00,000 – ₹12,00,000', '₹12,00,000+']
+}
 
 const TIMELINES = [
   'Immediate (1-2 wks)',
@@ -34,17 +41,26 @@ export default function Contact() {
   const [copied, setCopied] = useState(false)
   const [copiedPhone, setCopiedPhone] = useState(false)
   const [leadRefCode, setLeadRefCode] = useState('')
+  const [selectedCurrency, setSelectedCurrency] = useState('USD')
 
   const [form, setForm] = useState({
     name: '',
     email: '',
     phone: '',
     projectType: 'Custom Web App / SaaS',
+    currency: 'USD',
     budget: '$2,500 – $6,000',
     timeline: 'Immediate (1-2 wks)',
     message: '',
     _gotcha: '' // Anti-bot honeypot
   })
+
+  function handleCurrencyChange(c) {
+    setSelectedCurrency(c)
+    const defaultBudget = BUDGETS_BY_CURRENCY[c][1]
+    setForm((f) => ({ ...f, currency: c, budget: defaultBudget }))
+    toast.info(`Budget currency set to ${c}`)
+  }
 
   function handleChange(e) {
     const { name, value } = e.target
@@ -82,13 +98,14 @@ export default function Contact() {
     try {
       const payload = {
         access_key: '9230cdfe-49a1-42d1-af01-6cc74eb474ff',
-        subject: `⚡ New Project Lead: ${form.name} (${form.projectType}) [${ref}]`,
+        subject: `⚡ New Project Lead: ${form.name} (${form.projectType}) [${form.currency} ${form.budget}] [${ref}]`,
         from_name: 'TensorLoom AI Lead Desk',
         replyto: form.email,
         name: form.name,
         email: form.email,
         phone: form.phone || 'Not provided',
         project_type: form.projectType,
+        currency: form.currency,
         budget_range: form.budget,
         launch_timeline: form.timeline,
         project_requirements: form.message,
@@ -314,11 +331,26 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Budget Selector */}
+                  {/* Budget Selector with Currency Selector */}
                   <div className="form-group">
-                    <label className="form-label">ESTIMATED BUDGET RANGE</label>
+                    <div className="form-label-row-with-currency">
+                      <label className="form-label">ESTIMATED BUDGET RANGE</label>
+                      <div className="contact-currency-tabs">
+                        <Globe size={12} color="var(--coral)" />
+                        {CURRENCY_OPTIONS.map((c) => (
+                          <button
+                            key={c.code}
+                            type="button"
+                            className={`currency-tab-btn ${selectedCurrency === c.code ? 'active' : ''}`}
+                            onClick={() => handleCurrencyChange(c.code)}
+                          >
+                            {c.code} ({c.symbol})
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                     <div className="form-pill-selector">
-                      {BUDGET_RANGES.map((b) => (
+                      {BUDGETS_BY_CURRENCY[selectedCurrency].map((b) => (
                         <button
                           type="button"
                           key={b}
