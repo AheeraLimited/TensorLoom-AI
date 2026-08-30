@@ -4,7 +4,7 @@
 
 .projects-section {
   position: relative;
-  padding: clamp(70px, 9vw, 110px) 0;
+  padding: clamp(50px, 6vw, 80px) 0 clamp(30px, 3.5vw, 45px);
   overflow: hidden;
   z-index: 2;
 }
