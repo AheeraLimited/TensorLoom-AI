@@ -126,9 +126,9 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
                     {item.dropdown && activeDropdown === item.label && (
                       <motion.div 
                         className="nav-dropdown-menu"
-                        initial={{ opacity: 0, y: 12, scale: 0.96, filter: 'blur(6px)' }}
-                        animate={{ opacity: 1, y: 0, scale: 1, filter: 'blur(0px)' }}
-                        exit={{ opacity: 0, y: 8, scale: 0.96, filter: 'blur(6px)' }}
+                        initial={{ opacity: 0, y: 12, x: '-50%', scale: 0.96, filter: 'blur(6px)' }}
+                        animate={{ opacity: 1, y: 0, x: '-50%', scale: 1, filter: 'blur(0px)' }}
+                        exit={{ opacity: 0, y: 8, x: '-50%', scale: 0.96, filter: 'blur(6px)' }}
                         transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
                       >
                         {item.dropdown.map((sub, idx) => {
