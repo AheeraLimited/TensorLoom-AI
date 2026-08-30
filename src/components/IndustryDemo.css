@@ -214,9 +214,7 @@
   width: 46px;
   height: 46px;
   border-radius: 50%;
-  background: var(--bg-elevated);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: #14121e;
   border: 1.5px solid var(--line-strong);
   display: flex;
   align-items: center;
@@ -224,7 +222,7 @@
   color: var(--ink-faint);
   position: relative;
   z-index: 2;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08), var(--glass-rim);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25), var(--glass-rim);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 0;
   margin: 0;
@@ -253,20 +251,22 @@
   border-color: var(--coral);
   transform: translateY(-2px);
   color: var(--ink-primary);
+  background: #1a1728;
 }
 
 .topology-node.node-complete .node-circle {
   border: 2px solid var(--coral);
   color: var(--coral);
-  box-shadow: 0 0 12px rgba(255, 109, 66, 0.3);
+  background: #14121e;
+  box-shadow: 0 0 14px rgba(255, 109, 66, 0.35);
 }
 
 .topology-node.node-active .node-circle {
-  border: 2.5px solid var(--coral);
+  border: 2px solid #ffffff;
   color: #ffffff;
-  box-shadow: 0 0 0 4px rgba(255, 109, 66, 0.2), 0 0 20px rgba(255, 109, 66, 0.4);
+  box-shadow: 0 0 0 4px rgba(255, 109, 66, 0.25), 0 0 24px rgba(255, 109, 66, 0.6);
   transform: scale(1.06);
-  background: var(--coral);
+  background: var(--coral-gradient);
 }
 
 .node-ring-pulse {
@@ -289,6 +289,7 @@
   flex-direction: column;
   align-items: center;
   gap: 3px;
+  white-space: nowrap;
 }
 
 .node-index {
@@ -298,6 +299,7 @@
   color: var(--ink-faint);
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .node-title {
@@ -305,6 +307,7 @@
   font-weight: 700;
   color: var(--ink-secondary);
   transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
 .topology-node.node-active .node-title {
@@ -719,4 +722,32 @@
     font-size: 11px;
     padding: 4px 10px;
   }
+}
+
+/* ===================================================================
+   Light Mode Theme Overrides
+   =================================================================== */
+[data-theme="light"] .node-circle {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.95);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+[data-theme="light"] .topology-node:hover .node-circle {
+  background: #ffffff;
+  border-color: var(--coral);
+}
+
+[data-theme="light"] .topology-node.node-complete .node-circle {
+  background: #ffffff;
+  border-color: var(--coral);
+  color: var(--coral);
+  box-shadow: 0 0 14px rgba(255, 109, 66, 0.25);
+}
+
+[data-theme="light"] .topology-node.node-active .node-circle {
+  background: var(--coral-gradient);
+  border-color: #ffffff;
+  color: #ffffff;
+  box-shadow: 0 0 0 4px rgba(255, 109, 66, 0.2), 0 0 20px rgba(255, 109, 66, 0.4);
 }
