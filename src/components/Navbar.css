@@ -121,9 +121,9 @@
   left: 50%;
   transform: translateX(-50%);
   min-width: 310px;
-  background: rgba(14, 11, 22, 0.40);
-  backdrop-filter: blur(400px) saturate(190%);
-  -webkit-backdrop-filter: blur(400px) saturate(190%);
+  background: rgba(14, 11, 22, 0.85);
+  backdrop-filter: blur(400px) saturate(200%) brightness(60%);
+  -webkit-backdrop-filter: blur(400px) saturate(200%) brightness(60%);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 20px;
   padding: 8px;
