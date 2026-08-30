@@ -119,9 +119,9 @@
   left: 50%;
   transform: translateX(-50%);
   min-width: 310px;
-  background: rgba(14, 11, 22, 0.95);
-  backdrop-filter: blur(200px) saturate(190%);
-  -webkit-backdrop-filter: blur(200px) saturate(190%);
+  background: rgba(14, 11, 22, 0.40);
+  backdrop-filter: blur(400px) saturate(190%);
+  -webkit-backdrop-filter: blur(400px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 20px;
   padding: 8px;
@@ -369,9 +369,9 @@ a.nav-cta {
   right: var(--edge);
   display: flex;
   flex-direction: column;
-  background: rgba(14, 11, 22, 0.95);
-  backdrop-filter: blur(200px) saturate(190%);
-  -webkit-backdrop-filter: blur(200px) saturate(190%);
+  background: rgba(14, 11, 22, 0.40);
+  backdrop-filter: blur(400px) saturate(190%);
+  -webkit-backdrop-filter: blur(400px) saturate(190%);
   border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: var(--radius-xl);
   box-shadow: 0 28px 70px rgba(0, 0, 0, 0.75), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
