@@ -190,3 +190,52 @@
     font-size: 13px;
   }
 }
+
+/* ===================================================================
+   Light Mode Theme Overrides
+   =================================================================== */
+[data-theme="light"] .faq-title {
+  color: var(--ink-primary);
+  text-shadow: none;
+}
+
+[data-theme="light"] .faq-subtitle {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .faq-cat-btn {
+  color: var(--ink-secondary);
+  background: var(--bg-surface);
+  border-color: var(--line-strong);
+}
+
+[data-theme="light"] .faq-cat-btn:hover {
+  background: var(--bg-hover);
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .faq-item-card {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+[data-theme="light"] .faq-item-card:hover {
+  background: #ffffff;
+  border-color: rgba(203, 213, 225, 1);
+}
+
+[data-theme="light"] .faq-item-card.open {
+  background: #ffffff;
+  border-color: var(--coral);
+  box-shadow: 0 12px 30px rgba(255, 109, 66, 0.12), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+[data-theme="light"] .faq-q-text {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .faq-a-text {
+  color: var(--ink-secondary);
+}
+

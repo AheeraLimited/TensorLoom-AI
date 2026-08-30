@@ -21,6 +21,18 @@ import { PROJECTS } from './data/projectsData.js'
 
 export default function App() {
   const [modalProject, setModalProject] = useState(null)
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('tensorloom-theme') || 'light'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('tensorloom-theme', theme)
+  }, [theme])
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
+  }
 
   useEffect(() => {
     // Ultra-high frame rate 120Hz+ Lenis smooth scrolling
@@ -95,9 +107,13 @@ export default function App() {
 
   return (
     <>
-      <NeuralLoomCanvas />
+      <NeuralLoomCanvas theme={theme} />
       <div className="tl-warp" aria-hidden="true" />
-      <Navbar onOpenProjectModal={handleOpenProjectModal} />
+      <Navbar 
+        onOpenProjectModal={handleOpenProjectModal} 
+        theme={theme} 
+        onToggleTheme={toggleTheme} 
+      />
       <main>
         <Hero />
         <IndustryMarquee />

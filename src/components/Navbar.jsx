@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { 
   ChevronDown, ShoppingBag, Car, UtensilsCrossed, Milk, MessageSquare, 
   Layers, Cpu, Zap, Activity, Compass, Layout, Code2, Rocket, Shield, HelpCircle, 
-  Sparkles, DollarSign, CheckCircle2, ArrowRight
+  Sparkles, DollarSign, CheckCircle2, ArrowRight, Sun, Moon
 } from 'lucide-react'
 import LoomMark from './LoomMark.jsx'
 import './Navbar.css'
@@ -73,7 +73,7 @@ const NAV_ITEMS = [
   }
 ]
 
-export default function Navbar({ onOpenProjectModal }) {
+export default function Navbar({ onOpenProjectModal, theme = 'dark', onToggleTheme }) {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
@@ -104,7 +104,7 @@ export default function Navbar({ onOpenProjectModal }) {
             <span>TensorLoom <strong className="brand-ai">AI</strong></span>
           </a>
 
-          {/* Right Group: Nav Links with Rich Dropdowns + CTA Button */}
+          {/* Right Group: Nav Links with Rich Dropdowns + Theme Switcher + CTA */}
           <div className="nav-right-group">
             <nav className="nav-links" aria-label="Primary">
               {NAV_ITEMS.map((item) => (
@@ -153,6 +153,16 @@ export default function Navbar({ onOpenProjectModal }) {
                 </div>
               ))}
             </nav>
+
+            {/* Theme Toggle Button */}
+            <button
+              className="nav-theme-toggle"
+              onClick={onToggleTheme}
+              aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+              title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+            >
+              {theme === 'dark' ? <Sun size={15} /> : <Moon size={15} />}
+            </button>
 
             <a href="#contact" className="tl-btn tl-btn-primary nav-cta">Start a Project</a>
 
@@ -248,6 +258,15 @@ export default function Navbar({ onOpenProjectModal }) {
             </div>
 
             <div className="nav-mobile-footer">
+              <div className="nav-mobile-footer-row">
+                <span className="nav-mobile-theme-label">Theme Appearance</span>
+                <button 
+                  className="nav-mobile-theme-pill"
+                  onClick={onToggleTheme}
+                >
+                  {theme === 'dark' ? <><Sun size={13} /> <span>Switch to Light</span></> : <><Moon size={13} /> <span>Switch to Dark</span></>}
+                </button>
+              </div>
               <a 
                 href="#contact" 
                 className="tl-btn tl-btn-primary nav-mobile-cta" 

@@ -391,3 +391,57 @@
     justify-content: space-between;
   }
 }
+
+/* ===================================================================
+   Light Mode Theme Overrides
+   =================================================================== */
+[data-theme="light"] .footer {
+  border-top-color: var(--line);
+}
+
+[data-theme="light"] .footer-cta-card {
+  background: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+[data-theme="light"] .footer-cta-title {
+  color: var(--ink-primary);
+  text-shadow: none;
+}
+
+[data-theme="light"] .footer-cta-sub {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .footer-brand-name {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .footer-brand-tagline {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .footer-col-heading {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .footer-link-item {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .footer-link-item:hover {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .footer-social-btn {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .footer-bottom-bar {
+  color: var(--ink-faint);
+  border-top-color: var(--line);
+}
+

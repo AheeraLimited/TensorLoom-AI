@@ -19,23 +19,23 @@
 
 .stat-card {
   padding: 20px 24px;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: var(--glass-border);
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   gap: 8px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  box-shadow: var(--glass-shadow), var(--glass-rim);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .stat-card:hover {
-  border-color: rgba(255, 255, 255, 0.35);
+  border-color: rgba(255, 109, 66, 0.35);
   transform: translateY(-2px);
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
+  background: var(--bg-hover);
+  box-shadow: var(--glass-shadow-hover), var(--glass-rim);
 }
 
 .stat-card-top {
@@ -55,12 +55,12 @@
   font-size: clamp(26px, 2.5vw, 34px);
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: #ffffff;
+  color: var(--ink-primary);
 }
 
 .stat-label {
   font-size: 13px;
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--ink-secondary);
   font-weight: 500;
 }
 
@@ -117,21 +117,20 @@
   align-items: center;
   gap: 10px;
   padding: 10px 18px;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--bg-surface);
+  backdrop-filter: var(--glass-blur-sm);
+  -webkit-backdrop-filter: var(--glass-blur-sm);
+  border: 1px solid var(--line-strong);
   border-radius: 999px;
   white-space: nowrap;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05), var(--glass-rim);
   transition: all 0.25s ease;
 }
 
 .marquee-chip:hover {
-  border-color: rgba(255, 255, 255, 0.35);
-  background: rgba(255, 255, 255, 0.15);
+  border-color: var(--coral);
+  background: var(--bg-hover);
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .chip-icon {
@@ -143,17 +142,17 @@
 .chip-name {
   font-size: 13.5px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--ink-primary);
 }
 
 .chip-tag {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.08);
+  color: var(--ink-faint);
+  background: var(--bg-hover);
   padding: 2px 8px;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--line);
 }
 
 @media (max-width: 960px) {
@@ -184,7 +183,7 @@
   .stat-label {
     font-size: 10.5px;
     line-height: 1.35;
-    color: rgba(255, 255, 255, 0.7);
+    color: var(--ink-faint);
   }
   .marquee-chip {
     padding: 7px 12px;

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 
-export default function NeuralLoomCanvas() {
+export default function NeuralLoomCanvas({ theme = 'light' }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -62,11 +62,16 @@ export default function NeuralLoomCanvas() {
       })
     }
 
-    // Subtle frosted white ambient wave curves
+    const isLight = theme === 'light'
+    const threadColors = isLight
+      ? ['rgba(255, 109, 66, 0.05)', 'rgba(14, 165, 233, 0.04)', 'rgba(139, 92, 246, 0.04)']
+      : ['rgba(255, 255, 255, 0.04)', 'rgba(255, 255, 255, 0.03)', 'rgba(255, 255, 255, 0.035)']
+
+    // Subtle frosted ambient wave curves
     const threads = [
-      { yOffset: 0.2, amp: 28, freq: 0.0012, speed: 0.0005, color: 'rgba(255, 255, 255, 0.04)' },
-      { yOffset: 0.5, amp: 36, freq: 0.0010, speed: 0.0004, color: 'rgba(255, 255, 255, 0.03)' },
-      { yOffset: 0.75, amp: 30, freq: 0.0013, speed: -0.0004, color: 'rgba(255, 255, 255, 0.035)' },
+      { yOffset: 0.2, amp: 28, freq: 0.0012, speed: 0.0005, color: threadColors[0] },
+      { yOffset: 0.5, amp: 36, freq: 0.0010, speed: 0.0004, color: threadColors[1] },
+      { yOffset: 0.75, amp: 30, freq: 0.0013, speed: -0.0004, color: threadColors[2] },
     ]
 
     let time = 0
@@ -110,7 +115,7 @@ export default function NeuralLoomCanvas() {
 
         // 2. Update & render subtle nodes (batched lines for maximum FPS)
         ctx.beginPath()
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)'
+        ctx.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.06)' : 'rgba(255, 255, 255, 0.05)'
         ctx.lineWidth = 0.6
 
         for (let i = 0; i < nodes.length; i++) {
@@ -155,7 +160,9 @@ export default function NeuralLoomCanvas() {
           const n = nodes[i]
           ctx.beginPath()
           ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2)
-          ctx.fillStyle = n.isAccent ? 'rgba(255, 109, 66, 0.6)' : 'rgba(255, 255, 255, 0.25)'
+          ctx.fillStyle = n.isAccent 
+            ? 'rgba(255, 109, 66, 0.7)' 
+            : (isLight ? 'rgba(15, 23, 42, 0.22)' : 'rgba(255, 255, 255, 0.25)')
           ctx.fill()
         }
       }
@@ -172,7 +179,7 @@ export default function NeuralLoomCanvas() {
       document.removeEventListener('mouseleave', handleMouseLeave)
       document.removeEventListener('visibilitychange', handleVisibility)
     }
-  }, [])
+  }, [theme])
 
   return (
     <canvas

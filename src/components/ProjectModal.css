@@ -454,3 +454,90 @@
     justify-content: center;
   }
 }
+
+/* ===================================================================
+   Light Mode Theme Overrides
+   =================================================================== */
+[data-theme="light"] .proj-modal-overlay {
+  background: rgba(15, 23, 42, 0.45);
+}
+
+[data-theme="light"] .proj-modal-container {
+  background: rgba(255, 255, 255, 0.98);
+  border: 1px solid rgba(226, 232, 240, 0.95);
+  box-shadow: 0 28px 80px rgba(15, 23, 42, 0.18), inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+[data-theme="light"] .proj-modal-bar {
+  background: rgba(241, 245, 249, 0.9);
+  border-color: rgba(226, 232, 240, 0.95);
+}
+
+[data-theme="light"] .modal-proj-name {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .modal-device-pill {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .modal-device-pill.active {
+  background: var(--coral);
+  color: #ffffff;
+  border-color: var(--coral);
+}
+
+[data-theme="light"] .modal-close-btn {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .modal-sidebar {
+  background: rgba(248, 250, 252, 0.9);
+  border-color: rgba(226, 232, 240, 0.95);
+}
+
+[data-theme="light"] .modal-desc {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .modal-metric-card {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .metric-val {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .metric-lbl {
+  color: var(--ink-faint);
+}
+
+[data-theme="light"] .modal-feature-item {
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .modal-tech-tag {
+  background: #ffffff;
+  border-color: rgba(226, 232, 240, 0.9);
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .modal-bottom-cta {
+  background: rgba(241, 245, 249, 0.9);
+  border-color: rgba(226, 232, 240, 0.95);
+}
+
+[data-theme="light"] .modal-cta-copy h4 {
+  color: var(--ink-primary);
+}
+
+[data-theme="light"] .modal-cta-copy p {
+  color: var(--ink-secondary);
+}
+
