@@ -25,9 +25,8 @@ export default function Hero() {
 
   return (
     <section id="top" className="hero-section hero-centered-layout">
-      {/* Ambient Meshes */}
-      <div className="hero-ambient-glow hero-glow-coral" />
-      <div className="hero-ambient-glow hero-glow-purple" />
+      {/* Subtle Frosted White Ambient Illumination */}
+      <div className="hero-ambient-glow hero-glow-center" />
 
       <div className="tl-shell hero-shell-centered">
         <div className="hero-content-center">

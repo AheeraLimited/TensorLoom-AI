@@ -62,11 +62,11 @@ export default function NeuralLoomCanvas() {
       })
     }
 
-    // Light-mode workflow bezier curves (coral & lavender)
+    // Subtle frosted white ambient wave curves
     const threads = [
-      { yOffset: 0.2, amp: 30, freq: 0.0012, speed: 0.0005, color: 'rgba(255, 109, 66, 0.06)' },
-      { yOffset: 0.5, amp: 40, freq: 0.0010, speed: 0.0004, color: 'rgba(124, 58, 237, 0.04)' },
-      { yOffset: 0.75, amp: 35, freq: 0.0013, speed: -0.0004, color: 'rgba(255, 109, 66, 0.04)' },
+      { yOffset: 0.2, amp: 28, freq: 0.0012, speed: 0.0005, color: 'rgba(255, 255, 255, 0.04)' },
+      { yOffset: 0.5, amp: 36, freq: 0.0010, speed: 0.0004, color: 'rgba(255, 255, 255, 0.03)' },
+      { yOffset: 0.75, amp: 30, freq: 0.0013, speed: -0.0004, color: 'rgba(255, 255, 255, 0.035)' },
     ]
 
     let time = 0

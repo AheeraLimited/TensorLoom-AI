@@ -13,29 +13,23 @@
   text-align: center;
 }
 
-/* Atmospheric Ambient Glow Spheres */
+/* Atmospheric Subtle Frosted White Ambient Illumination */
 .hero-ambient-glow {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(130px);
+  filter: blur(120px);
   z-index: 1;
 }
 
-.hero-glow-coral {
+.hero-glow-center {
   top: 15%;
-  left: 15%;
-  width: 42vw;
-  height: 42vw;
-  background: radial-gradient(circle, rgba(255, 109, 66, 0.18) 0%, transparent 65%);
-}
-
-.hero-glow-purple {
-  top: 25%;
-  right: 15%;
-  width: 42vw;
-  height: 42vw;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, transparent 65%);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+  height: 45vw;
+  max-width: 960px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
 }
 
 .hero-shell-centered {
