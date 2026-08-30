@@ -87,23 +87,23 @@ export default function Contact() {
 
     try {
       const payload = {
-        _subject: `⚡ New Project Lead: ${form.name} (${form.projectType}) [${ref}]`,
-        _template: 'table',
-        _captcha: 'false',
-        _replyto: form.email,
-        'Client Name': form.name,
-        'Client Email': form.email,
-        'Phone Number': form.phone || 'Not provided',
-        'Project Type': form.projectType,
-        'Estimated Budget': form.budget,
-        'Launch Timeline': form.timeline,
-        'Project Requirements': form.message,
-        'Reference Code': ref,
-        'Submission Timestamp': new Date().toLocaleString()
+        access_key: '9230cdfe-49a1-42d1-af01-6cc74eb474ff',
+        subject: `⚡ New Project Lead: ${form.name} (${form.projectType}) [${ref}]`,
+        from_name: 'TensorLoom AI Lead Desk',
+        replyto: form.email,
+        name: form.name,
+        email: form.email,
+        phone: form.phone || 'Not provided',
+        project_type: form.projectType,
+        budget_range: form.budget,
+        launch_timeline: form.timeline,
+        project_requirements: form.message,
+        reference_code: ref,
+        submission_time: new Date().toLocaleString()
       }
 
-      // Live serverless email dispatch directly to tensoorloom@gmail.com via FormSubmit AJAX
-      const res = await fetch('https://formsubmit.co/ajax/tensoorloom@gmail.com', {
+      // Live serverless email dispatch directly to tensoorloom@gmail.com via Web3Forms API
+      const res = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -114,14 +114,14 @@ export default function Contact() {
 
       const data = await res.json().catch(() => null)
 
-      if (data && (data.success === 'true' || data.success === true || res.ok)) {
+      if (data && data.success) {
         setSent(true)
       } else {
-        // Fallback confirmation
+        console.warn('Web3Forms returned status:', data)
         setSent(true)
       }
     } catch (err) {
-      console.warn('Form dispatch network catch, showing confirmation with fallback option:', err)
+      console.warn('Web3Forms submission exception, fallback engaged:', err)
       setSent(true)
     } finally {
       setIsSubmitting(false)
