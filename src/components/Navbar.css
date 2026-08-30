@@ -206,8 +206,9 @@
   white-space: nowrap;
 }
 
-/* Theme Switcher Button */
-.nav-theme-toggle {
+/* Theme Switcher & Calendar Icon Buttons */
+.nav-theme-toggle,
+.nav-calendar-toggle {
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -220,6 +221,8 @@
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   flex-shrink: 0;
+  padding: 0;
+  backdrop-filter: blur(8px);
 }
 
 .nav-theme-toggle:hover {
@@ -229,21 +232,10 @@
   transform: rotate(20deg) scale(1.05);
 }
 
-/* Desktop Book Call Button */
-.nav-book-call-btn {
-  font-size: 12px !important;
-  font-weight: 600 !important;
-  padding: 0 13px !important;
-  height: 36px !important;
-  line-height: 36px !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  gap: 6px !important;
-  border-radius: 999px !important;
-  white-space: nowrap;
-  flex-shrink: 0;
-  cursor: pointer;
+.nav-calendar-toggle:hover {
+  background: var(--bg-hover);
+  border-color: var(--coral);
+  transform: translateY(-1px) scale(1.05);
 }
 
 /* Desktop CTA Button */
@@ -311,9 +303,6 @@ a.nav-cta {
   .nav-links { 
     display: none; 
   }
-  .nav-book-call-btn {
-    display: none;
-  }
   .nav-toggle { 
     display: flex; 
   }
@@ -327,7 +316,8 @@ a.nav-cta {
     font-size: 14.5px;
     gap: 7px;
   }
-  .nav-theme-toggle {
+  .nav-theme-toggle,
+  .nav-calendar-toggle {
     width: 32px;
     height: 32px;
   }
