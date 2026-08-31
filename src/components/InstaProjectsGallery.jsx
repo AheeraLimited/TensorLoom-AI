@@ -108,16 +108,18 @@ export default function InstaProjectsGallery({ onOpenProjectModal }) {
     return () => clearInterval(interval)
   }, [isVisible, isHovered, totalCards])
 
-  // Continuous loop wrapping
-  useAnimationFrame(() => {
-    if (totalCards === 0) return
-    let currentProgress = progress.get()
-    if (currentProgress >= totalCards) {
-      progress.set(currentProgress - totalCards)
-    } else if (currentProgress < 0) {
-      progress.set(currentProgress + totalCards)
-    }
-  })
+  // Continuous loop wrapping on progress change
+  useEffect(() => {
+    const unsubscribe = progress.on('change', (latest) => {
+      if (totalCards === 0) return
+      if (latest >= totalCards * 2) {
+        progress.set(latest - totalCards)
+      } else if (latest < -totalCards) {
+        progress.set(latest + totalCards)
+      }
+    })
+    return () => unsubscribe()
+  }, [totalCards, progress])
 
   // Responsive mobile frame scaling
   let responsiveCardWidth = cardWidth
@@ -322,34 +324,25 @@ function LiveMobilePhoneCardItem({
   const cardRef = useRef(null)
   const overlayRef = useRef(null)
   const iframeContainerRef = useRef(null)
-  const lastProgressRef = useRef(-9999)
   const [refreshKey, setRefreshKey] = useState(0)
   const [isIframeMounted, setIsIframeMounted] = useState(false)
   const isMountedRef = useRef(false)
   const IconComp = project.icon
   const cardNormalIndex = ((index % totalCards) + totalCards) % totalCards
 
-  useAnimationFrame(() => {
+  // Pure event-driven card positioning (runs ONLY when progress changes)
+  const updateCardPosition = (currentProgress) => {
     if (!cardRef.current) return
-    const currentProgress = progress.get()
-
-    // If carousel progress has not changed, do zero work during page scroll
-    if (Math.abs(currentProgress - lastProgressRef.current) < 0.0001) {
-      return
-    }
-    lastProgressRef.current = currentProgress
-
     const offset = index - (currentProgress + totalCards * bufferOffsetMultiplier)
     const absOffset = Math.abs(offset)
     const isCenter = absOffset < 0.4
 
-    // Mount live iframe when card is center or approaching center
+    // Mount live iframe only when card is in or near center
     if (!isMountedRef.current && absOffset <= 1.2) {
       isMountedRef.current = true
       setIsIframeMounted(true)
     }
 
-    // Direct DOM styling without React state updates for buttery 120fps performance
     if (overlayRef.current) {
       overlayRef.current.style.display = isCenter ? 'none' : 'block'
     }
@@ -376,7 +369,17 @@ function LiveMobilePhoneCardItem({
       ? '0 50px 110px rgba(0,0,0,0.70), 0 20px 48px rgba(0,0,0,0.50)'
       : `0 ${Math.round(28 - absOffset * 6)}px ${Math.round(60 - absOffset * 12)}px rgba(0,0,0,0.38)`
     cardRef.current.style.cursor = isCenter ? 'default' : 'pointer'
-  })
+  }
+
+  useEffect(() => {
+    // Initial position render
+    updateCardPosition(progress.get())
+    // Event-driven listener on motion value change
+    const unsubscribe = progress.on('change', (latest) => {
+      updateCardPosition(latest)
+    })
+    return () => unsubscribe()
+  }, [stride, index, totalCards, bufferOffsetMultiplier])
 
   const hasLiveUrl = project.targetUrl && project.targetUrl.startsWith('http')
 
