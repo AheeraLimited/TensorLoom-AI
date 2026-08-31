@@ -132,28 +132,50 @@ export default function InstaProjectsGallery({ onOpenProjectModal }) {
 
   const stride = responsiveCardWidth + cardSpacing
 
+  const dragStartY = useRef(0)
+  const isHorizontalDrag = useRef(false)
+
   // Pointer drag gestures on stage background
   const handlePointerDown = (e) => {
-    // If clicking directly inside an iframe or interactive button, don't drag
-    if (e.target.tagName === 'IFRAME' || e.target.closest('.mobile-app-footer') || e.target.closest('.phone-url-bar')) {
+    // If clicking directly inside an interactive button, don't drag
+    if (e.target.closest('.mobile-app-footer') || e.target.closest('.phone-url-bar')) {
       return
     }
     isDragging.current = true
-    dragStartX.current = e.clientX || (e.touches && e.touches[0].clientX) || 0
+    isHorizontalDrag.current = false
+    dragStartX.current = e.clientX || (e.touches && e.touches[0]?.clientX) || 0
+    dragStartY.current = e.clientY || (e.touches && e.touches[0]?.clientY) || 0
     dragStartProgress.current = progress.get()
   }
 
   const handlePointerMove = (e) => {
     if (!isDragging.current) return
-    const currentX = e.clientX || (e.touches && e.touches[0].clientX) || 0
+    const currentX = e.clientX || (e.touches && e.touches[0]?.clientX) || 0
+    const currentY = e.clientY || (e.touches && e.touches[0]?.clientY) || 0
     const deltaX = dragStartX.current - currentX
-    const deltaProgress = deltaX / stride
-    progress.set(dragStartProgress.current + deltaProgress)
+    const deltaY = dragStartY.current - currentY
+
+    // If vertical movement is greater than horizontal, release drag so page scrolls smoothly
+    if (!isHorizontalDrag.current) {
+      if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 8) {
+        isDragging.current = false
+        return
+      }
+      if (Math.abs(deltaX) > 8) {
+        isHorizontalDrag.current = true
+      }
+    }
+
+    if (isHorizontalDrag.current) {
+      const deltaProgress = deltaX / stride
+      progress.set(dragStartProgress.current + deltaProgress)
+    }
   }
 
   const handlePointerUp = () => {
     if (!isDragging.current) return
     isDragging.current = false
+    isHorizontalDrag.current = false
     const currentPos = progress.get()
     const target = Math.round(currentPos)
     animate(progress, target, {
@@ -300,22 +322,29 @@ function LiveMobilePhoneCardItem({
   const cardRef = useRef(null)
   const overlayRef = useRef(null)
   const iframeContainerRef = useRef(null)
+  const lastProgressRef = useRef(-9999)
   const [refreshKey, setRefreshKey] = useState(0)
   const [isIframeMounted, setIsIframeMounted] = useState(false)
   const isMountedRef = useRef(false)
   const IconComp = project.icon
-  // The card's own normalized index (0 to totalCards-1)
   const cardNormalIndex = ((index % totalCards) + totalCards) % totalCards
 
   useAnimationFrame(() => {
     if (!cardRef.current) return
     const currentProgress = progress.get()
+
+    // If carousel progress has not changed, do zero work during page scroll
+    if (Math.abs(currentProgress - lastProgressRef.current) < 0.0001) {
+      return
+    }
+    lastProgressRef.current = currentProgress
+
     const offset = index - (currentProgress + totalCards * bufferOffsetMultiplier)
     const absOffset = Math.abs(offset)
     const isCenter = absOffset < 0.4
 
-    // Lazy load iframe only when card is in or near visible spread (absOffset <= 2.2)
-    if (!isMountedRef.current && absOffset <= 2.2) {
+    // Mount live iframe when card is center or approaching center
+    if (!isMountedRef.current && absOffset <= 1.2) {
       isMountedRef.current = true
       setIsIframeMounted(true)
     }

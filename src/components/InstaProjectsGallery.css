@@ -49,6 +49,8 @@
   box-sizing: border-box;
   overflow: hidden;
   cursor: grab;
+  /* Allow silky smooth vertical scrolling past the gallery on mobile & trackpads */
+  touch-action: pan-y;
 }
 
 .insta-gallery-viewport:active {
@@ -78,6 +80,7 @@
   perspective: 900px;
   perspective-origin: 50% 48%;
   transform-style: preserve-3d;
+  touch-action: pan-y;
 }
 
 /* 3. Mobile Phone Card Wrapper & Chassis */
@@ -87,6 +90,7 @@
   transform-style: preserve-3d;
   -webkit-transform-style: preserve-3d;
   transition: box-shadow 0.4s ease;
+  contain: layout style;
 }
 
 /* Transparent overlay on side cards — tap to bring to front */
@@ -104,14 +108,13 @@
   background: rgba(255, 255, 255, 0.04);
 }
 
-/* ── Phone Chassis — exact navbar dropdown glass recipe ── */
+/* ── Phone Chassis — GPU-optimized frosted glass ── */
 .mobile-phone-chassis {
   width: 100%;
   height: 100%;
-  /* Same as .nav-dropdown-menu */
-  background: rgba(20, 15, 35, 0.82);
-  backdrop-filter: blur(80px) saturate(200%) brightness(70%);
-  -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(70%);
+  background: rgba(20, 15, 35, 0.88);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
   display: flex;
@@ -126,9 +129,9 @@
 }
 
 [data-theme="light"] .mobile-phone-chassis {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(80px) saturate(220%);
-  -webkit-backdrop-filter: blur(80px) saturate(220%);
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
   border: 1px solid rgba(255, 255, 255, 0.92);
   box-shadow: 0 16px 48px rgba(15, 23, 42, 0.08), inset 0 1.5px 2px 0 #ffffff;
 }
