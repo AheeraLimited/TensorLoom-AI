@@ -1,68 +1,123 @@
 /* ===================================================================
-   TensorLoom — Centered Hero (Hyper-Realistic Frosted Glass)
+   TensorLoom AI — Hyper-Realistic Glassmorphism Split Hero Banner
+   Aesthetic: Multi-layered frosted glass slabs (VISITE style), 
+              3D neural loom canvas, specular ice rims, floating HUD widgets.
    =================================================================== */
 
-.hero-section.hero-centered-layout {
+.hero-section.hero-split-layout {
   position: relative;
-  min-height: 84vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(90px, 12vw, 130px) 0 clamp(40px, 6vw, 60px);
+  padding: clamp(96px, 11vw, 136px) 0 clamp(48px, 6vw, 72px);
   overflow: hidden;
-  text-align: center;
 }
 
-/* Atmospheric Subtle Frosted White Ambient Illumination */
-.hero-ambient-glow {
+/* -------------------------------------------------------------------
+   1. Deep Atmospheric Neural Core Background (Purples, Blues & Coral)
+   ------------------------------------------------------------------- */
+.hero-atmospheric-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-glow-blob {
   position: absolute;
   border-radius: 50%;
-  pointer-events: none;
   filter: blur(120px);
-  z-index: 1;
+  opacity: 0.68;
+  will-change: transform;
 }
 
-.hero-glow-center {
+.blob-purple-left {
   top: 15%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70vw;
-  height: 45vw;
-  max-width: 960px;
-  background: radial-gradient(circle, rgba(255, 109, 66, 0.08) 0%, rgba(14, 165, 233, 0.04) 45%, transparent 70%);
+  left: -8%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.28) 0%, rgba(234, 75, 113, 0.14) 50%, transparent 70%);
+  animation: pulse-slow 10s ease-in-out infinite alternate;
 }
 
-.hero-shell-centered {
+.blob-coral-center {
+  top: 30%;
+  left: 40%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, rgba(255, 109, 66, 0.26) 0%, rgba(234, 75, 113, 0.12) 50%, transparent 70%);
+  animation: pulse-slow 12s ease-in-out infinite alternate-reverse;
+}
+
+.blob-cyan-right {
+  top: 10%;
+  right: -8%;
+  width: 580px;
+  height: 580px;
+  background: radial-gradient(circle, rgba(14, 165, 233, 0.26) 0%, rgba(139, 92, 246, 0.14) 50%, transparent 70%);
+  animation: pulse-slow 9s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-slow {
+  0% { transform: scale(0.95) translate(0, 0); opacity: 0.55; }
+  100% { transform: scale(1.08) translate(15px, -15px); opacity: 0.8; }
+}
+
+.hero-mesh-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(9, 8, 16, 0.55) 100%);
+}
+
+[data-theme="light"] .hero-mesh-overlay {
+  background: radial-gradient(circle at 50% 50%, transparent 35%, rgba(248, 250, 252, 0.55) 100%);
+}
+
+/* -------------------------------------------------------------------
+   2. Split-Screen Grid Layout
+   ------------------------------------------------------------------- */
+.hero-split-shell {
   position: relative;
   z-index: 2;
-  display: flex;
-  justify-content: center;
   width: 100%;
 }
 
-/* Center Content Container */
-.hero-content-center {
+.hero-grid-split {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr;
+  gap: clamp(28px, 4vw, 56px);
+  align-items: center;
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------
+   3. LEFT PANEL: Clean Minimal Hero Typography & Actions
+   ------------------------------------------------------------------- */
+.hero-content-col {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 860px;
-  margin: 0 auto;
-  gap: 20px;
+  gap: 24px;
+  z-index: 2;
 }
 
 .hero-badge-wrap {
-  margin-bottom: 0px;
+  margin-bottom: -4px;
+}
+
+.hero-glass-eyebrow {
+  box-shadow: 0 4px 20px rgba(255, 109, 66, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.4);
 }
 
 .hero-headline {
-  font-size: clamp(34px, 5vw, 64px);
+  font-size: clamp(32px, 3.8vw, 54px);
   line-height: 1.15;
   font-weight: 800;
   letter-spacing: -0.035em;
   color: var(--ink-primary);
   margin: 0;
-  word-break: normal;
 }
 
 .hero-kinetic-holder {
@@ -77,49 +132,80 @@
 }
 
 .hero-tagline {
-  font-size: clamp(15px, 1.25vw, 18px);
-  line-height: 1.6;
+  font-size: clamp(15px, 1.15vw, 17px);
+  line-height: 1.62;
   color: var(--ink-secondary);
-  max-width: 640px;
-  margin: 0 auto;
+  max-width: 540px;
+  margin: 0;
 }
 
-/* CTA Action Buttons Group */
+/* Molded Ice Action Buttons */
 .hero-cta-group {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
+  gap: 14px;
   flex-wrap: wrap;
   padding-top: 4px;
 }
 
-/* Trust Metric Badges Strip */
-.hero-stats-row {
+.hero-btn-coral-glow {
+  box-shadow: 0 12px 36px rgba(234, 75, 113, 0.45), 
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.8),
+              0 0 24px rgba(255, 109, 66, 0.3);
+}
+
+.hero-btn-coral-glow:hover {
+  box-shadow: 0 18px 48px rgba(234, 75, 113, 0.6), 
+              inset 0 1.5px 2px rgba(255, 255, 255, 1),
+              0 0 32px rgba(255, 109, 66, 0.5);
+}
+
+.hero-btn-ice-glass {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2), inset 0 1px 1.5px rgba(255, 255, 255, 0.45);
+}
+
+[data-theme="light"] .hero-btn-ice-glass {
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06), inset 0 1.5px 2px #ffffff;
+}
+
+/* Trust Badges Strip */
+.hero-stats-strip {
   display: flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  padding-top: 20px;
+  padding-top: 18px;
   margin-top: 4px;
-  border-top: 1px solid var(--line);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   width: 100%;
-  max-width: 680px;
+}
+
+[data-theme="light"] .hero-stats-strip {
+  border-top-color: rgba(15, 23, 42, 0.08);
 }
 
 .hero-stat-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: var(--bg-surface);
+  background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(16px) saturate(180%);
   -webkit-backdrop-filter: blur(16px) saturate(180%);
-  border: 1px solid var(--line-strong);
-  padding: 7px 15px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  padding: 6px 14px;
   border-radius: 999px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.5);
-  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-theme="light"] .hero-stat-pill {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04), inset 0 1px 1px #ffffff;
 }
 
 .hero-stat-pill:hover {
@@ -127,63 +213,436 @@
   border-color: var(--coral);
 }
 
-.hero-stat-val,
-.stat-pill-val {
+.hero-stat-val {
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 800;
   color: var(--ink-primary);
   letter-spacing: -0.01em;
 }
 
-.hero-stat-desc,
-.stat-pill-lbl {
+.hero-stat-desc {
   font-family: var(--font-body);
   font-size: 12px;
   color: var(--ink-secondary);
   font-weight: 500;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .hero-section.hero-centered-layout {
+/* -------------------------------------------------------------------
+   4. RIGHT PANEL: 3D Neural Loom Rig & Frosted Glass Dashboard
+   ------------------------------------------------------------------- */
+.hero-right-focal {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-3d-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.hero-3d-rig {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-3d-canvas {
+  position: absolute;
+  inset: -15%;
+  width: 130%;
+  height: 130%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-3d-halo {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 109, 66, 0.25) 0%, rgba(234, 75, 113, 0.15) 45%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 3D Central Glass HUD Dashboard */
+.hero-glass-hud {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 390px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  backdrop-filter: blur(36px) saturate(200%);
+  -webkit-backdrop-filter: blur(36px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 28px 70px rgba(0, 0, 0, 0.6), 
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.5), 
+              inset 0 -1px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+[data-theme="light"] .hero-glass-hud {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.55) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.1), inset 0 1.5px 2px #ffffff;
+}
+
+.hud-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 12px;
+}
+
+[data-theme="light"] .hud-header {
+  border-bottom-color: rgba(15, 23, 42, 0.08);
+}
+
+.hud-status-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.hud-title {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink-primary);
+}
+
+.hud-chip-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 109, 66, 0.15);
+  border: 1px solid rgba(255, 109, 66, 0.35);
+  padding: 3px 9px;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--coral);
+}
+
+.hud-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.hud-metric-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.hud-metric-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+[data-theme="light"] .hud-metric-card {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+.hud-metric-lbl {
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  font-weight: 500;
+}
+
+.hud-metric-val {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 800;
+  color: var(--ink-primary);
+}
+
+.hud-metric-unit {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-faint);
+  margin-left: 2px;
+}
+
+/* Animated Neural Stream Waveform */
+.hud-stream-chart {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+[data-theme="light"] .hud-stream-chart {
+  background: rgba(255, 255, 255, 0.45);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.hud-stream-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hud-stream-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+.hud-stream-rate {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--emerald);
+}
+
+.hud-bars-wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 40px;
+  gap: 4px;
+  padding: 0 4px;
+}
+
+.hud-live-bar {
+  flex: 1;
+  background: linear-gradient(180deg, #ff6d42 0%, #ea4b71 50%, #8b5cf6 100%);
+  border-radius: 4px;
+  min-height: 8px;
+  transform-origin: bottom;
+  box-shadow: 0 0 8px rgba(255, 109, 66, 0.3);
+}
+
+.hud-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hud-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+}
+
+[data-theme="light"] .hud-tag {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: rgba(255, 255, 255, 0.85);
+}
+
+/* -------------------------------------------------------------------
+   5. SATELLITE FLOATING GLASS PILL BADGES (VISITE Style Orbit)
+   ------------------------------------------------------------------- */
+.hero-orbit-pill {
+  position: absolute;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 999px;
+  padding: 7px 15px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45), 
+              inset 0 1.5px 2px rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+  pointer-events: auto;
+  cursor: default;
+}
+
+[data-theme="light"] .hero-orbit-pill {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1), inset 0 1.5px 2px #ffffff;
+}
+
+.pill-top-right {
+  top: -12px;
+  right: -8px;
+}
+
+.pill-top-left {
+  top: 14px;
+  left: -12px;
+}
+
+.pill-bottom-right {
+  bottom: -12px;
+  right: -4px;
+}
+
+.pill-bold {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--ink-primary);
+}
+
+.pill-dim {
+  font-size: 11px;
+  color: var(--ink-secondary);
+  font-weight: 600;
+}
+
+.pill-text {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ink-primary);
+}
+
+.pill-arrow {
+  color: var(--coral);
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+/* -------------------------------------------------------------------
+   6. Responsive Layout Adjustments
+   ------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .hero-grid-split {
+    grid-template-columns: 1fr;
+    gap: 44px;
+  }
+
+  .hero-glass-card {
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hero-3d-stage {
+    min-height: 420px;
+    margin: 0 auto;
+  }
+
+  .pill-top-left {
+    left: 0;
+  }
+
+  .pill-top-right {
+    right: 0;
+  }
+
+  .pill-bottom-right {
+    right: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-section.hero-split-layout {
+    padding: 78px 0 28px;
     min-height: auto;
-    padding: 72px 0 24px;
   }
-  .hero-content-center {
-    gap: 14px;
+
+  .hero-glass-card {
+    padding: 22px 18px;
+    border-radius: 22px;
+    gap: 16px;
   }
+
   .hero-headline {
-    font-size: clamp(27px, 7.2vw, 36px);
-    line-height: 1.2;
-    letter-spacing: -0.025em;
+    font-size: clamp(26px, 7vw, 34px);
+    line-height: 1.18;
   }
+
   .hero-tagline {
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.55;
   }
+
   .hero-cta-group {
-    width: 100%;
     flex-direction: column;
+    width: 100%;
     gap: 10px;
   }
+
   .hero-cta-group .tl-btn {
     width: 100%;
     justify-content: center;
-    padding: 12px 20px;
   }
-  .hero-stats-row {
-    padding-top: 14px;
+
+  .hero-stats-strip {
     gap: 6px;
+    padding-top: 14px;
   }
+
   .hero-stat-pill {
     padding: 5px 10px;
-    gap: 6px;
-  }
-  .stat-pill-val {
-    font-size: 11.5px;
-  }
-  .stat-pill-lbl {
     font-size: 11px;
+  }
+
+  .hero-3d-stage {
+    min-height: 380px;
+  }
+
+  .hero-glass-hud {
+    padding: 16px 14px;
+    max-width: 320px;
+  }
+
+  .hero-orbit-pill {
+    padding: 5px 11px;
+    font-size: 10.5px;
+  }
+
+  .pill-top-left {
+    display: none;
+  }
+
+  .pill-top-right {
+    top: -8px;
+    right: 0px;
+  }
+
+  .pill-bottom-right {
+    bottom: -8px;
+    right: 0px;
   }
 }

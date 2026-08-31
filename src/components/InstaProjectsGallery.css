@@ -1,0 +1,594 @@
+/* ===================================================================
+   TensorLoom AI — Live Interactive Mobile Phone Frame Gallery
+   =================================================================== */
+
+.insta-gallery-section {
+  position: relative;
+  padding: clamp(72px, 8vw, 112px) 0 clamp(48px, 6vw, 80px);
+  overflow: hidden;
+  user-select: none;
+}
+
+/* 1. Header */
+.insta-gallery-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto clamp(32px, 4vw, 48px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.insta-gallery-title {
+  font-size: clamp(28px, 3.8vw, 44px);
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink-primary);
+  margin: 0;
+}
+
+.insta-gallery-subtitle {
+  font-size: clamp(14px, 1.1vw, 16px);
+  line-height: 1.6;
+  color: var(--ink-secondary);
+  margin: 0;
+}
+
+/* 2. Viewport & Stage */
+.insta-gallery-viewport {
+  position: relative;
+  width: 100%;
+  min-height: 680px;
+  max-height: 740px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  overflow: hidden;
+  cursor: grab;
+}
+
+.insta-gallery-viewport:active {
+  cursor: grabbing;
+}
+
+.insta-gallery-sheen {
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.10) 0%, rgba(255, 109, 66, 0.06) 50%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.insta-gallery-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 900px;
+  perspective-origin: 50% 48%;
+  transform-style: preserve-3d;
+}
+
+/* 3. Mobile Phone Card Wrapper & Chassis */
+.mobile-phone-card-wrapper {
+  position: absolute;
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transition: box-shadow 0.4s ease;
+}
+
+/* Transparent overlay on side cards — tap to bring to front */
+.card-focus-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  border-radius: inherit;
+  cursor: pointer;
+  background: transparent;
+  transition: background 0.2s ease;
+}
+
+.card-focus-overlay:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+/* ── Phone Chassis — exact navbar dropdown glass recipe ── */
+.mobile-phone-chassis {
+  width: 100%;
+  height: 100%;
+  /* Same as .nav-dropdown-menu */
+  background: rgba(20, 15, 35, 0.82);
+  backdrop-filter: blur(80px) saturate(200%) brightness(70%);
+  -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(70%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  padding: 6px;
+  box-sizing: border-box;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+[data-theme="light"] .mobile-phone-chassis {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(80px) saturate(220%);
+  -webkit-backdrop-filter: blur(80px) saturate(220%);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 16px 48px rgba(15, 23, 42, 0.08), inset 0 1.5px 2px 0 #ffffff;
+}
+
+.mobile-phone-chassis:hover {
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.70), 0 0 28px rgba(255, 109, 66, 0.12), inset 0 1px 1px 0 rgba(255, 255, 255, 0.55);
+}
+
+/* Dynamic Island */
+.mobile-dynamic-island {
+  position: absolute;
+  top: 11px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 72px;
+  height: 16px;
+  background: #000000;
+  border-radius: 999px;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.island-camera {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1e1b4b;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Inner Screen Content */
+.mobile-screen-content {
+  flex: 1;
+  background: rgba(12, 9, 22, 0.78);
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .mobile-screen-content {
+  background: rgba(248, 250, 252, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+}
+
+/* 4. Mobile Status Bar — same glass as nav sliding pill */
+.mobile-status-bar {
+  height: 28px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  z-index: 20;
+}
+
+[data-theme="light"] .mobile-status-bar {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1.5px 2px #ffffff;
+}
+
+.status-time {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.status-indicators {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* 5. Phone URL Bar — same glass as nav sliding pill */
+.phone-url-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  z-index: 10;
+}
+
+[data-theme="light"] .phone-url-bar {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1.5px 2px #ffffff;
+}
+
+.phone-url-chip {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 8px;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+[data-theme="light"] .phone-url-chip {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.phone-url-domain {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.phone-url-refresh-btn {
+  background: none;
+  border: none;
+  color: var(--ink-secondary);
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.phone-url-refresh-btn:hover {
+  transform: rotate(90deg);
+  color: var(--ink-primary);
+}
+
+/* 6. Live Interactive iFrame Stage */
+.phone-live-iframe-stage {
+  flex: 1;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background: #000000;
+}
+
+.phone-iframe-scaler {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* 440px wide × 1800px tall — scale(0.673) clips to phone window */
+  /* Taller height = full website renders, user can scroll to footer */
+  width: 440px;
+  height: 1800px;
+  transform: scale(0.673);
+  transform-origin: 0 0;
+  pointer-events: auto;
+}
+
+.phone-live-iframe {
+  width: 440px;
+  height: 1800px;
+  border: none;
+  background: #000000;
+  display: block;
+}
+
+/* Fallback View (for WhatsApp CRM Bot) */
+.phone-fallback-view {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+  gap: 8px;
+}
+
+.phone-fallback-icon-box {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+}
+
+.phone-fallback-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 800;
+  color: var(--ink-primary);
+  margin: 0;
+}
+
+.phone-fallback-badge {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.phone-fallback-desc {
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: var(--ink-secondary);
+  margin: 4px 0 0;
+}
+
+/* 7. Mobile App Footer — same dropdown panel glass as nav */
+.mobile-app-footer {
+  padding: 8px 12px;
+  background: rgba(20, 15, 35, 0.82);
+  backdrop-filter: blur(80px) saturate(200%) brightness(70%);
+  -webkit-backdrop-filter: blur(80px) saturate(200%) brightness(70%);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 20;
+}
+
+[data-theme="light"] .mobile-app-footer {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(80px) saturate(220%);
+  -webkit-backdrop-filter: blur(80px) saturate(220%);
+  border-top: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 1.5px 2px #ffffff;
+}
+
+.mobile-footer-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.mobile-footer-name {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-footer-tag {
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Details button — transparent glass (nav-dropdown-sliding-pill) */
+.mobile-details-action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  color: var(--ink-primary);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+[data-theme="light"] .mobile-details-action {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05), inset 0 1.5px 2px #ffffff;
+  color: var(--ink-primary);
+}
+
+.mobile-details-action:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+/* Full App button — transparent glass (same as details) */
+.mobile-live-action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-sm);
+  color: var(--ink-primary);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.45);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+[data-theme="light"] .mobile-live-action {
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05), inset 0 1.5px 2px #ffffff;
+  color: var(--ink-primary);
+}
+
+.mobile-live-action:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.38);
+}
+
+
+/* 8. Mobile Home Bar Indicator */
+.mobile-home-indicator-wrap {
+  height: 12px;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+[data-theme="light"] .mobile-home-indicator-wrap {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mobile-home-bar {
+  width: 72px;
+  height: 3px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="light"] .mobile-home-bar {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+/* 9. Minimal Navigation Buttons */
+.insta-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--ink-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s ease;
+}
+
+[data-theme="light"] .insta-nav-btn {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: #0f172a;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.08);
+}
+
+.insta-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.insta-nav-btn.prev-btn {
+  left: clamp(10px, 2vw, 24px);
+}
+
+.insta-nav-btn.next-btn {
+  right: clamp(10px, 2vw, 24px);
+}
+
+/* 10. Minimal Dot Indicators */
+.insta-pagination-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+.insta-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+}
+
+[data-theme="light"] .insta-dot {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.insta-dot.active {
+  width: 24px;
+  background: var(--coral);
+  box-shadow: 0 0 10px rgba(255, 109, 66, 0.6);
+}
+
+@media (max-width: 768px) {
+  .insta-gallery-viewport {
+    min-height: 560px;
+  }
+}
+

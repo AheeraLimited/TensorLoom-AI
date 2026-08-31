@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, lazy, Suspense } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { Toaster, toast } from 'sonner'
@@ -7,7 +7,7 @@ import NeuralLoomCanvas from './components/NeuralLoomCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import IndustryMarquee from './components/IndustryMarquee.jsx'
-import ProjectsShowcase from './components/ProjectsShowcase.jsx'
+import InstaProjectsGallery from './components/InstaProjectsGallery.jsx'
 import IndustryDemo from './components/IndustryDemo.jsx'
 import About from './components/About.jsx'
 import Services from './components/Services.jsx'
@@ -17,11 +17,13 @@ import Pricing from './components/Pricing.jsx'
 import FAQ from './components/FAQ.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
-import ProjectModal from './components/ProjectModal.jsx'
-import DiscoveryModal from './components/DiscoveryModal.jsx'
-import LegalModal from './components/LegalModal.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
 import { PROJECTS } from './data/projectsData.js'
+
+// Lazy-loaded modals so they don't block initial page load
+const ProjectModal = lazy(() => import('./components/ProjectModal.jsx'))
+const DiscoveryModal = lazy(() => import('./components/DiscoveryModal.jsx'))
+const LegalModal = lazy(() => import('./components/LegalModal.jsx'))
 
 export default function App() {
   const [modalProject, setModalProject] = useState(null)
@@ -111,25 +113,38 @@ export default function App() {
     document.body.style.overflow = isAnyModalOpen ? 'hidden' : 'unset'
   }, [modalProject, isDiscoveryOpen, legalTab])
 
+  // Throttled spotlight effect with rAF to prevent lag and frame drops
   useEffect(() => {
-    const handleMouseMove = (e) => {
-      const spotlights = document.querySelectorAll('.tl-glass-spotlight')
-      spotlights.forEach((el) => {
-        const rect = el.getBoundingClientRect()
-        // Only calculate if visible on screen
-        if (
-          e.clientX >= rect.left - 50 &&
-          e.clientX <= rect.right + 50 &&
-          e.clientY >= rect.top - 50 &&
-          e.clientY <= rect.bottom + 50
-        ) {
-          const x = e.clientX - rect.left
-          const y = e.clientY - rect.top
-          el.style.setProperty('--mouse-x', `${x}px`)
-          el.style.setProperty('--mouse-y', `${y}px`)
-        }
-      })
+    // Only run on desktop fine-pointer devices
+    if (typeof window === 'undefined' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      return
     }
+
+    let ticking = false
+    const handleMouseMove = (e) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const spotlights = document.querySelectorAll('.tl-glass-spotlight')
+          spotlights.forEach((el) => {
+            const rect = el.getBoundingClientRect()
+            if (
+              e.clientX >= rect.left - 40 &&
+              e.clientX <= rect.right + 40 &&
+              e.clientY >= rect.top - 40 &&
+              e.clientY <= rect.bottom + 40
+            ) {
+              const x = e.clientX - rect.left
+              const y = e.clientY - rect.top
+              el.style.setProperty('--mouse-x', `${x}px`)
+              el.style.setProperty('--mouse-y', `${y}px`)
+            }
+          })
+          ticking = false
+        })
+        ticking = true
+      }
+    }
+
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
@@ -180,7 +195,7 @@ export default function App() {
       <main>
         <Hero onOpenDiscoveryModal={handleOpenDiscovery} />
         <IndustryMarquee />
-        <ProjectsShowcase onOpenProjectModal={handleOpenProjectModal} />
+        <InstaProjectsGallery onOpenProjectModal={handleOpenProjectModal} />
         <div className="tl-shell"><div className="tl-weft" /></div>
         <IndustryDemo />
         <div className="tl-shell"><div className="tl-weft" /></div>
@@ -204,24 +219,33 @@ export default function App() {
       {/* Floating Direct WhatsApp Hotline */}
       <WhatsAppButton />
 
-      {/* 1-Click Discovery Call Scheduler Modal */}
-      <DiscoveryModal 
-        isOpen={isDiscoveryOpen} 
-        onClose={handleCloseDiscovery} 
-      />
+      {/* Lazy-Loaded Modals wrapped in Suspense for zero initial load impact */}
+      <Suspense fallback={null}>
+        {/* 1-Click Discovery Call Scheduler Modal */}
+        {isDiscoveryOpen && (
+          <DiscoveryModal 
+            isOpen={isDiscoveryOpen} 
+            onClose={handleCloseDiscovery} 
+          />
+        )}
 
-      {/* Legal & Compliance Trust Modal */}
-      <LegalModal 
-        isOpen={Boolean(legalTab)} 
-        initialTab={legalTab || 'privacy'} 
-        onClose={handleCloseLegal} 
-      />
+        {/* Legal & Compliance Trust Modal */}
+        {Boolean(legalTab) && (
+          <LegalModal 
+            isOpen={Boolean(legalTab)} 
+            initialTab={legalTab || 'privacy'} 
+            onClose={handleCloseLegal} 
+          />
+        )}
 
-      {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
-      <ProjectModal 
-        project={modalProject} 
-        onClose={handleCloseModal} 
-      />
+        {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
+        {Boolean(modalProject) && (
+          <ProjectModal 
+            project={modalProject} 
+            onClose={handleCloseModal} 
+          />
+        )}
+      </Suspense>
 
       {/* Luxury Frosted Glass Toast Notification System */}
       <Toaster 

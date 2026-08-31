@@ -79,6 +79,8 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
   const [activeDropdown, setActiveDropdown] = useState(null)
+  const [hoveredNav, setHoveredNav] = useState(null)
+  const [hoveredDropdownItem, setHoveredDropdownItem] = useState(null)
   const [mobileExpanded, setMobileExpanded] = useState('Projects')
 
   useEffect(() => {
@@ -93,6 +95,7 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
       onOpenProjectModal(sub.projectId)
     }
     setActiveDropdown(null)
+    setHoveredDropdownItem(null)
     setOpen(false)
   }
 
@@ -108,63 +111,90 @@ export default function Navbar({ onOpenProjectModal, onOpenDiscoveryModal, theme
 
           {/* Right Group: Nav Links + Theme Switcher + CTAs */}
           <div className="nav-right-group">
-            <nav className="nav-links" aria-label="Primary">
-              {NAV_ITEMS.map((item) => (
-                <div 
-                  key={item.label} 
-                  className="nav-item-wrap"
-                  onMouseEnter={() => setActiveDropdown(item.label)}
-                  onMouseLeave={() => setActiveDropdown(null)}
-                >
-                  <a href={item.href} className="nav-link-btn">
-                    <span>{item.label}</span>
-                    {item.dropdown && <ChevronDown size={12} className="nav-chevron" />}
-                  </a>
+            <nav 
+              className="nav-links" 
+              aria-label="Primary"
+              onMouseLeave={() => {
+                setHoveredNav(null)
+                setActiveDropdown(null)
+                setHoveredDropdownItem(null)
+              }}
+            >
+              {NAV_ITEMS.map((item) => {
+                const isHovered = hoveredNav === item.label || activeDropdown === item.label
+                return (
+                  <div 
+                    key={item.label} 
+                    className="nav-item-wrap"
+                    onMouseEnter={() => {
+                      setHoveredNav(item.label)
+                      setActiveDropdown(item.label)
+                    }}
+                  >
+                    <a href={item.href} className="nav-link-btn">
+                      {isHovered && (
+                        <motion.div
+                          layoutId="navSlidingPill"
+                          className="nav-sliding-pill"
+                          transition={{ type: 'spring', stiffness: 340, damping: 28, mass: 0.8 }}
+                        />
+                      )}
+                      <span className="nav-link-text">{item.label}</span>
+                      {item.dropdown && <ChevronDown size={12} className="nav-chevron" />}
+                    </a>
 
-                  {/* Frosted Glass Dropdown Menu with Spring Entrance/Exit Animation */}
-                  <AnimatePresence>
-                    {item.dropdown && activeDropdown === item.label && (
-                      <motion.div 
-                        className="nav-dropdown-menu"
-                        initial={{ opacity: 0, y: 10, x: '-50%', scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, x: '-50%', scale: 1 }}
-                        exit={{ opacity: 0, y: 6, x: '-50%', scale: 0.96 }}
-                        transition={{ duration: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      >
-                        {item.dropdown.map((sub, idx) => {
-                          const SubIcon = sub.icon
-                          return (
-                            <motion.a 
-                              key={sub.title} 
-                              href={sub.href} 
-                              className="nav-dropdown-item"
-                              onClick={(e) => handleDropdownItemClick(e, sub)}
-                              initial={{ opacity: 0, x: -8 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ duration: 0.18, delay: idx * 0.032, ease: 'easeOut' }}
-                            >
-                              <div 
-                                className="nav-drop-icon"
-                                style={{ 
-                                  background: `${sub.color}15`, 
-                                  borderColor: `${sub.color}35`,
-                                  color: sub.color 
-                                }}
+                    {/* Frosted Glass Dropdown Menu with Spring Entrance/Exit Animation */}
+                    <AnimatePresence>
+                      {item.dropdown && activeDropdown === item.label && (
+                        <motion.div 
+                          className="nav-dropdown-menu"
+                          initial={{ opacity: 0, y: 8, x: '-50%', scale: 0.97 }}
+                          animate={{ opacity: 1, y: 0, x: '-50%', scale: 1 }}
+                          exit={{ opacity: 0, y: 6, x: '-50%', scale: 0.97 }}
+                          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                          onMouseLeave={() => setHoveredDropdownItem(null)}
+                        >
+                          {item.dropdown.map((sub) => {
+                            const SubIcon = sub.icon
+                            const isSubHovered = hoveredDropdownItem === sub.title
+                            return (
+                              <a 
+                                key={sub.title} 
+                                href={sub.href} 
+                                className="nav-dropdown-item"
+                                onClick={(e) => handleDropdownItemClick(e, sub)}
+                                onMouseEnter={() => setHoveredDropdownItem(sub.title)}
                               >
-                                <SubIcon size={16} />
-                              </div>
-                              <div className="nav-drop-info">
-                                <span className="nav-drop-title">{sub.title}</span>
-                                <span className="nav-drop-desc">{sub.desc}</span>
-                              </div>
-                            </motion.a>
-                          )
-                        })}
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              ))}
+                                {isSubHovered && (
+                                  <motion.div
+                                    layoutId="dropdownSlidingPill"
+                                    className="nav-dropdown-sliding-pill"
+                                    transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+                                  />
+                                )}
+                                <div 
+                                  className="nav-drop-icon"
+                                  style={{ 
+                                    background: `${sub.color}15`, 
+                                    borderColor: `${sub.color}35`,
+                                    color: sub.color 
+                                  }}
+                                >
+                                  <SubIcon size={16} />
+                                </div>
+                                <div className="nav-drop-info">
+                                  <span className="nav-drop-title">{sub.title}</span>
+                                  <span className="nav-drop-desc">{sub.desc}</span>
+                                </div>
+                              </a>
+                            )
+                          })}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                )
+              })}
             </nav>
 
             {/* Theme Toggle Button */}

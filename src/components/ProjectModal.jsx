@@ -8,11 +8,12 @@ import { toast } from 'sonner'
 import './ProjectModal.css'
 
 export default function ProjectModal({ project, onClose }) {
-  const [deviceMode, setDeviceMode] = useState('desktop')
+  // Default to mobile when opened (matches the phone gallery cards)
+  const [deviceMode, setDeviceMode] = useState('mobile')
 
   useEffect(() => {
     if (!project) return
-    setDeviceMode('desktop')
+    setDeviceMode('mobile')
 
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') onClose()
