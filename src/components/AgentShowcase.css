@@ -440,6 +440,46 @@
   .chatbot-lottie-stage {
     display: none !important;
   }
+
+  .sandbox-top-controls {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px 14px;
+  }
+
+  .sandbox-title {
+    font-size: 11px;
+    min-width: 0;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .sandbox-title span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dispatch-signal-btn {
+    padding: 6px 12px;
+    font-size: 9.5px;
+    gap: 5px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .dispatch-signal-btn svg {
+    width: 10px;
+    height: 10px;
+  }
 }
 
 @media (max-width: 640px) {

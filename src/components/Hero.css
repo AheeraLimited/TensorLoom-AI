@@ -615,33 +615,39 @@
   }
 
   .hero-cta-group {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
     width: 100%;
+    max-width: 360px;
     padding-top: 2px;
   }
 
   .hero-cta-group .tl-btn {
-    width: auto;
-    padding: 8px 14px;
-    font-size: 12px;
+    width: 100%;
+    height: 40px;
+    padding: 0 10px;
+    font-size: 11.5px;
     font-weight: 600;
     gap: 6px;
     border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    white-space: nowrap;
   }
 
   .hero-cta-group .tl-btn svg {
     width: 13px;
     height: 13px;
+    flex-shrink: 0;
   }
 
+  /* Remove hero stats strip on mobile view as requested */
   .hero-stats-strip {
-    gap: 6px;
-    padding-top: 14px;
+    display: none !important;
   }
 
   .hero-stat-pill {

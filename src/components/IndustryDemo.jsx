@@ -242,17 +242,19 @@ export default function IndustryDemo() {
                 <Activity size={12} color="var(--coral)" />
                 <span>LIVE TELEMETRY PAYLOAD</span>
               </div>
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={`${industryIdx}-${stepIdx}`}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.25 }}
-                >
-                  <VisualPayloadCard card={step.card} stage={step.stage} />
-                </motion.div>
-              </AnimatePresence>
+              <div className="telemetry-card-frame">
+                <AnimatePresence initial={false}>
+                  <motion.div
+                    key={`${industryIdx}-${stepIdx}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <VisualPayloadCard card={step.card} stage={step.stage} />
+                  </motion.div>
+                </AnimatePresence>
+              </div>
             </div>
 
             {/* Right: Agent Reasoning & Deep Context */}

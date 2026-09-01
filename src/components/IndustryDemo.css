@@ -344,6 +344,12 @@
   gap: 10px;
 }
 
+.telemetry-card-frame {
+  position: relative;
+  min-height: 230px;
+  width: 100%;
+}
+
 .screen-tag {
   display: flex;
   align-items: center;
@@ -366,6 +372,10 @@
   position: relative;
   overflow: hidden;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06), var(--glass-rim);
+  min-height: 220px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
 }
 
 .v-card-top-bar {
@@ -527,12 +537,14 @@
   font-weight: 700;
   line-height: 1.25;
   color: var(--ink-primary);
+  min-height: 32px;
 }
 
 .detail-copy {
   font-size: 14px;
   color: var(--ink-secondary);
   line-height: 1.6;
+  min-height: 48px;
 }
 
 /* Impact Comparison Box */
@@ -701,8 +713,12 @@
     padding: 16px 12px;
     gap: 20px;
   }
+  .telemetry-card-frame {
+    min-height: 215px;
+  }
   .v-card {
     padding: 16px 14px;
+    min-height: 205px;
   }
   .v-card-top-bar {
     margin-bottom: 12px;
@@ -715,10 +731,15 @@
   }
   .detail-title {
     font-size: 20px;
+    min-height: 28px;
   }
   .detail-copy {
     font-size: 13.5px;
     line-height: 1.55;
+    min-height: 44px;
+  }
+  .display-detail-side {
+    min-height: 310px;
   }
   .detail-impact-box {
     padding: 12px 14px;
