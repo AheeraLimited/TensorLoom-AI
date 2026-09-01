@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, lazy, Suspense } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Lenis from 'lenis'
 import 'lenis/dist/lenis.css'
 import { Toaster, toast } from 'sonner'
@@ -7,7 +7,7 @@ import NeuralLoomCanvas from './components/NeuralLoomCanvas.jsx'
 import Navbar from './components/Navbar.jsx'
 import Hero from './components/Hero.jsx'
 import IndustryMarquee from './components/IndustryMarquee.jsx'
-import InstaProjectsGallery from './components/InstaProjectsGallery.jsx'
+import ProjectsShowcase from './components/ProjectsShowcase.jsx'
 import IndustryDemo from './components/IndustryDemo.jsx'
 import About from './components/About.jsx'
 import Services from './components/Services.jsx'
@@ -17,13 +17,11 @@ import Pricing from './components/Pricing.jsx'
 import FAQ from './components/FAQ.jsx'
 import Contact from './components/Contact.jsx'
 import Footer from './components/Footer.jsx'
+import ProjectModal from './components/ProjectModal.jsx'
+import DiscoveryModal from './components/DiscoveryModal.jsx'
+import LegalModal from './components/LegalModal.jsx'
 import WhatsAppButton from './components/WhatsAppButton.jsx'
 import { PROJECTS } from './data/projectsData.js'
-
-// Lazy-loaded modals so they don't block initial page load
-const ProjectModal = lazy(() => import('./components/ProjectModal.jsx'))
-const DiscoveryModal = lazy(() => import('./components/DiscoveryModal.jsx'))
-const LegalModal = lazy(() => import('./components/LegalModal.jsx'))
 
 export default function App() {
   const [modalProject, setModalProject] = useState(null)
@@ -195,7 +193,7 @@ export default function App() {
       <main>
         <Hero onOpenDiscoveryModal={handleOpenDiscovery} />
         <IndustryMarquee />
-        <InstaProjectsGallery onOpenProjectModal={handleOpenProjectModal} />
+        <ProjectsShowcase onOpenProjectModal={handleOpenProjectModal} />
         <div className="tl-shell"><div className="tl-weft" /></div>
         <IndustryDemo />
         <div className="tl-shell"><div className="tl-weft" /></div>
@@ -219,33 +217,25 @@ export default function App() {
       {/* Floating Direct WhatsApp Hotline */}
       <WhatsAppButton />
 
-      {/* Lazy-Loaded Modals wrapped in Suspense for zero initial load impact */}
-      <Suspense fallback={null}>
-        {/* 1-Click Discovery Call Scheduler Modal */}
-        {isDiscoveryOpen && (
-          <DiscoveryModal 
-            isOpen={isDiscoveryOpen} 
-            onClose={handleCloseDiscovery} 
-          />
-        )}
 
-        {/* Legal & Compliance Trust Modal */}
-        {Boolean(legalTab) && (
-          <LegalModal 
-            isOpen={Boolean(legalTab)} 
-            initialTab={legalTab || 'privacy'} 
-            onClose={handleCloseLegal} 
-          />
-        )}
+      {/* 1-Click Discovery Call Scheduler Modal */}
+      <DiscoveryModal 
+        isOpen={isDiscoveryOpen} 
+        onClose={handleCloseDiscovery} 
+      />
 
-        {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
-        {Boolean(modalProject) && (
-          <ProjectModal 
-            project={modalProject} 
-            onClose={handleCloseModal} 
-          />
-        )}
-      </Suspense>
+      {/* Legal & Compliance Trust Modal */}
+      <LegalModal 
+        isOpen={Boolean(legalTab)} 
+        initialTab={legalTab || 'privacy'} 
+        onClose={handleCloseLegal} 
+      />
+
+      {/* Hyper-Realistic Glassmorphic Project Modal Popup */}
+      <ProjectModal 
+        project={modalProject} 
+        onClose={handleCloseModal} 
+      />
 
       {/* Luxury Frosted Glass Toast Notification System */}
       <Toaster 
