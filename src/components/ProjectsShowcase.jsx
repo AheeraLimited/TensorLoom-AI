@@ -20,12 +20,12 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
   const isScreenMobile = typeof window !== 'undefined' && window.innerWidth < 768
   const activeView = userDeviceMode || (isScreenMobile ? 'mobile' : 'desktop')
 
-  // Background auto-reload timer for Zynara (Desktop non-touch mode only, leisurely interval)
+  // Auto-reload loop function for Zynara live feed in desktop mode (3.8s duration)
   useEffect(() => {
     if (selectedId !== 'zynara' || activeView === 'mobile' || isScreenMobile) return
     const timer = setInterval(() => {
       setZynaraRefreshCount((prev) => prev + 1)
-    }, 12000)
+    }, 3800)
     return () => clearInterval(timer)
   }, [selectedId, activeView, isScreenMobile])
 
