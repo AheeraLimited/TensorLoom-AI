@@ -243,17 +243,7 @@ export default function IndustryDemo() {
                 <span>LIVE TELEMETRY PAYLOAD</span>
               </div>
               <div className="telemetry-card-frame">
-                <AnimatePresence initial={false}>
-                  <motion.div
-                    key={`${industryIdx}-${stepIdx}`}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <VisualPayloadCard card={step.card} stage={step.stage} />
-                  </motion.div>
-                </AnimatePresence>
+                <VisualPayloadCard key={`${industryIdx}-${stepIdx}`} card={step.card} stage={step.stage} />
               </div>
             </div>
 
