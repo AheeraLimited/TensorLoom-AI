@@ -2,10 +2,10 @@ import { useEffect, useRef } from 'react'
 
 export default function NeuralLoomCanvas({ theme = 'light' }) {
   const canvasRef = useRef(null)
-  const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window)
+  const isDeviceMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window)
 
   useEffect(() => {
-    if (isMobile) return
+    if (isDeviceMobile) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d', { alpha: true })
@@ -48,9 +48,8 @@ export default function NeuralLoomCanvas({ theme = 'light' }) {
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
     document.addEventListener('mouseleave', handleMouseLeave, { passive: true })
 
-    const isMobile = width < 768
-    // Gentle, subtle node count (scaled down on mobile for ultra battery efficiency)
-    const nodeCount = isMobile ? 10 : Math.min(28, Math.max(16, Math.floor((width * height) / 45000)))
+    // Desktop subtle node count
+    const nodeCount = Math.min(28, Math.max(16, Math.floor((width * height) / 45000)))
     const nodes = []
 
     for (let i = 0; i < nodeCount; i++) {
@@ -199,7 +198,7 @@ export default function NeuralLoomCanvas({ theme = 'light' }) {
     }
   }, [theme])
 
-  if (isMobile) {
+  if (isDeviceMobile) {
     return null
   }
 
