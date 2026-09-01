@@ -43,7 +43,40 @@ export default function App() {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Ultra-high frame rate 120Hz+ Lenis smooth scrolling
+    // Detect touch / mobile devices (iOS Safari, Android Chrome)
+    const isTouchDevice = 
+      typeof window !== 'undefined' && 
+      ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768)
+
+    // Smooth anchor navigation for both desktop and mobile
+    const handleAnchorClick = (e) => {
+      const anchor = e.target.closest('a[href^="#"]')
+      if (anchor) {
+        const href = anchor.getAttribute('href')
+        if (href && href.startsWith('#') && href.length > 1) {
+          const target = document.querySelector(href)
+          if (target) {
+            e.preventDefault()
+            if (lenisRef.current) {
+              lenisRef.current.scrollTo(target, { offset: -60, duration: 0.9 })
+            } else {
+              target.scrollIntoView({ behavior: 'smooth' })
+            }
+          }
+        }
+      }
+    }
+    document.addEventListener('click', handleAnchorClick)
+
+    // On iOS Safari and touch devices, native momentum scrolling is 100% reliable and fluid.
+    // Lenis touch hijacking causes gesture locks and freezes on WebKit.
+    if (isTouchDevice) {
+      return () => {
+        document.removeEventListener('click', handleAnchorClick)
+      }
+    }
+
+    // Ultra-high frame rate 120Hz+ Lenis smooth scrolling (Desktop only)
     const lenis = new Lenis({
       duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -51,7 +84,8 @@ export default function App() {
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
-      touchMultiplier: 1.1,
+      touchMultiplier: 0,
+      syncTouch: false,
       infinite: false,
     })
     lenisRef.current = lenis
@@ -72,23 +106,6 @@ export default function App() {
         document.documentElement.classList.remove('is-lenis-scrolling')
       }, 120)
     })
-
-    // Smooth anchor navigation
-    const handleAnchorClick = (e) => {
-      const anchor = e.target.closest('a[href^="#"]')
-      if (anchor) {
-        const href = anchor.getAttribute('href')
-        if (href && href.startsWith('#') && href.length > 1) {
-          const target = document.querySelector(href)
-          if (target) {
-            e.preventDefault()
-            lenis.scrollTo(target, { offset: -60, duration: 0.9 })
-          }
-        }
-      }
-    }
-
-    document.addEventListener('click', handleAnchorClick)
 
     return () => {
       cancelAnimationFrame(rafId)

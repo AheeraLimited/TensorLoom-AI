@@ -17,16 +17,17 @@ export default function ProjectsShowcase({ onOpenProjectModal }) {
   const [userDeviceMode, setUserDeviceMode] = useState(null)
   const [zynaraRefreshCount, setZynaraRefreshCount] = useState(0)
 
-  const activeView = userDeviceMode || 'desktop'
+  const isScreenMobile = typeof window !== 'undefined' && window.innerWidth < 768
+  const activeView = userDeviceMode || (isScreenMobile ? 'mobile' : 'desktop')
 
-  // 3.8s background auto-reload timer for Zynara (Desktop mode only)
+  // Background auto-reload timer for Zynara (Desktop non-touch mode only, leisurely interval)
   useEffect(() => {
-    if (selectedId !== 'zynara' || activeView === 'mobile') return
+    if (selectedId !== 'zynara' || activeView === 'mobile' || isScreenMobile) return
     const timer = setInterval(() => {
       setZynaraRefreshCount((prev) => prev + 1)
-    }, 3800)
+    }, 12000)
     return () => clearInterval(timer)
-  }, [selectedId, activeView])
+  }, [selectedId, activeView, isScreenMobile])
 
   const filteredProjects = activeCategory === 'All Projects'
     ? PROJECTS
