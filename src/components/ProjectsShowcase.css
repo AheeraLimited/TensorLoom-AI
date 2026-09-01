@@ -1013,6 +1013,28 @@
 
   .preview-iframe-stage.mode-desktop-stage {
     height: 300px;
+    touch-action: pan-y !important;
+  }
+
+  .preview-iframe-stage.mode-mobile-stage {
+    min-height: 520px;
+    padding: 16px 8px;
+    touch-action: pan-y !important;
+  }
+
+  .mobile-device-chassis {
+    width: 270px;
+    height: 585px;
+  }
+
+  .mobile-iframe-scaler {
+    transform: scale(0.613);
+    pointer-events: none !important;
+  }
+
+  .live-mobile-iframe,
+  .live-desktop-iframe {
+    pointer-events: none !important;
   }
 
   .viewer-metrics-grid {

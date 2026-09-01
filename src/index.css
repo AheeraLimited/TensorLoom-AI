@@ -165,16 +165,7 @@ body {
   -webkit-overflow-scrolling: touch;
 }
 
-/* GPU Compositing Optimization for Frosted Glass Layers (Eliminates Scroll Jank) */
-.tl-glass,
-.stat-card,
-.proj-card-item,
-.bento-card,
-.about-pillar-card,
-.process-step-card,
-.pricing-card-v2,
-.faq-item-card,
-.contact-card-glass,
+/* GPU Compositing Optimization: Keep fixed header on dedicated layer, keep scrolling cards in standard document flow */
 .nav-inner {
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
@@ -182,10 +173,21 @@ body {
   -webkit-backface-visibility: hidden;
 }
 
-/* Zero-Jank Scrolling State: Disables background mouse interception during high-speed scroll */
-.is-lenis-scrolling iframe,
-.is-lenis-scrolling .neural-loom-canvas {
+/* Zero-Jank Scroll Optimization: Disable all hover and pointer calculations while scrolling (used by Stripe/Linear) */
+body.is-scrolling,
+body.is-scrolling * {
   pointer-events: none !important;
+}
+
+/* Always disable mouse capture on iframes during scroll to avoid compositing stalls */
+.is-lenis-scrolling iframe,
+.is-scrolling iframe,
+.preview-iframe-stage iframe {
+  pointer-events: none;
+}
+
+.preview-iframe-stage:hover iframe {
+  pointer-events: auto;
 }
 
 /* Custom modern frosted scrollbar */
@@ -480,21 +482,43 @@ body {
    =================================================================== */
 @media (max-width: 768px) {
   :root {
-    /* Lightweight GPU blur on mobile to prevent compositor lag */
-    --glass-blur: blur(12px) saturate(160%);
-    --glass-blur-sm: blur(6px) saturate(150%);
+    --glass-blur: none;
+    --glass-blur-sm: none;
   }
 
   [data-theme="light"] {
-    --glass-blur: blur(12px) saturate(160%);
-    --glass-blur-sm: blur(6px) saturate(150%);
+    --glass-blur: none;
+    --glass-blur-sm: none;
+  }
+
+  /* On mobile phones, disable expensive backdrop-filter on in-page scrolling cards
+     so the GPU doesn't do 30+ offscreen readbacks per scroll tick */
+  .tl-glass,
+  .stat-card,
+  .proj-card-item,
+  .bento-card,
+  .about-pillar-card,
+  .process-step-card,
+  .pricing-card-v2,
+  .faq-item-card,
+  .contact-card-glass,
+  .chatbot-interactive-card,
+  .cockpit-viewer-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Keep header navbar frosted */
+  .nav-inner {
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
   }
 
   /* Prevent iframe touch interception from stalling page scroll on mobile */
   .preview-iframe-stage iframe,
   .live-desktop-iframe,
   .live-mobile-iframe {
-    pointer-events: none;
+    pointer-events: none !important;
   }
 
   /* Disable heavy continuous keyframe animations on mobile GPUs */

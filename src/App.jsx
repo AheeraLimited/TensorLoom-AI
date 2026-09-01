@@ -43,10 +43,21 @@ export default function App() {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Detect touch / mobile devices (iOS Safari, Android Chrome)
-    const isTouchDevice = 
+    // Detect mobile phones / small screens
+    const isMobilePhone = 
       typeof window !== 'undefined' && 
-      ('ontouchstart' in window || navigator.maxTouchPoints > 0 || window.innerWidth < 768)
+      (window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent))
+
+    // Universal Zero-Jank Scroll: Disable mouse/hover recalculations during scrolling
+    let scrollTimeout
+    const onScrollActive = () => {
+      document.body.classList.add('is-scrolling')
+      clearTimeout(scrollTimeout)
+      scrollTimeout = setTimeout(() => {
+        document.body.classList.remove('is-scrolling')
+      }, 90)
+    }
+    window.addEventListener('scroll', onScrollActive, { passive: true })
 
     // Smooth anchor navigation for both desktop and mobile
     const handleAnchorClick = (e) => {
@@ -68,15 +79,15 @@ export default function App() {
     }
     document.addEventListener('click', handleAnchorClick)
 
-    // On iOS Safari and touch devices, native momentum scrolling is 100% reliable and fluid.
-    // Lenis touch hijacking causes gesture locks and freezes on WebKit.
-    if (isTouchDevice) {
+    // On mobile phone screens, rely on native OS momentum scrolling for 100% stability
+    if (isMobilePhone) {
       return () => {
+        window.removeEventListener('scroll', onScrollActive)
         document.removeEventListener('click', handleAnchorClick)
       }
     }
 
-    // Ultra-high frame rate 120Hz+ Lenis smooth scrolling (Desktop only)
+    // Ultra-high frame rate 120Hz+ Lenis smooth scrolling (Desktop/Laptop only)
     const lenis = new Lenis({
       duration: 0.85,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -97,18 +108,11 @@ export default function App() {
     }
     rafId = requestAnimationFrame(raf)
 
-    // Eliminate iframe compositing jank during scroll
-    let scrollTimeout
-    lenis.on('scroll', () => {
-      document.documentElement.classList.add('is-lenis-scrolling')
-      clearTimeout(scrollTimeout)
-      scrollTimeout = setTimeout(() => {
-        document.documentElement.classList.remove('is-lenis-scrolling')
-      }, 120)
-    })
+    lenis.on('scroll', onScrollActive)
 
     return () => {
       cancelAnimationFrame(rafId)
+      window.removeEventListener('scroll', onScrollActive)
       document.removeEventListener('click', handleAnchorClick)
       lenis.destroy()
       lenisRef.current = null
@@ -128,35 +132,18 @@ export default function App() {
     document.body.style.overflow = isAnyModalOpen ? 'hidden' : 'unset'
   }, [modalProject, isDiscoveryOpen, legalTab])
 
-  // Throttled spotlight effect with rAF to prevent lag and frame drops
+  // Ultra-efficient Spotlight: only compute for the single actively hovered card
   useEffect(() => {
-    // Only run on desktop fine-pointer devices
     if (typeof window === 'undefined' || !window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       return
     }
 
-    let ticking = false
     const handleMouseMove = (e) => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const spotlights = document.querySelectorAll('.tl-glass-spotlight')
-          spotlights.forEach((el) => {
-            const rect = el.getBoundingClientRect()
-            if (
-              e.clientX >= rect.left - 40 &&
-              e.clientX <= rect.right + 40 &&
-              e.clientY >= rect.top - 40 &&
-              e.clientY <= rect.bottom + 40
-            ) {
-              const x = e.clientX - rect.left
-              const y = e.clientY - rect.top
-              el.style.setProperty('--mouse-x', `${x}px`)
-              el.style.setProperty('--mouse-y', `${y}px`)
-            }
-          })
-          ticking = false
-        })
-        ticking = true
+      const card = e.target.closest('.tl-glass-spotlight')
+      if (card) {
+        const rect = card.getBoundingClientRect()
+        card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`)
+        card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`)
       }
     }
 
