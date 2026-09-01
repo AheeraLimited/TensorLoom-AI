@@ -12,9 +12,9 @@ export default function Services() {
   const [typedIndex, setTypedIndex] = useState(0)
   const tokenSnippets = [
     'agent.perceive(context)',
-    'agent.eval_guardrails({ strict: true })',
-    'agent.dispatch_tool("postgres_write")',
-    'status: 200 OK • latency 14ms'
+    'agent.eval_guardrails()',
+    'agent.dispatch_tool()',
+    'status: 200 OK • 14ms'
   ]
 
   useEffect(() => {

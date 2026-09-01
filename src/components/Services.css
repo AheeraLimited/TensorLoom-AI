@@ -175,6 +175,19 @@
   align-items: center;
   gap: 8px;
   margin-bottom: 14px;
+  height: 24px;
+  min-height: 24px;
+  max-height: 24px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+.terminal-typing {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
 }
 
 .prompt-sign {
@@ -527,6 +540,22 @@
   .bento-card {
     padding: 20px 18px;
     gap: 14px;
+  }
+  .bento-terminal-widget {
+    padding: 14px 14px;
+    min-height: 195px;
+    max-height: 195px;
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+  .terminal-stream {
+    font-size: 12px;
+    height: 22px;
+    min-height: 22px;
+    max-height: 22px;
+    margin-bottom: 12px;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .terminal-pills-row {
     flex-direction: column;
