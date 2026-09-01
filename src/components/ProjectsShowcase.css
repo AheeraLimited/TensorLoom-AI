@@ -983,32 +983,120 @@
     font-size: 11px;
   }
 
-  .preview-window-bar {
-    flex-wrap: wrap;
-    gap: 8px;
-    padding: 8px 10px;
+  .cockpit-viewer-card {
+    padding: 16px 14px;
+    gap: 14px;
+    border-radius: 16px;
   }
 
-  .preview-url-box {
-    max-width: 100%;
-    flex: 1 1 100%;
-    order: 3;
-    font-size: 10px;
-    box-sizing: border-box;
+  .viewer-header-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding-bottom: 12px;
+  }
+
+  .viewer-brand-badge {
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .viewer-icon-pill {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .viewer-badge-text {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+
+  .viewer-project-title {
+    font-size: 18px;
+    line-height: 1.15;
+  }
+
+  .viewer-status-pill {
+    margin-left: 0;
+    font-size: 9.5px;
+    padding: 3px 8px;
+    gap: 4px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .viewer-tagline {
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .preview-window-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 8px 10px;
   }
 
   .preview-window-dots {
     order: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .preview-window-dots .p-dot {
+    width: 8px;
+    height: 8px;
   }
 
   .preview-device-switch {
     order: 2;
+    padding: 2px;
+    gap: 2px;
+    margin-left: auto;
+  }
+
+  .preview-device-switch .device-btn {
+    padding: 3px 7px;
+    font-size: 9.5px;
+    gap: 4px;
+  }
+
+  .preview-device-switch .device-btn svg {
+    width: 10px;
+    height: 10px;
   }
 
   .preview-direct-launch-link {
-    order: 2;
-    padding: 4px 10px;
+    order: 3;
+    padding: 3px 8px;
+    font-size: 9.5px;
+    gap: 4px;
+    white-space: nowrap;
+  }
+
+  .preview-direct-launch-link svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .preview-url-box {
+    order: 4;
+    width: 100%;
+    flex: 1 1 100%;
+    margin-top: 2px;
+    padding: 4px 8px;
     font-size: 10px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
   .preview-iframe-stage.mode-desktop-stage {

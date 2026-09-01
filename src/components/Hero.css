@@ -615,14 +615,28 @@
   }
 
   .hero-cta-group {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
     width: 100%;
-    gap: 10px;
+    padding-top: 2px;
   }
 
   .hero-cta-group .tl-btn {
-    width: 100%;
-    justify-content: center;
+    width: auto;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    gap: 6px;
+    border-radius: 999px;
+  }
+
+  .hero-cta-group .tl-btn svg {
+    width: 13px;
+    height: 13px;
   }
 
   .hero-stats-strip {

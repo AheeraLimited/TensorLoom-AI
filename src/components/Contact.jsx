@@ -273,10 +273,10 @@ export default function Contact() {
                     autoComplete="off" 
                   />
 
-                  {/* Project Type Selector Pills */}
+                  {/* Project Type Selector (Pills on Desktop, Sleek Dropdown on Mobile) */}
                   <div className="form-group">
                     <label className="form-label">WHAT ARE YOU LOOKING TO BUILD?</label>
-                    <div className="form-pill-selector">
+                    <div className="form-pill-selector desktop-only-pills">
                       {PROJECT_TYPES.map((pt) => (
                         <button
                           type="button"
@@ -287,6 +287,18 @@ export default function Contact() {
                           {pt}
                         </button>
                       ))}
+                    </div>
+                    <div className="mobile-only-dropdown">
+                      <select
+                        name="projectType"
+                        value={form.projectType}
+                        onChange={handleChange}
+                        className="form-select"
+                      >
+                        {PROJECT_TYPES.map((pt) => (
+                          <option key={pt} value={pt}>{pt}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
@@ -331,9 +343,9 @@ export default function Contact() {
                     />
                   </div>
 
-                  {/* Budget Selector with Currency Selector */}
+                  {/* Budget Selector with Currency Selector (Pills on Desktop, 2-Col Dropdown on Mobile) */}
                   <div className="form-group">
-                    <div className="form-label-row-with-currency">
+                    <div className="form-label-row-with-currency desktop-currency-row">
                       <label className="form-label">ESTIMATED BUDGET RANGE</label>
                       <div className="contact-currency-tabs">
                         <Globe size={12} color="var(--coral)" />
@@ -349,7 +361,8 @@ export default function Contact() {
                         ))}
                       </div>
                     </div>
-                    <div className="form-pill-selector">
+                    <label className="form-label mobile-only-label">BUDGET & CURRENCY</label>
+                    <div className="form-pill-selector desktop-only-pills">
                       {BUDGETS_BY_CURRENCY[selectedCurrency].map((b) => (
                         <button
                           type="button"
@@ -361,12 +374,41 @@ export default function Contact() {
                         </button>
                       ))}
                     </div>
+                    <div className="mobile-only-dropdown">
+                      <div className="form-row-2 mobile-budget-grid">
+                        <div>
+                          <label className="form-sublabel">CURRENCY</label>
+                          <select
+                            value={selectedCurrency}
+                            onChange={(e) => handleCurrencyChange(e.target.value)}
+                            className="form-select"
+                          >
+                            {CURRENCY_OPTIONS.map((c) => (
+                              <option key={c.code} value={c.code}>{c.label}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div>
+                          <label className="form-sublabel">RANGE</label>
+                          <select
+                            name="budget"
+                            value={form.budget}
+                            onChange={handleChange}
+                            className="form-select"
+                          >
+                            {BUDGETS_BY_CURRENCY[selectedCurrency].map((b) => (
+                              <option key={b} value={b}>{b}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Timeline Selector */}
+                  {/* Timeline Selector (Pills on Desktop, Dropdown on Mobile) */}
                   <div className="form-group">
                     <label className="form-label">DESIRED LAUNCH TIMELINE</label>
-                    <div className="form-pill-selector">
+                    <div className="form-pill-selector desktop-only-pills">
                       {TIMELINES.map((tl) => (
                         <button
                           type="button"
@@ -377,6 +419,18 @@ export default function Contact() {
                           {tl}
                         </button>
                       ))}
+                    </div>
+                    <div className="mobile-only-dropdown">
+                      <select
+                        name="timeline"
+                        value={form.timeline}
+                        onChange={handleChange}
+                        className="form-select"
+                      >
+                        {TIMELINES.map((tl) => (
+                          <option key={tl} value={tl}>{tl}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
