@@ -30,10 +30,21 @@ const CHAT_EXCHANGES = [
 export default function AgentShowcase() {
   const [activeStage, setActiveStage] = useState(2)
   const [isFiring, setIsFiring] = useState(false)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768)
   const lottieContainerRef = useRef(null)
   const animInstanceRef = useRef(null)
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) return
+
     let isMounted = true
 
     Promise.all([
@@ -120,14 +131,16 @@ export default function AgentShowcase() {
               </div>
             </div>
 
-            {/* Lottie Interactive Animation Stage */}
-            <div className="chatbot-lottie-stage">
-              <div className="chatbot-lottie-halo" />
-              <div 
-                ref={lottieContainerRef} 
-                className="chatbot-lottie-player"
-              />
-            </div>
+            {/* Lottie Interactive Animation Stage (Desktop Only) */}
+            {!isMobile && (
+              <div className="chatbot-lottie-stage">
+                <div className="chatbot-lottie-halo" />
+                <div 
+                  ref={lottieContainerRef} 
+                  className="chatbot-lottie-player"
+                />
+              </div>
+            )}
 
             {/* Simulated Real-Time Conversational Stream */}
             <div className="chatbot-dialog-stream">

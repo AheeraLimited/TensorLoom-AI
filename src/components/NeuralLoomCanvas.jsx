@@ -2,8 +2,10 @@ import { useEffect, useRef } from 'react'
 
 export default function NeuralLoomCanvas({ theme = 'light' }) {
   const canvasRef = useRef(null)
+  const isMobile = typeof window !== 'undefined' && (window.innerWidth < 768 || 'ontouchstart' in window)
 
   useEffect(() => {
+    if (isMobile) return
     const canvas = canvasRef.current
     if (!canvas) return
     const ctx = canvas.getContext('2d', { alpha: true })
@@ -194,9 +196,12 @@ export default function NeuralLoomCanvas({ theme = 'light' }) {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
       document.removeEventListener('mouseleave', handleMouseLeave)
-      document.removeEventListener('visibilitychange', handleVisibility)
     }
   }, [theme])
+
+  if (isMobile) {
+    return null
+  }
 
   return (
     <canvas

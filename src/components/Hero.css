@@ -556,22 +556,39 @@
     max-width: 680px;
     margin: 0 auto;
   }
+}
 
-  .hero-3d-stage {
-    min-height: 420px;
-    margin: 0 auto;
+@media (max-width: 768px) {
+  .hero-right-focal {
+    display: none !important;
   }
 
-  .pill-top-left {
-    left: 0;
+  .hero-glow-blob {
+    animation: none !important;
+    filter: blur(28px) !important;
+    opacity: 0.35 !important;
+    will-change: auto !important;
   }
 
-  .pill-top-right {
-    right: 0;
+  .blob-purple-left {
+    width: 260px;
+    height: 260px;
+    top: 5%;
+    left: -20px;
   }
 
-  .pill-bottom-right {
-    right: 0;
+  .blob-coral-center {
+    width: 240px;
+    height: 240px;
+    top: 25%;
+    left: 20%;
+  }
+
+  .blob-cyan-right {
+    width: 260px;
+    height: 260px;
+    top: 10%;
+    right: -20px;
   }
 }
 

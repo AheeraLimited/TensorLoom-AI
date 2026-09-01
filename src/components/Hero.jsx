@@ -15,6 +15,15 @@ const KINETIC_WORDS = [
 
 export default function Hero({ onOpenDiscoveryModal }) {
   const [wordIdx, setWordIdx] = useState(0)
+  const [isMobile, setIsMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    window.addEventListener('resize', handleResize, { passive: true })
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   // Cycle kinetic words smoothly
   useEffect(() => {
@@ -74,10 +83,10 @@ export default function Hero({ onOpenDiscoveryModal }) {
                   <motion.span
                     key={wordIdx}
                     className="hero-kinetic-text text-gradient-n8n"
-                    initial={{ y: 22, opacity: 0, filter: 'blur(4px)' }}
-                    animate={{ y: 0, opacity: 1, filter: 'blur(0px)' }}
-                    exit={{ y: -22, opacity: 0, filter: 'blur(4px)' }}
-                    transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                    initial={{ y: 16, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -16, opacity: 0 }}
+                    transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
                   >
                     {KINETIC_WORDS[wordIdx]}
                   </motion.span>
@@ -144,16 +153,19 @@ export default function Hero({ onOpenDiscoveryModal }) {
           </motion.div>
 
           {/* =========================================================
-              3. RIGHT SIDE: Hero Interactive Lottie Animation
+              3. RIGHT SIDE: Hero Interactive Lottie Animation (Desktop Only)
+              On mobile devices, this is completely unmounted to maximize load speed and eliminate scroll stutter.
               ========================================================= */}
-          <motion.div 
-            className="hero-right-focal"
-            initial={{ opacity: 0, x: 25 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          >
-            <HeroLottieVisual />
-          </motion.div>
+          {!isMobile && (
+            <motion.div 
+              className="hero-right-focal"
+              initial={{ opacity: 0, x: 25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            >
+              <HeroLottieVisual />
+            </motion.div>
+          )}
 
         </div>
       </div>

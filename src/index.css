@@ -474,3 +474,33 @@ body {
   background: rgba(255, 109, 66, 0.35);
   color: #ffffff;
 }
+
+/* ===================================================================
+   Mobile High-Performance & Stutter-Free Scrolling Optimization
+   =================================================================== */
+@media (max-width: 768px) {
+  :root {
+    /* Lightweight GPU blur on mobile to prevent compositor lag */
+    --glass-blur: blur(12px) saturate(160%);
+    --glass-blur-sm: blur(6px) saturate(150%);
+  }
+
+  [data-theme="light"] {
+    --glass-blur: blur(12px) saturate(160%);
+    --glass-blur-sm: blur(6px) saturate(150%);
+  }
+
+  /* Prevent iframe touch interception from stalling page scroll on mobile */
+  .preview-iframe-stage iframe,
+  .live-desktop-iframe,
+  .live-mobile-iframe {
+    pointer-events: none;
+  }
+
+  /* Disable heavy continuous keyframe animations on mobile GPUs */
+  .hero-glow-blob,
+  .pulse-slow {
+    animation: none !important;
+    transform: none !important;
+  }
+}

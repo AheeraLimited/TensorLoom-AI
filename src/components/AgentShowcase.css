@@ -436,6 +436,12 @@
   }
 }
 
+@media (max-width: 768px) {
+  .chatbot-lottie-stage {
+    display: none !important;
+  }
+}
+
 @media (max-width: 640px) {
   .spotlight-section {
     padding: 40px 0;
@@ -443,9 +449,6 @@
   .spotlight-header {
     margin-bottom: 24px;
     gap: 10px;
-  }
-  .chatbot-lottie-stage {
-    height: 220px;
   }
   .stage-pill-box {
     flex-direction: column;
