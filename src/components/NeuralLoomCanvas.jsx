@@ -46,17 +46,18 @@ export default function NeuralLoomCanvas({ theme = 'light' }) {
     window.addEventListener('mousemove', handleMouseMove, { passive: true })
     document.addEventListener('mouseleave', handleMouseLeave, { passive: true })
 
-    // Gentle, subtle node count
-    const nodeCount = Math.min(32, Math.max(20, Math.floor((width * height) / 38000)))
+    const isMobile = width < 768
+    // Gentle, subtle node count (scaled down on mobile for ultra battery efficiency)
+    const nodeCount = isMobile ? 10 : Math.min(28, Math.max(16, Math.floor((width * height) / 45000)))
     const nodes = []
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.22,
-        vy: (Math.random() - 0.5) * 0.22,
-        radius: Math.random() * 1.4 + 1.0,
+        vx: (Math.random() - 0.5) * 0.18,
+        vy: (Math.random() - 0.5) * 0.18,
+        radius: Math.random() * 1.2 + 0.8,
         phase: Math.random() * Math.PI * 2,
         isAccent: Math.random() > 0.75,
         isSky: Math.random() > 0.80
